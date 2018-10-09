@@ -1,0 +1,11 @@
+{
+  "name": "cuf",
+  "license": "MIT",
+  "scripts": {
+    "start": "docker-compose -p cuf up",
+    "stop": "docker-compose -p cuf down",
+    "kill": "docker-compose -p cuf down; docker volume rm $(docker volume ls -q | grep cuf)",
+    "terminal:app": "docker-compose exec app /bin/bash",
+    "terminal:graph": "docker-compose exec graph /bin/bash"
+  }
+}

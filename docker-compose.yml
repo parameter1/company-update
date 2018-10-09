@@ -1,0 +1,61 @@
+version: '3'
+services:
+  app:
+    tty: true
+    image: danlynn/ember-cli:3.4.3
+    ports:
+      - "${EMBER_SERVE_PORT-9905}:${EMBER_SERVE_PORT-9905}"
+      - "${EMBER_LIVER_PORT-9906}:${EMBER_LIVER_PORT-9906}"
+      - "${EMBER_TESTS_PORT-9907}:${EMBER_TESTS_PORT-9907}"
+    volumes:
+      - ./app:/myapp:cached
+      - ember_node_modules:/myapp/node_modules:cached
+      - ember_tmp:/myapp/tmp
+    restart: on-failure
+    environment:
+      EMBER_SERVE_PORT: ${EMBER_SERVE_PORT-9905}
+      EMBER_LIVER_PORT: ${EMBER_LIVER_PORT-9906}
+      EMBER_PROXY: ${EMBER_PROXY-http://host.docker.internal:9900}
+    entrypoint: yarn start
+    # entrypoint: "./node_modules/.bin/ember server --port ${EMBER_SERVE_PORT-9905} --live-reload-port ${EMBER_LIVER_PORT-9906} --proxy ${EMBER_PROXY-http://docker.for.mac.host.internal:9900}"
+
+  graph:
+    tty: true
+    image: node:8
+    entrypoint: yarn start
+    working_dir: /app
+    volumes:
+      - ./graph:/app:cached
+      - graph_node_modules:/app/node_modules:cached
+    depends_on:
+      - mongo
+    ports:
+      - "${GRAPH_APP_PORT-9900}:80"
+    environment:
+      PORT: 80
+      MONGO_DSN: ${MONGO_DSN-mongodb://mongo/cuf}
+      B4GRAPH_URI: ${B4GRAPH_URI}
+      B4GRAPH_API_KEY: ${B4GRAPH_API_KEY}
+      B4GRAPH_TENANT_KEY: ${B4GRAPH_TENANT_KEY}
+      SENDGRID_API_KEY: ${SENDGRID_API_KEY}
+      SENDGRID_FROM: ${SENDGRID_FROM-no-reply@baseplatform.io}
+
+  mongo:
+    image: mongo:3.4
+    volumes:
+      - mongo:/data/db:cached
+    ports:
+      - "${GRAPH_DB_PORT-9901}:27017"
+  # redis:
+  #   image: redis:alpine
+  #   ports:
+  #     - "${CUF_REDIS_PORT-9902}:6379"
+
+volumes:
+  mongo: {}
+  ember_node_modules: {}
+  graph_node_modules: {}
+  ember_tmp:
+    driver_opts:
+      type: tmpfs
+      device: tmpfs
