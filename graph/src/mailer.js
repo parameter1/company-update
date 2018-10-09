@@ -36,9 +36,9 @@ const send = ({ to, subject, html }) => {
 };
 
 module.exports = {
-  async notify({ _id, name, email }) {
+  async notify({ _id, name, email, hash }) {
     const subject = 'A new listing update requires review';
-    const html = await fillTemplate(notifyTemplate, { _id, name, email });
+    const html = await fillTemplate(notifyTemplate, { _id, name, email, hash });
     const to = NOTIFICATION_TO;
     return send({ to, subject, html });
   },

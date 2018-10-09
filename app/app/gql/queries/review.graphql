@@ -1,0 +1,10 @@
+query ReviewSubmission($id: String!) {
+  submission(id: $id) {
+    id
+    submitted
+    reviewed
+    name
+    email
+    payload
+  }
+}

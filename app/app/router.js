@@ -7,7 +7,9 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
-  this.route('company', { path: 'display/company/:hash' });
+  this.route('company', { path: 'display/company/:hash' }, function() {
+    this.route('review', { path: ':id' });
+  });
 });
 
 export default Router;
