@@ -33,6 +33,10 @@ B4GRAPH_URI=some-url
 B4GRAPH_API_KEY=some-api-key
 B4GRAPH_TENANT_KEY=some-account-group
 
+PLATFORM_URI=https://some.domain
+PLATFORM_LOGO=https://cdn.some.domain/some/path/to/some.img
+NOTIFICATION_TO=developer@southcomm.com
+
 SENDGRID_FROM=root@localhost
 SENDGRID_API_KEY=some-api-key
 
@@ -50,5 +54,8 @@ The following environment variables must be set at run-time for the production d
 B4GRAPH_URI=
 B4GRAPH_API_KEY=
 B4GRAPH_TENANT_KEY=
+PLATFORM_URI=
+PLATFORM_LOGO=
+NOTIFICATION_TO=
 SENDGRID_API_KEY=
 ```

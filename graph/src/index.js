@@ -1,13 +1,15 @@
 const { ApolloServer } = require('apollo-server');
 const createSchema = require('./schema');
 const { PORT } = require('./env');
+const mongodb = require('./mongodb');
 
 const init = async () => {
+  await mongodb.connect();
   const schema = await createSchema();
   const server = new ApolloServer({ schema });
 
   server.listen({ port: PORT, path: '/graph' }).then(({ url }) => {
-    console.log(`🚀  Server ready at ${url}`); // eslint-disable-line no-console
+    process.stdout.write(`🚀  GraphQL available at ${url}\n\n`);
   });
 };
 

@@ -1,14 +1,60 @@
 const { gql } = require('apollo-server');
 
-// Type definitions define the "shape" of your data and specify
-// which ways the data can be fetched from the GraphQL server.
 module.exports = gql`
-  # Comments in GraphQL are defined with the hash (#) symbol.
 
-  # This "Book" type can be used in other type declarations.
-  type Company {
+  scalar Date
+
+  type Query {
+    ping: String!
+    config: Configuration!
+    submission(id: String!): CompanyUpdateSubmission!
+  }
+
+  type Mutation {
+    company(input: CompanyUpdateInput!): CompanyUpdateSubmission!
+    complete(id: String!): String!
+  }
+
+  enum CompanyTypes {
+    Company
+    Agency
+    Association
+    Dealer
+    Distributor
+    Manufacturer
+    Service Provider
+    Supplier
+  }
+
+  enum ContactTypes {
+    sales
+    listing
+    public
+  }
+
+  type Configuration {
+    domain: String!
+    logo: String!
+  }
+
+  type CompanyUpdateSubmission {
+    id: String!
+    submitted: Date!
+    reviewed: Boolean!
     name: String!
+    email: String!
+    payload: String!
+  }
+
+  input CompanyUpdateInput {
+    name: String!
+    email: String!
     hash: String!
+    payload: CompanyUpdatePayloadInput!
+  }
+
+  input CompanyUpdatePayloadInput {
+    name: String
     address1: String
     address2: String
     city: String
@@ -19,42 +65,34 @@ module.exports = gql`
     tollfree: String
     fax: String
     website: String
-    type: String
+    type: CompanyTypes
     email: String
     body: String
-    primaryImage: String
 
-    products: [Product]
-    contacts: [Contact]
-    images: [Image]
-    sections: [Section]
+    contacts: [ContactPayloadInput]
+    sections: [SectionPayloadInput]
+    images: [ImagePayloadInput]
   }
 
-type Contact {
-  firstName: String
-  lastName: String
-  title: String
-  hash: String
-}
+  input ContactPayloadInput {
+    id: String
+    delete: Boolean
+    firstName: String
+    lastName: String
+    title: String
+    email: String
+    type: ContactTypes
+  }
 
-type Product {
-  name: String
-  hash: String
-}
+  input SectionPayloadInput {
+    id: String
+    delete: Boolean
+    name: String
+  }
 
-type Image {
-  name: String
-  src: String
-}
-
-type Section {
-  name: String
-  children: [Section]
-}
-
-  # The "Query" type is the root of all GraphQL queries.
-  # (A "Mutation" type will be covered later on.)
-  type Query {
-    company(hash: String!): Company
+  input ImagePayloadInput {
+    id: String
+    delete: Boolean
+    src: String
   }
 `;

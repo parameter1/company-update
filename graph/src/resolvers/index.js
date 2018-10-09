@@ -1,82 +1,33 @@
-// This is a (sample) collection of books we'll be able to query
-// the GraphQL server for.  A more complete example might fetch
-// from an existing data source like a REST API or database.
-const companies = {
-  '1a43b7887e3bf72f5b306f8eba2af5e6': {
-    name: 'EMP',
-    hash: '1a43b7887e3bf72f5b306f8eba2af5e6',
-    address1: '2701 North 30th Street',
-    address2: null,
-    city: 'Escanaba',
-    state: 'MI',
-    zip: '49829',
-    country: 'US',
-    phone: '906.789.7497',
-    tollfree: null,
-    fax: null,
-    website: 'http://www.emp-corp.com',
-    type: 'Supplier',
-    email: 'Kevin.Puszczewicz@emp-corp.com',
-    body: 'EMP is the innovation leader in reducing emissions and improving fuel economy and safety, and enabling cost-effective retrofit of mass transit fleets utilizing EMP\'s Mini-Hybrid thermal management system.',
-    primaryImage: 'https://r3.masstransitmag.com/files/base/image/MASS/2013/10/3x2/300x200/minihybridstickerhr-page-0_11186267.png',
-    contacts: [
-      {
-        hash: '016e5251787c22a3b4c3a075a0eeb82f',
-        firstName: 'Kevin',
-        lastName: 'Puszczewicz',
-        title: 'Director of Sales and Customer Service',
-        address1: '2701 North 30th Street',
-        address2: null,
-        city: null,
-        state: null,
-        zip: null,
-        country: null,
-        phone: null,
-        mobile: null,
-        fax: null,
-        email: 'Kevin.Puszczewicz@emp-corp.com',
-        emailPublic: 'Kevin.Puszczewicz@emp-corp.com',
-        website: null,
-        shortTeaser: null,
-        teaser: null,
-        body: null,
-      },
-    ],
-    products: [],
-    sections: [
-      {
-        name: 'Bus',
-        id: 1234,
-        children: [
-          {
-            name: 'Bus Components, Accessories',
-            id: 12345,
-          },
-          {
-            name: 'Bus Builders, Rebuilders, Distributors',
-            id: 123456,
-          },
-        ],
-      },
-      {
-        name: 'Maintenance',
-        id: 123,
-        children: [],
-      },
-    ],
-    images: [
-      {
-        src: 'https://r3.masstransitmag.com/files/base/image/MASS/2013/10/3x2/300x200/minihybridstickerhr-page-0_11186267.png',
-      },
-    ],
-  },
-};
+const { DateType } = require('@limit0/graphql-custom-types');
+const { PLATFORM_URI, PLATFORM_LOGO } = require('../env');
+const { retrieve, insert, complete } = require('../mongodb');
+const { notify, thank } = require('../mailer');
+
+const config = { domain: PLATFORM_URI, logo: PLATFORM_LOGO };
 
 module.exports = {
+  Date: DateType,
+
+  CompanyUpdateSubmission: {
+    id: ({ _id }) => _id.toString(),
+    submitted: ({ _id }) => _id.getTimestamp(),
+    payload: ({ payload }) => JSON.stringify(payload),
+  },
+
   Query: {
-    company: (_, { hash }) => {
-      if (Object.prototype.hasOwnProperty.call(companies, hash)) return companies[hash];
-      throw new Error('No company was found using the supplied hash.');
+    config: () => config,
+    submission: (_, { id }) => retrieve(id),
+  },
+  Mutation: {
+    company: async (_, { input }) => {
+      const reviewed = false;
+      const res = await insert({ reviewed, ...input });
+      if (!res.result.ok) throw new Error('Unable to save your changes, please try again.');
+      const submission = await retrieve(res.insertedId);
+      await notify(submission);
+      await thank(submission);
+      return submission;
     },
+    complete: (_, { id }) => complete(id),
   },
 };
