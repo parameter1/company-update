@@ -1,0 +1,28 @@
+{
+  "name": "cuf",
+  "version": "0.0.1",
+  "description": "Backend GraphQL service for CUF project",
+  "main": "src/index.js",
+  "author": "solocommand",
+  "license": "MIT",
+  "scripts": {
+    "start": "yarn; ./node_modules/.bin/gulp"
+  },
+  "dependencies": {
+    "apollo-link-context": "^1.0.9",
+    "apollo-link-error": "^1.1.1",
+    "apollo-link-http": "^1.5.5",
+    "apollo-server": "^2.1.0",
+    "envalid": "^4.1.4",
+    "graphql": "^14.0.2",
+    "graphql-tools": "^4.0.0",
+    "node-fetch": "^2.2.0",
+    "validator": "^10.8.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.6.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "gulp": "^3.9.1"
+  }
+}
