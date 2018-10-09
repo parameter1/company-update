@@ -1,0 +1,57 @@
+query PlatformContentHash($input: Base4PlatformContentHash!) {
+  base4PlatformContentHash(input: $input) {
+    name
+    hash
+    type
+    body
+    primaryImage {
+			src(input: {host: "cdn.baseplatform.io"})
+		}
+		... on Base4PlatformContentCompany {
+			address1
+			address2
+			city
+			state
+			zip
+			country
+			phone
+			tollfree
+			fax
+			website
+	    email
+      # sections {
+      #   name
+      #   children {
+      #     name
+      #   }
+      # }
+			salesContacts {
+				edges {
+					node {
+						name
+						title
+						hash
+					}
+				}
+			}
+			publicContacts {
+				edges {
+					node {
+						name
+						title
+						hash
+					}
+				}
+			}
+			listingContacts {
+				edges {
+					node {
+						name
+						title
+						hash
+					}
+				}
+			}
+		}
+  }
+}
