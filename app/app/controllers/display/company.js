@@ -3,7 +3,7 @@ import { computed } from '@ember/object';
 
 export default Controller.extend({
   // Merges contacts into a single array
-  contacts: computed('model.submission.contacts.[]', function() {
+  contacts: computed('model.{salesContacts,listingContacts,publicContacts}.[]', function() {
     const contacts = [];
     ['publicContacts', 'listingContacts', 'salesContacts'].forEach((type) => {
       const check = this.get(`model.${type}`);
@@ -59,10 +59,6 @@ export default Controller.extend({
     {
       label: 'Website',
       key: 'website',
-    },
-    {
-      label: 'Type',
-      key: 'type',
     },
     {
       label: 'Email Address',

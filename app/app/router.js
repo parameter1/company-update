@@ -7,8 +7,10 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
-  this.route('company', { path: 'display/company/:hash' }, function() {
-    this.route('review', { path: ':id' });
+  this.route('display', function() {
+    this.route('company', { path: 'company/:hash' }, function() {
+      this.route('review', { path: ':id' });
+    });
   });
 });
 
