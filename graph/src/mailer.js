@@ -36,15 +36,15 @@ const send = ({ to, subject, html }) => {
 };
 
 module.exports = {
-  async notify({ _id, name, email, hash }) {
+  async notify({ _id, email, hash }) {
     const subject = 'A new listing update requires review';
-    const html = await fillTemplate(notifyTemplate, { _id, name, email, hash });
+    const html = await fillTemplate(notifyTemplate, { _id, email, hash });
     const to = NOTIFICATION_TO;
     return send({ to, subject, html });
   },
   async thank({ _id, name, email }) {
     const subject = 'Your requested listing updates have been recieved';
-    const html = await fillTemplate(thankyouTemplate, { _id, name, email });
+    const html = await fillTemplate(thankyouTemplate, { _id, email });
     const to = `${name} <${email}>`;
     return send({ to, subject, html });
   },
