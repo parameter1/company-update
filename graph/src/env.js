@@ -5,6 +5,7 @@ const {
   makeValidator,
   port,
   email,
+  json,
 } = require('envalid');
 
 const mongodsn = makeValidator((v) => {
@@ -33,5 +34,6 @@ module.exports = cleanEnv(process.env, {
   SENDGRID_FROM: nonemptystr({ desc: 'The from name to use when sending email via SendGrid, e.g. Foo <foo@bar.com>', default: 'no-reply@baseplatform.io' }),
   PLATFORM_URI: nonemptystr({ desc: 'The primary uri for the related platform tenant.' }),
   PLATFORM_LOGO: nonemptystr({ desc: 'The uri to the platform tenant\'s logo.' }),
+  PLATFORM_SECTIONS: json({ desc: 'A JSON array of the top-level platform section IDs for this tenant.' }),
   NOTIFICATION_TO: email({ desc: 'The email address notifications are sent to.' }),
 });

@@ -35,6 +35,7 @@ module.exports = gql`
   type Configuration {
     domain: String!
     logo: String!
+    ids: [Int!]!
   }
 
   type CompanyUpdateSubmission {

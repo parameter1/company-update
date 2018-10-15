@@ -18,7 +18,7 @@ This project requires [Docker Compose](https://docs.docker.com/compose/overview/
 You can load an interactive terminal for the relevant container via `yarn terminal:app` or `yarn terminal:graph`. This will allow you to add, remove, or upgrade project dependencies using Yarn (among other things). Note: _the application instances must be running via `yarn start` for the terminal to load._
 
 ## Environment Variables
-Production environment variables are *not* under version control, per [Part 3 of the 12 Factors](https://12factor.net/config). As such, the [dotenv](https://www.npmjs.com/package/dotenv) package is used to manage your variables locally.
+Application configuration is *not* under version control, and must be injected as environment variables. The envalid library is used to ensure the required variables have been set.
 1. Create a `.env` file in the project root
 2. Set (or change) values for the following variables:
 ```ini

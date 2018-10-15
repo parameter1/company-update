@@ -1,9 +1,17 @@
 const { DateType } = require('@limit0/graphql-custom-types');
-const { PLATFORM_URI, PLATFORM_LOGO } = require('../env');
 const { retrieve, insert, complete } = require('../mongodb');
 const { notify, thank } = require('../mailer');
+const {
+  PLATFORM_URI,
+  PLATFORM_LOGO,
+  PLATFORM_SECTIONS,
+} = require('../env');
 
-const config = { domain: PLATFORM_URI, logo: PLATFORM_LOGO };
+const config = {
+  domain: PLATFORM_URI,
+  logo: PLATFORM_LOGO,
+  ids: PLATFORM_SECTIONS,
+};
 
 module.exports = {
   Date: DateType,
