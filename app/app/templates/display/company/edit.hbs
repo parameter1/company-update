@@ -19,9 +19,7 @@
     <div class="card">
       <h4 class="h6 card-header">Company Details</h4>
       <div class="card-body">
-        {{#each fields as |field|}}
-          {{ edit-field field=field value=(get model field.key) }}
-        {{/each}}
+        {{ partial "display/company/edit/fields" }}
       </div>
     </div>
   </div>
