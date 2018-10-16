@@ -8,4 +8,7 @@ export default Route.extend(RouteQueryManager, {
     const variables = { input: { hash } };
     return this.get('apollo').watchQuery({ query, variables, fetchPolicy: 'cache-and-network' }, 'base4PlatformContentHash');
   },
+  afterModel(model) {
+    model.set('sectionIds', model.get('sectionIds') || []);
+  },
 });

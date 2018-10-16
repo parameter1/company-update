@@ -14,7 +14,13 @@
     {{#modal.body}}
       <div class="row">
         <div class="col">
-          jsTree {{ log sections }}
+          {{ember-jstree
+            data=sections
+            plugins="checkbox"
+            checkboxOptions=checkboxOptions
+            eventDidSelectNode=(action "select")
+            eventDidDeselectNode=(action "deselect")
+          }}
         </div>
       </div>
     {{/modal.body}}
