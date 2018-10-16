@@ -1,0 +1,20 @@
+<div class="form-group">
+  <label for="{{ field.key }}-input">{{ field.label }}</label>
+  <div class="input-group">
+    {{#if (eq field.type "long")}}
+      // load ace editor
+      <div readonly class="form-control form-control-plaintext body-preview">{{{ value }}}</div>
+    {{else}}
+      {{input
+        type="text"
+        class="form-control"
+        id=field.key
+        aria-describedby="{{ field.key }}-help"
+        placeholder=field.placeholder
+        value=value
+        required=field.required
+      }}
+    {{/if}}
+  </div>
+  <small id="{{ field.key }}-help" class="form-text text-muted">{{ field.helpText }}</small>
+</div>

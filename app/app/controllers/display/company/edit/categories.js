@@ -11,7 +11,13 @@ const flatten = (sections) => {
 };
 
 export default Controller.extend({
-  sections: computed('config.sections', function() {
-    return flatten(this.get('config.sections'));
-  })
+  sections: computed('model', function() {
+    return flatten(this.get('model'));
+  }),
+
+  actions: {
+    transitionToEdit() {
+      this.transitionToRoute('display.company.edit');
+    }
+  }
 });

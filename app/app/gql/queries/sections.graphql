@@ -1,0 +1,26 @@
+query WebsiteSections($input: Base4WebsiteSectionsQueryInput!) {
+  base4WebsiteSections(input: $input) {
+    edges {
+      node {
+        id
+        name
+        children(input: {pagination: {first: 100}}) {
+          edges {
+            node {
+              id
+              name
+              children(input: {pagination: {first: 100}}) {
+                edges {
+                  node {
+                    id
+                    name
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

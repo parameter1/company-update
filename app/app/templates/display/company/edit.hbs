@@ -1,0 +1,52 @@
+<h3 class="display-4">{{ title }}</h3>
+<hr>
+<div class="row">
+  <div class="col-12 col-md-8 col-lg-9 col-xl-10">
+    <p class="lead">Review your company details below.</p>
+    <p>Make any needed changes on the fields below.</p>
+    <p>When you are finished making changes, click the "Save Changes" button.</p>
+  </div>
+  <div class="col-12 col-md-4 col-lg-3 col-xl-2">
+    <button class="btn btn-block btn-success">{{entypo-icon "save"}} Save Changes</button>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-12 col-lg-8 col-xl-9 my-3">
+    <div class="card">
+      <h4 class="h6 card-header">Company Details</h4>
+      <div class="card-body">
+        {{#each fields as |field|}}
+          {{ edit-field field=field value=(get model field.key) }}
+        {{/each}}
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-lg-4 col-xl-3 my-3">
+    {{!-- {{partial "edit/contacts"}} --}}
+
+    <div class="card mb-3">
+      <h4 class="h6 card-header">Categories</h4>
+      <div class="card-body">
+        {{#link-to "display.company.edit.categories" class="btn btn-block btn-sm btn-primary"}}
+          {{entypo-icon "pencil"}} <span class="d-none d-md-inline">Edit categories</span>
+        {{/link-to}}
+      </div>
+    </div>
+
+    <div class="card mb-3">
+      <h4 class="h6 card-header">Logo</h4>
+      <div class="card-body">
+        {{#if model.primaryImage}}
+          <img src={{ model.primaryImage.src }} class="img-fluid mb-3" alt="Company Logo">
+        {{/if}}
+
+        <button class="btn btn-block btn-sm btn-primary">
+          {{entypo-icon "upload"}} Upload new logo
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{ outlet }}
