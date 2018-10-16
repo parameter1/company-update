@@ -1,6 +1,6 @@
 <div class="sticky-top z-depth-1-half">
   <nav class="navbar navbar-expand navbar-dark bg-primary">
-    {{#link-to "index" class="navbar-brand mr-auto"}}Listing Update{{/link-to}}
+    <span class="navbar-brand mr-auto">Listing Update</span>
     <div class="navbar-nav mx-auto">
       <img
         src={{ config.logo }}
@@ -18,6 +18,8 @@
   </nav>
   {{loading-progress class="bg-primary" progressBackground="bg-success"}}
 </div>
+
+{{ember-notify}}
 
 <div class="container-fluid my-3">
   <div class="row">

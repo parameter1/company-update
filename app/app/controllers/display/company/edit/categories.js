@@ -12,27 +12,21 @@ const flatten = (sections, selected = []) => {
 };
 
 export default Controller.extend({
-  selected: computed.reads('model.company.sectionIds'), // pull from model
+  selected: computed.reads('model.company.sections'), // pull from model
 
   sections: computed('model.sections.[],selected.[]', function() {
     return flatten(this.get('model.sections'), this.get('selected'));
   }),
-
-  checkboxOptions: {
-    // three_state: false,
-    // deselect_all: true,
-    // cascade: 'up',
-  },
 
   actions: {
     transitionToEdit() {
       this.transitionToRoute('display.company.edit');
     },
     select(node) {
-      this.get('model.company.sectionIds').push(node.id);
+      this.get('model.company.sections').push(parseInt(node.id));
     },
     deselect(node) {
-      this.set('model.company.sectionIds', this.get('selected').without(node.id));
+      this.set('model.company.sections', this.get('selected').without(node.id));
     },
   }
 });

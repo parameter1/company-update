@@ -7,7 +7,10 @@
     <p>When you are finished making changes, click the "Save Changes" button.</p>
   </div>
   <div class="col-12 col-md-4 col-lg-3 col-xl-2">
-    <button class="btn btn-block btn-success">{{entypo-icon "save"}} Save Changes</button>
+    <button class="btn btn-block btn-success" {{ action "showModal" }}>
+      {{entypo-icon "save"}} Save Changes
+    </button>
+    {{ submit-modal isOpen=isModalOpen model=model fields=fields onComplete="transitionToThankYou"}}
   </div>
 </div>
 <hr>

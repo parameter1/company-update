@@ -70,9 +70,10 @@ module.exports = gql`
     email: String
     body: String
 
-    contacts: [ContactPayloadInput]
-    sections: [SectionPayloadInput]
-    images: [ImagePayloadInput]
+    # contacts: [ContactPayloadInput]
+    sections: [Int!]
+    # images: [ImagePayloadInput]
+    logo: String
   }
 
   input ContactPayloadInput {
@@ -86,7 +87,7 @@ module.exports = gql`
   }
 
   input SectionPayloadInput {
-    id: String
+    id: Int
     delete: Boolean
     name: String
   }
