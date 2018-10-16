@@ -25,11 +25,11 @@
           <div class="input-group">
             {{#if (eq field.type "long")}}
               <div readonly class="form-control form-control-plaintext body-preview diff-wrapper">
-                {{ js-diff original=(model-value model.company field.key) updated=(model-value model.submission.payload field.key) lines=(eq field.type "long")}}
+                {{ js-diff original=(get model.company field.key) updated=(get model.submission.payload field.key) lines=(eq field.type "long")}}
               </div>
             {{else}}
               <div readonly class="form-control form-control-plaintext diff-wrapper">
-                {{ js-diff original=(model-value model.company field.key) updated=(model-value model.submission.payload field.key) lines=(eq field.type "long")}}
+                {{ js-diff original=(get model.company field.key) updated=(get model.submission.payload field.key) lines=(eq field.type "long")}}
               </div>
             {{/if}}
             <div class="input-group-append">
