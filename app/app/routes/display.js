@@ -1,15 +1,16 @@
 import Route from '@ember/routing/route';
+import { inject } from '@ember/service';
 import { RouteQueryManager } from 'ember-apollo-client';
 
 import query from 'cuf/gql/queries/config';
 
 export default Route.extend(RouteQueryManager, {
+  config: inject(),
+
   model() {
-    return this.get('apollo').watchQuery({ query, fetchPolicy: 'cache-and-network' });
+    return this.get('apollo').watchQuery({ query, fetchPolicy: 'cache-and-network' }, 'config');
   },
-  setupController(controller, model) {
-    this._super(controller, model);
-    const { config } = model;
-    controller.set('config', config);
+  afterModel({ domain, logo, ids }) {
+    this.config.load({ domain, logo, ids });
   },
 });

@@ -2,29 +2,6 @@ query Config {
   config {
     domain
     logo
-    sections {
-      edges {
-        node {
-          id
-          name
-          children(input: {pagination: {first: 100}}) {
-            edges {
-              node {
-                id
-                name
-                children(input: {pagination: {first: 100}}) {
-                  edges {
-                    node {
-                      id
-                      name
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+    ids
   }
 }
