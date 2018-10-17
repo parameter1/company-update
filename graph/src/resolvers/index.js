@@ -1,11 +1,18 @@
 const { DateType } = require('@limit0/graphql-custom-types');
+const { GraphQLUpload } = require('apollo-server');
+const uuid = require('uuid/v4');
 const { retrieve, insert, complete } = require('../mongodb');
 const { notify, thank } = require('../mailer');
+const env = require('../env');
+const s3Client = require('../s3-client');
+
 const {
   PLATFORM_URI,
   PLATFORM_LOGO,
   PLATFORM_SECTIONS,
-} = require('../env');
+  B4GRAPH_TENANT_KEY,
+  AWS_S3_BUCKET,
+} = env;
 
 const config = {
   domain: PLATFORM_URI,
@@ -15,6 +22,7 @@ const config = {
 
 module.exports = {
   Date: DateType,
+  Upload: GraphQLUpload,
 
   CompanyUpdateSubmission: {
     id: ({ _id }) => _id.toString(),
@@ -37,5 +45,19 @@ module.exports = {
       return submission;
     },
     complete: (_, { id }) => complete(id),
+    singleUpload: async (_, { file }) => {
+      const { stream, filename, mimetype } = await file;
+      const Bucket = AWS_S3_BUCKET;
+      const Key = `${B4GRAPH_TENANT_KEY}/${uuid()}/${filename}`;
+
+      const response = await s3Client.upload({
+        Bucket,
+        Key,
+        Body: stream,
+        ACL: 'public-read',
+        ContentType: mimetype,
+      }).promise();
+      return response.Location;
+    },
   },
 };

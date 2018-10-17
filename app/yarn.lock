@@ -632,6 +632,14 @@ apollo-link@^1.0.0, apollo-link@^1.2.2, apollo-link@^1.2.3:
     apollo-utilities "^1.0.0"
     zen-observable-ts "^0.8.10"
 
+apollo-upload-client@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/apollo-upload-client/-/apollo-upload-client-9.0.0.tgz#94edaf116b70491f0a2d872a1746da7b788f9c0f"
+  dependencies:
+    apollo-link "^1.2.3"
+    apollo-link-http-common "^0.2.5"
+    extract-files "^4.0.0"
+
 apollo-utilities@1.0.21, apollo-utilities@^1.0.0, apollo-utilities@^1.0.21:
   version "1.0.21"
   resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.0.21.tgz#cb8b5779fe275850b16046ff8373f4af2de90765"
@@ -2779,7 +2787,7 @@ ember-ast-helpers@0.3.5:
     "@glimmer/compiler" "^0.27.0"
     "@glimmer/syntax" "^0.27.0"
 
-ember-auto-import@^1.2.5:
+ember-auto-import@^1.2.13, ember-auto-import@^1.2.5:
   version "1.2.13"
   resolved "https://registry.yarnpkg.com/ember-auto-import/-/ember-auto-import-1.2.13.tgz#8f6f5d1c64e173f9093dd0c5031dc1d446b7cff1"
   dependencies:
@@ -3781,6 +3789,10 @@ extglob@^2.0.4:
     regex-not "^1.0.0"
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
+
+extract-files@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/extract-files/-/extract-files-4.0.0.tgz#a5bbcac16d753a7b7c74fbda1d4992424bfa5fa4"
 
 fast-deep-equal@^1.0.0:
   version "1.1.0"

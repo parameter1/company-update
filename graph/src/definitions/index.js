@@ -3,6 +3,7 @@ const { gql } = require('apollo-server');
 module.exports = gql`
 
   scalar Date
+  scalar Upload
 
   type Query {
     ping: String!
@@ -13,6 +14,7 @@ module.exports = gql`
   type Mutation {
     company(input: CompanyUpdateInput!): CompanyUpdateSubmission!
     complete(id: String!): String!
+    singleUpload(file: Upload!): String!
   }
 
   enum CompanyTypes {

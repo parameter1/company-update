@@ -23,6 +23,7 @@ module.exports = function(environment) {
     },
 
     'ember-froala-editor': {
+      plugins: 'check',
       key: '1G4I4C11D9eF5C4B3D4E2C2B4D6B3D3xJCJWECHICe1JOZWJ=='
     },
 
