@@ -12,6 +12,7 @@ export default Controller.extend({
 
   actions: {
     showModal() {
+      this.set('model.logo', this.get('logo'));
       this.set('isModalOpen', true);
     },
     transitionToThankYou() {

@@ -28,9 +28,10 @@
     <div class="card mb-3">
       <h4 class="h6 card-header">Logo</h4>
       <div class="card-body">
-        {{#if model.submission.logo}}
-          <a href="{{ model.submission.logo }}" target="_blank" rel="download" class="btn btn-block btn-primary">
-            New image uploaded
+        {{#if model.submission.payload.logo}}
+          <img src={{ model.submission.payload.logo }} class="img-fluid mb-3 p-1 border-success border bg-light" alt="New Company Logo">
+          <a href="{{ model.submission.payload.logo }}" target="_blank" rel="download" class="btn btn-block btn-primary">
+            {{entypo-icon "download"}} Download new logo
           </a>
         {{else}}
           <span class="text-muted">Image was not modified.</span>
