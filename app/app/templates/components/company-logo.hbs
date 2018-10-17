@@ -1,0 +1,22 @@
+{{#if logo}}
+  <img src={{ logo }} class="img-fluid mb-3" alt="Company Logo">
+{{/if}}
+
+{{#file-upload
+  class="d-block"
+  name="logo"
+  for="upload-logo"
+  accept="image/*"
+  multiple=false
+  onfileadd=(action "upload")
+  as |queue|
+}}
+  <a class="btn btn-block btn-sm btn-primary text-white">
+    {{#if queue.files.firstObject}}
+      {{entypo-icon "hour-glass"}} Uploading...
+    {{else}}
+      {{entypo-icon "upload"}} Upload new logo
+    {{/if}}
+  </a>
+  {{progress-bar show=isActionRunning value=queue.files.firstObject.progress}}
+{{/file-upload}}

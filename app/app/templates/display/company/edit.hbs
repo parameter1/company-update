@@ -38,13 +38,7 @@
     <div class="card mb-3">
       <h4 class="h6 card-header">Logo</h4>
       <div class="card-body">
-        {{#if model.primaryImage}}
-          <img src={{ model.primaryImage.src }} class="img-fluid mb-3" alt="Company Logo">
-        {{/if}}
-
-        <button class="btn btn-block btn-sm btn-primary">
-          {{entypo-icon "upload"}} Upload new logo
-        </button>
+        {{ company-logo logo=logo }}
       </div>
     </div>
   </div>

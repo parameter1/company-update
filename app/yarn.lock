@@ -3215,6 +3215,13 @@ ember-fetch@^5.1.1:
     node-fetch "^2.0.0-alpha.9"
     rollup-plugin-babel "^3.0.7"
 
+ember-file-upload@^2.5.3:
+  version "2.5.3"
+  resolved "https://registry.yarnpkg.com/ember-file-upload/-/ember-file-upload-2.5.3.tgz#09a9ac5f5d9f60bcb749dfa8915fa9b8f78254b9"
+  dependencies:
+    ember-cli-babel "^6.12.0"
+    ember-cli-htmlbars "^2.0.1"
+
 ember-font-awesome@^4.0.0-rc.4:
   version "4.0.0-rc.4"
   resolved "https://registry.yarnpkg.com/ember-font-awesome/-/ember-font-awesome-4.0.0-rc.4.tgz#7d4b7fbb401e21afeb7068cbb42ac8d8a84873f7"
