@@ -1,58 +1,7 @@
+{{#each fields as |row|}}
 <div class="row">
-  <div class="col">
-    {{ edit-field field=(hash key="name" label="Name") value=model.name }}
-  </div>
+  {{#each row as |field|}}
+    {{ edit-field field=field value=(get model field.key)}}
+  {{/each}}
 </div>
-
-<div class="row">
-  <div class="col col-md-4">
-    {{ edit-field field=(hash key="address1" label="Address") value=model.address1 }}
-  </div>
-  <div class="col col-md-4">
-    {{ edit-field field=(hash key="address2" label="Address (Line 2)") value=model.address2 }}
-  </div>
-  <div class="col col-md-4">
-    {{ edit-field field=(hash key="city" label="City") value=model.city }}
-  </div>
-</div>
-
-<div class="row">
-  <div class="col col-md-4">
-    {{ edit-field field=(hash key="state" label="State/Region") value=model.state }}
-  </div>
-  <div class="col col-md-4">
-    {{ edit-field field=(hash key="zip" label="Postal Code") value=model.zip }}
-  </div>
-  <div class="col col-md-4">
-    {{ edit-field field=(hash key="country" label="Country") value=model.country }}
-  </div>
-</div>
-
-<div class="row">
-  <div class="col col-md-4">
-    {{ edit-field field=(hash key="phone" label="Phone") value=model.phone }}
-  </div>
-  <div class="col col-md-4">
-    {{ edit-field field=(hash key="tollfree" label="Phone (Toll-free)") value=model.tollfree }}
-  </div>
-  <div class="col col-md-4">
-    {{ edit-field field=(hash key="fax" label="Phone (Fax)") value=model.fax }}
-  </div>
-</div>
-
-<div class="row">
-  <div class="col col-md-6">
-    {{ edit-field field=(hash key="website" label="Website") value=model.website }}
-  </div>
-  <div class="col col-md-6">
-    {{ edit-field field=(hash key="email" label="Public Email") value=model.email }}
-  </div>
-</div>
-
-<hr>
-
-<div class="row">
-  <div class="col">
-    {{ edit-field field=(hash key="body" label="Description" type="long") value=model.body }}
-  </div>
-</div>
+{{/each}}

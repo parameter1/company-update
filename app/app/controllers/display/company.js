@@ -16,59 +16,82 @@ export default Controller.extend({
 
   // Determines display order, labels, and visibility/type of updateable fields
   fields: [ // eslint-disable-line ember/avoid-leaking-state-in-ember-objects
-    {
-      label: 'Name',
-      key: 'name',
-    },
-    {
-      label: 'Address 1',
-      key: 'address1',
-    },
-    {
-      label: 'Address 2',
-      key: 'address2',
-    },
-    {
-      label: 'City',
-      key: 'city',
-    },
-    {
-      label: 'State',
-      key: 'state',
-    },
-    {
-      label: 'Zip/Postal Code',
-      key: 'zip',
-    },
-    {
-      label: 'Country',
-      key: 'country',
-    },
-    {
-      label: 'Phone Number',
-      key: 'phone',
-    },
-    {
-      label: 'Phone (Toll-free)',
-      key: 'tollfree',
-    },
-    {
-      label: 'Fax Number',
-      key: 'fax',
-    },
-    {
-      label: 'Website',
-      key: 'website',
-    },
-    {
-      label: 'Email Address',
-      key: 'email',
-    },
-    {
-      label: 'Description',
-      key: 'body',
-      type: 'long',
-    },
+    [
+      {
+        label: 'Name',
+        key: 'name',
+      }
+    ],
+    [
+      {
+        label: 'Address 1',
+        key: 'address1',
+        class: 'col-md-4',
+      },
+      {
+        label: 'Address 2',
+        key: 'address2',
+        class: 'col-md-4',
+      },
+      {
+        label: 'City',
+        key: 'city',
+        class: 'col-md-4',
+      },
+    ],
+    [
+      {
+        label: 'State',
+        key: 'state',
+        class: 'col-md-4',
+      },
+      {
+        label: 'Zip/Postal Code',
+        key: 'zip',
+        class: 'col-md-4',
+      },
+      {
+        label: 'Country',
+        key: 'country',
+        class: 'col-md-4',
+      },
+    ],
+    [
+      {
+        label: 'Phone Number',
+        key: 'phone',
+        class: 'col-md-4',
+      },
+      {
+        label: 'Phone (Toll-free)',
+        key: 'tollfree',
+        class: 'col-md-4',
+      },
+      {
+        label: 'Fax Number',
+        key: 'fax',
+        class: 'col-md-4',
+      },
+    ],
+    [
+      {
+        label: 'Website',
+        key: 'website',
+        class: 'col-md-6',
+      },
+      {
+        label: 'Email Address',
+        key: 'email',
+        class: 'col-md-6',
+      },
+    ],
+    [
+      {
+        label: 'Description',
+        key: 'body',
+        type: 'long',
+      },
+    ],
   ],
 });
 

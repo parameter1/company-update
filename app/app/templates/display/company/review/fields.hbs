@@ -1,0 +1,30 @@
+{{#each fields as |row|}}
+<div class="row">
+  {{#each row as |field|}}
+  <div class="col {{ field.class }}">
+    <div class="form-group">
+      <label for="{{ field.key }}-input">{{ field.label }}</label>
+      <div class="input-group">
+        {{#if (eq field.type "long")}}
+          <div class="form-control {{ if (eq (get model.company field.key) (get model.submission.payload field.key)) "text-muted" "border-success" }}" style="height: inherit;">
+            {{ froala-editor content=body options=options }}
+          </div>
+        {{else}}
+          <div readonly class="form-control form-control-plaintext {{ if (eq (get model.company field.key) (get model.submission.payload field.key)) "text-muted" "border-success" }}">
+            {{ get model.submission.payload field.key }}
+          </div>
+        {{/if}}
+        {{#unless (eq (get model.company field.key) (get model.submission.payload field.key))}}
+        <div class="input-group-append">
+          <button class="btn btn-primary">
+            {{entypo-icon "copy"}} <span class="d-none d-xl-inline">Copy</span>
+          </button>
+        </div>
+        {{/unless}}
+      </div>
+      <small id="{{ field.key }}-help" class="form-text text-muted">{{ field.helpText }}</small>
+    </div>
+  </div>
+  {{/each}}
+</div>
+{{/each}}

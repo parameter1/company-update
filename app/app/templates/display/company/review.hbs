@@ -3,10 +3,6 @@
 <div class="row">
   <div class="col-12 col-md-8 col-lg-9 col-xl-10">
     <p class="lead">Review the requested changes below.</p>
-    <p>To copy the new value, click on
-      <button class="btn btn-sm btn-primary disabled btn-disabled">{{entypo-icon "copy"}} <span class="d-none d-md-inline">Copy</span>
-      </button>
-    </p>
     <p>When you are finished making changes, click the "Done" button.</p>
   </div>
   <div class="col-12 col-md-4 col-lg-3 col-xl-2">
@@ -19,84 +15,26 @@
     <div class="card">
       <h4 class="h6 card-header">Company Details</h4>
       <div class="card-body">
-        {{#each fields as |field|}}
-        <div class="form-group">
-          <label for="{{ field.key }}-input">{{ field.label }}</label>
-          <div class="input-group">
-            {{#if (eq field.type "long")}}
-              <div readonly class="form-control form-control-plaintext body-preview diff-wrapper">
-                {{ js-diff original=(get model.company field.key) updated=(get model.submission.payload field.key) lines=(eq field.type "long")}}
-              </div>
-            {{else}}
-              <div readonly class="form-control form-control-plaintext diff-wrapper">
-                {{ js-diff original=(get model.company field.key) updated=(get model.submission.payload field.key) lines=(eq field.type "long")}}
-              </div>
-            {{/if}}
-            <div class="input-group-append">
-              <button class="btn btn-primary">
-                {{entypo-icon "copy"}} <span class="d-none d-md-inline">Copy</span>
-              </button>
-            </div>
-          </div>
-          <small id="{{ field.key }}-help" class="form-text text-muted">{{ field.helpText }}</small>
-        </div>
-        {{/each}}
+        {{ partial "display/company/review/fields" }}
       </div>
     </div>
   </div>
   <div class="col-12 col-lg-4 col-xl-3 my-3">
-    {{!-- <div class="card mb-3">
-      <h4 class="h6 card-header">Contacts</h4>
-      <ul class="list-group list-group-flush">
-        // display status of each modified contact
-        {{#each contacts as |contact|}}
-        <li class="list-group-item">
-          <button class="btn btn-sm btn-primary float-right">
-            {{entypo-icon "pencil"}}
-            <span class="d-none d-md-inline">Edit</span>
-          </button>
-          {{ contact.name }}
-          {{#if (eq contact.type 'publicContacts')}}
-            <button class="btn btn-sm btn-disabled float-right" title="Contact information is listed publicly">{{entypo-icon "email"}}</button>
-          {{/if}}
-          {{#if (eq contact.type 'salesContacts')}}
-            <button class="btn btn-sm btn-disabled float-right" title="Contact will receive sales lead information">{{entypo-icon "credit"}}</button>
-          {{/if}}
-          {{#if (eq contact.type 'listingContacts')}}
-            <button class="btn btn-sm btn-disabled float-right" title="Contact will receive notifications to update listings">{{entypo-icon "pencil"}}</button>
-          {{/if}}
-          <span class="small d-block text-muted">
-            {{ contact.title }}
-          </span>
-        </li>
-        {{/each}}
-      </ul>
-      <div class="card-body"></div>
-    </div> --}}
     <div class="card mb-3">
       <h4 class="h6 card-header">Categories</h4>
-        <ul class="list-group list-group-flush">
-
-          // display status of each modified section
-          {{#each model.sections as |section|}}
-          <li class="list-group-item">
-            {{ section.name }}
-            <ul class="">
-              {{#each section.children as |child|}}
-              <li class="">{{ child.name }}</li>
-              {{/each}}
-            </ul>
-          </li>
-          {{/each}}
-        </ul>
+      {{ review-section-diff current=model.submission.payload.sections old=model.company.sections }}
       <div class="card-body"></div>
     </div>
     <div class="card mb-3">
-      <h4 class="h6 card-header">Images</h4>
+      <h4 class="h6 card-header">Logo</h4>
       <div class="card-body">
-        // display status of each modified image
-        {{#each model.submission.images as |image|}}
-        {{/each}}
+        {{#if model.submission.logo}}
+          <a href="{{ model.submission.logo }}" target="_blank" rel="download" class="btn btn-block btn-primary">
+            New image uploaded
+          </a>
+        {{else}}
+          <span class="text-muted">Image was not modified.</span>
+        {{/if}}
       </div>
     </div>
   </div>
