@@ -8,7 +8,7 @@ const init = async () => {
   const schema = await createSchema();
   const server = new ApolloServer({ schema });
 
-  server.listen({ port: PORT, path: '/graph' }).then(({ url }) => {
+  server.listen({ port: PORT, path: '/cu/graph' }).then(({ url }) => {
     process.stdout.write(`🚀  GraphQL available at ${url}\n\n`);
   });
 };

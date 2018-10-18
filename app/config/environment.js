@@ -28,7 +28,7 @@ module.exports = function(environment) {
     },
 
     apollo: {
-      apiURL: '/graphql',
+      apiURL: '/cu/graphql',
     },
   };
 

@@ -6,7 +6,8 @@
   "author": "solocommand",
   "license": "MIT",
   "scripts": {
-    "start": "yarn; ./node_modules/.bin/gulp"
+    "start": "yarn; ./node_modules/.bin/gulp",
+    "test": "yarn; ./node_modules/.bin/eslint src/"
   },
   "dependencies": {
     "@limit0/graphql-custom-types": "^1.0.1",
