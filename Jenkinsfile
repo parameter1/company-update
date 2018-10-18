@@ -1,7 +1,5 @@
 node {
-  def phpBuilder = docker.image("scomm/php5.6:latest")
-  def nodeBuilder = docker.image("scomm/node-build:latest")
-  phpBuilder.pull()
+  def nodeBuilder = docker.image("node:8")
   nodeBuilder.pull()
 
   // Test
