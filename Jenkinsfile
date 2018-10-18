@@ -10,7 +10,7 @@ node {
       checkout scm
     }
 
-    nodeBuilder.inside("-v ${env.WORKSPACE}/admin:/var/www/html -u 0:0 --entrypoint=''") {
+    nodeBuilder.inside("-v ${env.WORKSPACE}/app:/var/www/html -u 0:0 --entrypoint=''") {
       stage('Build App') {
         sh "cd /var/www/html && yarn"
       }
