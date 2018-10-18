@@ -4,6 +4,7 @@ query WebsiteSections($input: Base4WebsiteSectionsQueryInput!) {
       node {
         id
         name
+        fullName
         children(input: {pagination: {first: 100}}) {
           edges {
             node {

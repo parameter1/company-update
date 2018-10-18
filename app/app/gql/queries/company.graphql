@@ -52,6 +52,7 @@ query PlatformContentHash($input: Base4PlatformContentHash!) {
 					}
 				}
 			}
+			scheduledWebsiteSectionIds
 		}
   }
 }

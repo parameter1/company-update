@@ -1,0 +1,7 @@
+{{#each items as |item|}}
+<li class="list-group-item {{get-section-class item.node.id current old}}">
+  {{ item.node.fullName }}
+</li>
+{{/each}}
+
+{{progress-bar show=isActionRunning}}
