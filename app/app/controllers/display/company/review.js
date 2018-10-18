@@ -6,4 +6,9 @@ export default Controller.extend({
   body: computed('model.submission.payload.body', function() {
     return `<div contenteditable=false>${this.get('model.submission.payload.body')}</div>`;
   }),
+
+  oldIds: computed('model.company.scheduledWebsiteSections.edges', function() {
+    return this.get('model.company.scheduledWebsiteSections.edges').map(({ node }) => node.id);
+  }),
+
 });

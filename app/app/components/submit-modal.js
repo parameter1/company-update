@@ -19,7 +19,7 @@ const fields = [
   'tollfree',
   'website',
   'zip',
-  'sections',
+  'sectionIds',
   'logo',
 ];
 
@@ -37,7 +37,6 @@ export default Component.extend(ComponentQueryManager, ActionMixin, {
 
   isOpen: false,
   isInvalid: computed('name', 'email', function() {
-    console.warn('isInvalid', !this.get('name') || !this.get('email'));
     if (!this.get('name') || !this.get('email')) return true;
     return false;
   }),

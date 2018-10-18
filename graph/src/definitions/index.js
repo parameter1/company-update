@@ -73,7 +73,7 @@ module.exports = gql`
     body: String
 
     # contacts: [ContactPayloadInput]
-    sections: [Int!]
+    sectionIds: [Int!]
     # images: [ImagePayloadInput]
     logo: String
   }

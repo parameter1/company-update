@@ -7,12 +7,15 @@ const flatten = (sections, selected = []) => {
   return edges.map(({ node: { id, name, children } }) => {
     const state = { selected: selected.includes(id) };
     const flat = flatten(children, selected);
-    return { id, icon: 'entypo icon-box text-muted', text: name, children: flat, state  };
+    return { id, text: name, children: flat, state  };
   });
 };
 
 export default Controller.extend({
-  selected: computed.reads('model.company.scheduledWebsiteSectionIds'),
+  selectedIds: computed('model.company.scheduledWebsiteSections.edges', function() {
+    return this.get('model.company.scheduledWebsiteSections.edges').map(({ node }) => node.id);
+  }),
+  selected: computed.reads('selectedIds'),
   sections: computed('model.sections.[],selected.[]', function() {
     return flatten(this.get('model.sections'), this.get('selected'));
   }),
@@ -30,10 +33,12 @@ export default Controller.extend({
       this.transitionToRoute('display.company.edit');
     },
     select(node) {
-      this.get('model.company.scheduledWebsiteSectionIds').push(parseInt(node.id));
+      if (!this.get('model.company.sectionIds')) this.set('model.company.sectionIds', this.get('selected'));
+      this.get('model.company.sectionIds').push(parseInt(node.id));
     },
     deselect(node) {
-      this.set('model.company.scheduledWebsiteSectionIds', this.get('selected').without(node.id));
+      if (!this.get('model.company.sectionIds')) this.set('model.company.sectionIds', this.get('selected'));
+      this.set('model.company.sectionIds', this.get('selected').without(node.id));
     },
   }
 });
