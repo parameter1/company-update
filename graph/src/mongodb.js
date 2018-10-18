@@ -12,5 +12,5 @@ module.exports = {
   connect: () => promise,
   retrieve: id => client.db().collection('submission').findOne({ _id: new ObjectId(id) }),
   insert: payload => client.db().collection('submission').insertOne(payload),
-  complete: id => client.db().collection('submission').updateOne({ _id: id }, { $set: { reviewed: true } }),
+  complete: id => client.db().collection('submission').updateOne({ _id: new ObjectId(id) }, { $set: { reviewed: true } }),
 };

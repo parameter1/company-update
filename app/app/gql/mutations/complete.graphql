@@ -1,0 +1,7 @@
+mutation Complete($id: String!) {
+	complete(id: $id) {
+		result {
+			ok
+		}
+	}
+}

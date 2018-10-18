@@ -6,7 +6,15 @@
     <p>When you are finished making changes, click the "Done" button.</p>
   </div>
   <div class="col-12 col-md-4 col-lg-3 col-xl-2">
-    <button class="btn btn-block btn-success">{{entypo-icon "save"}} Done</button>
+    {{#if model.submission.reviewed}}
+      <button class="btn btn-block btn-outline-success disabled">
+        {{entypo-icon "check"}} <span class="d-none d-md-inline">Done!</span>
+      </button>
+    {{else}}
+      <button class="btn btn-block btn-primary" {{ action "done" }}>
+        {{entypo-icon "check"}} <span class="d-none d-md-inline">Mark as done</span>
+      </button>
+    {{/if}}
   </div>
 </div>
 <hr>
