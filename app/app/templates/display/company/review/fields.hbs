@@ -15,11 +15,7 @@
           </div>
         {{/if}}
         {{#unless (eq (get model.company field.key) (get model.submission.payload field.key))}}
-        <div class="input-group-append">
-          <button class="btn btn-primary">
-            {{entypo-icon "copy"}} <span class="d-none d-xl-inline">Copy</span>
-          </button>
-        </div>
+          {{ copyable-text value=(get model.submission.payload field.key)}}
         {{/unless}}
       </div>
       <small id="{{ field.key }}-help" class="form-text text-muted">{{ field.helpText }}</small>
