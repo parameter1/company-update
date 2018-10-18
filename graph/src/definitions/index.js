@@ -13,8 +13,16 @@ module.exports = gql`
 
   type Mutation {
     company(input: CompanyUpdateInput!): CompanyUpdateSubmission!
-    complete(id: String!): String!
+    complete(id: String!): MongoUpdate!
     singleUpload(file: Upload!): String!
+  }
+
+  type MongoUpdate {
+    result: MongoUpdateStatus
+  }
+
+  type MongoUpdateStatus {
+    ok: Int!
   }
 
   enum CompanyTypes {

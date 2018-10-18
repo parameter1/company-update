@@ -12,10 +12,7 @@ const flatten = (sections, selected = []) => {
 };
 
 export default Controller.extend({
-  selectedIds: computed('model.company.scheduledWebsiteSections.edges', function() {
-    return this.get('model.company.scheduledWebsiteSections.edges').map(({ node }) => node.id);
-  }),
-  selected: computed.reads('selectedIds'),
+  selected: computed.reads('model.company.sectionIds'),
   sections: computed('model.sections.[],selected.[]', function() {
     return flatten(this.get('model.sections'), this.get('selected'));
   }),
@@ -33,12 +30,14 @@ export default Controller.extend({
       this.transitionToRoute('display.company.edit');
     },
     select(node) {
-      if (!this.get('model.company.sectionIds')) this.set('model.company.sectionIds', this.get('selected'));
       this.get('model.company.sectionIds').push(parseInt(node.id));
+      const unique = this.get('model.company.sectionIds').filter((v, i, a) => a.indexOf(v) === i);
+      this.set('model.company.sectionIds', unique);
     },
     deselect(node) {
-      if (!this.get('model.company.sectionIds')) this.set('model.company.sectionIds', this.get('selected'));
-      this.set('model.company.sectionIds', this.get('selected').without(node.id));
+      const unique = this.get('model.company.sectionIds').filter((v, i, a) => a.indexOf(v) === i);
+      const toSet = unique.filter(v => v !== parseInt(node.id));
+      this.set('model.company.sectionIds', toSet);
     },
   }
 });

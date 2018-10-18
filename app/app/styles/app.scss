@@ -43,3 +43,9 @@ body.transitioning {
   padding: 1em;
   min-height: 8em;
 }
+
+.field-modified {
+  background-color: rgba(24, 188, 156, 0.1) !important;
+  border: 1px solid rgb(24, 188, 156);
+  border-right: none;
+}

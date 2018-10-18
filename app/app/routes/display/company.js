@@ -9,6 +9,7 @@ export default Route.extend(RouteQueryManager, {
     return this.get('apollo').watchQuery({ query, variables, fetchPolicy: 'cache-and-network' }, 'base4PlatformContentHash');
   },
   afterModel(model) {
-    model.set('sections', model.get('sections') || []);
+    const sectionIds = model.get('scheduledWebsiteSections.edges').map(({ node }) => node.id);
+    model.set('sectionIds', sectionIds);
   },
 });

@@ -6,11 +6,11 @@
       <label for="{{ field.key }}-input">{{ field.label }}</label>
       <div class="input-group">
         {{#if (eq field.type "long")}}
-          <div class="form-control {{ if (eq (get model.company field.key) (get model.submission.payload field.key)) "text-muted" "border-success" }}" style="height: inherit;">
+          <div class="form-control {{ if (eq (get model.company field.key) (get model.submission.payload field.key)) "text-muted" "field-modified" }}" style="height: inherit;">
             {{ froala-editor content=body options=options }}
           </div>
         {{else}}
-          <div readonly class="form-control form-control-plaintext {{ if (eq (get model.company field.key) (get model.submission.payload field.key)) "text-muted" "border-success" }}">
+          <div readonly class="form-control form-control-plaintext {{ if (eq (get model.company field.key) (get model.submission.payload field.key)) "text-muted" "field-modified" }}">
             {{ get model.submission.payload field.key }}
           </div>
         {{/if}}

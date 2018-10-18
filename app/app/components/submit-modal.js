@@ -32,8 +32,8 @@ const filterModel = (model = {}) => {
 export default Component.extend(ComponentQueryManager, ActionMixin, {
   model: null,
 
-  name: 'j', // null,
-  email: 'j@lol.io', // null,
+  name: null,
+  email: null,
 
   isOpen: false,
   isInvalid: computed('name', 'email', function() {
