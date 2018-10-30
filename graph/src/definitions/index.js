@@ -9,6 +9,7 @@ module.exports = gql`
     ping: String!
     config: Configuration!
     submission(id: String!): CompanyUpdateSubmission!
+    submissions: [CompanyUpdateSubmission!]!
   }
 
   type Mutation {
@@ -53,7 +54,9 @@ module.exports = gql`
     submitted: Date!
     reviewed: Boolean!
     name: String!
+    hash: String!
     email: String!
+    companyName: String
     payload: String!
   }
 

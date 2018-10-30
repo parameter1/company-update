@@ -1,10 +1,15 @@
 const { DateType } = require('@limit0/graphql-custom-types');
 const { GraphQLUpload } = require('apollo-server');
 const uuid = require('uuid/v4');
-const { retrieve, insert, complete } = require('../mongodb');
 const { notify, thank } = require('../mailer');
 const env = require('../env');
 const s3Client = require('../s3-client');
+const {
+  retrieve,
+  insert,
+  complete,
+  submissions,
+} = require('../mongodb');
 
 const {
   PLATFORM_URI,
@@ -28,11 +33,13 @@ module.exports = {
     id: ({ _id }) => _id.toString(),
     submitted: ({ _id }) => _id.getTimestamp(),
     payload: ({ payload }) => JSON.stringify(payload),
+    companyName: ({ payload: { name } }) => name,
   },
 
   Query: {
     config: () => config,
     submission: (_, { id }) => retrieve(id),
+    submissions: () => submissions(),
   },
   Mutation: {
     company: async (_, { input }) => {

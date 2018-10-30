@@ -13,4 +13,5 @@ module.exports = {
   retrieve: id => client.db().collection('submission').findOne({ _id: new ObjectId(id) }),
   insert: payload => client.db().collection('submission').insertOne(payload),
   complete: id => client.db().collection('submission').updateOne({ _id: new ObjectId(id) }, { $set: { reviewed: true } }),
+  submissions: ({ reviewed = false } = { reviewed: false }) => client.db().collection('submission').find({ reviewed }).toArray(),
 };
