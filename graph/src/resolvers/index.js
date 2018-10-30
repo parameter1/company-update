@@ -9,6 +9,7 @@ const {
   insert,
   complete,
   submissions,
+  submissionCount,
 } = require('../mongodb');
 
 const {
@@ -40,6 +41,7 @@ module.exports = {
     config: () => config,
     submission: (_, { id }) => retrieve(id),
     submissions: () => submissions(),
+    submissionCount: () => submissionCount(),
   },
   Mutation: {
     company: async (_, { input }) => {

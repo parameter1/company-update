@@ -10,6 +10,7 @@ module.exports = gql`
     config: Configuration!
     submission(id: String!): CompanyUpdateSubmission!
     submissions: [CompanyUpdateSubmission!]!
+    submissionCount: Int!
   }
 
   type Mutation {
