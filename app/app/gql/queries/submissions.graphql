@@ -1,0 +1,10 @@
+query ListSubmissions {
+  submissions {
+    id
+    submitted
+    companyName
+    hash
+    name
+    email
+  }
+}

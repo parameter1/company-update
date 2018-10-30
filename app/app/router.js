@@ -15,6 +15,7 @@ Router.map(function() {
       this.route('review', { path: ':id' });
       this.route('thanks');
     });
+    this.route('list');
   });
 });
 

@@ -1,6 +1,6 @@
 node {
-  def nodeBuilder = docker.image("node:8")
-  nodeBuilder.pull()
+  def nodeBuilder = docker.image("node:8.11.3")
+  def emberBuilder = docker.image("danlynn/ember-cli:3.4.3")
 
   // Test
   try {
@@ -8,7 +8,7 @@ node {
       checkout scm
     }
 
-    nodeBuilder.inside("-v ${env.WORKSPACE}/app:/var/www/html -u 0:0 --entrypoint=''") {
+    emberBuilder.inside("-v ${env.WORKSPACE}/app:/var/www/html -u 0:0 --entrypoint=''") {
       stage('Build App') {
         sh "cd /var/www/html && yarn"
       }
