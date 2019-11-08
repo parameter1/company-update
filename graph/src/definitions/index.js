@@ -48,6 +48,7 @@ module.exports = gql`
     domain: String!
     logo: String!
     ids: [Int!]!
+    isPmmi: Boolean!
   }
 
   type CompanyUpdateSubmission {
@@ -83,6 +84,17 @@ module.exports = gql`
     type: CompanyTypes
     email: String
     body: String
+
+    teaser: String
+    numberOfEmployees: String
+    trainingInformation: String
+    yearsInOperation: String
+    salesRegion: String
+    servicesProvided: String
+    salesChannels: String
+    productSummary: String
+    serviceInformation: String
+    warrantyInformation: String
 
     # contacts: [ContactPayloadInput]
     sectionIds: [Int!]

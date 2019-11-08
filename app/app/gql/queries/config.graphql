@@ -3,5 +3,6 @@ query Config {
     domain
     logo
     ids
+    isPmmi
   }
 }

@@ -7,7 +7,7 @@
       <div class="input-group">
         {{#if (eq field.type "long")}}
           <div class="form-control {{ if (eq (get model.company field.key) (get model.submission.payload field.key)) "text-muted" "field-modified" }}" style="height: inherit;">
-            {{ froala-editor content=body options=options }}
+            {{ froala-editor content=(get model.submission.payload field.key) options=options }}
           </div>
         {{else}}
           <div readonly class="form-control form-control-plaintext {{ if (eq (get model.company field.key) (get model.submission.payload field.key)) "text-muted" "field-modified" }}">
@@ -24,3 +24,31 @@
   {{/each}}
 </div>
 {{/each}}
+{{#if config.isPmmi}}
+  {{#each extra as |row|}}
+  <div class="row">
+    {{#each row as |field|}}
+    <div class="col {{ field.class }}">
+      <div class="form-group">
+        <label for="{{ field.key }}-input">{{ field.label }}</label>
+        <div class="input-group">
+          {{#if (eq field.type "long")}}
+            <div class="form-control {{ if (eq (get model.company field.key) (get model.submission.payload field.key)) "text-muted" "field-modified" }}" style="height: inherit;">
+              {{ froala-editor content=(get model.submission.payload field.key) options=options }}
+            </div>
+          {{else}}
+            <div readonly class="form-control form-control-plaintext {{ if (eq (get model.company field.key) (get model.submission.payload field.key)) "text-muted" "field-modified" }}">
+              {{ get model.submission.payload field.key }}
+            </div>
+          {{/if}}
+          {{#unless (eq (get model.company field.key) (get model.submission.payload field.key))}}
+            {{ copyable-text value=(get model.submission.payload field.key)}}
+          {{/unless}}
+        </div>
+        <small id="{{ field.key }}-help" class="form-text text-muted">{{ field.helpText }}</small>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/each}}
+{{/if}}

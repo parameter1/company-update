@@ -24,6 +24,7 @@ const config = {
   domain: PLATFORM_URI,
   logo: PLATFORM_LOGO,
   ids: PLATFORM_SECTIONS,
+  isPmmi: /^pmmi_/.test(B4GRAPH_TENANT_KEY),
 };
 
 module.exports = {

@@ -1,6 +1,7 @@
 query PlatformContentHash($input: Base4PlatformContentQueryHash!) {
   base4PlatformContentHash(input: $input) {
     name
+		teaser
     hash
     type
     body
@@ -27,6 +28,17 @@ query PlatformContentHash($input: Base4PlatformContentQueryHash!) {
 			fax
 			website
 	    email
+
+			numberOfEmployees
+			trainingInformation
+			yearsInOperation
+			salesRegion
+			servicesProvided
+			salesChannels
+			productSummary
+			serviceInformation
+			warrantyInformation
+
       # sections {
       #   name
       #   children {
