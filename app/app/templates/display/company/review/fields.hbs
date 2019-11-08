@@ -7,7 +7,7 @@
       <div class="input-group">
         {{#if (eq field.type "long")}}
           <div class="form-control {{ if (eq (get model.company field.key) (get model.submission.payload field.key)) "text-muted" "field-modified" }}" style="height: inherit;">
-            {{ froala-editor content=body options=options }}
+            {{ froala-editor content=(get model.submission.payload field.key) options=options }}
           </div>
         {{else}}
           <div readonly class="form-control form-control-plaintext {{ if (eq (get model.company field.key) (get model.submission.payload field.key)) "text-muted" "field-modified" }}">
