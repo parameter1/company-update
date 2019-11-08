@@ -10,7 +10,17 @@ export default Route.extend(RouteQueryManager, {
   model() {
     return this.get('apollo').watchQuery({ query, fetchPolicy: 'cache-and-network' }, 'config');
   },
-  afterModel({ domain, logo, ids }) {
-    this.config.load({ domain, logo, ids });
+  afterModel({
+    domain,
+    logo,
+    ids,
+    isPmmi,
+  }) {
+    this.config.load({
+      domain,
+      logo,
+      ids,
+      isPmmi,
+    });
   },
 });
