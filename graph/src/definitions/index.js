@@ -85,6 +85,17 @@ module.exports = gql`
     email: String
     body: String
 
+    teaser: String
+    numberOfEmployees: String
+    trainingInformation: String
+    yearsInOperation: String
+    salesRegion: String
+    servicesProvided: String
+    salesChannels: String
+    productSummary: String
+    serviceInformation: String
+    warrantyInformation: String
+
     # contacts: [ContactPayloadInput]
     sectionIds: [Int!]
     # images: [ImagePayloadInput]

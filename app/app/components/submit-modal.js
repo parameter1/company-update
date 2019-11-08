@@ -8,6 +8,7 @@ import mutation from 'cuf/gql/mutations/company';
 const fields = [
   'address1',
   'address2',
+  'teaser',
   'body',
   'city',
   'country',
@@ -21,6 +22,15 @@ const fields = [
   'zip',
   'sectionIds',
   'logo',
+  'numberOfEmployees',
+  'trainingInformation',
+  'yearsInOperation',
+  'salesRegion',
+  'servicesProvided',
+  'salesChannels',
+  'productSummary',
+  'serviceInformation',
+  'warrantyInformation',
 ];
 
 const filterModel = (model = {}) => {
