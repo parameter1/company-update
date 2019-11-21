@@ -1,36 +1,52 @@
-version: '3'
-services:
-  app:
-    tty: true
-    image: danlynn/ember-cli:3.4.3
-    ports:
-      - "${EMBER_SERVE_PORT-9905}:${EMBER_SERVE_PORT-9905}"
-      - "${EMBER_LIVER_PORT-9906}:${EMBER_LIVER_PORT-9906}"
-      - "${EMBER_TESTS_PORT-9907}:${EMBER_TESTS_PORT-9907}"
-    volumes:
-      - ./app:/myapp:cached
-      - ember_node_modules:/myapp/node_modules:cached
-      - ember_tmp:/myapp/tmp
-    restart: on-failure
-    environment:
-      EMBER_SERVE_PORT: ${EMBER_SERVE_PORT-9905}
-      EMBER_LIVER_PORT: ${EMBER_LIVER_PORT-9906}
-      EMBER_PROXY: ${EMBER_PROXY-http://host.docker.internal:9900}
-    entrypoint: yarn start
+version: '3.7'
 
-  graph:
-    tty: true
-    image: node:8
-    entrypoint: yarn start
-    working_dir: /app
-    volumes:
-      - ./graph:/app:cached
-      - graph_node_modules:/app/node_modules:cached
+x-env-defaults: &env
+  YARN_CACHE_FOLDER: /.yarn-cache
+  NODE_ENV: development
+
+x-node-defaults: &node
+  tty: true
+  init: true
+  image: node:10.15
+  entrypoint: ["node"]
+  working_dir: /company-update
+  volumes:
+    - .:/company-update:cached
+    - ./node_modules:/company-update/node_modules:delegated
+    - yarn-cache:/.yarn-cache
+  environment:
+    <<: *env
+
+services:
+  commands:
+    <<: *node
+    working_dir: /company-update
+    entrypoint: ["tail"]
+    command: ["-f", "/dev/null"]
+
+  app:
+    <<: *node
+    image: danlynn/ember-cli:3.4.3
+    working_dir: /company-update/services/app
+    entrypoint: ["ember"]
+    command: ["serve", "--port", "9905", "--proxy", "http://graphql"]
+    tmpfs:
+      - /company-update/services/app/tmp
+    ports:
+      - "9905:9905"
+    depends_on:
+      - graphql
+
+  graphql:
+    <<: *node
+    working_dir: /company-update/services/graphql
+    entrypoint: ["./node_modules/.bin/gulp"]
     depends_on:
       - mongo
     ports:
-      - "${GRAPH_APP_PORT-9900}:80"
+      - "9900:80"
     environment:
+      <<: *env
       PORT: 80
       MONGO_DSN: ${MONGO_DSN-mongodb://mongo/cuf}
       B4GRAPH_URI: ${B4GRAPH_URI}
@@ -46,21 +62,13 @@ services:
       AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
 
   mongo:
+    tty: true
     image: mongo:3.4
     volumes:
-      - mongo:/data/db:cached
+      - mongo:/data/db
     ports:
-      - "${GRAPH_DB_PORT-9901}:27017"
-  # redis:
-  #   image: redis:alpine
-  #   ports:
-  #     - "${CUF_REDIS_PORT-9902}:6379"
+      - "9901:27017"
 
 volumes:
   mongo: {}
-  ember_node_modules: {}
-  graph_node_modules: {}
-  ember_tmp:
-    driver_opts:
-      type: tmpfs
-      device: tmpfs
+  yarn-cache: {}

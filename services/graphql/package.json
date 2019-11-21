@@ -1,14 +1,10 @@
 {
-  "name": "cuf",
+  "name": "@base-cms/company-update-graphql",
   "version": "0.0.1",
   "description": "Backend GraphQL service for CUF project",
   "main": "src/index.js",
   "author": "solocommand",
   "license": "MIT",
-  "scripts": {
-    "start": "yarn; ./node_modules/.bin/gulp",
-    "test": "yarn; ./node_modules/.bin/eslint src/"
-  },
   "dependencies": {
     "@limit0/graphql-custom-types": "^1.0.1",
     "@sendgrid/mail": "^6.3.1",

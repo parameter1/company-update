@@ -14,7 +14,7 @@
     "build": "ember build",
     "lint:hbs": "ember-template-lint .",
     "lint:js": "eslint .",
-    "start": "yarn; ./node_modules/.bin/ember server --port ${EMBER_SERVE_PORT} --live-reload-port ${EMBER_LIVER_PORT} --proxy ${EMBER_PROXY}",
+    "start": "ember serve",
     "test": "ember test"
   },
   "devDependencies": {
