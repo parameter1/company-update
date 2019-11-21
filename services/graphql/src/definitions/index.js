@@ -2,7 +2,7 @@ const { gql } = require('apollo-server');
 
 module.exports = gql`
 
-  scalar Upload
+  scalar CompanyUpdateUpload
   scalar CompanyUpdateDate
 
   type Query {
@@ -16,7 +16,7 @@ module.exports = gql`
   type Mutation {
     company(input: CompanyUpdateInput!): CompanyUpdateSubmission!
     complete(id: String!): MongoUpdate!
-    singleUpload(file: Upload!): String!
+    singleUpload(file: CompanyUpdateUpload!): String!
   }
 
   type MongoUpdate {

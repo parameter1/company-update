@@ -1,5 +1,4 @@
 const { DateType } = require('@limit0/graphql-custom-types');
-const { GraphQLUpload } = require('apollo-server');
 const uuid = require('uuid/v4');
 const { notify, thank } = require('../mailer');
 const env = require('../env');
@@ -28,7 +27,6 @@ const config = {
 };
 
 module.exports = {
-  Upload: GraphQLUpload,
   CompanyUpdateDate: DateType,
 
   CompanyUpdateSubmission: {
