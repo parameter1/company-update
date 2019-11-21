@@ -16,7 +16,7 @@ const {
   PLATFORM_URI,
   PLATFORM_LOGO,
   PLATFORM_SECTIONS,
-  B4GRAPH_TENANT_KEY,
+  TENANT_KEY,
   AWS_S3_BUCKET,
 } = env;
 
@@ -24,7 +24,7 @@ const config = {
   domain: PLATFORM_URI,
   logo: PLATFORM_LOGO,
   ids: PLATFORM_SECTIONS,
-  isPmmi: /^pmmi_/.test(B4GRAPH_TENANT_KEY),
+  isPmmi: /^pmmi_/.test(TENANT_KEY),
 };
 
 module.exports = {
@@ -58,7 +58,7 @@ module.exports = {
     singleUpload: async (_, { file }) => {
       const { stream, filename, mimetype } = await file;
       const Bucket = AWS_S3_BUCKET;
-      const Key = `${B4GRAPH_TENANT_KEY}/${uuid()}/${filename}`;
+      const Key = `${TENANT_KEY}/${uuid()}/${filename}`;
 
       const response = await s3Client.upload({
         Bucket,

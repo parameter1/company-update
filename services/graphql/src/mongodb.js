@@ -1,9 +1,9 @@
 const { MongoClient, ObjectId } = require('mongodb');
-const { MONGO_DSN, B4GRAPH_TENANT_KEY } = require('./env');
+const { MONGO_DSN, TENANT_KEY } = require('./env');
 
 const client = new MongoClient(MONGO_DSN);
 const promise = client.connect();
-const tenant = B4GRAPH_TENANT_KEY;
+const tenant = TENANT_KEY;
 
 // eslint-disable-next-line no-console
 promise.then(() => process.stdout.write(`\n💾  MongoDB connected to ${MONGO_DSN}\n`));

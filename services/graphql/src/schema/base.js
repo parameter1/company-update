@@ -12,19 +12,19 @@ const {
 const {
   B4GRAPH_URI,
   B4GRAPH_API_KEY,
-  B4GRAPH_TENANT_KEY,
+  TENANT_KEY,
 } = require('../env');
 
 const headers = {
   Authorization: `Bearer ${B4GRAPH_API_KEY}`,
-  'X-Tenant-Key': B4GRAPH_TENANT_KEY,
+  'X-Tenant-Key': TENANT_KEY,
 };
 
 const httpLink = new HttpLink({
   uri: B4GRAPH_URI,
   fetch,
   headers,
-  fetchOptions: { timeout: 1000 },
+  fetchOptions: { timeout: 10000 },
 });
 const errorLink = onError((e) => {
   console.warn('\nError in remote schema call!\n', e); // eslint-disable-line no-console

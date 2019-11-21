@@ -29,7 +29,7 @@ module.exports = cleanEnv(process.env, {
   MONGO_DSN: mongodsn({ desc: 'The MongoDB DSN to connect to.', default: 'mongodb://mongo/cuf' }),
   B4GRAPH_URI: nonemptystr({ desc: 'The URI to access the Base4 GraphQL instance' }),
   B4GRAPH_API_KEY: nonemptystr({ desc: 'The api key to use with the Base4 GraphQL instance' }),
-  B4GRAPH_TENANT_KEY: nonemptystr({ desc: 'The tenant key to use with the Base4 GraphQL instance' }),
+  TENANT_KEY: nonemptystr({ desc: 'The tenant key to use with the Base4 GraphQL instance' }),
   AWS_ACCESS_KEY_ID: nonemptystr({ desc: 'The AWS access key value.' }),
   AWS_SECRET_ACCESS_KEY: nonemptystr({ desc: 'The AWS secret access key value.' }),
   AWS_S3_BUCKET: nonemptystr({ desc: 'The AWS S3 Bucket name to use for file uploads.', default: 'cuf-uploads' }),
