@@ -1,5 +1,5 @@
-query PlatformContentHash($input: Base4ContentHashQueryInput!) {
-  base4ContentHash(input: $input) {
+query CompanyUpdateContentHashQuery($input: ContentHashQueryInput!) {
+  contentHash(input: $input) {
     name
 		teaser
     hash
@@ -14,7 +14,7 @@ query PlatformContentHash($input: Base4ContentHashQueryInput!) {
 				name
 			}
 		}
-		... on Base4ContentCompany {
+		... on ContentCompany {
 			address1
 			address2
 			city

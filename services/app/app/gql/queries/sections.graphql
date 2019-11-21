@@ -1,5 +1,5 @@
-query WebsiteSections($input: Base4WebsiteSectionsQueryInput!) {
-  base4WebsiteSections(input: $input) {
+query CompanyUpdateWebsiteSections($input: WebsiteSectionsQueryInput!) {
+  websiteSections(input: $input) {
     edges {
       node {
         id
