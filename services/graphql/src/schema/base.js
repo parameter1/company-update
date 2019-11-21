@@ -11,12 +11,10 @@ const {
 } = require('graphql-tools');
 const {
   GRAPHQL_URI,
-  B4GRAPH_API_KEY,
   TENANT_KEY,
 } = require('../env');
 
 const headers = {
-  Authorization: `Bearer ${B4GRAPH_API_KEY}`,
   'X-Tenant-Key': TENANT_KEY,
 };
 

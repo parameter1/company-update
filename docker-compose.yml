@@ -47,10 +47,8 @@ services:
       - "9900:80"
     environment:
       <<: *env
-      PORT: 80
       MONGO_DSN: ${MONGO_DSN-mongodb://mongo/cuf}
       GRAPHQL_URI: ${GRAPHQL_URI}
-      B4GRAPH_API_KEY: ${B4GRAPH_API_KEY}
       TENANT_KEY: ${TENANT_KEY}
       PLATFORM_URI: ${PLATFORM_URI}
       PLATFORM_LOGO: ${PLATFORM_LOGO}
