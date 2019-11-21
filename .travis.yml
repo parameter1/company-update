@@ -1,0 +1,80 @@
+language: node_js
+node_js: "10.15"
+cache: yarn
+
+stages:
+  - name: test
+
+  - name: deploy
+    if: env(TARGET) = production AND tag =~ /^v\d+\.\d+\.\d+$/
+
+  - name: staging
+    if: env(TARGET) = staging AND tag is present
+
+jobs:
+  include:
+    - stage: test
+
+    - stage: deploy
+      name: Deployment Started
+      script: deploy/notify-start.sh
+      install: skip
+      env:
+        TARGET: production
+
+    - stage: staging
+      name: Deployment Started
+      script: deploy/notify-start.sh
+      install: skip
+      env:
+        TARGET: staging
+
+    #############################
+    # vvv ADD SERVICES HERE vvv #
+    #############################
+
+    - stage: deploy
+      name: GraphQL
+      script: deploy/index.js graphql
+      env:
+        TARGET: production
+        RANCHER_CLUSTERID: c-gxsr7
+
+    - stage: staging
+      name: GraphQL
+      script: deploy/index.js graphql
+      env:
+        TARGET: staging
+        RANCHER_CLUSTERID: c-rc5kp
+
+    - stage: deploy
+      name: Ember app
+      script: deploy/index.js app
+      env:
+        TARGET: production
+        RANCHER_CLUSTERID: c-gxsr7
+
+    - stage: staging
+      name: Ember app
+      script: deploy/index.js app
+      env:
+        TARGET: staging
+        RANCHER_CLUSTERID: c-rc5kp
+
+    #############################
+    # ^^^ ADD SERVICES HERE ^^^ #
+    #############################
+
+    - stage: deploy
+      name: Deployment Ended
+      script: deploy/notify-complete.sh
+      install: skip
+      env:
+        TARGET: production
+
+    - stage: staging
+      name: Deployment Ended
+      script: deploy/notify-complete.sh
+      install: skip
+      env:
+        TARGET: staging
