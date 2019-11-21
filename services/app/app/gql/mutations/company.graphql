@@ -1,4 +1,4 @@
-mutation Company($input: CompanyUpdateInput!) {
+mutation Company($input: CompanyUpdateSubmissionInput!) {
 	company(input: $input) {
 		id
 		submitted

@@ -7,35 +7,16 @@ module.exports = gql`
 
   type Query {
     ping: String!
-    config: Configuration!
+    config: CompanyUpdateConfiguration!
     submission(id: String!): CompanyUpdateSubmission!
     submissions: [CompanyUpdateSubmission!]!
     submissionCount: Int!
   }
 
   type Mutation {
-    company(input: CompanyUpdateInput!): CompanyUpdateSubmission!
-    complete(id: String!): MongoUpdate!
+    company(input: CompanyUpdateSubmissionInput!): CompanyUpdateSubmission!
+    complete(id: String!): String!
     singleUpload(file: CompanyUpdateUpload!): String!
-  }
-
-  type MongoUpdate {
-    result: MongoUpdateStatus
-  }
-
-  type MongoUpdateStatus {
-    ok: Int!
-  }
-
-  enum CompanyTypes {
-    Company
-    Agency
-    Association
-    Dealer
-    Distributor
-    Manufacturer
-    Service Provider
-    Supplier
   }
 
   enum ContactTypes {
@@ -44,7 +25,7 @@ module.exports = gql`
     public
   }
 
-  type Configuration {
+  type CompanyUpdateConfiguration {
     domain: String!
     logo: String!
     ids: [Int!]!
@@ -62,7 +43,7 @@ module.exports = gql`
     payload: String!
   }
 
-  input CompanyUpdateInput {
+  input CompanyUpdateSubmissionInput {
     name: String!
     email: String!
     hash: String!
@@ -81,7 +62,7 @@ module.exports = gql`
     tollfree: String
     fax: String
     website: String
-    type: CompanyTypes
+    type: String
     email: String
     body: String
 
@@ -96,31 +77,8 @@ module.exports = gql`
     serviceInformation: String
     warrantyInformation: String
 
-    # contacts: [ContactPayloadInput]
     sectionIds: [Int!]
-    # images: [ImagePayloadInput]
     logo: String
   }
 
-  input ContactPayloadInput {
-    id: String
-    delete: Boolean
-    firstName: String
-    lastName: String
-    title: String
-    email: String
-    type: ContactTypes
-  }
-
-  input SectionPayloadInput {
-    id: Int
-    delete: Boolean
-    name: String
-  }
-
-  input ImagePayloadInput {
-    id: String
-    delete: Boolean
-    src: String
-  }
 `;

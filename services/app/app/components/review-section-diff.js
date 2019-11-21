@@ -20,8 +20,8 @@ export default Component.extend(ComponentQueryManager, ActionMixin, {
     // this.startAction();
     try {
       const ids = this.get('ids');
-      const variables = { input: { ids } };
-      const sections = await this.get('apollo').watchQuery({ query, variables, fetchPolicy: 'cache-and-network' }, 'base4WebsiteSectionsFromIds.edges');
+      const variables = { input: { includeIds: ids } };
+      const sections = await this.get('apollo').watchQuery({ query, variables, fetchPolicy: 'cache-and-network' }, 'websiteSections.edges');
       this.set('sections', sections);
     } finally {
       // this.endAction();

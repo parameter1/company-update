@@ -52,7 +52,10 @@ module.exports = {
       await thank(submission);
       return submission;
     },
-    complete: (_, { id }) => complete(id),
+    complete: async (_, { id }) => {
+      await complete(id);
+      return 'ok';
+    },
     singleUpload: async (_, { file }) => {
       const { stream, filename, mimetype } = await file;
       const Bucket = AWS_S3_BUCKET;
