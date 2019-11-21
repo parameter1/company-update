@@ -10,9 +10,9 @@ export default Route.extend(RouteQueryManager, {
 
   model() {
     const ids = this.get('config.ids');
-    const variables = { input: { ids } };
+    const variables = { input: { includeIds: ids } };
     const company = this.modelFor('display.company');
-    const sections = this.get('apollo').watchQuery({ query, variables, fetchPolicy: 'cache-and-network' }, 'base4WebsiteSectionsFromIds');
+    const sections = this.get('apollo').watchQuery({ query, variables, fetchPolicy: 'cache-and-network' }, 'base4WebsiteSections');
     return hash({ company, sections });
   },
 });

@@ -1,22 +1,20 @@
-query PlatformContentHash($input: Base4PlatformContentQueryHash!) {
-  base4PlatformContentHash(input: $input) {
+query PlatformContentHash($input: Base4ContentHashQueryInput!) {
+  base4ContentHash(input: $input) {
     name
 		teaser
     hash
     type
     body
     primaryImage {
-			src(input: {host: "cdn.baseplatform.io"})
+			src
 		}
-		scheduledWebsiteSections {
-			edges {
-				node {
-					id
-					name
-				}
+		websiteSchedules {
+			section {
+				id
+				name
 			}
 		}
-		... on Base4PlatformContentCompany {
+		... on Base4ContentCompany {
 			address1
 			address2
 			city
@@ -39,12 +37,6 @@ query PlatformContentHash($input: Base4PlatformContentQueryHash!) {
 			serviceInformation
 			warrantyInformation
 
-      # sections {
-      #   name
-      #   children {
-      #     name
-      #   }
-      # }
 			salesContacts {
 				edges {
 					node {
