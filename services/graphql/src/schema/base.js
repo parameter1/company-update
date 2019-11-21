@@ -10,7 +10,7 @@ const {
   RenameRootFields,
 } = require('graphql-tools');
 const {
-  B4GRAPH_URI,
+  GRAPHQL_URI,
   B4GRAPH_API_KEY,
   TENANT_KEY,
 } = require('../env');
@@ -21,7 +21,7 @@ const headers = {
 };
 
 const httpLink = new HttpLink({
-  uri: B4GRAPH_URI,
+  uri: GRAPHQL_URI,
   fetch,
   headers,
   fetchOptions: { timeout: 10000 },

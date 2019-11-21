@@ -49,7 +49,7 @@ services:
       <<: *env
       PORT: 80
       MONGO_DSN: ${MONGO_DSN-mongodb://mongo/cuf}
-      B4GRAPH_URI: ${B4GRAPH_URI}
+      GRAPHQL_URI: ${GRAPHQL_URI}
       B4GRAPH_API_KEY: ${B4GRAPH_API_KEY}
       TENANT_KEY: ${TENANT_KEY}
       PLATFORM_URI: ${PLATFORM_URI}

@@ -29,7 +29,7 @@ EMBER_TESTS_PORT=9907
 GRAPH_APP_PORT=9900
 GRAPH_DB_PORT=9901
 
-B4GRAPH_URI=some-url
+GRAPHQL_URI=some-url
 B4GRAPH_API_KEY=some-api-key
 TENANT_KEY=some-account-group
 
@@ -51,7 +51,7 @@ The following environment variables must be set at run-time for the production d
 
 ```ini
 # Must be configured per instance
-B4GRAPH_URI=
+GRAPHQL_URI=
 B4GRAPH_API_KEY=
 TENANT_KEY=
 PLATFORM_URI=

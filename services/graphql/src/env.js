@@ -27,7 +27,7 @@ const nonemptystr = makeValidator((v) => {
 module.exports = cleanEnv(process.env, {
   PORT: port({ desc: 'The port the Apollo server will listen on', default: 80 }),
   MONGO_DSN: mongodsn({ desc: 'The MongoDB DSN to connect to.', default: 'mongodb://mongo/cuf' }),
-  B4GRAPH_URI: nonemptystr({ desc: 'The URI to access the Base4 GraphQL instance' }),
+  GRAPHQL_URI: nonemptystr({ desc: 'The URI to access the Base4 GraphQL instance' }),
   B4GRAPH_API_KEY: nonemptystr({ desc: 'The api key to use with the Base4 GraphQL instance' }),
   TENANT_KEY: nonemptystr({ desc: 'The tenant key to use with the Base4 GraphQL instance' }),
   AWS_ACCESS_KEY_ID: nonemptystr({ desc: 'The AWS access key value.' }),
