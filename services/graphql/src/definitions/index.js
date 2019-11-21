@@ -6,17 +6,16 @@ module.exports = gql`
   scalar CompanyUpdateDate
 
   type Query {
-    ping: String!
-    config: CompanyUpdateConfiguration!
-    submission(id: String!): CompanyUpdateSubmission!
-    submissions: [CompanyUpdateSubmission!]!
-    submissionCount: Int!
+    companyUpdateConfig: CompanyUpdateConfiguration!
+    companyUpdateSubmission(id: String!): CompanyUpdateSubmission!
+    companyUpdateSubmissions: [CompanyUpdateSubmission!]!
+    companyUpdateSubmissionCount: Int!
   }
 
   type Mutation {
-    company(input: CompanyUpdateSubmissionInput!): CompanyUpdateSubmission!
-    complete(id: String!): String!
-    singleUpload(file: CompanyUpdateUpload!): String!
+    companyUpdateSubmit(input: CompanyUpdateSubmissionInput!): CompanyUpdateSubmission!
+    companyUpdateComplete(id: String!): String!
+    companyUpdateSingleUpload(file: CompanyUpdateUpload!): String!
   }
 
   enum ContactTypes {

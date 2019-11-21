@@ -1,5 +1,5 @@
-query ReviewSubmission($id: String!) {
-  submission(id: $id) {
+query CompanyUpdateReviewSubmission($id: String!) {
+  companyUpdateSubmission(id: $id) {
     id
     submitted
     reviewed

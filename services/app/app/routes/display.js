@@ -8,7 +8,7 @@ export default Route.extend(RouteQueryManager, {
   config: inject(),
 
   model() {
-    return this.get('apollo').watchQuery({ query, fetchPolicy: 'cache-and-network' }, 'config');
+    return this.get('apollo').watchQuery({ query, fetchPolicy: 'cache-and-network' }, 'companyUpdateConfig');
   },
   afterModel({
     domain,

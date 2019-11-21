@@ -1,5 +1,5 @@
 mutation Company($input: CompanyUpdateSubmissionInput!) {
-	company(input: $input) {
+	companyUpdateSubmit(input: $input) {
 		id
 		submitted
 		name

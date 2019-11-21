@@ -1,5 +1,5 @@
-query Config {
-  config {
+query CompanyUpdateConfig {
+  companyUpdateConfig {
     domain
     logo
     ids

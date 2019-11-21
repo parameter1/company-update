@@ -5,7 +5,7 @@ import query from 'cuf/gql/queries/submissions';
 
 export default Route.extend(RouteQueryManager, {
   model() {
-    return this.get('apollo').watchQuery({ query, fetchPolicy: 'cache-and-network' }, 'submissions');
+    return this.get('apollo').watchQuery({ query, fetchPolicy: 'cache-and-network' }, 'companyUpdateSubmissions');
   },
   actions: {
     loading(transition) {

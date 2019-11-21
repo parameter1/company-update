@@ -1,5 +1,5 @@
-query ListSubmissions {
-  submissions {
+query CompanyUpdateListSubmissions {
+  companyUpdateSubmissions {
     id
     submitted
     companyName

@@ -37,13 +37,13 @@ module.exports = {
   },
 
   Query: {
-    config: () => config,
-    submission: (_, { id }) => retrieve(id),
-    submissions: () => submissions(),
-    submissionCount: () => submissionCount(),
+    companyUpdateConfig: () => config,
+    companyUpdateSubmission: (_, { id }) => retrieve(id),
+    companyUpdateSubmissions: () => submissions(),
+    companyUpdateSubmissionCount: () => submissionCount(),
   },
   Mutation: {
-    company: async (_, { input }) => {
+    companyUpdateSubmit: async (_, { input }) => {
       const reviewed = false;
       const res = await insert({ reviewed, ...input });
       if (!res.result.ok) throw new Error('Unable to save your changes, please try again.');
@@ -52,11 +52,11 @@ module.exports = {
       await thank(submission);
       return submission;
     },
-    complete: async (_, { id }) => {
+    companyUpdateComplete: async (_, { id }) => {
       await complete(id);
       return 'ok';
     },
-    singleUpload: async (_, { file }) => {
+    companyUpdateSingleUpload: async (_, { file }) => {
       const { stream, filename, mimetype } = await file;
       const Bucket = AWS_S3_BUCKET;
       const Key = `${TENANT_KEY}/${uuid()}/${filename}`;
