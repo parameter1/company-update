@@ -2,8 +2,8 @@ const { gql } = require('apollo-server');
 
 module.exports = gql`
 
-  scalar Date
   scalar Upload
+  scalar CompanyUpdateDate
 
   type Query {
     ping: String!
@@ -53,7 +53,7 @@ module.exports = gql`
 
   type CompanyUpdateSubmission {
     id: String!
-    submitted: Date!
+    submitted: CompanyUpdateDate!
     reviewed: Boolean!
     name: String!
     hash: String!

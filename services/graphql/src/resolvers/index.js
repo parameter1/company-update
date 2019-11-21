@@ -28,8 +28,8 @@ const config = {
 };
 
 module.exports = {
-  Date: DateType,
   Upload: GraphQLUpload,
+  CompanyUpdateDate: DateType,
 
   CompanyUpdateSubmission: {
     id: ({ _id }) => _id.toString(),
