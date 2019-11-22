@@ -1,3 +1,0 @@
-mutation UploadLogo($file: Upload!) {
-  singleUpload(file: $file)
-}

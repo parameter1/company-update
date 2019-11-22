@@ -1,0 +1,9 @@
+mutation Company($input: CompanyUpdateSubmissionInput!) {
+	companyUpdateSubmit(input: $input) {
+		id
+		submitted
+		name
+		email
+		payload
+	}
+}

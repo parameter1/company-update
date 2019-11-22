@@ -1,9 +1,0 @@
-mutation Company($input: CompanyUpdateInput!) {
-	company(input: $input) {
-		id
-		submitted
-		name
-		email
-		payload
-	}
-}

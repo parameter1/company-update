@@ -1,0 +1,43 @@
+query CompanyUpdateWebsiteSections($input: WebsiteSectionsQueryInput!) {
+  websiteSections(input: $input) {
+    edges {
+      node {
+        id
+        name
+        fullName
+        children(input: {
+          pagination: {
+            limit: 0
+          }
+          sort: {
+            field: name,
+            order: asc
+          }
+        }) {
+          edges {
+            node {
+              id
+              name
+              children(input: {
+                pagination: {
+                  limit: 0
+                }
+                sort: {
+                  field: name,
+                  order: asc
+                }
+              }) {
+                edges {
+                  node {
+                    id
+                    name
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

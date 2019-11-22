@@ -1,0 +1,55 @@
+@import "../../node_modules/bootswatch/dist/flatly/variables";
+
+$modal-xl: 1100px !default;
+$modal-lg: 950px;
+$modal-md: 550px;
+
+@import "../../node_modules/bootstrap/scss/bootstrap";
+@import "../../node_modules/bootswatch/dist/flatly/bootswatch";
+@import "ember-basic-dropdown";
+
+// Add xl modal, per https://github.com/twbs/bootstrap/pull/19925
+@include media-breakpoint-up(lg) {
+  .modal-xl { max-width: $modal-lg; }
+}
+
+@include media-breakpoint-up(xl) {
+  .modal-xl { max-width: $modal-xl; }
+}
+
+@import "z-depth";
+
+body.transitioning {
+  cursor: progress;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+// The primary loading progress bar, found below nav.
+.loading.progress {
+  border-radius: 0 !important;
+  height: 0.3rem;
+}
+
+.mh-40px {
+  max-height: 40px;
+  transform: scale(0.5);
+}
+
+.body-preview {
+  overflow: auto;
+  padding: 1em;
+  min-height: 8em;
+}
+
+.field-modified {
+  background-color: rgba(24, 188, 156, 0.1) !important;
+  border: 1px solid rgb(24, 188, 156);
+  border-right: none;
+}
+
+.froala-editor-container {
+  min-width: 100%;
+}
