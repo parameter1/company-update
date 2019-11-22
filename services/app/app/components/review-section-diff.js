@@ -9,10 +9,6 @@ export default Component.extend(ComponentQueryManager, ActionMixin, {
   classNames: ['list-group list-group-flush'],
   tagName: 'ul',
   loaded: false,
-
-  current: [],
-  old: [],
-  sections: [],
   ids: computed.uniq('current', 'old'),
   items: computed.reads('sections.[]'),
 
@@ -30,6 +26,9 @@ export default Component.extend(ComponentQueryManager, ActionMixin, {
 
   init() {
     this._super(...arguments);
+    this.set('current', []);
+    this.set('old', []);
+    this.set('sections', []);
     this.loadSections();
   },
 

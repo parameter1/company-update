@@ -53,3 +53,8 @@ body.transitioning {
 .froala-editor-container {
   min-width: 100%;
 }
+
+.copyable-textarea {
+  height: inherit;
+  padding: 0;
+}

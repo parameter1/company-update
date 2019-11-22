@@ -1,6 +1,6 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
-// import JsDiff from 'diff';
+import JsDiff from 'diff';
 
 export default Component.extend({
   lines: true,

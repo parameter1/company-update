@@ -3,6 +3,8 @@ import ActionMixin from 'cuf/mixins/action';
 import mutation from 'cuf/gql/mutations/upload';
 import { inject } from '@ember/service';
 
+const { error } = console;
+
 export default Component.extend(ActionMixin, {
   apolloUpload: inject(),
   logo: null,
@@ -19,7 +21,7 @@ export default Component.extend(ActionMixin, {
         this.set('logo', location);
       } catch (e) {
         this.set('logo', logo);
-        console.error('upload error', e, file);
+        error('upload error', e, file);
         this.get('notify').alert('Something went wrong -- please try again!');
       } finally {
         file.queue.remove(file);

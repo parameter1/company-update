@@ -30,9 +30,6 @@ const fields = [
   [
     { label: 'Description', key: 'body', type: 'long' },
   ],
-];
-
-const extra = [
   [
     { label: 'Number of employees', key: 'numberOfEmployees', class: 'col-md-6' },
     { label: 'Years in operation', key: 'yearsInOperation', class: 'col-md-6' },
@@ -73,11 +70,9 @@ export default Controller.extend({
 
   // Determines display order, labels, and visibility/type of updateable fields
   fields: null,
-  extra: null,
 
   init() {
     this._super();
     this.set('fields', fields);
-    this.set('extra', extra);
   },
 });

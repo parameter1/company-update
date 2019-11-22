@@ -5,6 +5,8 @@ import { ComponentQueryManager } from 'ember-apollo-client';
 import ActionMixin from 'cuf/mixins/action';
 import mutation from 'cuf/gql/mutations/company';
 
+const { error } = console;
+
 const fields = [
   'address1',
   'address2',
@@ -66,7 +68,7 @@ export default Component.extend(ComponentQueryManager, ActionMixin, {
         this.get('notify').info('Changes submitted');
         this.sendAction('onComplete');
       } catch (e) {
-        console.error(e);
+        error(e);
         this.get('notify').alert('Something went wrong -- please review your information and try again!', { closeAfter: null });
       } finally {
         this.endAction();
