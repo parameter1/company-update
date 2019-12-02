@@ -1,6 +1,7 @@
 import Component from '@ember/component';
-import { computed } from '@ember/object';
-import { ComponentQueryManager } from 'ember-apollo-client';
+import { computed, get } from '@ember/object';
+import { inject } from '@ember/service';
+import { queryManager } from 'ember-apollo-client';
 // import ComponentQueryManager from 'ember-apollo-client/mixins/component-query-manager';
 import ActionMixin from 'cuf/mixins/action';
 import mutation from 'cuf/gql/mutations/company';
@@ -37,19 +38,21 @@ const fields = [
 
 const filterModel = (model = {}) => {
   const payload = {};
-  fields.forEach(key => payload[key] = model.get(key));
+  fields.forEach(key => payload[key] = get(model, key));
   return payload;
 };
 
-export default Component.extend(ComponentQueryManager, ActionMixin, {
-  model: null,
+export default Component.extend(ActionMixin, {
+  apollo: queryManager(),
+  notify: inject(),
 
+  model: null,
   name: null,
   email: null,
 
   isOpen: false,
   isInvalid: computed('name', 'email', function() {
-    if (!this.get('name') || !this.get('email')) return true;
+    if (!this.name || !this.email) return true;
     return false;
   }),
   isSubmitDisabled: computed.or('isActionRunning', 'isInvalid'),
@@ -58,18 +61,18 @@ export default Component.extend(ComponentQueryManager, ActionMixin, {
     async submit() {
       this.startAction();
       const { name, email } = this.getProperties('name', 'email');
-      const hash = this.get('model.hash');
-      const payload = filterModel(this.get('model'));
+      const { hash } = this.model;
+      const payload = filterModel(this.model);
       const variables = { input: { name, email, hash, payload } };
 
       try {
-        await this.get('apollo').mutate({ mutation, variables });
+        await this.apollo.mutate({ mutation, variables });
         if (!this.isDestroyed) this.set('isOpen', false);
-        this.get('notify').info('Changes submitted');
+        this.notify.info('Changes submitted');
         this.onComplete();
       } catch (e) {
         error(e);
-        this.get('notify').alert('Something went wrong -- please review your information and try again!', { closeAfter: null });
+        this.notify.alert('Something went wrong -- please review your information and try again!', { closeAfter: null });
       } finally {
         this.endAction();
       }

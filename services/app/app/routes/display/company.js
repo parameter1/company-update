@@ -1,15 +1,18 @@
 import Route from '@ember/routing/route';
-import { RouteQueryManager } from 'ember-apollo-client';
+import { queryManager } from 'ember-apollo-client';
+import { get, set } from '@ember/object';
 
 import query from 'cuf/gql/queries/company';
 
-export default Route.extend(RouteQueryManager, {
+export default Route.extend({
+  apollo: queryManager(),
+
   model({ hash }) {
     const variables = { input: { hash } };
-    return this.get('apollo').watchQuery({ query, variables, fetchPolicy: 'cache-and-network' }, 'contentHash');
+    return this.apollo.watchQuery({ query, variables, fetchPolicy: 'cache-and-network' }, 'contentHash');
   },
   afterModel(model) {
-    const sectionIds = model.get('websiteSchedules').map(({ section }) => section.id);
-    model.set('sectionIds', sectionIds);
+    const sectionIds = get(model, 'websiteSchedules').map(({ section }) => section.id);
+    set(model, 'sectionIds', sectionIds);
   },
 });

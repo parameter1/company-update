@@ -1,17 +1,20 @@
 import Route from '@ember/routing/route';
-import { RouteQueryManager } from 'ember-apollo-client';
+import { queryManager } from 'ember-apollo-client';
+import { set } from '@ember/object';
 
 import query from 'cuf/gql/queries/submissions';
 
-export default Route.extend(RouteQueryManager, {
+export default Route.extend({
+  apollo: queryManager(),
+
   model() {
-    return this.get('apollo').watchQuery({ query, fetchPolicy: 'cache-and-network' }, 'companyUpdateSubmissions');
+    return this.apollo.watchQuery({ query, fetchPolicy: 'cache-and-network' }, 'companyUpdateSubmissions');
   },
   actions: {
     loading(transition) {
-      const controller = this.controllerFor(this.get('routeName'));
-      controller.set('isLoading', true);
-      transition.promise.finally(() => setTimeout(() => controller.set('isLoading', false), 250));
+      const controller = this.controllerFor(this.routeName);
+      set(controller, 'isLoading', true);
+      transition.promise.finally(() => setTimeout(() => set(controller, 'isLoading', false), 250));
     },
     refresh() {
       this.refresh();

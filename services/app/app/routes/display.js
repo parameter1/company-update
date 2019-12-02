@@ -1,14 +1,15 @@
 import Route from '@ember/routing/route';
 import { inject } from '@ember/service';
-import { RouteQueryManager } from 'ember-apollo-client';
+import { queryManager } from 'ember-apollo-client';
 
 import query from 'cuf/gql/queries/config';
 
-export default Route.extend(RouteQueryManager, {
+export default Route.extend({
   config: inject(),
+  apollo: queryManager(),
 
   model() {
-    return this.get('apollo').watchQuery({ query, fetchPolicy: 'cache-and-network' }, 'companyUpdateConfig');
+    return this.apollo.watchQuery({ query, fetchPolicy: 'cache-and-network' }, 'companyUpdateConfig');
   },
   afterModel({
     domain,

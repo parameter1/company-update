@@ -14,6 +14,9 @@ module.exports = function(defaults) {
       tabSize: 2,
       useWrapMode: false,
     },
+    emberApolloClient: {
+      keepGraphqlFileExtension: false,
+    },
     'ember-froala-editor': {
       plugins: false,
     },
