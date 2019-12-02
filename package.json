@@ -2,7 +2,7 @@
   "name": "@base-cms/company-update",
   "version": "1.1.0",
   "description": "The BaseCMS Company Update Monorepo",
-  "repository": "https://github.com/cygnusb2b/base4-company-update",
+  "repository": "https://github.com/base-cms/company-update",
   "author": "Josh Worden <josh@limit0.io>",
   "license": "MIT",
   "workspaces": [

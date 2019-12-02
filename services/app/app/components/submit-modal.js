@@ -66,7 +66,7 @@ export default Component.extend(ComponentQueryManager, ActionMixin, {
         await this.get('apollo').mutate({ mutation, variables });
         if (!this.isDestroyed) this.set('isOpen', false);
         this.get('notify').info('Changes submitted');
-        this.sendAction('onComplete');
+        this.onComplete();
       } catch (e) {
         error(e);
         this.get('notify').alert('Something went wrong -- please review your information and try again!', { closeAfter: null });

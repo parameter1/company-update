@@ -10,7 +10,7 @@
     <button class="btn btn-block btn-success" {{ action "showModal" }}>
       {{entypo-icon "save"}} Save Changes
     </button>
-    {{ submit-modal isOpen=isModalOpen model=model fields=fields onComplete="transitionToThankYou"}}
+    {{ submit-modal isOpen=isModalOpen model=model fields=fields onComplete=(action "transitionToThankYou")}}
   </div>
 </div>
 <hr>
