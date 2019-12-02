@@ -26,7 +26,7 @@ services:
 
   app:
     <<: *node
-    image: danlynn/ember-cli:3.4.3
+    image: danlynn/ember-cli:3.14.0
     working_dir: /company-update/services/app
     entrypoint: ["ember"]
     command: ["serve", "--port", "9905", "--proxy", "http://graphql"]
