@@ -9,4 +9,9 @@ export default Route.extend({
     const variables = { input: { hash } };
     return this.apollo.query({ query, variables }, 'contentHash');
   },
+
+  renderTemplate() {
+    this._super(...arguments);
+    this.render('portal.nav', { into: 'application', outlet: 'nav' });
+  }
 });

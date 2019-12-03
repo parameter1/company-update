@@ -11,9 +11,7 @@ Router.map(function() {
     // this.route('products');
     // this.route('contacts');
     this.route('company', function() {
-      this.route('edit', { path: '' }, function() {
-        this.route('categories');
-      });
+      this.route('categories');
       this.route('thanks');
     });
     this.route('list');

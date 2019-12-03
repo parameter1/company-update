@@ -27,7 +27,7 @@ export default Controller.extend({
 
   actions: {
     transitionToEdit() {
-      this.transitionToRoute('portal.company.edit');
+      this.transitionToRoute('portal.company');
     },
     select(node) {
       this.get('model.company.sectionIds').push(parseInt(node.id));
