@@ -1,1 +1,33 @@
-{{ outlet }}
+<div class="sticky-top z-depth-1-half">
+  <nav class="navbar navbar-expand navbar-dark bg-primary">
+    <span class="navbar-brand mr-auto">Listing Update</span>
+    <div class="navbar-nav mx-auto">
+      <img
+        src={{ config.logo }}
+        class="mh-40px"
+        alt="Publisher Logo"
+      >
+    </div>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a href="/contact-us" target="_blank" rel="noopener" class="nav-link">Contact Us</a>
+      </li>
+      {{#if session.isAuthenticated}}
+        <li class="nav-item">
+          <a href="/logout" rel="noopener" class="nav-link">Log out</a>
+        </li>
+      {{/if}}
+    </ul>
+  </nav>
+  {{loading-progress class="bg-primary" progressBackground="bg-success"}}
+</div>
+
+{{ember-notify}}
+
+<div class="container-fluid my-3">
+  <div class="row">
+    <div class="col">
+      {{outlet}}
+    </div>
+  </div>
+</div>
