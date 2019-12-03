@@ -33,9 +33,10 @@ body.transitioning {
   height: 0.3rem;
 }
 
-.mh-40px {
+.navbar-brand__logo {
   max-height: 40px;
-  transform: scale(0.5);
+  max-width: 200px;
+  transform: scale(0.9);
 }
 
 .body-preview {
