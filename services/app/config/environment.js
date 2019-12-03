@@ -4,7 +4,7 @@ module.exports = function(environment) {
   let ENV = {
     modulePrefix: 'cuf',
     environment,
-    rootURL: '/cu',
+    rootURL: '/',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
