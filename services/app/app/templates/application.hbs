@@ -12,12 +12,13 @@
     </div>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a href="/contact-us" target="_blank" rel="noopener" class="nav-link">Contact Us</a>
+        <a href="{{ config.domain }}/contact-us" target="_blank" rel="noopener" class="nav-link">Contact Us</a>
       </li>
       {{#if session.isAuthenticated}}
-        <li class="nav-item">
-          <a href="/logout" rel="noopener" class="nav-link">Log out</a>
-        </li>
+        {{#link-to "list" class="nav-item nav-link"}}List{{/link-to}}
+        {{#link-to "portal.company" "cd4c269664610cf744acfb87203117f5" class="nav-item nav-link"}}TEST: Submit{{/link-to}}
+        {{#link-to "review" "5de5621737b72e001931a978" class="nav-item nav-link"}}TEST: Review{{/link-to}}
+        {{#link-to "logout" class="nav-item nav-link"}}Log out{{/link-to}}
       {{/if}}
     </ul>
   </nav>

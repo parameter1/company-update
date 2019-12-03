@@ -25,18 +25,18 @@ const fields = [
     { label: 'Email Address', key: 'email', class: 'col-md-6' },
   ],
   [
-    { label: 'Teaser', key: 'teaser', type: 'long' },
-  ],
-  [
-    { label: 'Description', key: 'body', type: 'long' },
-  ],
-  [
     { label: 'Number of employees', key: 'numberOfEmployees', class: 'col-md-6' },
     { label: 'Years in operation', key: 'yearsInOperation', class: 'col-md-6' },
   ],
   [
     { label: 'Sales regions', key: 'salesRegion', class: 'col-md-6' },
     { label: 'Sales channels', key: 'salesChannels', class: 'col-md-6' },
+  ],
+  [
+    { label: 'Teaser', key: 'teaser', type: 'long' },
+  ],
+  [
+    { label: 'Description', key: 'body', type: 'long' },
   ],
   [
     { label: 'Product summary', key: 'productSummary', type: 'long' },
