@@ -1,0 +1,25 @@
+<h3 class="display-5">{{ model.name }} Content Portal</h3>
+<hr>
+<p class="lead">
+  Welcome to the content update portal for {{ model.name }}. To request modifications to your company data or related content, please choose from the items below.
+</p>
+
+<div class="row">
+  <div class="col col-md-8 mx-auto">
+    <ul class="list-group">
+      {{#link-to "portal.company" class="list-group-item list-group-item-action h4"}}
+        {{entypo-icon "briefcase" class="mr-2"}}
+        Modify company details
+      {{/link-to}}
+      {{!-- {{#link-to "portal.products" class="list-group-item list-group-item-action h4"}}
+        {{entypo-icon "cog" class="mr-2"}}
+        Modify products
+      {{/link-to}}
+      {{#link-to "portal.contacts" class="list-group-item list-group-item-action h4"}}
+        {{entypo-icon "users" class="mr-2"}}
+        Modify contacts
+      {{/link-to}} --}}
+    </ul>
+
+  </div>
+</div>

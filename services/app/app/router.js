@@ -7,8 +7,10 @@ export default class Router extends EmberRouter {
 }
 
 Router.map(function() {
-  this.route('portal', function() {
-    this.route('company', { path: 'company/:hash' }, function() {
+  this.route('portal', { path: 'portal/:hash' }, function() {
+    // this.route('products');
+    // this.route('contacts');
+    this.route('company', function() {
       this.route('edit', { path: '' }, function() {
         this.route('categories');
       });
