@@ -6,7 +6,7 @@ import { inject } from '@ember/service';
 const { error } = console;
 
 export default Component.extend(ActionMixin, {
-  apolloUpload: inject(),
+  apollo: inject(),
   logo: null,
 
   actions: {
@@ -17,7 +17,7 @@ export default Component.extend(ActionMixin, {
 
       try {
         file.readAsDataURL().then(url => this.set('logo', url));
-        const location = await this.get('apolloUpload').mutate({ mutation, variables }, 'singleUpload');
+        const location = await this.apollo.mutate({ mutation, variables }, 'companyUpdateSingleUpload');
         this.set('logo', location);
       } catch (e) {
         this.set('logo', logo);
