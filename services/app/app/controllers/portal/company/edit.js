@@ -1,4 +1,4 @@
-import Controller from 'cuf/controllers/submit/company';
+import Controller from 'cuf/controllers/portal/company';
 import { computed } from '@ember/object';
 
 export default Controller.extend({
@@ -16,7 +16,7 @@ export default Controller.extend({
       this.set('isModalOpen', true);
     },
     transitionToThankYou() {
-      this.transitionToRoute('submit.company.thanks');
+      this.transitionToRoute('portal.company.thanks');
     },
   }
 });
