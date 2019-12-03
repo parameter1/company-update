@@ -1,1 +1,44 @@
-{{outlet}}
+<div class="row mb-5">
+  <div class="col">
+    <div class="card list-index">
+        <ul class="list-group list-group-flush">
+          {{#each model as |item|}}
+
+            {{#link-to
+              "display.company.review"
+              item.hash
+              item.id
+              class="list-group-item list-group-item-action flex-column align-items-start"
+            }}
+              <div class="d-flex w-100 justify-content-between">
+                <div class="d-flex flex-column">
+                  <h4 class="mb-1">{{ item.companyName }}</h4>
+                  <small>{{ item.name }} &lt;{{ item.email }}&gt;</small>
+                </div>
+                <div class="d-none d-md-flex flex-column align-items-end text-right">
+                  <div class="mt-auto small">
+                    {{entypo-icon "clock"}}
+                    <span title={{moment-format item.submitted "MMM Do, YYYY @ h:mma"}}>
+                      {{moment-from-now item.submitted}}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            {{/link-to}}
+
+          {{/each}}
+        </ul>
+
+        <div class="card-footer border-0 d-flex align-items-center justify-content-between">
+          <span>Total Results: {{model.length}}</span>
+          <button
+            class="btn btn-primary"
+            disabled={{isLoading}}
+            {{ action (route-action "refresh") }}>
+            {{entypo-icon "cycle"}} {{#if isLoading}}Loading...{{else}}Check for new submissions{{/if}}
+          </button>
+        </div>
+
+    </div>
+  </div>
+</div>
