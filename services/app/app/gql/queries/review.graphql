@@ -3,6 +3,7 @@ query CompanyUpdateReviewSubmission($id: String!) {
     id
     submitted
     reviewed
+    hash
     name
     email
     payload

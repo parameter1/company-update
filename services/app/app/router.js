@@ -12,11 +12,11 @@ Router.map(function() {
       this.route('edit', { path: '' }, function() {
         this.route('categories');
       });
-      this.route('review', { path: ':id' });
       this.route('thanks');
     });
     this.route('list');
   });
+  this.route('review', { path: '/review/:id' });
   this.route('login');
   this.route('list');
   this.route('logout');

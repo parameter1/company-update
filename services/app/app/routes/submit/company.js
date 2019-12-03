@@ -9,7 +9,7 @@ export default Route.extend({
 
   model({ hash }) {
     const variables = { input: { hash } };
-    return this.apollo.watchQuery({ query, variables, fetchPolicy: 'cache-and-network' }, 'contentHash');
+    return this.apollo.query({ query, variables }, 'contentHash');
   },
   afterModel(model) {
     const sectionIds = get(model, 'websiteSchedules').map(({ section }) => section.id);

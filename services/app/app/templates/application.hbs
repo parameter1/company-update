@@ -9,15 +9,9 @@
     </span>
     <div class="navbar-nav mr-auto">
       {{#if session.isAuthenticated}}
-        <li class="nav-item">
-          <a href="/list" rel="noopener" class="nav-link">List</a>
-        </li>
-        <li class="nav-item">
-          <a href="/submit/company/cd4c269664610cf744acfb87203117f5" class="nav-link">Submit</a>
-        </li>
-        <li class="nav-item">
-          <a href="/submit/company/cd4c269664610cf744acfb87203117f5/5de5621737b72e001931a978" class="nav-link">Review</a>
-        </li>
+        {{#link-to 'list' class="nav-item nav-link"}}List{{/link-to}}
+        {{#link-to 'submit.company.edit' 'cd4c269664610cf744acfb87203117f5' class="nav-item nav-link"}}Submit{{/link-to}}
+        {{#link-to 'review' '5de5621737b72e001931a978' class="nav-item nav-link"}}Review{{/link-to}}
       {{/if}}
     </div>
     <ul class="navbar-nav ml-auto">
