@@ -17,7 +17,6 @@ export default Service.extend({
     const user = await this.apollo.query({
       query: activeUser,
       fetchPolicy: 'network-only',
-      // @todo make this automatic.
       context: { headers: { authorization: `Bearer ${value}` } }
     }, 'activeUser');
     if (!user) throw new Error('Invalid user');
@@ -41,11 +40,7 @@ export default Service.extend({
    *
    * @return {Promise}
    */
-  delete(value) {
-    return this.apollo.mutate({
-      mutation: logout,
-      // @todo make this automatic.
-      context: { headers: { authorization: `Bearer ${value}` } }
-    }, 'logout');
+  delete() {
+    return this.apollo.mutate({ mutation: logout }, 'logout');
   },
 });
