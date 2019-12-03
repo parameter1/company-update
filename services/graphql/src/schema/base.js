@@ -13,13 +13,22 @@ const httpLink = new HttpLink({
   headers,
   fetchOptions: { timeout: 10000 },
 });
-const errorLink = onError((e) => {
-  console.warn('\nError in remote schema call!\n', e); // eslint-disable-line no-console
-  if (e.networkError) throw e.networkError;
-  if (e.graphQLErrors && e.graphQLErrors[0]) throw e.graphQLErrors[0];
+
+const authLink = setContext((_, previousContext) => {
+  if (previousContext.graphqlContext) {
+    const { authorization } = previousContext.graphqlContext;
+    if (authorization) return { headers: { ...headers, authorization } };
+  }
+  return { headers };
 });
 
-const link = setContext(() => headers).concat(errorLink).concat(httpLink);
+const errorLink = onError(({ graphQLErrors, response }) => {
+  if (graphQLErrors) response.errors = graphQLErrors.concat({ message: '' });
+});
+
+const link = authLink
+  .concat(errorLink)
+  .concat(httpLink);
 
 module.exports = async () => {
   const schema = await introspectSchema(link);
