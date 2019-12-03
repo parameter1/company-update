@@ -12,7 +12,7 @@ export default Route.extend({
   model() {
     const ids = this.config.ids;
     const variables = { input: { includeIds: ids } };
-    const company = this.modelFor('display.company');
+    const company = this.modelFor('submit.company');
     const sections = this.apollo.watchQuery({ query, variables, fetchPolicy: 'cache-and-network' }, 'websiteSections');
     return hash({ company, sections });
   },

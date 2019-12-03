@@ -1,4 +1,4 @@
-import Controller from 'cuf/controllers/display/company';
+import Controller from 'cuf/controllers/submit/company';
 import { computed } from '@ember/object';
 import { inject } from '@ember/service';
 

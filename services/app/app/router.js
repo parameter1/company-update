@@ -7,7 +7,7 @@ export default class Router extends EmberRouter {
 }
 
 Router.map(function() {
-  this.route('display', function() {
+  this.route('submit', function() {
     this.route('company', { path: 'company/:hash' }, function() {
       this.route('edit', { path: '' }, function() {
         this.route('categories');

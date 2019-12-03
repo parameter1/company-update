@@ -7,7 +7,7 @@ export default Route.extend({
   apollo: queryManager(),
 
   model({ id }) {
-    const company = this.modelFor('display.company');
+    const company = this.modelFor('submit.company');
     const variables = { id };
     const submission = this.apollo.watchQuery({ query, variables, fetchPolicy: 'cache-and-network' }, 'companyUpdateSubmission');
     return hash({ company, submission });
