@@ -17,4 +17,7 @@ Router.map(function() {
     });
     this.route('list');
   });
+  this.route('login');
+  this.route('list');
+  this.route('logout');
 });
