@@ -1,25 +1,20 @@
-
-<div class="row">
-  <div class="col col-md-8 mx-auto">
-    <ul class="list-group">
-      {{#link-to "portal.company" class="list-group-item list-group-item-action h4"}}
-        {{entypo-icon "briefcase" class="mr-2"}}
-        Modify company details
-      {{/link-to}}
-      {{!-- {{#link-to "portal.products" class="list-group-item list-group-item-action h4"}}
-        {{entypo-icon "cog" class="mr-2"}}
-        Modify products
-      {{/link-to}}
-      {{#link-to "portal.contacts" class="list-group-item list-group-item-action h4"}}
-        {{entypo-icon "users" class="mr-2"}}
-        Modify contacts
-      {{/link-to}} --}}
-    </ul>
-
 <div class="card mb-4">
   <div class="card-body">
     <p class="lead">{{ model.name }} Content Portal</p>
     <p>Welcome to the content update portal for {{ model.name }}.</p>
     <p>To request modifications to your company data or related content, please choose from the actions below.</p>
   </div>
+</div>
+
+<div class="card">
+  <ul class="list-group list-group-flush">
+    {{#link-to "portal.company" class="list-group-item list-group-item-action"}}
+      {{entypo-icon "briefcase" class="mr-2"}}
+      Modify company details
+    {{/link-to}}
+    {{#link-to "portal.categories" class="list-group-item list-group-item-action"}}
+      {{entypo-icon "tag" class="mr-2"}}
+      Modify leadership categories
+    {{/link-to}}
+  </ul>
 </div>

@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('portal', { path: 'portal/:hash' }, function() {
     // this.route('products');
     // this.route('contacts');
+    this.route('categories');
     this.route('company', function() {
       this.route('categories');
     });
