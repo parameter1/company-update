@@ -25,6 +25,7 @@ const fields = [
   'zip',
   'sectionIds',
   'logo',
+  'socialLinks',
   'numberOfEmployees',
   'trainingInformation',
   'yearsInOperation',

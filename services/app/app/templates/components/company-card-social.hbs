@@ -1,0 +1,12 @@
+<h6 class="card-header">{{ title }}</h6>
+<ul class="list-group list-group-flush">
+  {{#each links as |link|}}
+    {{social-link link=link onRemove=(action "remove")}}
+  {{/each}}
+  <li class="list-group-item text-right">
+    <button class="btn btn-primary" {{action "add"}}>
+      {{entypo-icon "plus"}}
+    </button>
+  </li>
+</ul>
+<div class="card-footer"></div>
