@@ -1,8 +1,3 @@
-<h3 class="display-5">{{ unbound model.name }} Content Portal</h3>
-<hr>
-<p class="lead">
-  Welcome to the content update portal for {{ unbound model.name }}. To request modifications to your company data or related content, please choose from the items below.
-</p>
 
 <div class="row">
   <div class="col col-md-8 mx-auto">
@@ -21,5 +16,10 @@
       {{/link-to}} --}}
     </ul>
 
+<div class="card mb-4">
+  <div class="card-body">
+    <p class="lead">{{ model.name }} Content Portal</p>
+    <p>Welcome to the content update portal for {{ model.name }}.</p>
+    <p>To request modifications to your company data or related content, please choose from the actions below.</p>
   </div>
 </div>

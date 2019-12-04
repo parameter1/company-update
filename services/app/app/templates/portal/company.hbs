@@ -1,17 +1,15 @@
-<div class="row">
-  <div class="col-12 col-md-8 col-lg-9 col-xl-10">
+<div class="card mb-4">
+  <div class="card-body">
+    <button class="btn btn-success pull-right" {{ action "showModal" }}>
+      {{entypo-icon "save"}} Save Changes
+    </button>
     <p class="lead">Review your company details.</p>
     <p>Make any needed changes on the fields below.</p>
     <p>When you are finished making changes, click the "Save Changes" button.</p>
-  </div>
-  <div class="col-12 col-md-4 col-lg-3 col-xl-2">
-    <button class="btn btn-block btn-success" {{ action "showModal" }}>
-      {{entypo-icon "save"}} Save Changes
-    </button>
     {{ submit-modal isOpen=isModalOpen model=model fields=fields onComplete=(action "transitionToThankYou")}}
   </div>
 </div>
-<hr>
+
 <div class="row">
   <div class="col-12 col-lg-8 col-xl-9 my-3">
     {{ company-card-details model=model }}

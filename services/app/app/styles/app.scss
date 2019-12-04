@@ -7,6 +7,7 @@ $list-group-hover-bg:               $gray-100;
 $list-group-active-color:           $white;
 $list-group-active-bg:              theme-color("primary");
 $list-group-disabled-color:         $gray-600;
+$enable-rounded: true;
 
 $modal-xl: 1100px !default;
 $modal-lg: 950px;
@@ -74,9 +75,18 @@ body.transitioning {
 
 .fr-box {
   min-width: 100%;
-  border-radius: 0 !important;
+  border-radius: $border-radius !important;
   .fr-toolbar {
-    border-radius: 0 !important;
+    border-top-left-radius: $border-radius !important;
+    border-top-right-radius: $border-radius !important;
+  }
+  .fr-wrapper {
+    border-bottom-left-radius: $border-radius !important;
+    border-bottom-right-radius: $border-radius !important;
+    border-bottom-color: #ccc !important;
+  }
+  .second-toolbar {
+    border: none;
   }
 }
 
@@ -102,9 +112,10 @@ label {
 }
 
 .card {
-  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1px 7px rgba(0,0,0,.05);
+  border: none;
 }
 
 body {
-  background-color: #fefefe;
+  background-color: #f5f5f5;
 }
