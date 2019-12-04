@@ -1,12 +1,33 @@
-@import "../../node_modules/bootswatch/dist/flatly/variables";
+@import "../../node_modules/bootswatch/dist/pulse/variables";
+
+// Fix pulse list groups
+$list-group-bg:                     $white;
+$list-group-border-color:           rgba($black, .125);
+$list-group-hover-bg:               $gray-100;
+$list-group-active-color:           $white;
+$list-group-active-bg:              theme-color("primary");
+$list-group-disabled-color:         $gray-600;
 
 $modal-xl: 1100px !default;
 $modal-lg: 950px;
 $modal-md: 550px;
 
 @import "../../node_modules/bootstrap/scss/bootstrap";
-@import "../../node_modules/bootswatch/dist/flatly/bootswatch";
+@import "../../node_modules/bootswatch/dist/pulse/bootswatch";
 @import "ember-basic-dropdown";
+@import "ember-power-select";
+@import "./power-select.scss";
+
+.list-group {
+  &-item {
+    color: rgba($black, .9);
+    &.active,
+    &:hover,
+    &:focus {
+      color: rgba($black, .8);
+    }
+  }
+}
 
 // Add xl modal, per https://github.com/twbs/bootstrap/pull/19925
 @include media-breakpoint-up(lg) {
@@ -51,8 +72,12 @@ body.transitioning {
   border-right: none;
 }
 
-.froala-editor-container {
+.fr-box {
   min-width: 100%;
+  border-radius: 0 !important;
+  .fr-toolbar {
+    border-radius: 0 !important;
+  }
 }
 
 .copyable-textarea {
@@ -62,4 +87,8 @@ body.transitioning {
 
 .upload-button {
   cursor: pointer;
+}
+
+.social-list ul.ember-power-select-options {
+  max-height: 15em;
 }

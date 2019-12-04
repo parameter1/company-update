@@ -1,5 +1,5 @@
 <div class="sticky-top z-depth-1-half">
-  <nav class="navbar navbar-expand navbar-dark bg-primary">
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
     <span class="navbar-brand">
       <img
         src={{ config.logo }}
@@ -22,12 +22,12 @@
       {{/if}}
     </ul>
   </nav>
-  {{loading-progress class="bg-primary" progressBackground="bg-success"}}
+  {{loading-progress class="bg-dark" progressBackground="bg-success"}}
 </div>
 
 {{ember-notify}}
 
-<div class="container-fluid my-3">
+<div class="container my-3">
   <div class="row">
     <div class="col">
       {{outlet}}
