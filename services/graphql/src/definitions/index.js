@@ -24,6 +24,13 @@ module.exports = gql`
     public
   }
 
+  enum CompanyUpdateSubmissionType {
+    company
+    product
+    contact
+    leadership
+  }
+
   type CompanyUpdateConfiguration {
     domain: String!
     logo: String!
@@ -39,6 +46,7 @@ module.exports = gql`
     hash: String!
     email: String!
     companyName: String
+    type: CompanyUpdateSubmissionType!
     payload: String!
   }
 
@@ -46,6 +54,7 @@ module.exports = gql`
     name: String!
     email: String!
     hash: String!
+    type: CompanyUpdateSubmissionType!
     payload: CompanyUpdatePayloadInput!
   }
 

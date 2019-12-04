@@ -6,5 +6,6 @@ query CompanyUpdateListSubmissions {
     hash
     name
     email
+    type
   }
 }
