@@ -1,43 +1,45 @@
-<div class="row mb-5">
-  <div class="col">
-    <div class="card list-index">
-        <ul class="list-group list-group-flush">
-          {{#each model as |item|}}
+<div class="card mb-4">
+  <div class="card-body">
+    <p class="lead">Content Portal Moderation Queue</p>
+    <p>Welcome to the content portal moderation queue. The items listed below have not yet been reviewed, and require your attention.</p>
+    <p>Click on an item to view the requested changes.</p>
+  </div>
+</div>
 
-            {{#link-to
-              "review"
-              item.id
-              class="list-group-item list-group-item-action flex-column align-items-start"
-            }}
-              <div class="d-flex w-100 justify-content-between">
-                <div class="d-flex flex-column">
-                  <h4 class="mb-1">{{ item.companyName }}</h4>
-                  <small>{{ item.name }} &lt;{{ item.email }}&gt;</small>
-                </div>
-                <div class="d-none d-md-flex flex-column align-items-end text-right">
-                  <div class="mt-auto small">
-                    {{entypo-icon "clock"}}
-                    <span title={{moment-format item.submitted "MMM Do, YYYY @ h:mma"}}>
-                      {{moment-from-now item.submitted}}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            {{/link-to}}
-
-          {{/each}}
-        </ul>
-
-        <div class="card-footer border-0 d-flex align-items-center justify-content-between">
-          <span>Total Results: {{model.length}}</span>
-          <button
-            class="btn btn-primary"
-            disabled={{isLoading}}
-            {{ action (route-action "refresh") }}>
-            {{entypo-icon "cycle"}} {{#if isLoading}}Loading...{{else}}Check for new submissions{{/if}}
-          </button>
+<div class="card mb-4">
+  <div class="card-header"></div>
+  <ul class="list-group list-group-flush">
+    {{#each model as |item|}}
+      {{#link-to (concat "review." item.type)
+        item.id
+        class="list-group-item list-group-item-action flex-column align-items-start"
+      }}
+        <div class="d-flex w-100 justify-content-between">
+          <div class="d-flex flex-column">
+            <h4 class="mb-1">{{ item.companyName }}</h4>
+            <span>{{submission-icon type=item.type}} {{item.companyName}}</span>
+          </div>
+          <div class="d-none d-md-flex flex-column align-items-end text-right">
+            <div class="mt-auto small">
+              {{ item.name }} &lt;{{ item.email }}&gt;
+              {{entypo-icon "clock"}}
+              <span title={{moment-format item.submitted "MMM Do, YYYY @ h:mma"}}>
+                {{moment-from-now item.submitted}}
+              </span>
+            </div>
+          </div>
         </div>
+      {{/link-to}}
 
-    </div>
+    {{/each}}
+  </ul>
+  <div class="card-footer border-0 d-flex align-items-center justify-content-between">
+    <span>Total Results: {{model.length}}</span>
+    <button
+      class="btn btn-primary"
+      disabled={{isLoading}}
+      {{ action (route-action "refresh") }}>
+      {{entypo-icon "cycle"}} {{#if isLoading}}Loading...{{else}}Check for new submissions{{/if}}
+    </button>
   </div>
 </div>

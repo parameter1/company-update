@@ -1,0 +1,51 @@
+<div class="card mb-4">
+  <div class="card-body">
+    <p class="lead">Review the requested changes below.</p>
+    <p>For each field, either modify the submitted value, or select the toggle to ignore the field.</p>
+    <p>When all fields have been reviewed, click the "Save Changes" at the bottom of the page to publish to Base.</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12 col-lg-8 col-xl-9 my-3">
+    {{!-- {{ company-fields-review fields=fields company=model.company submission=model.submission }} --}}
+    {{ review-card/details company=model.company submission=model.submission }}
+    {{ review-card/address company=model.company submission=model.submission }}
+    {{ review-card/contact company=model.company submission=model.submission }}
+    {{ review-card/social company=model.company submission=model.submission }}
+    {{ review-card/services company=model.company submission=model.submission }}
+  </div>
+  <div class="col-12 col-lg-4 col-xl-3 my-3">
+    <div class="card mb-3">
+      <h4 class="h6 card-header">Logo</h4>
+      <div class="card-body">
+        {{#if model.submission.payload.logo}}
+          <img src={{ model.submission.payload.logo }} class="img-fluid mb-3 p-1 border-success border bg-light" alt="New Company Logo">
+          <a href={{ model.submission.payload.logo }} target="_blank" rel="download noopener" class="btn btn-block btn-primary">
+            {{entypo-icon "download"}} Download new logo
+          </a>
+        {{else}}
+          <span class="text-muted">Image was not modified.</span>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6 offset-md-3 text-center">
+    {{#if model.submission.reviewed}}
+      <div class="alert alert-light">
+        <h4 class="alert-heading">Already complete</h4>
+        <p class="mb-0">This submission has already been reviewed and published to Base.</p>
+      </div>
+    {{else}}
+      <button class="btn btn-primary" {{ action "publish" }}>
+        {{entypo-icon "check"}} <span class="d-none d-md-inline">Publish to Base</span>
+      </button>
+      <button class="btn btn-danger" {{ action "delete" }}>
+        {{entypo-icon "cross"}} <span class="d-none d-md-inline">Discard request</span>
+      </button>
+    {{/if}}
+  </div>
+</div>
