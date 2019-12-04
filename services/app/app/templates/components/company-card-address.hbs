@@ -1,0 +1,80 @@
+<h6 class="card-header">{{ title }}</h6>
+<form class="card-body">
+  <div class="row">
+    <div class="form-group col-md-4">
+      <label for="address1-input">Address 1</label>
+      <div class="input-group">
+        {{input
+          type="text"
+          class="form-control"
+          id="address1-input"
+          aria-describedby="address1-help"
+          value=model.address1
+        }}
+      </div>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="address2-input">Address 2</label>
+      <div class="input-group">
+        {{input
+          type="text"
+          class="form-control"
+          id="address2-input"
+          aria-describedby="address2-help"
+          value=model.address2
+        }}
+      </div>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="city-input">City</label>
+      <div class="input-group">
+        {{input
+          type="text"
+          class="form-control"
+          id="city-input"
+          aria-describedby="city-help"
+          value=model.city
+        }}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-4">
+      <label for="state-input">State/Province</label>
+      <div class="input-group">
+        {{input
+          type="text"
+          class="form-control"
+          id="state-input"
+          aria-describedby="state-help"
+          value=model.state
+        }}
+      </div>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="zip-input">Zip/Postal Code</label>
+      <div class="input-group">
+        {{input
+          type="text"
+          class="form-control"
+          id="zip-input"
+          aria-describedby="zip-help"
+          value=model.zip
+        }}
+      </div>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="country-input">Country</label>
+      <div class="input-group">
+        {{input
+          type="text"
+          class="form-control"
+          id="country-input"
+          aria-describedby="country-help"
+          value=model.country
+        }}
+      </div>
+    </div>
+  </div>
+</form>
+<div class="card-footer"></div>

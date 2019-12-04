@@ -92,3 +92,19 @@ body.transitioning {
 .social-list ul.ember-power-select-options {
   max-height: 15em;
 }
+
+.card-header {
+  font-weight: 600;
+}
+
+label {
+  font-weight: 500;
+}
+
+.card {
+  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+}
+
+body {
+  background-color: #fefefe;
+}

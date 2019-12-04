@@ -1,0 +1,106 @@
+<h6 class="card-header">{{ title }}</h6>
+<form class="card-body">
+  <div class="row">
+    <div class="form-group col">
+      <label for="name-input">Name</label>
+      <div class="input-group">
+        {{input
+          type="text"
+          class="form-control"
+          id="name-input"
+          aria-describedby="name-help"
+          placeholder=field.placeholder
+          value=model.name
+          required=true
+        }}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col">
+      <label for="teaser-input">Teaser</label>
+      <div class="input-group">
+        {{froala-editor
+          content=teaser
+          update=(action (mut teaser))
+          options=(hash attribution=false toolbarButtons=toolbarButtons)
+        }}
+      </div>
+      <small id="teaser-help" class="form-text text-muted">A short description of your company that <i>may</i> be displayed in various places across the site.</small>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col">
+      <label for="body-input">Description</label>
+      <div class="input-group">
+        {{froala-editor
+          content=body
+          update=(action (mut body))
+          options=(hash attribution=false toolbarButtons=toolbarButtons)
+        }}
+      </div>
+      <small id="body-help" class="form-text text-muted">A description of your company that will be displayed on your landing page.</small>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-6">
+      <label for="number-of-employees-input">Number of Employees</label>
+      <div class="input-group">
+        {{input
+          type="text"
+          class="form-control"
+          id="number-of-employees-input"
+          aria-describedby="number-of-employees-help"
+          placeholder=field.placeholder
+          value=model.numberOfEmployees
+          required=true
+        }}
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="years-in-operation-input">Years in operation</label>
+      <div class="input-group">
+        {{input
+          type="text"
+          class="form-control"
+          id="years-in-operation-input"
+          aria-describedby="years-in-operation-help"
+          placeholder=field.placeholder
+          value=model.yearsInOperation
+          required=true
+        }}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-6">
+      <label for="sales-region-input">Sales regions</label>
+      <div class="input-group">
+        {{input
+          type="text"
+          class="form-control"
+          id="sales-region-input"
+          aria-describedby="sales-region-help"
+          placeholder=field.placeholder
+          value=model.salesRegion
+          required=true
+        }}
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="sales-channels-input">Sales channels</label>
+      <div class="input-group">
+        {{input
+          type="text"
+          class="form-control"
+          id="sales-channels-input"
+          aria-describedby="sales-channels-help"
+          placeholder=field.placeholder
+          value=model.salesChannels
+          required=true
+        }}
+      </div>
+    </div>
+  </div>
+</form>
+<div class="card-footer"></div>

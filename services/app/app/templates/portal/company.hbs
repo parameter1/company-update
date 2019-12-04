@@ -14,12 +14,10 @@
 <hr>
 <div class="row">
   <div class="col-12 col-lg-8 col-xl-9 my-3">
-    <div class="card">
-      <h4 class="h6 card-header">Company Details</h4>
-      <div class="card-body">
-        {{ company-fields-edit fields=fields model=model }}
-      </div>
-    </div>
+    {{ company-card-details model=model }}
+    {{ company-card-address model=model }}
+    {{ company-card-contact model=model }}
+    {{ company-card-services model=model }}
   </div>
   <div class="col-12 col-lg-4 col-xl-3 my-3">
     {{!-- {{partial "edit/contacts"}} --}}

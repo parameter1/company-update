@@ -1,0 +1,70 @@
+<h6 class="card-header">{{ title }}</h6>
+<form class="card-body">
+  <p class="small text-muted">This information may be displayed on your landing page.</p>
+  <div class="row">
+    <div class="form-group col">
+      <label for="product-summary-input">Product Summary</label>
+      <div class="input-group">
+        {{froala-editor
+          content=productSummary
+          update=(action (mut productSummary))
+          options=(hash attribution=false toolbarButtons=toolbarButtons)
+        }}
+      </div>
+      <small id="product-summary-help" class="form-text text-muted">A short description of the products or services your company provides.</small>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col">
+      <label for="services-provided-input">Services Provided</label>
+      <div class="input-group">
+        {{froala-editor
+          content=servicesProvided
+          update=(action (mut servicesProvided))
+          options=(hash attribution=false toolbarButtons=toolbarButtons)
+        }}
+      </div>
+      <small id="services-provided-help" class="form-text text-muted">A short description of any services your company provides.</small>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col">
+      <label for="warranty-information-input">Warranty/Guarantee Information</label>
+      <div class="input-group">
+        {{froala-editor
+          content=warrantyInformation
+          update=(action (mut warrantyInformation))
+          options=(hash attribution=false toolbarButtons=toolbarButtons)
+        }}
+      </div>
+      <small id="warranty-information-help" class="form-text text-muted">If your company provides a warranty or guarantee, describe it here.</small>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col">
+      <label for="training-information-input">Training Information</label>
+      <div class="input-group">
+        {{froala-editor
+          content=trainingInformation
+          update=(action (mut trainingInformation))
+          options=(hash attribution=false toolbarButtons=toolbarButtons)
+        }}
+      </div>
+      <small id="training-information-help" class="form-text text-muted">If your company provides training information, describe it here.</small>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col">
+      <label for="service-information-input">Service, Support, Spare Parts Information</label>
+      <div class="input-group">
+        {{froala-editor
+          content=serviceInformation
+          update=(action (mut serviceInformation))
+          options=(hash attribution=false toolbarButtons=toolbarButtons)
+        }}
+      </div>
+      <small id="service-information-help" class="form-text text-muted">If your company provides service, support, or spare parts information, describe it here.</small>
+    </div>
+  </div>
+</form>
+<div class="card-footer"></div>
