@@ -12,9 +12,8 @@ Router.map(function() {
     // this.route('contacts');
     this.route('company', function() {
       this.route('categories');
-      this.route('thanks');
     });
-    this.route('list');
+    this.route('thanks');
   });
   this.route('review', { path: '/review/:id' });
   this.route('login');

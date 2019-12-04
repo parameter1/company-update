@@ -90,7 +90,7 @@ export default Controller.extend({
       this.set('isModalOpen', true);
     },
     transitionToThankYou() {
-      this.transitionToRoute('portal.company.thanks');
+      this.transitionToRoute('portal.thanks');
     },
   }
 });
