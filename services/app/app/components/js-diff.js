@@ -7,11 +7,13 @@ export default Component.extend({
   original: null,
   updated: null,
 
+  classNames: ['form-control'],
+
   diffs: computed('original,updated,lines', function() {
     const original = this.get('original') || '';
     let updated = this.get('updated') || '';
     if (typeof this.get('updated') === 'undefined') updated = original;
     if (this.get('lines')) return JsDiff.diffLines(original, updated, { newlineIsToken: true });
     return JsDiff.diffWordsWithSpace(original, updated);
-  })
+  }),
 });

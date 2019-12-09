@@ -1,0 +1,19 @@
+{{#if (eq fieldKey "logo")}}
+  <div class="form-control {{if (eq original updated) "" "border-success"}}">
+    <img src={{ updated }} class="img-fluid" alt="company logo">
+  </div>
+{{else}}
+  {{js-diff original=original updated=updated}}
+{{/if}}
+
+{{#if approvable}}
+  <div role="button" class="input-group-append interactable" {{action "toggle"}}>
+    <div class="input-group-text">
+      {{#if isChecked}}
+        {{entypo-icon "check" class="text-success"}}
+      {{else}}
+        {{entypo-icon "cross" class="text-danger"}}
+      {{/if}}
+    </div>
+  </div>
+{{/if}}

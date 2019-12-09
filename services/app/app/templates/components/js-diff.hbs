@@ -1,3 +1,9 @@
 {{#each diffs as |diff|}}
-  {{display-diff diff=diff }}
+  {{#if diff.added}}
+    {{display-diff diff=diff tagName="ins"}}
+  {{else if diff.removed}}
+    {{display-diff diff=diff tagName="del"}}
+  {{else}}
+    {{display-diff diff=diff}}&nbsp;
+  {{/if}}
 {{/each}}

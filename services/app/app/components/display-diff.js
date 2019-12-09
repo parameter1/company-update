@@ -11,11 +11,6 @@ export default Component.extend({
     return htmlSafe(this.get('diff.value'));
   }),
 
-  tagName: computed('diff.{added,removed}', function() {
-    const { added, removed } = this.getProperties(['diff.added', 'diff.removed']);
-    if (added) return 'ins';
-    if (removed) return 'del';
-    return 'span';
-  }),
+  tagName: 'span',
 
 });
