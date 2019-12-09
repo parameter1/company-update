@@ -1,0 +1,28 @@
+<h6 class="card-header">{{ title }}</h6>
+<form class="card-body">
+  {{#each links as |link|}}
+    <div class="row">
+      <div class="form-group col-md-4">
+        <label for="website-input">Provider</label>
+        {{review-field
+          original=link.original.provider
+          updated=link.updated.provider
+          toggleField=toggleField
+          fieldKey="socialLinks"
+          enabled=payload.socialLinks
+        }}
+      </div>
+      <div class="form-group col">
+        <label for="website-input">URL</label>
+        {{review-field
+          original=link.original.url
+          updated=link.updated.url
+          toggleField=toggleField
+          fieldKey="socialLinks"
+          enabled=payload.socialLinks
+        }}
+      </div>
+    </div>
+  {{/each}}
+</form>
+<div class="card-footer"></div>

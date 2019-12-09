@@ -1,0 +1,65 @@
+<h6 class="card-header">{{ title }}</h6>
+<form class="card-body">
+  <p class="small text-muted">This information may be displayed on your landing page.</p>
+  <div class="row">
+    <div class="form-group col">
+      <label for="product-summary-input">Product Summary</label>
+      {{review-field
+        original=company.productSummary
+        updated=submission.payload.productSummary
+        toggleField=toggleField
+        fieldKey="productSummary"
+        enabled=payload.productSummary
+      }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col">
+      <label for="services-provided-input">Services Provided</label>
+      {{review-field
+        original=company.servicesProvided
+        updated=submission.payload.servicesProvided
+        toggleField=toggleField
+        fieldKey="servicesProvided"
+        enabled=payload.servicesProvided
+      }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col">
+      <label for="warranty-information-input">Warranty/Guarantee Information</label>
+      {{review-field
+        original=company.warrantyInformation
+        updated=submission.payload.warrantyInformation
+        toggleField=toggleField
+        fieldKey="warrantyInformation"
+        enabled=payload.warrantyInformation
+      }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col">
+      <label for="training-information-input">Training Information</label>
+      {{review-field
+        original=company.trainingInformation
+        updated=submission.payload.trainingInformation
+        toggleField=toggleField
+        fieldKey="trainingInformation"
+        enabled=payload.trainingInformation
+      }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col">
+      <label for="service-information-input">Service, Support, Spare Parts Information</label>
+      {{review-field
+        original=company.serviceInformation
+        updated=submission.payload.serviceInformation
+        toggleField=toggleField
+        fieldKey="serviceInformation"
+        enabled=payload.serviceInformation
+      }}
+    </div>
+  </div>
+</form>
+<div class="card-footer"></div>

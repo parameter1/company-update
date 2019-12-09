@@ -1,0 +1,68 @@
+<h6 class="card-header">{{ title }}</h6>
+<form class="card-body">
+  <div class="row">
+    <div class="form-group col-md-4">
+      <label for="phone-input">Phone number</label>
+      {{review-field
+        original=company.phone
+        updated=submission.payload.phone
+        toggleField=toggleField
+        fieldKey="phone"
+        enabled=payload.phone
+      }}
+    </div>
+    <div class="form-group col-md-4">
+      <label for="tollfree-input">Tollfree number</label>
+      {{review-field
+        original=company.tollfree
+        updated=submission.payload.tollfree
+        toggleField=toggleField
+        fieldKey="tollfree"
+        enabled=payload.tollfree
+      }}
+    </div>
+    <div class="form-group col-md-4">
+      <label for="fax-input">Fax number</label>
+      {{review-field
+        original=company.fax
+        updated=submission.payload.fax
+        toggleField=toggleField
+        fieldKey="fax"
+        enabled=payload.fax
+      }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-4">
+      <label for="mobile-input">Mobile number</label>
+      {{review-field
+        original=company.mobile
+        updated=submission.payload.mobile
+        toggleField=toggleField
+        fieldKey="mobile"
+        enabled=payload.mobile
+      }}
+    </div>
+    <div class="form-group col-md-4">
+      <label for="website-input">Website</label>
+      {{review-field
+        original=company.website
+        updated=submission.payload.website
+        toggleField=toggleField
+        fieldKey="website"
+        enabled=payload.website
+      }}
+    </div>
+    <div class="form-group col-md-4">
+      <label for="email-input">Email</label>
+      {{review-field
+        original=company.email
+        updated=submission.payload.email
+        toggleField=toggleField
+        fieldKey="email"
+        enabled=payload.email
+      }}
+    </div>
+  </div>
+</form>
+<div class="card-footer"></div>
