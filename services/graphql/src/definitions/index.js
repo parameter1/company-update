@@ -58,6 +58,11 @@ module.exports = gql`
     payload: CompanyUpdatePayloadInput!
   }
 
+  input SocialLinkInput {
+    provider: String!
+    url: String!
+  }
+
   input CompanyUpdatePayloadInput {
     name: String
     address1: String
@@ -73,6 +78,7 @@ module.exports = gql`
     type: String
     email: String
     body: String
+    socialLinks: [SocialLinkInput!]
 
     teaser: String
     numberOfEmployees: String
@@ -85,7 +91,6 @@ module.exports = gql`
     serviceInformation: String
     warrantyInformation: String
 
-    sectionIds: [Int!]
     logo: String
   }
 
