@@ -23,7 +23,6 @@ const fields = [
   'tollfree',
   'website',
   'zip',
-  'sectionIds',
   'logo',
   'socialLinks',
   'numberOfEmployees',
@@ -37,9 +36,17 @@ const fields = [
   'warrantyInformation',
 ];
 
+const getFiltered = (model, key) => {
+  const v = get(model, key);
+  if (key == 'socialLinks') {
+    return v.map(({ url, provider }) => ({ url, provider }));
+  }
+  return v;
+};
+
 const filterModel = (model = {}) => {
   const payload = {};
-  fields.forEach(key => payload[key] = get(model, key));
+  fields.forEach(key => payload[key] = getFiltered(model, key));
   return payload;
 };
 
@@ -64,7 +71,8 @@ export default Component.extend(ActionMixin, {
       const { name, email } = this.getProperties('name', 'email');
       const { hash } = this.model;
       const payload = filterModel(this.model);
-      const variables = { input: { name, email, hash, payload } };
+      const type = 'company';
+      const variables = { input: { name, email, hash, type, payload } };
 
       try {
         await this.apollo.mutate({ mutation, variables });

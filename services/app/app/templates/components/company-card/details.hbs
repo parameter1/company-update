@@ -22,7 +22,7 @@
       <div class="input-group">
         {{froala-editor
           content=teaser
-          update=(action (mut teaser))
+          update=(action (mut model.teaser) value="string")
           options=(hash attribution=false toolbarButtons=toolbarButtons)
         }}
       </div>
@@ -35,7 +35,7 @@
       <div class="input-group">
         {{froala-editor
           content=body
-          update=(action (mut body))
+          update=(action (mut model.body) value="string")
           options=(hash attribution=false toolbarButtons=toolbarButtons)
         }}
       </div>

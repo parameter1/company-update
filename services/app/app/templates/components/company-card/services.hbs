@@ -7,7 +7,7 @@
       <div class="input-group">
         {{froala-editor
           content=productSummary
-          update=(action (mut productSummary))
+          update=(action (mut model.productSummary) value="string")
           options=(hash attribution=false toolbarButtons=toolbarButtons)
         }}
       </div>
@@ -20,7 +20,7 @@
       <div class="input-group">
         {{froala-editor
           content=servicesProvided
-          update=(action (mut servicesProvided))
+          update=(action (mut model.servicesProvided) value="string")
           options=(hash attribution=false toolbarButtons=toolbarButtons)
         }}
       </div>
@@ -33,7 +33,7 @@
       <div class="input-group">
         {{froala-editor
           content=warrantyInformation
-          update=(action (mut warrantyInformation))
+          update=(action (mut model.warrantyInformation) value="string")
           options=(hash attribution=false toolbarButtons=toolbarButtons)
         }}
       </div>
@@ -46,7 +46,7 @@
       <div class="input-group">
         {{froala-editor
           content=trainingInformation
-          update=(action (mut trainingInformation))
+          update=(action (mut model.trainingInformation) value="string")
           options=(hash attribution=false toolbarButtons=toolbarButtons)
         }}
       </div>
@@ -59,7 +59,7 @@
       <div class="input-group">
         {{froala-editor
           content=serviceInformation
-          update=(action (mut serviceInformation))
+          update=(action (mut model.serviceInformation) value="string")
           options=(hash attribution=false toolbarButtons=toolbarButtons)
         }}
       </div>

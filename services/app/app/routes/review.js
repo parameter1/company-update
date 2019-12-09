@@ -12,7 +12,6 @@ export default Route.extend(AuthenticatedRouteMixin, {
     const submission = await this.apollo.query({ query, variables }, 'companyUpdateSubmission');
     const { hash } = submission;
     const company = await this.apollo.query({ query: companyQuery, variables: { input: { hash } } }, 'contentHash');
-    console.log({ company, submission });
     return { company, submission };
   },
 
