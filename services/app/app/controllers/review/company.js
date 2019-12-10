@@ -31,6 +31,11 @@ export default Controller.extend(ActionMixin, {
   isPublishing: false,
   isDiscarding: false,
 
+  isDisabled: computed('isActionRunning', 'model.submission.reviewed', function() {
+    if (this.get('model.submission.reviewed')) return true;
+    return this.get('isActionRunning');
+  }),
+
   payload: computed('model.submission.payload', function() {
     const payload = this.get('model.submission.payload') || {};
     const company = this.get('model.company');

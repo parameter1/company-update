@@ -63,7 +63,7 @@
         label="Publish"
         runningLabel="Publishing..."
         class="btn-primary mr-1"
-        disabled=isActionRunning
+        disabled=isDisabled
         isRunning=isPublishing
         onConfirm=(action "publish")
       }}
@@ -72,7 +72,7 @@
         label="Discard"
         runningLabel="Discarding..."
         class="btn-danger mr-1"
-        disabled=isActionRunning
+        disabled=isDisabled
         isRunning=isDiscarding
         onConfirm=(action "discard")
       }}
