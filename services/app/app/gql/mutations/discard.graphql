@@ -1,0 +1,3 @@
+mutation Discard($id: String!) {
+	companyUpdateDiscard(id: $id)
+}

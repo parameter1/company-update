@@ -932,6 +932,19 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@base-cms/object-path@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@base-cms/object-path/-/object-path-1.0.0.tgz#b6fc6faafa9834ee11c0822bdb301739485f191f"
+  integrity sha512-A7iSPJwos+u13fMXwzny6/DBOI4LPhwvkpAo7NUgwv/LtGcpxI3svpk/PPaKEuOedjthpUCLiNjYCL8v1nFkCw==
+  dependencies:
+    "@base-cms/utils" "^1.0.0"
+    object-path "^0.11.4"
+
+"@base-cms/utils@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@base-cms/utils/-/utils-1.0.0.tgz#9e872c8c427ba0bbca08883a8bd8f65599eb18e6"
+  integrity sha512-ExCwdJkiZa9c+QoYfHWPCrlQaIFgP+xR1N+KzbzGE0ppO0oND3VBx9seJI68HuBRqXLiPeHk2I8raCAGgn/z0g==
+
 "@cnakazawa/watch@^1.0.3":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@cnakazawa/watch/-/watch-1.0.3.tgz#099139eaec7ebf07a27c1786a3ff64f39464d2ef"

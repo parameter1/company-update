@@ -55,6 +55,10 @@ module.exports = {
       await complete(id);
       return 'ok';
     },
+    companyUpdateDiscard: async (_, { id }) => {
+      await complete(id);
+      return 'ok';
+    },
     companyUpdateSingleUpload: async (_, { file }) => {
       const { createReadStream, filename, mimetype } = await file;
       const Bucket = AWS_S3_BUCKET;

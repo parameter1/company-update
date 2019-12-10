@@ -1,5 +1,6 @@
 query CompanyUpdateContentHashQuery($input: ContentHashQueryInput!) {
   contentHash(input: $input) {
+    id
     name
     teaser
     hash
@@ -12,6 +13,13 @@ query CompanyUpdateContentHashQuery($input: ContentHashQueryInput!) {
       section {
         id
         name
+      }
+    }
+    images {
+      edges {
+        node {
+          id
+        }
       }
     }
     ... on ContentCompany {
