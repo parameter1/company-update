@@ -56,14 +56,14 @@ module.exports = {
       return 'ok';
     },
     companyUpdateSingleUpload: async (_, { file }) => {
-      const { stream, filename, mimetype } = await file;
+      const { createReadStream, filename, mimetype } = await file;
       const Bucket = AWS_S3_BUCKET;
       const Key = `${TENANT_KEY}/${uuid()}/${filename}`;
 
       const response = await s3Client.upload({
         Bucket,
         Key,
-        Body: stream,
+        Body: createReadStream(),
         ACL: 'public-read',
         ContentType: mimetype,
       }).promise();
