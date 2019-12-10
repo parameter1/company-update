@@ -9,6 +9,7 @@ import imageUpload from '../../gql/mutations/image-upload';
 import imageUpdate from '../../gql/mutations/image-update';
 import complete from '../../gql/mutations/complete';
 import discard from '../../gql/mutations/discard';
+import eq from '../../utils/eq';
 
 const buildMutation = (payload = {}) => {
   return gql`
@@ -42,7 +43,7 @@ export default Controller.extend(ActionMixin, {
     return Object.keys(payload).reduce((obj, k) => {
       const pv = get(payload, k);
       const cv = get(company, k);
-      return pv == cv ? obj : { ...obj, [k]: true };
+      return eq(pv, cv) ? obj : { ...obj, [k]: true };
     }, {});
   }),
 
