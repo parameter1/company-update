@@ -1,6 +1,7 @@
 import Route from '@ember/routing/route';
 import { queryManager } from 'ember-apollo-client';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
+import { get, set } from '@ember/object';
 import query from 'cuf/gql/queries/review';
 import companyQuery from 'cuf/gql/queries/company';
 
@@ -20,6 +21,8 @@ export default Route.extend(AuthenticatedRouteMixin, {
       variables: { input: { hash } },
       fetchPolicy: 'network-only'
     }, 'contentHash');
+
+    set(company, 'logo', get(company, 'primaryImage.src'));
     return { company, submission };
   },
 });

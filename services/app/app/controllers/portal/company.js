@@ -24,7 +24,7 @@ export default Controller.extend({
 
   actions: {
     showModal() {
-      if (this.get('logo') !== this.get('model.primaryImage.src')) this.set('model.logo', this.get('logo'));
+      this.set('model.logo', this.get('model.primaryImage.src'));
       this.set('isModalOpen', true);
     },
     transitionToThankYou() {
