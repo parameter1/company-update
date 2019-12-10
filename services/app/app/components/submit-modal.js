@@ -75,13 +75,13 @@ export default Component.extend(ActionMixin, {
       const variables = { input: { name, email, hash, type, payload } };
 
       try {
-        await this.apollo.mutate({ mutation, variables });
+        await this.apollo.mutate({ mutation, variables, refetchQueries: ['CompanyUpdateContentHashQuery'] });
         if (!this.isDestroyed) this.set('isOpen', false);
         this.notify.info('Changes submitted');
         this.onComplete();
       } catch (e) {
         error(e);
-        this.notify.alert('Something went wrong -- please review your information and try again!', { closeAfter: null });
+        this.notify.error('Something went wrong -- please review your information and try again!', { autoClear: false });
       } finally {
         this.endAction();
       }

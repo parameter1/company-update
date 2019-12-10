@@ -22,8 +22,7 @@
       {{/if}}
       {{#if session.isAuthenticated}}
         {{#link-to "list" class="nav-item nav-link"}}List{{/link-to}}
-        {{#link-to "portal.company" "58b7a0cdc773b271b8ac5ed88ae3b437" class="nav-item nav-link"}}TEST: Submit{{/link-to}}
-        {{#link-to "review.company" "5dee885cd4f19e003dfa59a7" class="nav-item nav-link"}}TEST: Review{{/link-to}}
+        {{#link-to "portal" "58b7a0cdc773b271b8ac5ed88ae3b437" class="nav-item nav-link"}}TEST: Portal{{/link-to}}
         {{#link-to "logout" class="nav-item nav-link"}}Log out{{/link-to}}
       {{/if}}
     </ul>
@@ -31,7 +30,9 @@
   {{loading-progress class="bg-dark" progressBackground="bg-success"}}
 </div>
 
-{{ember-notify messageStyle="bootstrap"}}
+<div id="notification-wrapper">
+  {{notification-container position="top-right"}}
+</div>
 
 <div class="container my-3">
   <div class="row">

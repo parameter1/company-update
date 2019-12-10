@@ -7,6 +7,7 @@ const { error } = console;
 
 export default Component.extend(ActionMixin, {
   apollo: inject(),
+  notify: inject(),
   logo: null,
 
   actions: {
@@ -22,7 +23,7 @@ export default Component.extend(ActionMixin, {
       } catch (e) {
         this.set('logo', logo);
         error('upload error', e, file);
-        this.get('notify').alert('Something went wrong -- please try again!');
+        this.notify.error('Something went wrong -- please try again!', { autoClear: false });
       } finally {
         file.queue.remove(file);
         this.endAction();

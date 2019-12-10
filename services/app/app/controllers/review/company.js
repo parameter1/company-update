@@ -94,7 +94,7 @@ export default Controller.extend(ActionMixin, {
         this.transitionToRoute('list');
       } catch (e) {
         const msg = get(e, 'errors.0.message');
-        this.notify.error(msg || 'Unable to submit', { closeAfter: null });
+        this.notify.error(msg || 'Unable to submit', { autoClear: false });
       } finally {
         set(this, 'isPublishing', false);
         this.endAction();
@@ -109,7 +109,7 @@ export default Controller.extend(ActionMixin, {
         this.transitionToRoute('list');
       } catch (e) {
         const msg = get(e, 'errors.0.message');
-        this.notify.error(msg || 'Unable to discard', { closeAfter: null });
+        this.notify.error(msg || 'Unable to discard', { autoClear: false });
       } finally {
         set(this, 'isDiscarding', false);
         this.endAction();
