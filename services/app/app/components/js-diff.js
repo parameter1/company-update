@@ -6,6 +6,7 @@ export default Component.extend({
   lines: true,
   original: null,
   updated: null,
+  showDiff: true,
 
   classNames: ['form-control'],
 

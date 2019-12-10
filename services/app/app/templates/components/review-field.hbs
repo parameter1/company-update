@@ -1,9 +1,18 @@
 {{#if (eq fieldKey "logo")}}
-  <div class="form-control {{if (eq original updated) "" "border-success"}}">
-    <img src={{ updated }} class="img-fluid" alt="company logo">
+  <div class="form-control">
+    {{#if (eq original updated)}}
+      <img src={{ original }} class="img-fluid" alt="company logo">
+    {{else}}
+      {{#if isChecked}}
+        <img src={{ original }} class="img-fluid border-danger border p-1" alt="original company logo">
+        <img src={{ updated }} class="img-fluid border-success border p-1 mt-1" alt="updated company logo">
+      {{else}}
+        <img src={{ original }} class="img-fluid" alt="company logo">
+      {{/if}}
+    {{/if}}
   </div>
 {{else}}
-  {{js-diff original=original updated=updated}}
+  {{js-diff original=original updated=updated showDiff=isChecked}}
 {{/if}}
 
 {{#if approvable}}
