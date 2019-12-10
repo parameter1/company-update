@@ -9,13 +9,17 @@ export default Route.extend(AuthenticatedRouteMixin, {
 
   async model({ id }) {
     const variables = { id };
-    const submission = await this.apollo.query({ query, variables }, 'companyUpdateSubmission');
+    const submission = await this.apollo.query({ query, variables, fetchPolicy: 'network-only' }, 'companyUpdateSubmission');
     if (!submission.parsed) {
       submission.payload = JSON.parse(submission.payload);
       submission.parsed = true;
     }
     const { hash } = submission;
-    const company = await this.apollo.query({ query: companyQuery, variables: { input: { hash } } }, 'contentHash');
+    const company = await this.apollo.query({
+      query: companyQuery,
+      variables: { input: { hash } },
+      fetchPolicy: 'network-only'
+    }, 'contentHash');
     return { company, submission };
   },
 });

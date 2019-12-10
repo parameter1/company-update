@@ -7,7 +7,7 @@ export default Route.extend({
 
   async model({ hash }) {
     const variables = { input: { hash } };
-    const model = await this.apollo.query({ query, variables }, 'contentHash');
+    const model = await this.apollo.query({ query, variables, fetchPolicy: 'network-only' }, 'contentHash');
     if (!model) throw new Error('Invalid URL');
     return model;
   },

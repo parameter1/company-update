@@ -1,16 +1,12 @@
 import Route from '@ember/routing/route';
 import { queryManager } from 'ember-apollo-client';
-import { get, set } from '@ember/object';
+import { copy } from '@ember/object/internals';
 
 export default Route.extend({
   apollo: queryManager(),
 
-  model() {
-    return this.modelFor('portal');
-  },
-  afterModel(model) {
-    const schedules = get(model, 'websiteSchedules') || [];
-    const sectionIds = schedules.map((s) => get(s, 'section.id'));
-    set(model, 'sectionIds', sectionIds);
+  async model() {
+    const company = this.modelFor('portal');
+    return copy(company);
   },
 });
