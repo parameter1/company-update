@@ -3,9 +3,12 @@ const { setContext } = require('apollo-link-context');
 const { onError } = require('apollo-link-error');
 const fetch = require('node-fetch');
 const { makeRemoteExecutableSchema, introspectSchema } = require('graphql-tools');
-const { GRAPHQL_URI, TENANT_KEY } = require('../env');
+const { GRAPHQL_URI, TENANT_KEY, BASE4_API_URL } = require('../env');
 
-const headers = { 'X-Tenant-Key': TENANT_KEY };
+const headers = {
+  'x-tenant-key': TENANT_KEY,
+  'x-base4-api-uri': BASE4_API_URL,
+};
 
 const httpLink = new HttpLink({
   uri: GRAPHQL_URI,

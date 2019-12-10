@@ -47,17 +47,22 @@ services:
       - "9900:80"
     environment:
       <<: *env
+      # Core
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_S3_BUCKET: ${AWS_S3_BUCKET-cuf-uploads}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
       MONGO_DSN: ${MONGO_DSN-mongodb://mongo/cuf}
-      GRAPHQL_URI: ${GRAPHQL_URI}
-      TENANT_KEY: ${TENANT_KEY}
-      PLATFORM_URI: ${PLATFORM_URI}
-      PLATFORM_LOGO: ${PLATFORM_LOGO}
-      PLATFORM_SECTIONS: ${PLATFORM_SECTIONS}
+      NOTIFICATION_TO: ${NOTIFICATION_TO-developer@endeavorb2b.com}
       SENDGRID_API_KEY: ${SENDGRID_API_KEY}
       SENDGRID_FROM: ${SENDGRID_FROM-no-reply@baseplatform.io}
-      NOTIFICATION_TO: ${NOTIFICATION_TO}
-      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
-      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      # Tenant-specific
+      BASE4_API_URL: ${BASE4_API_URL}
+      GRAPHQL_URI: ${GRAPHQL_URI}
+      TENANT_KEY: ${TENANT_KEY}
+      # Optional configs
+      LOGO_URL: ${LOGO_URL}
+      LEADERSHIP_SECTIONS: ${LEADERSHIP_SECTIONS-[]}
+      CONTACT_URL: ${CONTACT_URL}
 
   mongo:
     tty: true

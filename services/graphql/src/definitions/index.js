@@ -32,10 +32,9 @@ module.exports = gql`
   }
 
   type CompanyUpdateConfiguration {
-    domain: String!
-    logo: String!
-    ids: [Int!]!
-    isPmmi: Boolean!
+    logoUrl: String
+    contactUrl: String
+    leadershipSectionIds: [Int!]
   }
 
   type CompanyUpdateSubmission {

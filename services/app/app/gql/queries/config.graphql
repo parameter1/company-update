@@ -1,8 +1,7 @@
 query CompanyUpdateConfig {
   companyUpdateConfig {
-    domain
-    logo
-    ids
-    isPmmi
+    contactUrl
+    leadershipSectionIds
+    logoUrl
   }
 }

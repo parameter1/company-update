@@ -12,18 +12,17 @@ const {
 } = require('../mongodb');
 
 const {
-  PLATFORM_URI,
-  PLATFORM_LOGO,
-  PLATFORM_SECTIONS,
+  LOGO_URL,
+  CONTACT_URL,
+  LEADERSHIP_SECTIONS,
   TENANT_KEY,
   AWS_S3_BUCKET,
 } = env;
 
 const config = {
-  domain: PLATFORM_URI,
-  logo: PLATFORM_LOGO,
-  ids: PLATFORM_SECTIONS,
-  isPmmi: /^pmmi_/.test(TENANT_KEY),
+  contactUrl: CONTACT_URL,
+  leadershipSectionIds: LEADERSHIP_SECTIONS,
+  logoUrl: LOGO_URL,
 };
 
 module.exports = {
