@@ -5,9 +5,11 @@ import query from 'cuf/gql/queries/company';
 export default Route.extend({
   apollo: queryManager(),
 
-  model({ hash }) {
+  async model({ hash }) {
     const variables = { input: { hash } };
-    return this.apollo.query({ query, variables }, 'contentHash');
+    const model = await this.apollo.query({ query, variables }, 'contentHash');
+    if (!model) throw new Error('Invalid URL');
+    return model;
   },
 
   renderTemplate() {

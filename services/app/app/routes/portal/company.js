@@ -9,7 +9,8 @@ export default Route.extend({
     return this.modelFor('portal');
   },
   afterModel(model) {
-    const sectionIds = get(model, 'websiteSchedules').map(({ section }) => section.id);
+    const schedules = get(model, 'websiteSchedules') || [];
+    const sectionIds = schedules.map((s) => get(s, 'section.id'));
     set(model, 'sectionIds', sectionIds);
   },
 });
