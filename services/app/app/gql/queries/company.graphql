@@ -2,7 +2,7 @@ query CompanyUpdateContentHashQuery($input: ContentHashQueryInput!) {
   contentHash(input: $input) {
     id
     name
-    teaser
+    teaser(input: { maxLength: 0 })
     hash
     type
     body
