@@ -54,25 +54,28 @@
   <div class="col-md-6 offset-md-3 text-center">
     {{#if model.submission.reviewed}}
       <div class="alert alert-light">
-        <h4 class="alert-heading">Already complete</h4>
-        <p class="mb-0">This submission has already been reviewed and published to Base.</p>
+        <h4 class="alert-heading">Published to Base</h4>
+        <p class="mb-0">This submission has already been reviewed and published.</p>
       </div>
     {{else}}
-      {{#if disabled}}
-        <button class="btn btn-primary btn-disabled" disabled>
-          {{entypo-icon "check"}} <span class="d-none d-md-inline">Publish to Base</span>
-        </button>
-        <button class="btn btn-danger btn-disabled" disabled>
-          {{entypo-icon "cross"}} <span class="d-none d-md-inline">Discard request</span>
-        </button>
-      {{else}}
-        <button class="btn btn-primary" {{ action "publish" }}>
-          {{entypo-icon "check"}} <span class="d-none d-md-inline">Publish to Base</span>
-        </button>
-        <button class="btn btn-danger" {{ action "delete" }}>
-          {{entypo-icon "cross"}} <span class="d-none d-md-inline">Discard request</span>
-        </button>
-      {{/if}}
+      {{confirm-button
+        icon="check"
+        label="Publish"
+        runningLabel="Publishing..."
+        class="btn-primary mr-1"
+        disabled=isActionRunning
+        isRunning=isPublishing
+        onConfirm=(action "publish")
+      }}
+      {{confirm-button
+        icon="cross"
+        label="Discard"
+        runningLabel="Discarding..."
+        class="btn-danger mr-1"
+        disabled=isActionRunning
+        isRunning=isDiscarding
+        onConfirm=(action "discard")
+      }}
     {{/if}}
   </div>
 </div>
