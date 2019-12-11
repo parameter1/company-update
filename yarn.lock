@@ -6124,6 +6124,13 @@ dedent@^0.7.0:
   resolved "https://registry.yarnpkg.com/dedent/-/dedent-0.7.0.tgz#2495ddbaf6eb874abb0e1be9df22d2e5a544326c"
   integrity sha1-JJXduvbrh0q7Dhvp3yLS5aVEMmw=
 
+deep-assign@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/deep-assign/-/deep-assign-3.0.0.tgz#c8e4c4d401cba25550a2f0f486a2e75bc5f219a2"
+  integrity sha512-YX2i9XjJ7h5q/aQ/IM9PEwEnDqETAIYbggmdDB3HLTlSgo1CxPsj6pvhPG68rq6SVE0+p+6Ywsm5fTYNrYtBWw==
+  dependencies:
+    is-obj "^1.0.0"
+
 deep-extend@^0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/deep-extend/-/deep-extend-0.6.0.tgz#c4fa7c95404a17a9c3e8ca7e1537312b736330ac"
@@ -7201,15 +7208,6 @@ ember-moment@^7.8.0:
     ember-cli-babel "^6.7.2"
     ember-getowner-polyfill "^2.2.0"
     ember-macro-helpers "^2.1.0"
-
-ember-notify@^5.3.0:
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/ember-notify/-/ember-notify-5.3.0.tgz#8f798b7e8bbb9cca2511a15c34838c1afdc53cf3"
-  integrity sha512-Yj7tpuBrla5PvOITWflO8aEugB0Vz57YCu9gQ3WqYXRuIfO+A0EDTv+oJ3zxzzWLO1b2PeVotTIW107PNlPYOQ==
-  dependencies:
-    ember-cli-babel "^6.6.0"
-    ember-cli-htmlbars "^2.0.1"
-    object-assign "^4.1.0"
 
 ember-power-select@^3.0.5:
   version "3.0.5"
@@ -8946,6 +8944,11 @@ graphql-tools@^4.0.0:
     deprecated-decorator "^0.1.6"
     iterall "^1.1.3"
     uuid "^3.1.0"
+
+graphql-type-json@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/graphql-type-json/-/graphql-type-json-0.3.1.tgz#47fca2b1fa7adc0758d165b33580d7be7a6cf548"
+  integrity sha512-1lPkUXQ2L8o+ERLzVAuc3rzc/E6pGF+6HnjihCVTK0VzR0jCuUd92FqNxoHdfILXqOn2L6b4y47TBxiPyieUVA==
 
 graphql-upload@^8.0.2:
   version "8.1.0"
