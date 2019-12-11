@@ -14,19 +14,21 @@ const {
 const {
   LOGO_URL,
   CONTACT_URL,
-  LEADERSHIP_SECTIONS,
+  LEADERSHIP_SECTION_IDS,
+  LEADERSHIP_SECTION_MAX,
   TENANT_KEY,
   AWS_S3_BUCKET,
 } = env;
 
 const config = {
   contactUrl: CONTACT_URL,
-  leadershipSectionIds: LEADERSHIP_SECTIONS,
   logoUrl: LOGO_URL,
+  leadershipSectionIds: LEADERSHIP_SECTION_IDS,
+  leadershipSectionMax: LEADERSHIP_SECTION_MAX,
 };
 
 module.exports = {
-  CompanyUpdateDate: DateType,
+  Date: DateType,
 
   CompanyUpdateSubmission: {
     id: ({ _id }) => _id.toString(),

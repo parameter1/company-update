@@ -5,6 +5,7 @@ const {
   json,
   url,
   str,
+  num,
 } = require('envalid');
 
 const nonemptystr = makeValidator((v) => {
@@ -32,6 +33,7 @@ module.exports = cleanEnv(process.env, {
   TENANT_KEY: nonemptystr({ desc: 'The tenant key to use with the BaseCMS GraphQL instance' }),
   // Optional settings
   LOGO_URL: str({ desc: 'If configured, will be replace the branding in the navigation.' }),
-  LEADERSHIP_SECTIONS: json({ desc: 'A JSON array of the top-level platform section IDs for this tenant.', default: [] }),
+  LEADERSHIP_SECTION_IDS: json({ desc: 'A JSON array of the top-level platform section IDs for this tenant.', default: [] }),
+  LEADERSHIP_SECTION_MAX: num({ desc: 'The maximum number of leadership sections that can be selected per site.', default: 3 }),
   CONTACT_URL: str({ desc: 'If configured, the URL that will be added to the navigation for support requests.' }),
 });

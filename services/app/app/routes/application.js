@@ -13,16 +13,16 @@ export default Route.extend(ApplicationRouteMixin, {
     return this.apollo.query({ query }, 'companyUpdateConfig');
   },
   afterModel({
-    domain,
-    logo,
-    ids,
-    isPmmi,
+    contactUrl,
+    logoUrl,
+    leadershipSectionIds,
+    leadershipSectionMax,
   }) {
     this.config.load({
-      domain,
-      logo,
-      ids,
-      isPmmi,
+      contactUrl,
+      logoUrl,
+      leadershipSectionIds,
+      leadershipSectionMax,
     });
   },
 });
