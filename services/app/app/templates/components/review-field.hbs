@@ -11,6 +11,25 @@
       {{/if}}
     {{/if}}
   </div>
+{{else if (eq fieldKey "socialLinks")}}
+  {{#if (eq subField "provider")}}
+    <div class="form-control">
+      {{#if (eq original updated)}}
+        {{entypo-icon original class="mr-2"}} {{ original }}
+      {{else}}
+        {{#if isChecked}}
+          {{#if original}}
+            <del class="text-danger">{{entypo-icon original class="mr-2"}} {{ original }}</del>
+          {{/if}}
+          <ins class="text-success">{{entypo-icon updated class="mr-2"}} {{ updated }}</ins>
+        {{else}}
+          {{entypo-icon original class="mr-2"}} {{ original }}
+        {{/if}}
+      {{/if}}
+    </div>
+  {{else}}
+    {{js-diff original=original updated=updated showDiff=isChecked}}
+  {{/if}}
 {{else}}
   {{js-diff original=original updated=updated showDiff=isChecked}}
 {{/if}}

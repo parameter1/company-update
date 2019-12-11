@@ -3,22 +3,22 @@
   {{#each links as |link|}}
     <div class="row">
       <div class="form-group col-md-4">
-        <label for="website-input">Provider</label>
         {{review-field
           original=link.original.provider
           updated=link.updated.provider
           toggleField=toggleField
           fieldKey="socialLinks"
+          subField="provider"
           enabled=payload.socialLinks
         }}
       </div>
-      <div class="form-group col">
-        <label for="website-input">URL</label>
+      <div class="form-group col-md-8">
         {{review-field
           original=link.original.url
           updated=link.updated.url
           toggleField=toggleField
           fieldKey="socialLinks"
+          subField="url"
           enabled=payload.socialLinks
         }}
       </div>
