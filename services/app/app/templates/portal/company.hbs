@@ -1,8 +1,5 @@
 <div class="card mb-4">
   <div class="card-body">
-    <button class="btn btn-success pull-right" {{ action "showModal" }}>
-      {{entypo-icon "save"}} Save Changes
-    </button>
     <p class="lead">Review your company details.</p>
     <p>Make any needed changes on the fields below.</p>
     <p>When you are finished making changes, click the "Save Changes" button.</p>
@@ -28,4 +25,10 @@
   </div>
 </div>
 
-{{ outlet }}
+<div class="fixed-bottom fixed-right card">
+  <div class="card-body">
+    <button class="btn btn-success pull-right" {{ action "showModal" }}>
+      {{entypo-icon "save"}} Save Changes
+    </button>
+  </div>
+</div>

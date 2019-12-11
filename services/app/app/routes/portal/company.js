@@ -7,6 +7,7 @@ export default Route.extend({
 
   async model() {
     const company = this.modelFor('portal');
+    // @todo; this doesn't deep clone arrays correctly (social links)
     return copy(company);
   },
 });
