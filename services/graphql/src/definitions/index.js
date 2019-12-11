@@ -1,17 +1,17 @@
 const { gql } = require('apollo-server');
 const company = require('./company');
+const config = require('./config');
 const leadership = require('./leadership');
+const list = require('./list');
 
 module.exports = gql`
 
   scalar Upload
   scalar Date
+  scalar JSON
 
   type Query {
     ping: String!
-    companyUpdateConfig: CompanyUpdateConfiguration!
-    companyUpdateSubmissions(input: CompanyUpdateSubmissionsInput = {}): [CompanyUpdateSubmission!]!
-    companyUpdateSubmissionCount: Int!
   }
 
   type Mutation {
@@ -31,18 +31,9 @@ module.exports = gql`
     leadership
   }
 
-  type CompanyUpdateConfiguration {
-    logoUrl: String
-    contactUrl: String
-    leadershipSectionIds: [Int!]
-    leadershipSectionMax: Int!
-  }
-
-  input CompanyUpdateSubmissionsInput {
-    all: Boolean = false
-  }
-
   ${company}
+  ${config}
   ${leadership}
+  ${list}
 
 `;
