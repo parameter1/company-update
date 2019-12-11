@@ -12,8 +12,8 @@ export default Controller.extend({
       this.set('model.logo', this.get('model.primaryImage.src'));
       this.set('isModalOpen', true);
     },
-    transitionToThankYou() {
-      this.transitionToRoute('portal.thanks');
+    transitionToPortal() {
+      this.transitionToRoute('portal');
     },
   }
 });

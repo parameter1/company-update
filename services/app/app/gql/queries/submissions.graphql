@@ -1,5 +1,5 @@
-query CompanyUpdateListSubmissions {
-  companyUpdateSubmissions {
+query CompanyUpdateListSubmissions($input: CompanyUpdateSubmissionsInput) {
+  companyUpdateSubmissions(input: $input) {
     id
     submitted
     companyName

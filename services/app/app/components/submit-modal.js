@@ -53,10 +53,11 @@ const filterModel = (model = {}) => {
 export default Component.extend(ActionMixin, {
   apollo: queryManager(),
   notify: inject(),
+  session: inject(),
 
   model: null,
-  name: null,
-  email: null,
+  name: computed.reads('session.data.authenticated.name'),
+  email: computed.reads('session.data.authenticated.email'),
 
   isOpen: false,
   isInvalid: computed('name', 'email', function() {
@@ -77,7 +78,7 @@ export default Component.extend(ActionMixin, {
       try {
         await this.apollo.mutate({ mutation, variables, refetchQueries: ['CompanyUpdateContentHashQuery'] });
         if (!this.isDestroyed) this.set('isOpen', false);
-        this.notify.info('Changes submitted');
+        this.notify.info('Changes requested. You will recieve an email shortly confirming your request.', { clearDuration: 30000 });
         this.onComplete();
       } catch (e) {
         error(e);

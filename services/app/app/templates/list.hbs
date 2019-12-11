@@ -33,13 +33,28 @@
 
     {{/each}}
   </ul>
-  <div class="card-footer border-0 d-flex align-items-center justify-content-between">
+  <div class="card-footer">
     <span>Total Results: {{model.length}}</span>
+  </div>
+</div>
+
+<div class="card fixed-bottom fixed-right">
+  <div class="card-body">
     <button
       class="btn btn-primary"
       disabled={{isLoading}}
       {{ action (route-action "refresh") }}>
       {{entypo-icon "cycle"}} {{#if isLoading}}Loading...{{else}}Check for new submissions{{/if}}
+    </button>
+    <button
+      class="btn {{if all "btn-outline-success" "btn-outline-secondary"}}"
+      disabled={{isLoading}}
+      {{ action "toggleAll" }}>
+      {{#if all}}
+        {{entypo-icon "check"}} All
+      {{else}}
+        {{entypo-icon "cross"}} All
+      {{/if}}
     </button>
   </div>
 </div>

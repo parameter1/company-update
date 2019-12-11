@@ -11,10 +11,7 @@ Router.map(function() {
     this.route('products');
     this.route('contacts');
     this.route('categories');
-    this.route('company', function() {
-      this.route('categories');
-    });
-    this.route('thanks');
+    this.route('company');
   });
   this.route('review', { path: '/review/:id' }, function () {
     this.route('company');

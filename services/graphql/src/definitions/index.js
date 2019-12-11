@@ -8,7 +8,7 @@ module.exports = gql`
   type Query {
     companyUpdateConfig: CompanyUpdateConfiguration!
     companyUpdateSubmission(id: String!): CompanyUpdateSubmission!
-    companyUpdateSubmissions: [CompanyUpdateSubmission!]!
+    companyUpdateSubmissions(input: CompanyUpdateSubmissionsInput = {}): [CompanyUpdateSubmission!]!
     companyUpdateSubmissionCount: Int!
   }
 
@@ -48,6 +48,10 @@ module.exports = gql`
     companyName: String
     type: CompanyUpdateSubmissionType!
     payload: String!
+  }
+
+  input CompanyUpdateSubmissionsInput {
+    all: Boolean = false
   }
 
   input CompanyUpdateSubmissionInput {

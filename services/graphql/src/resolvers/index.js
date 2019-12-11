@@ -38,7 +38,7 @@ module.exports = {
   Query: {
     companyUpdateConfig: () => config,
     companyUpdateSubmission: (_, { id }) => retrieve(id),
-    companyUpdateSubmissions: () => submissions(),
+    companyUpdateSubmissions: (_, { input }) => submissions(input.all),
     companyUpdateSubmissionCount: () => submissionCount(),
   },
   Mutation: {
