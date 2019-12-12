@@ -24,7 +24,6 @@ export default Controller.extend({
       }
     },
     showModal() {
-      console.log('showModal');
       this.set('isModalOpen', true);
     },
     transitionToPortal() {

@@ -27,7 +27,7 @@ export default Route.extend({
 
   afterModel() {
     const { hash } = this.modelFor('portal');
-    this.controllerFor('portal.categories').set('hash', hash);
+    this.controllerFor('portal.leadership').set('hash', hash);
   },
 
 });
