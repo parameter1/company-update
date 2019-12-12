@@ -2,26 +2,20 @@ const { gql } = require('apollo-server');
 
 module.exports = gql`
 
-  scalar ObjectID
-
-  extend type Query {
-    companyUpdateLeadership: [CompanyUpdateLeadership!]!
+  extend type Mutation {
+    companyUpdateLeadershipSubmit(input: CompanyUpdateLeadershipMutationInput): CompanyUpdateSubmission!
   }
 
-  type CompanyUpdateLeadership {
-    site: WebsiteSite!
-    section: WebsiteSection!
-  }
-
-  type WebsiteSite {
-    id: ObjectID!
+  input CompanyUpdateLeadershipMutationInput {
     name: String!
-    host: String!
+    email: String!
+    hash: String!
+    type: CompanyUpdateSubmissionType = leadership
+    payload: CompanyUpdateLeadershipPayloadInput!
   }
 
-  type WebsiteSection {
-    id: Int!
-    name: String!
+  input CompanyUpdateLeadershipPayloadInput {
+    categories: [Int!]!
   }
 
 `;
