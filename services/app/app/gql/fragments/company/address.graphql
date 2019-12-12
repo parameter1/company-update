@@ -1,0 +1,8 @@
+fragment CompanyAddressFragment on ContentCompany {
+  address1
+  address2
+  city
+  state
+  zip
+  country
+}

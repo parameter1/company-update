@@ -1,0 +1,29 @@
+fragment CompanyContactsFragment on ContentCompany {
+  salesContacts {
+    edges {
+      node {
+        name
+        title
+        hash
+      }
+    }
+  }
+  publicContacts {
+    edges {
+      node {
+        name
+        title
+        hash
+      }
+    }
+  }
+  listingContacts {
+    edges {
+      node {
+        name
+        title
+        hash
+      }
+    }
+  }
+}

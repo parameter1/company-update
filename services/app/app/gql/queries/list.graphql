@@ -1,4 +1,4 @@
-query CompanyUpdateListSubmissions($input: CompanyUpdateSubmissionsInput) {
+query ContentUpdateListSubmissions($input: CompanyUpdateSubmissionsInput) {
   companyUpdateSubmissions(input: $input) {
     id
     submitted

@@ -1,0 +1,5 @@
+fragment CompanyLogoFragment on ContentCompany {
+  primaryImage {
+    src
+  }
+}

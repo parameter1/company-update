@@ -1,0 +1,7 @@
+fragment CompanyServicesFragment on ContentCompany {
+  productSummary
+  servicesProvided
+  warrantyInformation
+  trainingInformation
+  serviceInformation
+}

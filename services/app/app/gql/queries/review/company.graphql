@@ -1,0 +1,19 @@
+#import "../../fragments/company/list"
+#import "../../fragments/company/details"
+#import "../../fragments/company/address"
+#import "../../fragments/company/contact"
+#import "../../fragments/company/social"
+#import "../../fragments/company/services"
+#import "../../fragments/company/images"
+
+query ContentUpdateReviewCompany($input: ContentHashQueryInput!) {
+  contentHash(input: $input) {
+    ...CompanyListFragment
+    ...CompanyDetailsFragment
+    ...CompanyAddressFragment
+    ...CompanyContactFragment
+    ...CompanySocialFragment
+    ...CompanyServicesFragment
+    ...CompanyImagesFragment
+  }
+}

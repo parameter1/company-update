@@ -1,0 +1,12 @@
+#import "./logo"
+
+fragment CompanyImagesFragment on ContentCompany {
+  ...CompanyLogoFragment
+  images {
+    edges {
+      node {
+        id
+      }
+    }
+  }
+}

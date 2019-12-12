@@ -1,0 +1,7 @@
+#import "../fragments/company/list"
+
+query CompanyUpdatePortal($input: ContentHashQueryInput!) {
+  contentHash(input: $input) {
+    ...CompanyListFragment
+  }
+}

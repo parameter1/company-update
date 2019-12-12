@@ -1,0 +1,9 @@
+#import "../../fragments/company/list"
+#import "../../fragments/company/logo"
+
+query CompanyUpdateSubmissionsContent($input: ContentHashQueryInput!) {
+  contentHash(input: $input) {
+    ...CompanyListFragment
+    ...CompanyLogoFragment
+  }
+}

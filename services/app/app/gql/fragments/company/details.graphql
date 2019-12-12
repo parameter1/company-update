@@ -1,0 +1,9 @@
+fragment CompanyDetailsFragment on ContentCompany {
+  name
+  teaser(input: { maxLength: 0 })
+  body
+  numberOfEmployees
+  yearsInOperation
+  salesRegion
+  salesChannels
+}

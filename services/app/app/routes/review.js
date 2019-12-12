@@ -2,15 +2,15 @@ import Route from '@ember/routing/route';
 import { queryManager } from 'ember-apollo-client';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 import { get, set } from '@ember/object';
-import query from 'cuf/gql/queries/review';
-import companyQuery from 'cuf/gql/queries/company';
+import submissionQuery from 'cuf/gql/queries/review/submission';
+import companyQuery from 'cuf/gql/queries/review/company';
 
 export default Route.extend(AuthenticatedRouteMixin, {
   apollo: queryManager(),
 
   async model({ id }) {
     const variables = { id };
-    const submission = await this.apollo.query({ query, variables, fetchPolicy: 'network-only' }, 'companyUpdateSubmission');
+    const submission = await this.apollo.query({ query: submissionQuery, variables, fetchPolicy: 'network-only' }, 'companyUpdateSubmission');
     if (!submission.parsed) {
       submission.payload = JSON.parse(submission.payload);
       submission.parsed = true;
