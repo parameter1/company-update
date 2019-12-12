@@ -1,7 +1,6 @@
 import Controller from '@ember/controller';
 import { computed, get, set } from '@ember/object';
 import { inject } from '@ember/service';
-import { getAsArray } from '@base-cms/object-path';
 import gql from 'graphql-tag';
 
 import ActionMixin from '../../mixins/action';
@@ -53,7 +52,7 @@ export default Controller.extend(ActionMixin, {
     const { id } = await this.apollo.mutate({ mutation: imageUpload, variables: uploadVars }, 'createAssetImageFromUrl');
     const updateVars = { input: { id, payload: { isLogo: true } } };
     await this.apollo.mutate({ mutation: imageUpdate, variables: updateVars }, 'updateAssetImage');
-    const images = getAsArray(this, 'model.company.images').map(({ id }) => id);
+    const images = (get(this, 'model.company.images') || []).map(({ id }) => id);
     return {
       primaryImage: id,
       images: [...images, id]
@@ -107,6 +106,7 @@ export default Controller.extend(ActionMixin, {
         await this.apollo.mutate({ mutation: discard, variables: { id: get(this, 'model.submission.id') } });
         this.notify.warning('Changes have been discarded!');
         this.transitionToRoute('list');
+        set(this, 'model.submission.reviewed', true);
       } catch (e) {
         const msg = get(e, 'errors.0.message');
         this.notify.error(msg || 'Unable to discard', { autoClear: false });

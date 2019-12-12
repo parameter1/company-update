@@ -1,6 +1,5 @@
 import Component from '@ember/component';
 import { computed, get } from '@ember/object';
-import { getAsArray } from '@base-cms/object-path';
 import { inject } from '@ember/service';
 import ActionMixin from '../../mixins/action';
 
@@ -16,11 +15,11 @@ export default Component.extend(ActionMixin, {
   },
 
   section: computed('site.sections.edges.[]', function() {
-    const section = getAsArray(this, 'site.sections.edges').firstObject;
+    const section = (get(this, 'site.sections.edges') || []).firstObject;
     return get(section, 'node');
   }),
   sections: computed('section.children.edges.[]', function() {
-    const sections = getAsArray(this.get('section.children.edges'));
+    const sections = this.get('section.children.edges') || [];
     return sections.map(({ node }) => node);
   }),
 
