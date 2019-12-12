@@ -3,7 +3,6 @@
     <p class="lead">Review your company details.</p>
     <p>Make any needed changes on the fields below.</p>
     <p>When you are finished making changes, click the "Save Changes" button.</p>
-    {{ submit-modal isOpen=isModalOpen model=model fields=fields onComplete=(action "transitionToPortal")}}
   </div>
 </div>
 
@@ -27,8 +26,13 @@
 
 <div class="fixed-bottom fixed-right card">
   <div class="card-body">
-    <button class="btn btn-success pull-right" {{ action "showModal" }}>
+    <button disabled={{submitDisabled}} class="btn btn-success pull-right" {{ action "showModal" }}>
       {{entypo-icon "save"}} Save Changes
     </button>
   </div>
 </div>
+{{submit-modal/company
+  isOpen=isModalOpen
+  model=model
+  onComplete=(action "transitionToPortal")
+}}

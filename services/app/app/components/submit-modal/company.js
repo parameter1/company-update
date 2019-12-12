@@ -2,39 +2,10 @@ import Component from '@ember/component';
 import { computed, get } from '@ember/object';
 import { inject } from '@ember/service';
 import { queryManager } from 'ember-apollo-client';
-// import ComponentQueryManager from 'ember-apollo-client/mixins/component-query-manager';
 import ActionMixin from 'cuf/mixins/action';
-import mutation from 'cuf/gql/mutations/company';
+import mutation from 'cuf/gql/mutations/portal/company';
 
 const { error } = console;
-
-const fields = [
-  'address1',
-  'address2',
-  'teaser',
-  'body',
-  'city',
-  'country',
-  'email',
-  'fax',
-  'name',
-  'phone',
-  'state',
-  'tollfree',
-  'website',
-  'zip',
-  'logo',
-  'socialLinks',
-  'numberOfEmployees',
-  'trainingInformation',
-  'yearsInOperation',
-  'salesRegion',
-  'servicesProvided',
-  'salesChannels',
-  'productSummary',
-  'serviceInformation',
-  'warrantyInformation',
-];
 
 const getFiltered = (model, key) => {
   const v = get(model, key);
@@ -46,7 +17,7 @@ const getFiltered = (model, key) => {
 
 const filterModel = (model = {}) => {
   const payload = {};
-  fields.forEach(key => payload[key] = getFiltered(model, key));
+  Object.keys(model).forEach(key => payload[key] = getFiltered(model, key));
   return payload;
 };
 
