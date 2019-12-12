@@ -1,4 +1,4 @@
-#import "./logo"
+# import CompanyLogoFragment from "./logo"
 
 fragment CompanyImagesFragment on ContentCompany {
   ...CompanyLogoFragment
