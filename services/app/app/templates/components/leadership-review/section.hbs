@@ -1,0 +1,14 @@
+<div class="input-group interactable" {{action "toggle" section.id}}>
+  <div class="form-control">
+    {{ section.name}}
+  </div>
+  <div role="button" class="input-group-append">
+    <div class="input-group-text">
+      {{#if checked}}
+        {{entypo-icon "check" class="text-success"}}
+      {{else}}
+        {{entypo-icon "cross" class="text-danger"}}
+      {{/if}}
+    </div>
+  </div>
+</div>

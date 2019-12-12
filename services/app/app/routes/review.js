@@ -8,7 +8,8 @@ import companyQuery from 'cuf/gql/queries/review/company';
 export default Route.extend(AuthenticatedRouteMixin, {
   apollo: queryManager(),
 
-  async model({ id }) {
+  async model() {
+    const { id } = this.paramsFor('review');
     const variables = { id };
     const submission = await this.apollo.query({ query: submissionQuery, variables, fetchPolicy: 'network-only' }, 'companyUpdateSubmission');
     if (!submission.parsed) {
