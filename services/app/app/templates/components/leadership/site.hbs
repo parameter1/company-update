@@ -1,0 +1,29 @@
+<div class="card">
+  <h6 class="card-header">
+    {{ site.name }}
+    <small class="pull-right text-primary">
+      Selected: <span class="badge">{{ selected }} / {{ maximum }}</span>
+    </small>
+  </h6>
+  {{#if hasChildren}}
+    {{#each sections as |section|}}
+      {{leadership/category
+        category=section
+        selected=_selected
+        canSelect=canSelect
+        onToggle=(action "toggle")
+      }}
+    {{/each}}
+  {{else}}
+    <div class="card-body row">
+      {{#each sections as |section|}}
+        {{leadership/section
+          section=section
+          selected=_selected
+          canSelect=canSelect
+          onToggle=(action "toggle")
+        }}
+      {{/each}}
+    </div>
+  {{/if}}
+</div>
