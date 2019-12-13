@@ -9,6 +9,7 @@ module.exports = gql`
   type CompanyUpdateConfiguration {
     logoUrl: String
     contactUrl: String
+    leadershipSectionAlias: String!
     leadershipSectionMax: Int!
   }
 

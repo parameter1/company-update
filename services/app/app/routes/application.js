@@ -12,7 +12,17 @@ export default Route.extend(ApplicationRouteMixin, {
   model() {
     return this.apollo.query({ query }, 'companyUpdateConfig');
   },
-  afterModel({ contactUrl, logoUrl, leadershipSectionMax }) {
-    this.config.load({ contactUrl, logoUrl, leadershipSectionMax });
+  afterModel({
+    contactUrl,
+    logoUrl,
+    leadershipSectionAlias,
+    leadershipSectionMax,
+  }) {
+    this.config.load({
+      contactUrl,
+      logoUrl,
+      leadershipSectionAlias,
+      leadershipSectionMax,
+    });
   },
 });

@@ -16,6 +16,7 @@ export default Component.extend(ActionMixin, {
 
   section: computed('site.sections.edges.[]', function() {
     const section = (get(this, 'site.sections.edges') || []).firstObject;
+    if (!section) return null;
     return get(section, 'node');
   }),
   sections: computed('section.children.edges.[]', function() {
