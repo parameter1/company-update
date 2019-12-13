@@ -14,7 +14,7 @@ module.exports = gql`
   }
 
   type CompanyUpdateSubmission {
-    id: String!
+    id: ObjectID!
     submitted: Date!
     reviewed: Boolean!
     name: String!

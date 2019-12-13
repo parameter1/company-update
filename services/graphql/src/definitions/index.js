@@ -9,6 +9,7 @@ module.exports = gql`
   scalar Upload
   scalar Date
   scalar JSON
+  scalar ObjectID
 
   type Query {
     ping: String!
