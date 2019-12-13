@@ -18,6 +18,7 @@ export default Route.extend(AuthenticatedRouteMixin, ActionMixin, {
 
   async model({ all }) {
     this.startAction();
+    // @todo this won't refetch because of the mapped company query. Add backend resolver to return the company instead.
     const model = await this.apollo.watchQuery({ query: submissions, variables: { input: { all } }, fetchPolicy: 'cache-and-network' }, 'companyUpdateSubmissions');
     const merged = await Promise.all(model.map(async ({ hash, ...rest }) => {
       const variables = { input: { hash } };
