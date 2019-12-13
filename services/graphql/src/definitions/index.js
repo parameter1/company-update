@@ -1,6 +1,7 @@
 const { gql } = require('apollo-server');
 const company = require('./company');
 const config = require('./config');
+const contacts = require('./contacts');
 const leadership = require('./leadership');
 const list = require('./list');
 
@@ -34,6 +35,7 @@ module.exports = gql`
 
   ${company}
   ${config}
+  ${contacts}
   ${leadership}
   ${list}
 
