@@ -13,7 +13,8 @@ export default Controller.extend(ActionMixin, {
   isPublishing: false,
   isDiscarding: false,
 
-  isPublishDisabled: computed('isDisabled', 'selected.length', function() {
+  isPublishDisabled: computed('isDisabled', 'isConflicting', 'selected.length', function() {
+    if (this.get('isConflicting')) return true;
     if (!this.get('selected.length')) return true;
     return this.get('isDisabled');
   }),
@@ -21,6 +22,18 @@ export default Controller.extend(ActionMixin, {
   isDisabled: computed('isActionRunning', 'model.submission.reviewed', function() {
     if (this.get('model.submission.reviewed')) return true;
     return this.get('isActionRunning');
+  }),
+
+  isConflicting: computed('sectionIds.[]', 'selected.[]', function() {
+    const selected = this.get('selected');
+    const sectionIds = this.get('sectionIds');
+    return sectionIds.some(id => selected.includes(id));
+  }),
+
+  sectionIds: computed('model.{company.published,websiteSchedules.[]}', function() {
+    const published = this.get('model.company.published');
+    const schedules = this.get('model.company.websiteSchedules');
+    return schedules.filter(({ start }) => start === published).map(({ section: { id } }) => id);
   }),
 
   sites: computed('model.sections.[]', function() {
