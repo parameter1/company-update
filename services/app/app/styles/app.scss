@@ -142,3 +142,12 @@ body {
 .list-logo {
   height: 50px;
 }
+
+.card-header {
+  &--flexed {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}

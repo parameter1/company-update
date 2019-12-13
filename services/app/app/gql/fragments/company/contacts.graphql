@@ -1,28 +1,15 @@
 fragment CompanyContactsFragment on ContentCompany {
-  salesContacts {
+  publicContacts(input: { pagination: { limit: 0 } }) {
     edges {
       node {
-        name
+        id
+        firstName
+        lastName
         title
-        hash
-      }
-    }
-  }
-  publicContacts {
-    edges {
-      node {
-        name
-        title
-        hash
-      }
-    }
-  }
-  listingContacts {
-    edges {
-      node {
-        name
-        title
-        hash
+        primaryImage {
+          id
+          src
+        }
       }
     }
   }
