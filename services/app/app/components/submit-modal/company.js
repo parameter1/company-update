@@ -15,9 +15,38 @@ const getFiltered = (model, key) => {
   return v;
 };
 
+const fields = [
+  'name',
+  'address1',
+  'address2',
+  'city',
+  'state',
+  'zip',
+  'country',
+  'phone',
+  'tollfree',
+  'fax',
+  'website',
+  'type',
+  'email',
+  'body',
+  'socialLinks',
+  'teaser',
+  'numberOfEmployees',
+  'trainingInformation',
+  'yearsInOperation',
+  'salesRegion',
+  'servicesProvided',
+  'salesChannels',
+  'productSummary',
+  'serviceInformation',
+  'warrantyInformation',
+  'logo',
+];
+
 const filterModel = (model = {}) => {
   const payload = {};
-  Object.keys(model).forEach(key => payload[key] = getFiltered(model, key));
+  fields.forEach(key => payload[key] = getFiltered(model, key));
   return payload;
 };
 
