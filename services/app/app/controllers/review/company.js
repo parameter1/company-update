@@ -52,7 +52,7 @@ export default Controller.extend(ActionMixin, {
     const { id } = await this.apollo.mutate({ mutation: imageUpload, variables: uploadVars }, 'createAssetImageFromUrl');
     const updateVars = { input: { id, payload: { isLogo: true } } };
     await this.apollo.mutate({ mutation: imageUpdate, variables: updateVars }, 'updateAssetImage');
-    const images = (get(this, 'model.company.images') || []).map(({ id }) => id);
+    const images = (get(this, 'model.company.images.edges') || []).map(({ node }) => node.id);
     return {
       primaryImage: id,
       images: [...images, id]
@@ -103,7 +103,7 @@ export default Controller.extend(ActionMixin, {
       this.startAction()
       set(this, 'isDiscarding', true);
       try {
-        await this.apollo.mutate({ mutation: discard, variables: { id: get(this, 'model.submission.id') } });
+        await this.apollo.mutate({ mutation: discard, variables: { id: get(this, 'model.submission.id') }, refetchQueries: ['ContentUpdateListSubmissions'] });
         this.notify.warning('Changes have been discarded!');
         this.transitionToRoute('list');
         set(this, 'model.submission.reviewed', true);
