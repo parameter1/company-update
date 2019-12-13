@@ -12,6 +12,11 @@ export default Controller.extend(ActionMixin, {
   isPublishing: false,
   isDiscarding: false,
 
+  isPublishDisabled: computed('isDisabled', 'model.{categories.length}', function() {
+    if (!this.get('model.categories.length')) return true;
+    return this.get('isDisabled');
+  }),
+
   isDisabled: computed('isActionRunning', 'model.submission.reviewed', function() {
     if (this.get('model.submission.reviewed')) return true;
     return this.get('isActionRunning');
