@@ -1,4 +1,5 @@
 import Route from '@ember/routing/route';
+import { get } from '@ember/object';
 import { queryManager } from 'ember-apollo-client';
 import query from 'cuf/gql/queries/portal/contacts';
 
@@ -10,7 +11,10 @@ export default Route.extend({
     const variables = { input: { hash } };
     const model = await this.apollo.query({ query, variables, fetchPolicy: 'network-only' }, 'contentHash');
     if (!model) throw new Error('Invalid URL');
-    return model;
+    return get(model, 'publicContacts.edges').map(({ node }) => {
+      const { id, firstName, lastName, title, primaryImage } = node;
+      return { id, firstName, lastName, title, primaryImage };
+    });
   },
 
   afterModel() {

@@ -7,7 +7,7 @@
 </div>
 
 <div class="row">
-  {{#each contacts as |contact|}}
+  {{#each model as |contact|}}
     {{contact-card type="public" contact=contact onRemove=(action "remove" contact)}}
   {{/each}}
 </div>
@@ -26,6 +26,6 @@
 {{submit-modal/contacts
   isOpen=isModalOpen
   hash=hash
-  contacts=contacts
+  contacts=model
   onComplete=(action "transitionToPortal")
 }}
