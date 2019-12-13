@@ -26,7 +26,7 @@ const authLink = setContext((_, previousContext) => {
 });
 
 const errorLink = onError(({ graphQLErrors, response }) => {
-  if (graphQLErrors) response.errors = graphQLErrors.concat({ message: '' });
+  if (graphQLErrors && response) response.errors = graphQLErrors.concat({ message: '' });
 });
 
 const link = authLink
