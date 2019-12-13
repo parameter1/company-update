@@ -4,6 +4,7 @@ import { inject } from '@ember/service';
 
 import ActionMixin from '../../mixins/action';
 import discard from '../../gql/mutations/discard';
+import publish from '../../gql/mutations/review/leadership';
 
 export default Controller.extend(ActionMixin, {
   apollo: inject(),
@@ -12,8 +13,8 @@ export default Controller.extend(ActionMixin, {
   isPublishing: false,
   isDiscarding: false,
 
-  isPublishDisabled: computed('isDisabled', 'model.{categories.length}', function() {
-    if (!this.get('model.categories.length')) return true;
+  isPublishDisabled: computed('isDisabled', 'selected.length', function() {
+    if (!this.get('selected.length')) return true;
     return this.get('isDisabled');
   }),
 
@@ -27,12 +28,11 @@ export default Controller.extend(ActionMixin, {
     const sections = (get(sites, 'edges') || []).map(({ node }) => node);
     const reduced = sections.reduce((obj, section) => {
       const { id, name } = section.site;
-      if (obj[id]) {
-        obj[id].sections.pushObject(section);
-      } else {
-        obj[id] = { id, name, sections: [section] };
-      }
-      return obj;
+      const site = obj[id] || { id, name, sections: [] };
+      const { sections } = site;
+      // @todo pull parent.alias, compare to config.leadershipSectionAlias
+      // If not matching, use the parent as first layer and re-sort sections into parent buckets
+      return { ...obj, [id]: { ...site, sections: [ ...sections, section ] } };
     }, {});
     return Object.keys(reduced).map(id => reduced[id]).sort((a, b) => a.name.localeCompare(b.name));
   }),
@@ -52,10 +52,13 @@ export default Controller.extend(ActionMixin, {
       this.startAction();
       set(this, 'isPublishing', true);
       try {
-        const selected = this.get('selected');
-        console.log({ selected });
-        if (this.isPublishing) throw new Error('NYI');
+        const { id } = this.get('model.submission');
+        const contentId = this.get('model.company.id');
+        const sectionIds = this.get('selected');
+        const variables = { input: { contentId, sectionIds } };
+        await this.apollo.mutate({ mutation: publish, variables }, 'quickCreateWebsiteSchedules');
         set(this, 'model.submission.reviewed', true);
+        await this.apollo.mutate({ mutation: discard, variables: { id } });
         this.notify.success('Changes have been published!');
         this.transitionToRoute('list');
       } catch (e) {
