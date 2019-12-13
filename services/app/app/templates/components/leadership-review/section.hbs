@@ -1,8 +1,8 @@
-<div class="input-group interactable" {{action "toggle" section.id}}>
+<div class="input-group interactable" role="button" {{action "toggle" section.id}}>
   <div class="form-control {{if isConflicting "is-invalid" ""}}">
     {{ section.name}}
   </div>
-  <div role="button" class="input-group-append">
+  <div class="input-group-append">
     <div class="input-group-text {{if isConflicting "border-danger rounded-right" ""}}">
       {{#if checked}}
         {{entypo-icon "check" class=(if isConflicting "text-danger" "text-success")}}

@@ -23,6 +23,7 @@ module.exports = gql`
     companyName: String
     type: CompanyUpdateSubmissionType!
     payload: String!
+    label: String!
   }
 
   input CompanyUpdateSubmissionInput {

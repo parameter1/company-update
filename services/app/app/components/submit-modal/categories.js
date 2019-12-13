@@ -3,7 +3,7 @@ import { computed } from '@ember/object';
 import { inject } from '@ember/service';
 import { queryManager } from 'ember-apollo-client';
 import ActionMixin from 'cuf/mixins/action';
-import mutation from 'cuf/gql/mutations/leadership';
+import mutation from 'cuf/gql/mutations/portal/leadership';
 
 const { error } = console;
 
