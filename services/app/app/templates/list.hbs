@@ -15,9 +15,12 @@
         class="list-group-item list-group-item-action flex-column align-items-start"
       }}
         <div class="d-flex w-100 justify-content-between">
-          <div class="d-flex flex-column">
-            <h4 class="mb-1">{{ item.company.name }}</h4>
-            <span>{{submission-icon type=item.type}} {{item.type}}</span>
+          <div class="d-flex">
+            <img src={{ item.company.primaryImage.src }} class="mr-3 list-logo" alt="company logo">
+            <div class="d-flex flex-column">
+              <h4 class="mb-1">{{ item.company.name }}</h4>
+              <span>{{submission-icon type=item.type}} {{item.type}}</span>
+            </div>
           </div>
           <div class="d-none d-md-flex flex-column align-items-end text-right">
             <div class="mt-auto small">
