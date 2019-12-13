@@ -1,21 +1,21 @@
 {{#if (eq fieldKey "logo")}}
-  <div class="form-control">
-    {{#if (eq original updated)}}
-      <img src={{ original }} class="img-fluid" alt="company logo">
-    {{else}}
+  {{#if (not approvable)}}
+    <img src={{ value }} class="img-fluid" alt="company logo">
+  {{else}}
+    <div class="form-control">
       {{#if isChecked}}
         <img src={{ original }} class="img-fluid border-danger border p-1" alt="original company logo">
         <img src={{ updated }} class="img-fluid border-success border p-1 mt-1" alt="updated company logo">
       {{else}}
         <img src={{ original }} class="img-fluid" alt="company logo">
       {{/if}}
-    {{/if}}
-  </div>
+    </div>
+  {{/if}}
 {{else if (eq fieldKey "socialLinks")}}
   {{#if (eq subField "provider")}}
     <div class="form-control">
-      {{#if (eq original updated)}}
-        {{entypo-icon original class="mr-2"}} {{ original }}
+      {{#if (not approvable)}}
+        {{entypo-icon original class="mr-2"}} {{ value }}
       {{else}}
         {{#if isChecked}}
           {{#if original}}

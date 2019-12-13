@@ -8,8 +8,14 @@ export default Component.extend({
   updated: null,
   fieldKey: null,
   long: false,
+  _approvable: true,
 
-  approvable: computed('original', 'updated', function() {
+  value: computed('original', 'updated', function() {
+    return this.get('original') || this.get('updated');
+  }),
+
+  approvable: computed('_approvable', 'original', 'updated', function() {
+    if (!this.get('_approvable')) return false;
     return this.get('original') != this.get('updated');
   }),
 
