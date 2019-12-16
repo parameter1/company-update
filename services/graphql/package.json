@@ -6,6 +6,10 @@
   "main": "src/index.js",
   "author": "solocommand",
   "license": "MIT",
+  "scripts": {
+    "lint": "eslint --ext .js --max-warnings 5 ./",
+    "test": "yarn lint"
+  },
   "dependencies": {
     "@base-cms/object-path": "^1.0.0",
     "@limit0/graphql-custom-types": "^1.0.1",

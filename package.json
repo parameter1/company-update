@@ -9,6 +9,9 @@
     "packages/*",
     "services/*"
   ],
+  "scripts": {
+    "test": "lerna run test"
+  },
   "private": true,
   "devDependencies": {
     "eslint": "^6.6.0",

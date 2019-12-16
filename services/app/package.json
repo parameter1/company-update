@@ -15,7 +15,7 @@
     "lint:hbs": "ember-template-lint .",
     "lint:js": "eslint .",
     "start": "ember serve",
-    "test": "ember test"
+    "test": "yarn lint:js && yarn lint:hbs"
   },
   "devDependencies": {
     "@ember/jquery": "^0.6.1",
