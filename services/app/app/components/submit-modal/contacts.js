@@ -11,19 +11,8 @@ export default Component.extend(ActionMixin, {
   apollo: queryManager(),
   notify: inject(),
   session: inject(),
-  contacts: null,
   hash: null,
-
-  _contacts: computed('contacts.[]', function() {
-    const contacts = this.get('contacts') || [];
-    return contacts.map(({ id, firstName, lastName, title, primaryImage }) => ({
-      id,
-      firstName,
-      lastName,
-      title,
-      ...(primaryImage && { primaryImage: { src: primaryImage.src } }),
-    }));
-  }),
+  payload: null,
 
   name: computed.reads('session.data.authenticated.name'),
   email: computed.reads('session.data.authenticated.email'),
@@ -39,8 +28,7 @@ export default Component.extend(ActionMixin, {
     async submit() {
       this.startAction();
       const { name, email, hash } = this.getProperties('name', 'email', 'hash');
-      const contacts = this.get('_contacts');
-      const payload = { contacts };
+      const payload = this.get('payload');
       const type = 'contact';
       const variables = { input: { name, email, hash, type, payload } };
 

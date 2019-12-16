@@ -15,13 +15,23 @@ module.exports = gql`
   }
 
   input CompanyUpdateContactsPayloadInput {
-    contacts: [CompanyUpdateContactInput!]!
+    add: [CompanyUpdateContactCreateInput!]
+    remove: [Int!]
+    update: [CompanyUpdateContactUpdateInput!]
   }
 
-  input CompanyUpdateContactInput {
-    id: Int
+  input CompanyUpdateContactCreateInput {
+    id: String
     firstName: String!
     lastName: String!
+    title: String
+    primaryImage: CompanyUpdateContactImageInput = {}
+  }
+
+  input CompanyUpdateContactUpdateInput {
+    id: Int!
+    firstName: String
+    lastName: String
     title: String
     primaryImage: CompanyUpdateContactImageInput = {}
   }

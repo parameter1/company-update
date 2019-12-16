@@ -25,11 +25,13 @@ export default Component.extend({
     remove() {
       this.onRemove();
     },
-    onChange(field, value) {
-      if (this.get(`contact.${field}`) === this.get(`_contact.${field}`)) {
+    onChange(field) {
+      const original = this.get(`contact.${field}`);
+      const updated = this.get(`_contact.${field}`);
+      if (original === updated) {
         this.onReset(field);
       } else {
-        this.onUpdate(field, value);
+        this.onUpdate(field, updated);
       }
     },
     onUpload(src) {
