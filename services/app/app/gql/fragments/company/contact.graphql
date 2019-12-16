@@ -1,0 +1,8 @@
+fragment CompanyContactFragment on ContentCompany {
+  phone
+  tollfree
+  fax
+  mobile
+  website
+  email
+}

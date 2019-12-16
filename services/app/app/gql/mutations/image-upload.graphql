@@ -1,0 +1,6 @@
+mutation CreateAssetImageFromUrl($input: CreateAssetImageFromUrlMutationInput!) {
+  createAssetImageFromUrl(input: $input) {
+    id
+    src
+  }
+}

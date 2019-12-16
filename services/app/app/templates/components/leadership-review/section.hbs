@@ -1,0 +1,17 @@
+<div class="input-group interactable" role="button" {{action "toggle" section.id}}>
+  <div class="form-control {{if isConflicting "is-invalid" ""}}">
+    {{ section.name}}
+  </div>
+  <div class="input-group-append">
+    <div class="input-group-text {{if isConflicting "border-danger rounded-right" ""}}">
+      {{#if checked}}
+        {{entypo-icon "check" class=(if isConflicting "text-danger" "text-success")}}
+      {{else}}
+        {{entypo-icon "cross" class="text-danger"}}
+      {{/if}}
+    </div>
+  </div>
+  {{#if isConflicting}}
+    <div class="invalid-feedback text-center">This company is already scheduled to this section.</div>
+  {{/if}}
+</div>

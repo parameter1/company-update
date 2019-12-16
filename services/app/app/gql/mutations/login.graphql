@@ -1,0 +1,6 @@
+mutation Login($input: UserLoginMutationInput!) {
+	login(input: $input) {
+    expires
+    value
+  }
+}

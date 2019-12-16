@@ -1,0 +1,28 @@
+<form>
+  <div class="form-row">
+    <div class="col-md-3">
+      <PowerSelect
+        @dropdownClass="social-list"
+        @options={{choices}}
+        @selected={{selected}}
+        @onChange={{action (mut link.provider) value="value"}}
+        as |choice|
+      >
+        {{#if (eq choice.value "other")}}
+          {{entypo-icon "network" class="mr-2"}}
+        {{else}}
+          {{entypo-icon choice.value class="mr-2"}}
+        {{/if}}
+        {{choice.label}}
+      </PowerSelect>
+    </div>
+    <div class="col-md-8">
+      {{ input type="url" value=link.url class="form-control" placeholder="https://..."}}
+    </div>
+    <div class="col-md-1 d-flex align-items-center justify-content-end">
+      <button class="btn btn-secondary" {{action "remove"}}>
+        {{entypo-icon "minus"}}
+      </button>
+    </div>
+  </div>
+</form>

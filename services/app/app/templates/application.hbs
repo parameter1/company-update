@@ -1,1 +1,44 @@
-{{ outlet }}
+<div class="sticky-top z-depth-1-half">
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <span class="navbar-brand">
+      {{#if config.logoUrl}}
+        <img
+          src={{ config.logoUrl }}
+          class="navbar-brand__logo"
+          alt="Publisher Logo"
+        >
+      {{else}}
+        Content Portal
+      {{/if}}
+    </span>
+    <div class="navbar-nav mr-auto">
+      {{outlet "nav"}}
+    </div>
+    <ul class="navbar-nav ml-auto">
+      {{#if config.contactUrl}}
+        <li class="nav-item">
+          <a href={{ config.contactUrl }} target="_blank" rel="noopener" class="nav-link">Contact Us</a>
+        </li>
+      {{/if}}
+      {{#if session.isAuthenticated}}
+        {{#link-to "list" class="nav-item nav-link"}}List{{/link-to}}
+        {{#link-to "portal" "cbab4aa21e2768ff7e1c1eb424b22f4b" class="nav-item nav-link"}}TEST: PMMI{{/link-to}}
+        {{#link-to "portal" "58b7a0cdc773b271b8ac5ed88ae3b437" class="nav-item nav-link"}}TEST: AS3{{/link-to}}
+        {{#link-to "logout" class="nav-item nav-link"}}Log out{{/link-to}}
+      {{/if}}
+    </ul>
+  </nav>
+  {{loading-progress class="bg-dark" progressBackground="bg-success"}}
+</div>
+
+<div id="notification-wrapper">
+  {{notification-container position="top-right"}}
+</div>
+
+<div class="container my-3">
+  <div class="row">
+    <div class="col">
+      {{outlet}}
+    </div>
+  </div>
+</div>

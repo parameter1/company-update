@@ -3,9 +3,12 @@ const { setContext } = require('apollo-link-context');
 const { onError } = require('apollo-link-error');
 const fetch = require('node-fetch');
 const { makeRemoteExecutableSchema, introspectSchema } = require('graphql-tools');
-const { GRAPHQL_URI, TENANT_KEY } = require('../env');
+const { GRAPHQL_URI, TENANT_KEY, BASE4_API_URL } = require('../env');
 
-const headers = { 'X-Tenant-Key': TENANT_KEY };
+const headers = {
+  'x-tenant-key': TENANT_KEY,
+  'x-base4-api-uri': BASE4_API_URL,
+};
 
 const httpLink = new HttpLink({
   uri: GRAPHQL_URI,
@@ -13,13 +16,22 @@ const httpLink = new HttpLink({
   headers,
   fetchOptions: { timeout: 10000 },
 });
-const errorLink = onError((e) => {
-  console.warn('\nError in remote schema call!\n', e); // eslint-disable-line no-console
-  if (e.networkError) throw e.networkError;
-  if (e.graphQLErrors && e.graphQLErrors[0]) throw e.graphQLErrors[0];
+
+const authLink = setContext((_, previousContext) => {
+  if (previousContext.graphqlContext) {
+    const { authorization } = previousContext.graphqlContext;
+    if (authorization) return { headers: { ...headers, authorization } };
+  }
+  return { headers };
 });
 
-const link = setContext(() => headers).concat(errorLink).concat(httpLink);
+const errorLink = onError(({ graphQLErrors, response }) => {
+  if (graphQLErrors && response) response.errors = graphQLErrors.concat({ message: '' });
+});
+
+const link = authLink
+  .concat(errorLink)
+  .concat(httpLink);
 
 module.exports = async () => {
   const schema = await introspectSchema(link);

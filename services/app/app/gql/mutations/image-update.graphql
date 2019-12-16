@@ -1,0 +1,7 @@
+mutation UpdateAssetImage($input: UpdateAssetImageMutationInput!) {
+  updateAssetImage(input: $input) {
+    id
+    isLogo
+    src
+  }
+}

@@ -1,0 +1,7 @@
+query ActiveUser {
+  activeUser {
+    id
+    email
+    name
+  }
+}

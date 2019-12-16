@@ -1,11 +1,14 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
-// import JsDiff from 'diff';
+import JsDiff from 'diff';
 
 export default Component.extend({
   lines: true,
   original: null,
   updated: null,
+  showDiff: true,
+
+  classNames: ['form-control'],
 
   diffs: computed('original,updated,lines', function() {
     const original = this.get('original') || '';
@@ -13,5 +16,5 @@ export default Component.extend({
     if (typeof this.get('updated') === 'undefined') updated = original;
     if (this.get('lines')) return JsDiff.diffLines(original, updated, { newlineIsToken: true });
     return JsDiff.diffWordsWithSpace(original, updated);
-  })
+  }),
 });

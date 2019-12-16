@@ -1,0 +1,28 @@
+<div class="card">
+  <h6 class="card-header">
+    {{ site.name }}
+  </h6>
+  {{#if hasChildren}}
+    {{#each sections as |section|}}
+      {{leadership-review/category
+        category=section
+        selected=selected
+        sectionIds=sectionIds
+        canSelect=canSelect
+        onToggle=(action "toggle")
+      }}
+    {{/each}}
+  {{else}}
+    <div class="card-body row">
+      {{#each sections as |section|}}
+        {{leadership-review/section
+          section=section
+          selected=selected
+          sectionIds=sectionIds
+          canSelect=canSelect
+          onToggle=(action "toggle")
+        }}
+      {{/each}}
+    </div>
+  {{/if}}
+</div>

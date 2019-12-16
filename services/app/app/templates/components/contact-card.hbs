@@ -1,0 +1,63 @@
+<div class="card mb-3">
+  <h6 class="card-header text-right">
+    {{confirm-button
+      icon="cross"
+      label=""
+      runningLabel="..."
+      class="btn-danger btn-sm"
+      iconClass=""
+      disabled=isDisabled
+      isRunning=isDiscarding
+      onConfirm=(action "remove")
+    }}
+  </h6>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-12 col-md-6">
+        {{ contact-image image=_contact.primaryImage.src onUpload=(action "onUpload")}}
+      </div>
+      <div class="col-12 col-md-6">
+        <div class="form-group">
+          <label for={{ concat this.elementId "-first-name-input" }}>First Name</label>
+          <div class="input-group">
+            {{input
+              type="text"
+              class="form-control"
+              id=(concat this.elementId "-first-name-input")
+              aria-describedby="first-name-help"
+              value=_contact.firstName
+              focusOut=(action "onChange" "firstName")
+            }}
+          </div>
+        </div>
+        <div class="form-group">
+          <label for={{ concat this.elementId "-last-name-input" }}>Last Name</label>
+          <div class="input-group">
+            {{input
+              type="text"
+              class="form-control"
+              id=(concat this.elementId "-last-name-input")
+              aria-describedby="last-name-help"
+              value=_contact.lastName
+              focusOut=(action "onChange" "lastName")
+            }}
+          </div>
+        </div>
+        <div class="form-group">
+          <label for={{ concat this.elementId "-title-input" }}>Title</label>
+          <div class="input-group">
+            {{input
+              type="text"
+              class="form-control"
+              id=(concat this.elementId "-title-input")
+              aria-describedby="title-help"
+              value=_contact.title
+              focusOut=(action "onChange" "title")
+            }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer"></div>
+</div>

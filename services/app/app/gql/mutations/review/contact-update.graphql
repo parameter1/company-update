@@ -1,0 +1,12 @@
+mutation ContentPortalReviewContactUpdate($input: UpdateContentContactMutationInput!) {
+	updateContentContact(input: $input) {
+    id
+    firstName
+    lastName
+    title
+    primaryImage {
+      id
+      src
+    }
+  }
+}

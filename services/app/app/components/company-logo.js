@@ -3,8 +3,11 @@ import ActionMixin from 'cuf/mixins/action';
 import mutation from 'cuf/gql/mutations/upload';
 import { inject } from '@ember/service';
 
+const { error } = console;
+
 export default Component.extend(ActionMixin, {
-  apolloUpload: inject(),
+  apollo: inject(),
+  notify: inject(),
   logo: null,
 
   actions: {
@@ -15,12 +18,12 @@ export default Component.extend(ActionMixin, {
 
       try {
         file.readAsDataURL().then(url => this.set('logo', url));
-        const location = await this.get('apolloUpload').mutate({ mutation, variables }, 'singleUpload');
+        const location = await this.apollo.mutate({ mutation, variables }, 'companyUpdateSingleUpload');
         this.set('logo', location);
       } catch (e) {
         this.set('logo', logo);
-        console.error('upload error', e, file);
-        this.get('notify').alert('Something went wrong -- please try again!');
+        error('upload error', e, file);
+        this.notify.error('Something went wrong -- please try again!', { autoClear: false });
       } finally {
         file.queue.remove(file);
         this.endAction();

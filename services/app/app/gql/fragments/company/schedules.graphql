@@ -1,0 +1,10 @@
+fragment CompanySchedulesFragment on ContentCompany {
+  published
+  websiteSchedules {
+    start
+    section {
+      id
+      name
+    }
+  }
+}

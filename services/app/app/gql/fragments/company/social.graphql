@@ -1,0 +1,6 @@
+fragment CompanySocialFragment on ContentCompany {
+  socialLinks {
+    provider
+    url
+  }
+}

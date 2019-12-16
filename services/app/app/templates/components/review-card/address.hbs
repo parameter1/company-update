@@ -1,0 +1,68 @@
+<h6 class="card-header">{{ title }}</h6>
+<form class="card-body">
+  <div class="row">
+    <div class="form-group col-md-4">
+      <label for="address1-input">Address 1</label>
+      {{review-field
+        original=company.address1
+        updated=submission.payload.address1
+        toggleField=toggleField
+        fieldKey="address1"
+        enabled=payload.address1
+      }}
+    </div>
+    <div class="form-group col-md-4">
+      <label for="address2-input">Address 2</label>
+      {{review-field
+        original=company.address2
+        updated=submission.payload.address2
+        toggleField=toggleField
+        fieldKey="address2"
+        enabled=payload.address2
+      }}
+    </div>
+    <div class="form-group col-md-4">
+      <label for="city-input">City</label>
+      {{review-field
+        original=company.city
+        updated=submission.payload.city
+        toggleField=toggleField
+        fieldKey="city"
+        enabled=payload.city
+      }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-4">
+      <label for="state-input">State/Province</label>
+      {{review-field
+        original=company.state
+        updated=submission.payload.state
+        toggleField=toggleField
+        fieldKey="state"
+        enabled=payload.state
+      }}
+    </div>
+    <div class="form-group col-md-4">
+      <label for="zip-input">Zip/Postal Code</label>
+      {{review-field
+        original=company.zip
+        updated=submission.payload.zip
+        toggleField=toggleField
+        fieldKey="zip"
+        enabled=payload.zip
+      }}
+    </div>
+    <div class="form-group col-md-4">
+      <label for="country-input">Country</label>
+      {{review-field
+        original=company.country
+        updated=submission.payload.country
+        toggleField=toggleField
+        fieldKey="country"
+        enabled=payload.country
+      }}
+    </div>
+  </div>
+</form>
+<div class="card-footer"></div>

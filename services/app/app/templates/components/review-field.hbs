@@ -1,0 +1,49 @@
+{{#if (eq fieldKey "logo")}}
+  {{#if (not approvable)}}
+    {{#if value}}
+      <img src={{ value }} class="img-fluid" alt="image">
+    {{/if}}
+  {{else}}
+    <div class="form-control">
+      {{#if isChecked}}
+        <img src={{ original }} class="img-fluid border-danger border p-1" alt="original image">
+        <img src={{ updated }} class="img-fluid border-success border p-1 mt-1" alt="updated image">
+      {{else}}
+        {{#if original}}<img src={{ original }} class="img-fluid" alt="image">{{/if}}
+      {{/if}}
+    </div>
+  {{/if}}
+{{else if (eq fieldKey "socialLinks")}}
+  {{#if (eq subField "provider")}}
+    <div class="form-control">
+      {{#if (not approvable)}}
+        {{entypo-icon original class="mr-2"}} {{ value }}
+      {{else}}
+        {{#if isChecked}}
+          {{#if original}}
+            <del class="text-danger">{{entypo-icon original class="mr-2"}} {{ original }}</del>
+          {{/if}}
+          <ins class="text-success">{{entypo-icon updated class="mr-2"}} {{ updated }}</ins>
+        {{else}}
+          {{entypo-icon original class="mr-2"}} {{ original }}
+        {{/if}}
+      {{/if}}
+    </div>
+  {{else}}
+    {{js-diff original=original updated=updated showDiff=isChecked}}
+  {{/if}}
+{{else}}
+  {{js-diff original=original updated=updated showDiff=isChecked}}
+{{/if}}
+
+{{#if approvable}}
+  <div role="button" class="input-group-append interactable" {{action "toggle"}}>
+    <div class="input-group-text">
+      {{#if isChecked}}
+        {{entypo-icon "check" class="text-success"}}
+      {{else}}
+        {{entypo-icon "cross" class="text-danger"}}
+      {{/if}}
+    </div>
+  </div>
+{{/if}}

@@ -1,9 +1,13 @@
-{{#each diffs as |diff|}}
-  {{#if diff.added}}
-    <ins class="text-success">{{{ diff.value }}}</ins>
-  {{else if diff.removed}}
-    <del class="text-danger">{{{ diff.value }}}</del>
-  {{else}}
-    <span class="text-muted">{{{ diff.value }}}</span>
-  {{/if}}
-{{/each}}
+{{#if showDiff}}
+  {{#each diffs as |diff|}}
+    {{#if diff.added}}
+      {{display-diff diff=diff tagName="ins"}}
+    {{else if diff.removed}}
+      {{display-diff diff=diff tagName="del"}}
+    {{else}}
+      {{display-diff diff=diff}}&nbsp;
+    {{/if}}
+  {{/each}}
+{{else}}
+  {{display-diff diff=(hash value=original)}}&nbsp;
+{{/if}}

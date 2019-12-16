@@ -1,0 +1,5 @@
+fragment CompanyListFragment on ContentCompany {
+  id
+  name
+  hash
+}

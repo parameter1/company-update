@@ -1,0 +1,5 @@
+mutation ContentPortalReviewContactCreate($input: CreateContentContactMutationInput!) {
+	createContentContact(input: $input) {
+    id
+  }
+}

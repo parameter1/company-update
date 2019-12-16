@@ -1,0 +1,5 @@
+mutation ContentPortalReviewContactUpdateImages($input: UpdateContentContactImagesMutationInput!) {
+	updateContentContactImages(input: $input) {
+    id
+  }
+}

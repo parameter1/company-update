@@ -1,12 +1,34 @@
-@import "../../node_modules/bootswatch/dist/flatly/variables";
+@import "../../node_modules/bootswatch/dist/pulse/variables";
+
+// Fix pulse list groups
+$list-group-bg:                     $white;
+$list-group-border-color:           rgba($black, .125);
+$list-group-hover-bg:               $gray-100;
+$list-group-active-color:           $white;
+$list-group-active-bg:              theme-color("primary");
+$list-group-disabled-color:         $gray-600;
+$enable-rounded: true;
 
 $modal-xl: 1100px !default;
 $modal-lg: 950px;
 $modal-md: 550px;
 
 @import "../../node_modules/bootstrap/scss/bootstrap";
-@import "../../node_modules/bootswatch/dist/flatly/bootswatch";
+@import "../../node_modules/bootswatch/dist/pulse/bootswatch";
 @import "ember-basic-dropdown";
+@import "ember-power-select";
+@import "./power-select.scss";
+
+.list-group {
+  &-item {
+    color: rgba($black, .9);
+    &.active,
+    &:hover,
+    &:focus {
+      color: rgba($black, .8);
+    }
+  }
+}
 
 // Add xl modal, per https://github.com/twbs/bootstrap/pull/19925
 @include media-breakpoint-up(lg) {
@@ -33,9 +55,10 @@ body.transitioning {
   height: 0.3rem;
 }
 
-.mh-40px {
+.navbar-brand__logo {
   max-height: 40px;
-  transform: scale(0.5);
+  max-width: 200px;
+  transform: scale(0.9);
 }
 
 .body-preview {
@@ -50,6 +73,81 @@ body.transitioning {
   border-right: none;
 }
 
-.froala-editor-container {
+.fr-box {
   min-width: 100%;
+  border-radius: $border-radius !important;
+  .fr-toolbar {
+    border-top-left-radius: $border-radius !important;
+    border-top-right-radius: $border-radius !important;
+  }
+  .fr-wrapper {
+    border-bottom-left-radius: $border-radius !important;
+    border-bottom-right-radius: $border-radius !important;
+    border-bottom-color: #ccc !important;
+  }
+  .second-toolbar {
+    border: none;
+  }
+}
+
+.copyable-textarea {
+  height: inherit;
+  padding: 0;
+}
+
+.upload-button {
+  cursor: pointer;
+}
+
+.social-list ul.ember-power-select-options {
+  max-height: 15em;
+}
+
+.card-header {
+  font-weight: 600;
+}
+
+label {
+  font-weight: 500;
+}
+
+.card {
+  box-shadow: 0 1px 7px rgba(0,0,0,.05);
+  border: none;
+}
+
+body {
+  background-color: #f5f5f5;
+  padding-bottom: 4rem;
+}
+
+.interactable {
+  cursor: pointer;
+}
+
+.form-control {
+  height: auto;
+}
+
+.fixed-right {
+  position: fixed;
+  right: 0;
+  left: auto;
+}
+
+#notification-wrapper div[class^=_c-notification__container] {
+  top: 5.7rem;
+}
+
+.list-logo {
+  height: 50px;
+}
+
+.card-header {
+  &--flexed {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
 }

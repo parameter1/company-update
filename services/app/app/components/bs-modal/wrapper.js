@@ -1,6 +1,5 @@
 import Component from '@ember/component';
 import { isPresent } from '@ember/utils';
-import $ from 'jquery';
 
 export default Component.extend({
   classNames: ['modal'],
@@ -22,8 +21,6 @@ export default Component.extend({
     const $obj = this.$();
     // Set the modal options.
     this.setModalOptions($obj);
-    // Replace Bootstraps native dismiss with the internal action.
-    this.replaceDismiss($obj);
     // Set modal event hooks
     this.setModalHooks($obj);
     // Show the modal, if directed to.
@@ -66,17 +63,6 @@ export default Component.extend({
       return opts;
     }, { show: false });
     $obj.modal(options);
-  },
-
-  replaceDismiss($obj) {
-    // Turn off Bootstrap's native dismissing of the modal (via a click from a`[data-dismiss="modal"]` element or by clicking the backdrop)
-    $obj.off('click.dismiss.bs.modal');
-    // Replace with the Ember hide() action.
-    $obj.on('click.dismiss.bs.modal', (event) => {
-      if ($(event.currentTarget).is(event.target) && true === this.get('backdrop')) {
-        this.send('hide');
-      }
-    });
   },
 
   resetShowing() {

@@ -1,0 +1,18 @@
+# import CompanyListFragment from "../fragments/company/list"
+# import CompanyLogoFragment from "../fragments/company/logo"
+
+query ContentUpdateListSubmissions($input: CompanyUpdateSubmissionsInput) {
+  companyUpdateSubmissions(input: $input) {
+    id
+    submitted
+    hash
+    name
+    email
+    type
+    label
+    company {
+      ...CompanyListFragment
+      ...CompanyLogoFragment
+    }
+  }
+}

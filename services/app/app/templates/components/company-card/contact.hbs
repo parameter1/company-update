@@ -1,0 +1,80 @@
+<h6 class="card-header">{{ title }}</h6>
+<form class="card-body">
+  <div class="row">
+    <div class="form-group col-md-4">
+      <label for="phone-input">Phone number</label>
+      <div class="input-group">
+        {{input
+          type="text"
+          class="form-control"
+          id="phone-input"
+          aria-describedby="phone-help"
+          value=model.phone
+        }}
+      </div>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="tollfree-input">Tollfree number</label>
+      <div class="input-group">
+        {{input
+          type="text"
+          class="form-control"
+          id="tollfree-input"
+          aria-describedby="tollfree-help"
+          value=model.tollfree
+        }}
+      </div>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="fax-input">Fax number</label>
+      <div class="input-group">
+        {{input
+          type="text"
+          class="form-control"
+          id="fax-input"
+          aria-describedby="fax-help"
+          value=model.fax
+        }}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-4">
+      <label for="mobile-input">Mobile number</label>
+      <div class="input-group">
+        {{input
+          type="text"
+          class="form-control"
+          id="mobile-input"
+          aria-describedby="mobile-help"
+          value=model.mobile
+        }}
+      </div>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="website-input">Website</label>
+      <div class="input-group">
+        {{input
+          type="url"
+          class="form-control"
+          id="website-input"
+          aria-describedby="website-help"
+          value=model.website
+        }}
+      </div>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="email-input">Email</label>
+      <div class="input-group">
+        {{input
+          type="email"
+          class="form-control"
+          id="email-input"
+          aria-describedby="email-help"
+          value=model.email
+        }}
+      </div>
+    </div>
+  </div>
+</form>
+<div class="card-footer"></div>

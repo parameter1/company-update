@@ -1,0 +1,84 @@
+<h6 class="card-header">{{ title }}</h6>
+<form class="card-body">
+  <div class="row">
+    <div class="form-group col">
+      <label for="name-input">Name</label>
+      {{review-field
+        original=company.name
+        updated=submission.payload.name
+        toggleField=toggleField
+        fieldKey="name"
+        enabled=payload.name
+      }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col">
+      <label for="teaser-input">Teaser</label>
+      {{review-field
+        original=company.teaser
+        updated=submission.payload.teaser
+        toggleField=toggleField
+        fieldKey="teaser"
+        enabled=payload.teaser
+      }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col">
+      <label for="body-input">Description</label>
+      {{review-field
+        original=company.body
+        updated=submission.payload.body
+        toggleField=toggleField
+        fieldKey="body"
+        enabled=payload.body
+      }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-6">
+      <label for="number-of-employees-input">Number of Employees</label>
+      {{review-field
+        original=company.numberOfEmployees
+        updated=submission.payload.numberOfEmployees
+        toggleField=toggleField
+        fieldKey="numberOfEmployees"
+        enabled=payload.numberOfEmployees
+      }}
+    </div>
+    <div class="form-group col-md-6">
+      <label for="years-in-operation-input">Years in operation</label>
+      {{review-field
+        original=company.yearsInOperation
+        updated=submission.payload.yearsInOperation
+        toggleField=toggleField
+        fieldKey="yearsInOperation"
+        enabled=payload.yearsInOperation
+      }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-6">
+      <label for="sales-region-input">Sales regions</label>
+      {{review-field
+        original=company.salesRegion
+        updated=submission.payload.salesRegion
+        toggleField=toggleField
+        fieldKey="salesRegion"
+        enabled=payload.salesRegion
+      }}
+    </div>
+    <div class="form-group col-md-6">
+      <label for="sales-channels-input">Sales channels</label>
+      {{review-field
+        original=company.salesChannels
+        updated=submission.payload.salesChannels
+        toggleField=toggleField
+        fieldKey="salesChannels"
+        enabled=payload.salesChannels
+      }}
+    </div>
+  </div>
+</form>
+<div class="card-footer"></div>

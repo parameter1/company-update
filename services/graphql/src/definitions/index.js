@@ -1,21 +1,23 @@
 const { gql } = require('apollo-server');
+const company = require('./company');
+const config = require('./config');
+const contacts = require('./contacts');
+const leadership = require('./leadership');
+const list = require('./list');
 
 module.exports = gql`
 
-  scalar CompanyUpdateUpload
-  scalar CompanyUpdateDate
+  scalar Upload
+  scalar Date
+  scalar JSON
+  scalar ObjectID
 
   type Query {
-    companyUpdateConfig: CompanyUpdateConfiguration!
-    companyUpdateSubmission(id: String!): CompanyUpdateSubmission!
-    companyUpdateSubmissions: [CompanyUpdateSubmission!]!
-    companyUpdateSubmissionCount: Int!
+    ping: String!
   }
 
   type Mutation {
-    companyUpdateSubmit(input: CompanyUpdateSubmissionInput!): CompanyUpdateSubmission!
-    companyUpdateComplete(id: String!): String!
-    companyUpdateSingleUpload(file: CompanyUpdateUpload!): String!
+    ping: String!
   }
 
   enum ContactTypes {
@@ -24,60 +26,17 @@ module.exports = gql`
     public
   }
 
-  type CompanyUpdateConfiguration {
-    domain: String!
-    logo: String!
-    ids: [Int!]!
-    isPmmi: Boolean!
+  enum CompanyUpdateSubmissionType {
+    company
+    product
+    contact
+    leadership
   }
 
-  type CompanyUpdateSubmission {
-    id: String!
-    submitted: CompanyUpdateDate!
-    reviewed: Boolean!
-    name: String!
-    hash: String!
-    email: String!
-    companyName: String
-    payload: String!
-  }
-
-  input CompanyUpdateSubmissionInput {
-    name: String!
-    email: String!
-    hash: String!
-    payload: CompanyUpdatePayloadInput!
-  }
-
-  input CompanyUpdatePayloadInput {
-    name: String
-    address1: String
-    address2: String
-    city: String
-    state: String
-    zip: String
-    country: String
-    phone: String
-    tollfree: String
-    fax: String
-    website: String
-    type: String
-    email: String
-    body: String
-
-    teaser: String
-    numberOfEmployees: String
-    trainingInformation: String
-    yearsInOperation: String
-    salesRegion: String
-    servicesProvided: String
-    salesChannels: String
-    productSummary: String
-    serviceInformation: String
-    warrantyInformation: String
-
-    sectionIds: [Int!]
-    logo: String
-  }
+  ${company}
+  ${config}
+  ${contacts}
+  ${leadership}
+  ${list}
 
 `;

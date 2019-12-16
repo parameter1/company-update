@@ -1,0 +1,24 @@
+<div class="card mb-4">
+  <div class="card-body">
+    <p class="lead">{{ model.name }} Content Portal</p>
+    <p>Welcome to the content update portal for {{ model.name }}.</p>
+    <p>To request modifications to your company data or related content, please choose from the actions below.</p>
+  </div>
+</div>
+
+<div class="card">
+  <ul class="list-group list-group-flush">
+    {{#link-to "portal.company" class="list-group-item list-group-item-action"}}
+      {{submission-icon type="company" class="mr-2"}}
+      Modify company details
+    {{/link-to}}
+    {{#link-to "portal.leadership" class="list-group-item list-group-item-action"}}
+      {{submission-icon type="leadership" class="mr-2"}}
+      Modify leadership categories
+    {{/link-to}}
+    {{#link-to "portal.contacts" class="list-group-item list-group-item-action"}}
+      {{submission-icon type="contact" class="mr-2"}}
+      Modify contacts
+    {{/link-to}}
+  </ul>
+</div>

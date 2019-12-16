@@ -1,0 +1,11 @@
+query CompanyUpdateReviewSubmission($id: String!) {
+  companyUpdateSubmission(id: $id) {
+    id
+    submitted
+    reviewed
+    hash
+    name
+    email
+    payload
+  }
+}

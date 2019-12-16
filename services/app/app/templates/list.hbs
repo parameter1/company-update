@@ -1,0 +1,63 @@
+<div class="card mb-4">
+  <div class="card-body">
+    <p class="lead">Content Portal Moderation Queue</p>
+    <p>Welcome to the content portal moderation queue. The items listed below have not yet been reviewed, and require your attention.</p>
+    <p>Click on an item to view the requested changes.</p>
+  </div>
+</div>
+
+<div class="card mb-4">
+  <div class="card-header"></div>
+  <ul class="list-group list-group-flush">
+    {{#each model as |item|}}
+      {{#link-to (concat "review." item.type)
+        item.id
+        class="list-group-item list-group-item-action flex-column align-items-start py-4"
+      }}
+        <div class="d-flex w-100 justify-content-between">
+          <div class="d-flex">
+            <img src={{ item.company.primaryImage.src }} class="mr-3 list-logo" alt="company logo">
+            <div class="d-flex flex-column">
+              <h4 class="mb-1">{{ item.company.name }}</h4>
+              <span>{{submission-icon type=item.type}} {{item.label}}</span>
+            </div>
+          </div>
+          <div class="d-none d-md-flex flex-column align-items-end text-right">
+            <div class="mt-auto small">
+              {{ item.name }} &lt;{{ item.email }}&gt;
+              {{entypo-icon "clock"}}
+              <span title={{moment-format item.submitted "MMM Do, YYYY @ h:mma"}}>
+                {{moment-from-now item.submitted}}
+              </span>
+            </div>
+          </div>
+        </div>
+      {{/link-to}}
+
+    {{/each}}
+  </ul>
+  <div class="card-footer">
+    <span>Total Results: {{model.length}}</span>
+  </div>
+</div>
+
+<div class="card fixed-bottom fixed-right">
+  <div class="card-body">
+    <button
+      class="btn btn-primary"
+      disabled={{isLoading}}
+      {{ action (route-action "refresh") }}>
+      {{entypo-icon "cycle"}} {{#if isLoading}}Loading...{{else}}Check for new submissions{{/if}}
+    </button>
+    <button
+      class="btn {{if all "btn-outline-success" "btn-outline-secondary"}}"
+      disabled={{isLoading}}
+      {{ action "toggleAll" }}>
+      {{#if all}}
+        {{entypo-icon "check"}} All
+      {{else}}
+        {{entypo-icon "cross"}} All
+      {{/if}}
+    </button>
+  </div>
+</div>

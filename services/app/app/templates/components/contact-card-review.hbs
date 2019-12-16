@@ -1,0 +1,107 @@
+<div class="card mb-3 h-100">
+  <h6 class="card-header card-header--flexed">
+    {{entypo-icon "user"}}
+    {{#if isNew}}
+      <span class="text-{{if isCardEnabled "success" "danger"}}">Added contact</span>
+    {{else if isDeleted}}
+      <span class="text-{{if isCardEnabled "success" "danger"}}">Removed contact</span>
+    {{else}}
+      <span class="text-muted">Existing contact</span>
+    {{/if}}
+    {{#if canToggleCard}}
+      <button disabled={{disabled}} class="btn btn-sm {{if isCardEnabled "border-success" "border-danger"}}" {{action "toggleCard"}}>
+        {{entypo-icon (if isCardEnabled "check" "cross") class=(if isCardEnabled "text-success" "text-danger")}}
+      </button>
+    {{else}}
+      <button disabled=true class="btn btn-sm btn-disabled">
+        {{entypo-icon (if isCardEnabled "check" "cross") }}
+      </button>
+    {{/if}}
+  </h6>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-12 col-md-6">
+        {{#if canToggleCard}}
+          {{review-field
+            original=original.primaryImage.src
+            updated=updated.primaryImage.src
+            fieldKey="logo"
+            enabled=payload.fields.primaryImage
+            _approvable=false
+          }}
+        {{else}}
+          {{review-field
+            original=original.primaryImage.src
+            updated=updated.primaryImage.src
+            toggleField=(action "toggleField" "primaryImage")
+            fieldKey="logo"
+            enabled=payload.fields.primaryImage
+          }}
+        {{/if}}
+      </div>
+      <div class="col-12 col-md-6">
+        <div class="form-group">
+          <label for={{ concat this.elementId "-first-name-input" }}>First Name</label>
+          {{#if canToggleCard}}
+            {{review-field
+              original=original.firstName
+              updated=updated.firstName
+              fieldKey="firstName"
+              enabled=payload.fields.firstName
+              _approvable=false
+            }}
+          {{else}}
+            {{review-field
+              original=original.firstName
+              updated=updated.firstName
+              toggleField=(action "toggleField" "firstName")
+              fieldKey="firstName"
+              enabled=payload.fields.firstName
+            }}
+          {{/if}}
+        </div>
+        <div class="form-group">
+          <label for={{ concat this.elementId "-last-name-input" }}>Last Name</label>
+          {{#if canToggleCard}}
+            {{review-field
+              original=original.lastName
+              updated=updated.lastName
+              fieldKey="lastName"
+              enabled=payload.fields.lastName
+              _approvable=false
+            }}
+          {{else}}
+            {{review-field
+              original=original.lastName
+              updated=updated.lastName
+              toggleField=(action "toggleField" "lastName")
+              fieldKey="lastName"
+              enabled=payload.fields.lastName
+            }}
+          {{/if}}
+        </div>
+        <div class="form-group">
+          <label for={{ concat this.elementId "-title-input" }}>Title</label>
+          {{#if canToggleCard}}
+            {{review-field
+              original=original.title
+              updated=updated.title
+              fieldKey="title"
+              enabled=payload.fields.title
+              _approvable=false
+            }}
+          {{else}}
+            {{review-field
+              original=original.title
+              updated=updated.title
+              toggleField=(action "toggleField" "title")
+              fieldKey="title"
+              enabled=payload.fields.title
+            }}
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer"></div>
+</div>

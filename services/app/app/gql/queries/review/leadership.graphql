@@ -1,0 +1,18 @@
+query ContentUpdateReviewLeadership($input: WebsiteSectionsQueryInput!) {
+  websiteSections(input: $input) {
+    edges {
+      node {
+        id
+        name
+        site {
+          id
+          name
+        }
+        parent {
+          id
+          name
+        }
+      }
+    }
+  }
+}
