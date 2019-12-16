@@ -17,7 +17,7 @@ export default Component.extend({
       firstName,
       lastName,
       title,
-      ...(primaryImage && { primaryImage: { src: primaryImage.src } }),
+      ...(primaryImage && { primaryImage: { src: primaryImage.src } } || { primaryImage: { src: null } }),
     });
   },
 

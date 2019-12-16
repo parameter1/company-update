@@ -8,7 +8,7 @@ export default Controller.extend({
   contacts: computed('model.[]', function() {
     return this.get('model.publicContacts.edges').map(({ node }) => {
       const { id, firstName, lastName, title, primaryImage } = node;
-      return { id, firstName, lastName, title, primaryImage };
+      return { id, firstName, lastName, title, ...(primaryImage && { primaryImage } || { primaryImage: { src: null } }) };
     });
   }),
 
