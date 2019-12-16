@@ -25,7 +25,7 @@ module.exports = gql`
     firstName: String!
     lastName: String!
     title: String
-    primaryImage: CompanyUpdateContactImageInput = {}
+    primaryImage: CompanyUpdateContactImageInput
   }
 
   input CompanyUpdateContactUpdateInput {
@@ -33,7 +33,7 @@ module.exports = gql`
     firstName: String
     lastName: String
     title: String
-    primaryImage: CompanyUpdateContactImageInput = {}
+    primaryImage: CompanyUpdateContactImageInput
   }
 
   input CompanyUpdateContactImageInput {
