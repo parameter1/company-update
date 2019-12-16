@@ -1,0 +1,5 @@
+node_modules
+Dockerfile
+.git
+services/app/dist
+services/app/tmp
