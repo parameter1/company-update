@@ -1,6 +1,6 @@
 import Route from '@ember/routing/route';
 import { queryManager } from 'ember-apollo-client';
-import query from 'cuf/gql/queries/review/leadership';
+import query from '@base-cms/company-update-app/gql/queries/review/leadership';
 
 export default Route.extend({
   apollo: queryManager(),

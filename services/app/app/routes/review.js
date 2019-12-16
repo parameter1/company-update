@@ -2,8 +2,8 @@ import Route from '@ember/routing/route';
 import { queryManager } from 'ember-apollo-client';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 import { get, set } from '@ember/object';
-import submissionQuery from 'cuf/gql/queries/review/submission';
-import companyQuery from 'cuf/gql/queries/review/company';
+import submissionQuery from '@base-cms/company-update-app/gql/queries/review/submission';
+import companyQuery from '@base-cms/company-update-app/gql/queries/review/company';
 
 export default Route.extend(AuthenticatedRouteMixin, {
   apollo: queryManager(),

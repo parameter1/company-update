@@ -1,5 +1,5 @@
 import Mixin from '@ember/object/mixin';
-import LoadingMixin from 'cuf/mixins/loading';
+import LoadingMixin from '@base-cms/company-update-app/mixins/loading';
 
 export default Mixin.create(LoadingMixin, {
   isActionRunning: false,

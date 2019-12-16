@@ -1,0 +1,19 @@
+{
+  "projects": {
+    "company-update": {
+      "schemaPath": "schema.graphql",
+      "extensions": {
+        "endpoints": {
+          "dev": {
+            "url": "http://0.0.0.0:9900",
+            "headers": {
+              "x-tenant-key": "as3_baseplatform",
+              "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0ZjIwYWQ4Yi1mN2NhLTVmZWMtYmY0Yy1jODkyMTEyY2MwODQiLCJleHAiOjE1Nzg1ODE3MDgsImlhdCI6MTU3NTk4OTcwOCwiYXVkIjoiNWRlZmFkYjVhMzY3YjhhYzAwOGI0NWM1In0.urXKXaU_R_evbIZnR3y4Fkt6o_oGVhp2F22PgtrWrtE",
+              "x-base4-api-uri": "https://as3.manage.baseplatform.io"
+            }
+          }
+        }
+      }
+    }
+  }
+}

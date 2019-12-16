@@ -1,6 +1,7 @@
 {
   "name": "@base-cms/company-update-graphql",
   "version": "0.0.1",
+  "private": true,
   "description": "Backend GraphQL service for CUF project",
   "main": "src/index.js",
   "author": "solocommand",

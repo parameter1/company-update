@@ -3,12 +3,12 @@ import { computed, get, set } from '@ember/object';
 import { inject } from '@ember/service';
 import gql from 'graphql-tag';
 
-import ActionMixin from '../../mixins/action';
-import imageUpload from '../../gql/mutations/image-upload';
-import imageUpdate from '../../gql/mutations/image-update';
-import complete from '../../gql/mutations/complete';
-import discard from '../../gql/mutations/discard';
-import eq from '../../utils/eq';
+import ActionMixin from '@base-cms/company-update-app/mixins/action';
+import imageUpload from '@base-cms/company-update-app/gql/mutations/image-upload';
+import imageUpdate from '@base-cms/company-update-app/gql/mutations/image-update';
+import complete from '@base-cms/company-update-app/gql/mutations/complete';
+import discard from '@base-cms/company-update-app/gql/mutations/discard';
+import eq from '@base-cms/company-update-app/utils/eq';
 
 const buildMutation = (payload = {}) => {
   return gql`

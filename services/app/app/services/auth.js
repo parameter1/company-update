@@ -1,9 +1,9 @@
 import Service from '@ember/service';
 import { queryManager } from 'ember-apollo-client';
 
-import activeUser from 'cuf/gql/queries/active-user';
-import logout from 'cuf/gql/mutations/logout';
-import login from 'cuf/gql/mutations/login';
+import activeUser from '@base-cms/company-update-app/gql/queries/active-user';
+import logout from '@base-cms/company-update-app/gql/mutations/logout';
+import login from '@base-cms/company-update-app/gql/mutations/login';
 
 export default Service.extend({
   apollo: queryManager(),

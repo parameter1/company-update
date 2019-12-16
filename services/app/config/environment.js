@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   let ENV = {
-    modulePrefix: 'cuf',
+    modulePrefix: '@base-cms/company-update-app',
     environment,
     rootURL: '/',
     locationType: 'auto',

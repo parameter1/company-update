@@ -2,9 +2,9 @@ import Controller from '@ember/controller';
 import { computed, get, set } from '@ember/object';
 import { inject } from '@ember/service';
 
-import ActionMixin from '../../mixins/action';
-import discard from '../../gql/mutations/discard';
-import publish from '../../gql/mutations/review/leadership';
+import ActionMixin from '@base-cms/company-update-app/mixins/action';
+import discard from '@base-cms/company-update-app/gql/mutations/discard';
+import publish from '@base-cms/company-update-app/gql/mutations/review/leadership';
 
 export default Controller.extend(ActionMixin, {
   apollo: inject(),

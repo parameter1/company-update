@@ -3,7 +3,7 @@ import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mi
 import { inject } from '@ember/service';
 import { queryManager } from 'ember-apollo-client';
 
-import query from 'cuf/gql/queries/config';
+import query from '@base-cms/company-update-app/gql/queries/config';
 
 export default Route.extend(ApplicationRouteMixin, {
   config: inject(),

@@ -1,6 +1,6 @@
 import Component from '@ember/component';
-import ActionMixin from 'cuf/mixins/action';
-import mutation from 'cuf/gql/mutations/upload';
+import ActionMixin from '@base-cms/company-update-app/mixins/action';
+import mutation from '@base-cms/company-update-app/gql/mutations/upload';
 import { inject } from '@ember/service';
 
 const { error } = console;

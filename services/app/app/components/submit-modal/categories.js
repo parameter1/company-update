@@ -2,8 +2,8 @@ import Component from '@ember/component';
 import { computed } from '@ember/object';
 import { inject } from '@ember/service';
 import { queryManager } from 'ember-apollo-client';
-import ActionMixin from 'cuf/mixins/action';
-import mutation from 'cuf/gql/mutations/portal/leadership';
+import ActionMixin from '@base-cms/company-update-app/mixins/action';
+import mutation from '@base-cms/company-update-app/gql/mutations/portal/leadership';
 
 const { error } = console;
 

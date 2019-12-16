@@ -2,14 +2,14 @@ import Controller from '@ember/controller';
 import { computed, get, set } from '@ember/object';
 import { inject } from '@ember/service';
 
-import ActionMixin from '../../mixins/action';
-import discard from '../../gql/mutations/discard';
-import imageUpload from '../../gql/mutations/image-upload';
+import ActionMixin from '@base-cms/company-update-app/mixins/action';
+import discard from '@base-cms/company-update-app/gql/mutations/discard';
+import imageUpload from '@base-cms/company-update-app/gql/mutations/image-upload';
 
-import contactCreate from '../../gql/mutations/review/contact-create';
-import contactUpdate from '../../gql/mutations/review/contact-update';
-import contactImages from '../../gql/mutations/review/contact-images';
-import companyContacts from '../../gql/mutations/review/contact-company-contacts';
+import contactCreate from '@base-cms/company-update-app/gql/mutations/review/contact-create';
+import contactUpdate from '@base-cms/company-update-app/gql/mutations/review/contact-update';
+import contactImages from '@base-cms/company-update-app/gql/mutations/review/contact-images';
+import companyContacts from '@base-cms/company-update-app/gql/mutations/review/contact-company-contacts';
 
 export default Controller.extend(ActionMixin, {
   apollo: inject(),

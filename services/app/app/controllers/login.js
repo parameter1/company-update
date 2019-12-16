@@ -1,6 +1,6 @@
 import Controller from '@ember/controller';
 import { inject } from '@ember/service';
-import ActionMixin from 'cuf/mixins/action';
+import ActionMixin from '@base-cms/company-update-app/mixins/action';
 
 const { warn } = console;
 

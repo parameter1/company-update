@@ -1,7 +1,7 @@
 import Component from '@ember/component';
 import { computed, get } from '@ember/object';
 import { inject } from '@ember/service';
-import ActionMixin from '../../mixins/action';
+import ActionMixin from '@base-cms/company-update-app/mixins/action';
 
 export default Component.extend(ActionMixin, {
   config: inject(),

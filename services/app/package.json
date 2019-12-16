@@ -1,8 +1,8 @@
 {
-  "name": "cuf",
+  "name": "@base-cms/company-update-app",
   "version": "0.0.0",
   "private": true,
-  "description": "Small description for cuf goes here",
+  "description": "The Base CMS company update frontend",
   "repository": "",
   "license": "MIT",
   "author": "",

@@ -1,7 +1,7 @@
 import Route from '@ember/routing/route';
 import { inject } from '@ember/service';
 import { queryManager } from 'ember-apollo-client';
-import query from 'cuf/gql/queries/portal/categories';
+import query from '@base-cms/company-update-app/gql/queries/portal/categories';
 
 export default Route.extend({
   config: inject(),
