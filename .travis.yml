@@ -2,79 +2,99 @@ language: node_js
 node_js: "10.15"
 cache: yarn
 
+_production-env: &production-env
+  ENVIRONMENT: production
+  RANCHER_CLUSTERID: c-gxsr7
+
+_staging-env: &staging-env
+  ENVIRONMENT: staging
+  RANCHER_CLUSTERID: c-rc5kp
+
+_production-job: &production-job
+  stage: production
+  name: SERVICE_NAME
+  script: scripts/deploy.js SERVICE_NAME
+  install: skip
+  env:
+    <<: *production-env
+
+_staging-job: &staging-job
+  stage: staging
+  name: SERVICE_NAME
+  script: scripts/deploy.js SERVICE_NAME
+  install: skip
+  env:
+    <<: *staging-env
+
 stages:
   - name: test
 
-  - name: deploy
-    if: env(TARGET) = production AND tag =~ /^v\d+\.\d+\.\d+$/
+  - name: production-started
+    if: tag =~ /^v\d+\.\d+\.\d+$/
+  - name: production
+    if: tag =~ /^v\d+\.\d+\.\d+$/
+  - name: production-finished
+    if: tag =~ /^v\d+\.\d+\.\d+$/
 
+  - name: staging-started
+    if: tag is present
   - name: staging
-    if: env(TARGET) = staging AND tag is present
+    if: tag is present
+  - name: staging-finished
+    if: tag is present
 
 jobs:
   include:
     - stage: test
+      env:
+        NODE_ENV: test
 
-    - stage: deploy
+    - stage: production-started
       name: Deployment Started
-      script: deploy/notify-start.sh
+      script: npx @base-cms/website-deployment-tool notify-started
       install: skip
       env:
-        TARGET: production
+        <<: *production-env
 
-    - stage: staging
+    - stage: staging-started
       name: Deployment Started
-      script: deploy/notify-start.sh
+      script: npx @base-cms/website-deployment-tool notify-started
       install: skip
       env:
-        TARGET: staging
+        <<: *staging-env
 
     #############################
     # vvv ADD SERVICES HERE vvv #
     #############################
 
-    - stage: deploy
-      name: GraphQL
-      script: deploy/index.js graphql
-      env:
-        TARGET: production
-        RANCHER_CLUSTERID: c-gxsr7
+    - <<: *production-job
+      name: GraphQL Service
+      script: scripts/deploy.js graphql
+    - <<: *staging-job
+      name: GraphQL Service
+      script: scripts/deploy.js graphql
 
-    - stage: staging
-      name: GraphQL
-      script: deploy/index.js graphql
-      env:
-        TARGET: staging
-        RANCHER_CLUSTERID: c-rc5kp
-
-    - stage: deploy
-      name: Ember app
-      script: deploy/index.js app
-      env:
-        TARGET: production
-        RANCHER_CLUSTERID: c-gxsr7
-
-    - stage: staging
-      name: Ember app
-      script: deploy/index.js app
-      env:
-        TARGET: staging
-        RANCHER_CLUSTERID: c-rc5kp
+      - <<: *production-job
+      name: Ember Service
+      script: scripts/deploy.js app
+    - <<: *staging-job
+      name: Ember Service
+      script: scripts/deploy.js app
 
     #############################
     # ^^^ ADD SERVICES HERE ^^^ #
     #############################
 
-    - stage: deploy
-      name: Deployment Ended
-      script: deploy/notify-complete.sh
+    - stage: production-finished
+      name: Deployment Finished
+      script: npx @base-cms/website-deployment-tool notify-finished
       install: skip
       env:
-        TARGET: production
+        <<: *production-env
 
-    - stage: staging
-      name: Deployment Ended
-      script: deploy/notify-complete.sh
+    - stage: staging-finished
+      name: Deployment Finished
+      script: npx @base-cms/website-deployment-tool notify-finished
       install: skip
       env:
-        TARGET: staging
+        <<: *staging-env
