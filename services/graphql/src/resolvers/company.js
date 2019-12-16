@@ -14,7 +14,6 @@ module.exports = {
     id: ({ _id }) => _id.toString(),
     submitted: ({ _id }) => _id.getTimestamp(),
     payload: ({ payload }) => JSON.stringify(payload),
-    companyName: ({ payload: { name } }) => name,
     label: ({ type }) => `${type.charAt(0).toUpperCase()}${type.slice(1)}`,
   },
 

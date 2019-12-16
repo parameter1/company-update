@@ -37,7 +37,7 @@ export default Controller.extend(ActionMixin, {
 
 
         set(this, 'model.submission.reviewed', true);
-        await this.apollo.mutate({ mutation: discard, variables: { id } });
+        await this.apollo.mutate({ mutation: discard, variables: { id }, refetchQueries: ['ContentUpdateListSubmissions'] });
         this.notify.success('Changes have been published!');
         this.transitionToRoute('list');
       } catch (e) {

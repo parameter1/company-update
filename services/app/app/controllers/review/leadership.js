@@ -71,7 +71,7 @@ export default Controller.extend(ActionMixin, {
         const variables = { input: { contentId, sectionIds } };
         await this.apollo.mutate({ mutation: publish, variables }, 'quickCreateWebsiteSchedules');
         set(this, 'model.submission.reviewed', true);
-        await this.apollo.mutate({ mutation: discard, variables: { id } });
+        await this.apollo.mutate({ mutation: discard, variables: { id }, refetchQueries: ['ContentUpdateListSubmissions'] });
         this.notify.success('Changes have been published!');
         this.transitionToRoute('list');
       } catch (e) {

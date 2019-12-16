@@ -20,7 +20,6 @@ module.exports = gql`
     name: String!
     hash: String!
     email: String!
-    companyName: String
     type: CompanyUpdateSubmissionType!
     payload: String!
     label: String!
