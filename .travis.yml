@@ -74,7 +74,7 @@ jobs:
       name: GraphQL Service
       script: scripts/deploy.js graphql
 
-      - <<: *production-job
+    - <<: *production-job
       name: Ember Service
       script: scripts/deploy.js app
     - <<: *staging-job
