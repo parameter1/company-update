@@ -117,7 +117,6 @@ export default Controller.extend(ActionMixin, {
         this.notify.success('Changes have been published!');
         this.transitionToRoute('list');
       } catch (e) {
-        console.error(e);
         const msg = get(e, 'errors.0.message');
         this.notify.error(msg || 'Unable to submit', { autoClear: false });
       } finally {
