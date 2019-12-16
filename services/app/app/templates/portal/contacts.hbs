@@ -7,8 +7,13 @@
 </div>
 
 <div class="row">
-  {{#each model as |contact|}}
-    {{contact-card type="public" contact=contact onRemove=(action "remove" contact)}}
+  {{#each contacts as |contact|}}
+    {{contact-card
+      contact=contact
+      onRemove=(action "remove" contact)
+      onUpdate=(action "update" contact)
+      onReset=(action "reset" contact)
+    }}
   {{/each}}
 </div>
 
@@ -18,7 +23,7 @@
 
 <div class="fixed-bottom fixed-right card">
   <div class="card-body">
-    <button disabled={{submitDisabled}} class="btn btn-success pull-right" {{ action "showModal" }}>
+    <button disabled={{isSubmitDisabled}} class="btn btn-success pull-right" {{ action "showModal" }}>
       {{entypo-icon "save"}} Save Changes
     </button>
   </div>

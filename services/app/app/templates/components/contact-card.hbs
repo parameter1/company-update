@@ -1,11 +1,10 @@
 <div class="card mb-3">
-  <h6 class="card-header card-header--flexed">
-    {{entypo-icon "user"}}
+  <h6 class="card-header text-right">
     {{confirm-button
       icon="cross"
       label=""
       runningLabel="..."
-      class="btn-danger btn-sm pull-right"
+      class="btn-danger btn-sm"
       iconClass=""
       disabled=isDisabled
       isRunning=isDiscarding
@@ -15,7 +14,7 @@
   <div class="card-body">
     <div class="row">
       <div class="col-12 col-md-6">
-        {{ contact-image image=contact.primaryImage.src onUpload=(action "onUpload")}}
+        {{ contact-image image=_contact.primaryImage.src onUpload=(action "onUpload")}}
       </div>
       <div class="col-12 col-md-6">
         <div class="form-group">
@@ -26,7 +25,8 @@
               class="form-control"
               id=(concat this.elementId "-first-name-input")
               aria-describedby="first-name-help"
-              value=contact.firstName
+              value=_contact.firstName
+              focusOut=(action "onChange" "firstName")
             }}
           </div>
         </div>
@@ -38,7 +38,8 @@
               class="form-control"
               id=(concat this.elementId "-last-name-input")
               aria-describedby="last-name-help"
-              value=contact.lastName
+              value=_contact.lastName
+              focusOut=(action "onChange" "lastName")
             }}
           </div>
         </div>
@@ -50,7 +51,8 @@
               class="form-control"
               id=(concat this.elementId "-title-input")
               aria-describedby="title-help"
-              value=contact.title
+              value=_contact.title
+              focusOut=(action "onChange" "title")
             }}
           </div>
         </div>
