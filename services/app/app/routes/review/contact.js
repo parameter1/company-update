@@ -25,7 +25,14 @@ export default Route.extend({
           {
             original: contact,
             updated: { ...contact, ...updated },
-            payload: { enabled: true, updated: true, fields: { ...updated } },
+            payload: {
+              enabled: true,
+              updated: true,
+              fields: Object.keys(updated).reduce((obj, k) => {
+                if (k === 'id') return obj;
+                return { ...obj, [k]: true };
+              }, {})
+            },
           },
         ];
       }
@@ -38,11 +45,18 @@ export default Route.extend({
           },
         ];
       }
-      return [ ...arr, { original: contact, payload: { enabled: false } } ];
+      return [ ...arr, { original: contact, updated: contact, payload: { enabled: false } } ];
     }, []);
     add.forEach((contact) => contacts.push({
       updated: contact,
-      payload: { enabled: true, added: true, fields: contact },
+      payload: {
+        enabled: true,
+        added: true,
+        fields: Object.keys(contact).reduce((obj, k) => {
+          if (k === 'id') return obj;
+          return { ...obj, [k]: true };
+        }, {})
+      },
     }));
     return { submission, company, contacts };
   },

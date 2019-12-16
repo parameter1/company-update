@@ -4,7 +4,12 @@ import { inject } from '@ember/service';
 
 import ActionMixin from '../../mixins/action';
 import discard from '../../gql/mutations/discard';
-import publish from '../../gql/mutations/review/leadership';
+import imageUpload from '../../gql/mutations/image-upload';
+
+import contactCreate from '../../gql/mutations/review/contact-create';
+import contactUpdate from '../../gql/mutations/review/contact-update';
+import contactImages from '../../gql/mutations/review/contact-images';
+import companyContacts from '../../gql/mutations/review/contact-company-contacts';
 
 export default Controller.extend(ActionMixin, {
   apollo: inject(),
@@ -20,6 +25,67 @@ export default Controller.extend(ActionMixin, {
 
   payload: null,
 
+  /**
+   * Creates an AssetImage and sets as primary image on contact
+   *
+   * @param Object { src } The image to upload
+   * @param Number contactId The contact ID
+   */
+  async uploadContactImage (primaryImage, contactId) {
+    if (!primaryImage) return false;
+    const { src } = primaryImage;
+    const uploadVars = { input: { url: src } };
+    const { id } = await this.apollo.mutate({ mutation: imageUpload, variables: uploadVars }, 'createAssetImageFromUrl');
+
+    const payload = { primaryImageId: id, imageIds: [id] };
+    const updateVars = { input: { id: contactId, payload } };
+    return this.apollo.mutate({ mutation: contactImages, variables: updateVars });
+  },
+
+  /**
+   * Creates contact, uploads/assigns primary image, and adds to company.
+   *
+   * @param Number contentId The company ID
+   * @param Object { ... } The contact payload
+   */
+  async createContact (contentId, contactIds, { firstName, lastName, title, primaryImage }) {
+    const payload = { firstName, lastName, title, status: 1 };
+    const variables = { input: { payload } };
+    const { id: contactId } = await this.apollo.mutate({ mutation: contactCreate, variables }, 'createContentContact');
+    await this.uploadContactImage(primaryImage, contactId);
+
+    const ids = [contactId, ...contactIds];
+    const updateVars = { input: { id: contentId, payload: { contactIds: ids } } };
+    return this.apollo.mutate({ mutation: companyContacts, variables: updateVars });
+  },
+
+  /**
+   * Sets status:0 on contact and removes from company.
+   *
+   * @param Number contentId The company ID
+   * @param Object { id } The contact to remove
+   */
+  async deleteContact (contentId, contactIds, { id }) {
+    const variables = { input: { id, payload: { status: 0 } } };
+    await this.apollo.mutate({ mutation: contactUpdate, variables });
+    const ids = contactIds.filter(v => v !== id);
+    const updateVars = { input: { id: contentId, payload: { contactIds: ids } } };
+    return this.apollo.mutate({ mutation: companyContacts, variables: updateVars });
+  },
+
+  /**
+   * Creates contact, uploads/assigns primary image, and adds to company.
+   *
+   * @param Number contentId The company ID
+   * @param Object { ... } The contact payload
+   */
+  async updateContact ({ id, firstName, lastName, title, primaryImage }) {
+    const payload = { firstName, lastName, title };
+    const variables = { input: { id, payload } };
+    await this.apollo.mutate({ mutation: contactUpdate, variables }, 'updateContentContact');
+    return this.uploadContactImage(primaryImage, id);
+  },
+
   actions: {
     toggleField() {
 
@@ -31,16 +97,27 @@ export default Controller.extend(ActionMixin, {
       this.startAction();
       set(this, 'isPublishing', true);
       try {
+        const { id } = this.get('model.submission');
         const contacts = this.get('model.contacts');
-        console.log(contacts);
-        throw new Error('NYI');
+        const contentId = this.get('model.company.id');
+        const contactIds = this.get('model.company.publicContacts.edges').map(({ node }) => node.id);
 
+        await Promise.all(contacts.reduce((arr, obj) => {
+          const { original, updated, payload } = obj;
+          if (!payload.enabled) return arr;
+          if (payload.added) return [...arr, this.createContact(contentId, contactIds, updated)];
+          if (payload.removed) return [...arr, this.deleteContact(contentId, contactIds, original)];
+          const fields = Object.keys(obj.payload.fields).filter(k => obj.payload.fields[k] === true);
+          const update = fields.reduce((o, f) => ({ ...o, [f]: obj.updated[f] }), { id: obj.original.id });
+          return [...arr, this.updateContact(update)];
+        }, []));
 
         set(this, 'model.submission.reviewed', true);
         await this.apollo.mutate({ mutation: discard, variables: { id }, refetchQueries: ['ContentUpdateListSubmissions'] });
         this.notify.success('Changes have been published!');
         this.transitionToRoute('list');
       } catch (e) {
+        console.error(e);
         const msg = get(e, 'errors.0.message');
         this.notify.error(msg || 'Unable to submit', { autoClear: false });
       } finally {

@@ -1,0 +1,5 @@
+mutation ContentPortalReviewCompanyPublicContacts($input: UpdateContentCompanyPublicContactsMutationInput!) {
+	updateContentCompanyPublicContacts(input: $input) {
+    id
+  }
+}
