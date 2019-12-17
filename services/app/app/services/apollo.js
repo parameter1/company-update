@@ -8,7 +8,7 @@ export default ApolloService.extend({
 
   link() {
     const authLink = setContext((_, context) => this._runAuthorize(context));
-    const uri = this.get('apiURL');
+    const uri = this.get('options.apiURL');
     const uploadLink = createUploadLink({ uri });
     return authLink.concat(uploadLink);
   },
