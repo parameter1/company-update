@@ -23,6 +23,7 @@ module.exports = function(defaults) {
     babel: {
       plugins: ['transform-object-rest-spread']
     },
+    storeConfigInMeta: false,
   });
 
   // Bootstrap JS and source maps.
