@@ -2,7 +2,7 @@ import Component from '@ember/component';
 import { htmlSafe } from '@ember/template';
 import { computed } from '@ember/object';
 
-const toolbarButtons = [['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript']];
+const toolbarButtons = ['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript'];
 
 export default Component.extend({
   tagName: 'div',
