@@ -35,4 +35,5 @@ module.exports = cleanEnv(process.env, {
   LEADERSHIP_SECTION_ALIAS: nonemptystr({ desc: 'The leadership section alias to be displayed', default: 'leaders' }),
   LEADERSHIP_SECTION_MAX: num({ desc: 'The maximum number of leadership sections that can be selected per site.', default: 3 }),
   CONTACT_URL: str({ desc: 'If configured, the URL that will be added to the navigation for support requests.', default: '' }),
+  CONTACT_TEXT: str({ desc: 'Link text for navigation element', default: 'Contact Us' }),
 });

@@ -17,7 +17,9 @@
     <ul class="navbar-nav ml-auto">
       {{#if config.contactUrl}}
         <li class="nav-item">
-          <a href={{ config.contactUrl }} target="_blank" rel="noopener" class="nav-link">Contact Us</a>
+          <a href={{ config.contactUrl }} target="_blank" rel="noopener" class="nav-link">
+            {{config.contactText}}
+          </a>
         </li>
       {{/if}}
       {{#if session.isAuthenticated}}

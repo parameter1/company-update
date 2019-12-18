@@ -14,12 +14,14 @@ export default Route.extend(ApplicationRouteMixin, {
   },
   afterModel({
     contactUrl,
+    contactText,
     logoUrl,
     leadershipSectionAlias,
     leadershipSectionMax,
   }) {
     this.config.load({
       contactUrl,
+      contactText,
       logoUrl,
       leadershipSectionAlias,
       leadershipSectionMax,

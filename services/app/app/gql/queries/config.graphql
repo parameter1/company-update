@@ -1,6 +1,7 @@
 query CompanyUpdateConfig {
   companyUpdateConfig {
     contactUrl
+    contactText
     logoUrl
     leadershipSectionAlias
     leadershipSectionMax
