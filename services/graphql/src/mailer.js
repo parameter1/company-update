@@ -1,25 +1,13 @@
 const sgMail = require('@sendgrid/mail');
-const { notifyTemplate, thankyouTemplate } = require('./templates');
+const render = require('./templates');
 const {
   SENDGRID_API_KEY,
   SENDGRID_FROM,
   NOTIFICATION_TO,
-  PLATFORM_LOGO,
-  PLATFORM_URI,
+  LOGO_URL,
+  CONTACT_URL,
+  CONTACT_TEXT,
 } = require('./env');
-
-const fillTemplate = async (template, replacements = {}) => {
-  let out = template;
-  const logo = PLATFORM_LOGO;
-  const uri = PLATFORM_URI;
-  const toReplace = { logo, uri, ...replacements };
-  await Object.keys(toReplace).forEach((key) => {
-    if (Object.prototype.hasOwnProperty.call(toReplace, key)) {
-      out = out.replace(new RegExp(`__${key}__`, 'g'), toReplace[key]);
-    }
-  });
-  return out;
-};
 
 const send = ({ to, subject, html }) => {
   const payload = {
@@ -35,16 +23,23 @@ const send = ({ to, subject, html }) => {
   return promise;
 };
 
+const common = {
+  contactUrl: CONTACT_URL,
+  contactText: CONTACT_TEXT,
+  logo: LOGO_URL,
+};
+
 module.exports = {
-  async notify({ _id, email, hash }) {
-    const subject = 'A new listing update requires review';
-    const html = await fillTemplate(notifyTemplate, { _id, email, hash });
+  async notify(submission = {}, { req }) {
+    const subject = 'A new company update requires review';
+    const html = await render('notify', { ...common, uri: `http://${req.get('host')}`, submission });
     const to = NOTIFICATION_TO;
     return send({ to, subject, html });
   },
-  async thank({ _id, name, email }) {
-    const subject = 'Your requested listing updates have been recieved';
-    const html = await fillTemplate(thankyouTemplate, { _id, email });
+  async thank(submission, { req }) {
+    const subject = 'Your requested updates have been recieved';
+    const html = await render('thankYou', { ...common, uri: `http://${req.get('host')}`, submission });
+    const { name, email } = submission;
     const to = `${name} <${email}>`;
     return send({ to, subject, html });
   },
