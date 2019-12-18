@@ -7,7 +7,7 @@ const { log } = console;
 const init = async () => {
   await mongodb.connect();
   const schema = await createSchema();
-  const context = ({ req }) => ({ authorization: req.get('authorization') });
+  const context = ({ req }) => ({ req, authorization: req.get('authorization') });
   const server = new ApolloServer({ schema, context });
 
   server.listen({ port: 80, path: '/graph' }).then(({ url }) => {
