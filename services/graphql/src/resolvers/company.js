@@ -38,8 +38,8 @@ module.exports = {
       const res = await insert({ reviewed, ...input });
       if (!res.result.ok) throw new Error('Unable to save your changes, please try again.');
       const submission = await retrieve(res.insertedId);
-      await notify(submission, ctx);
-      await thank(submission, ctx);
+      notify(submission, ctx);
+      thank(submission, ctx);
       return submission;
     },
 
