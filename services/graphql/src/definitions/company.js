@@ -8,8 +8,6 @@ module.exports = gql`
 
   extend type Mutation {
     companyUpdateSubmit(input: CompanyUpdateSubmissionInput!): CompanyUpdateSubmission!
-    companyUpdateComplete(id: String!): String!
-    companyUpdateDiscard(id: String!): String!
     companyUpdateSingleUpload(file: Upload!): String!
   }
 

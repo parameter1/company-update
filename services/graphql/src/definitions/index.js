@@ -4,6 +4,7 @@ const config = require('./config');
 const contacts = require('./contacts');
 const leadership = require('./leadership');
 const list = require('./list');
+const review = require('./review');
 
 module.exports = gql`
 
@@ -38,5 +39,6 @@ module.exports = gql`
   ${contacts}
   ${leadership}
   ${list}
+  ${review}
 
 `;
