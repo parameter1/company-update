@@ -23,7 +23,12 @@
         {{froala-editor
           content=teaser
           update=(action (mut model.teaser) value="string")
-          options=(hash attribution=false toolbarButtons=toolbarButtons)
+          options=(hash
+            attribution=false
+            toolbarButtons=toolbarButtons
+            multiLine=false
+            htmlAllowedTags=htmlAllowedTags
+          )
         }}
       </div>
       <small id="teaser-help" class="form-text text-muted">A short description of your company that <i>may</i> be displayed in various places across the site.</small>
