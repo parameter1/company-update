@@ -16,7 +16,9 @@
       }}
         <div class="d-flex w-100 justify-content-between">
           <div class="d-flex">
-            <img src={{ item.company.primaryImage.src }} class="mr-3 list-logo" alt="company logo">
+            {{#if item.company.primaryImage.src}}
+              <img src={{ item.company.primaryImage.src }} class="mr-3 list-logo" alt="company logo">
+            {{/if}}
             <div class="d-flex flex-column">
               <h4 class="mb-1">{{ item.company.name }}</h4>
               <span>{{submission-icon type=item.type}} {{item.label}}</span>
