@@ -18,7 +18,7 @@
     <div class="card mb-3">
       <h4 class="h6 card-header">Logo</h4>
       <div class="card-body">
-        {{ company-logo logo=model.primaryImage.src }}
+        {{ upload-image image=model.primaryImage.src onUpload=(action "onUpload")}}
       </div>
     </div>
   </div>

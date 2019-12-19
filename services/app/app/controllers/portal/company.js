@@ -15,5 +15,8 @@ export default Controller.extend({
     transitionToPortal() {
       this.transitionToRoute('portal');
     },
+    onUpload(src) {
+      this.set('model.primaryImage', { src });
+    },
   }
 });

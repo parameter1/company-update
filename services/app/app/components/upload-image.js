@@ -17,7 +17,6 @@ export default Component.extend(ActionMixin, {
       const variables = { file: file.get('blob') };
 
       try {
-        // file.readAsDataURL().then(url => this.set('image', url));
         const location = await this.apollo.mutate({ mutation, variables }, 'companyUpdateSingleUpload');
         this.onUpload(location);
       } catch (e) {
