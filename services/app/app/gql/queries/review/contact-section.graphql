@@ -1,0 +1,9 @@
+query CompanyUpdateDefaultWebsiteSection {
+  websiteSections(input: { includeAliases: "home", rootOnly: true, pagination: { limit: 1 } }){
+    edges {
+      node {
+        id
+      }
+    }
+  }
+}

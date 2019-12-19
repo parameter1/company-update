@@ -6,6 +6,7 @@ import ActionMixin from '@base-cms/company-update-app/mixins/action';
 import discard from '@base-cms/company-update-app/gql/mutations/discard';
 import imageUpload from '@base-cms/company-update-app/gql/mutations/image-upload';
 
+import contactSection from '@base-cms/company-update-app/gql/queries/review/contact-section';
 import contactCreate from '@base-cms/company-update-app/gql/mutations/review/contact-create';
 import contactUpdate from '@base-cms/company-update-app/gql/mutations/review/contact-update';
 import contactImages from '@base-cms/company-update-app/gql/mutations/review/contact-images';
@@ -49,7 +50,12 @@ export default Controller.extend(ActionMixin, {
    * @param Object { ... } The contact payload
    */
   async createContact (contentId, contactIds, { firstName, lastName, title, primaryImage }) {
-    const payload = { firstName, lastName, title, status: 1 };
+    const getDefaultSection = async () => {
+      const { edges } = await this.apollo.query({ query: contactSection }, 'websiteSections');
+      return get(edges, '0.node.id');
+    };
+    const primarySectionId = await getDefaultSection();
+    const payload = { firstName, lastName, title, status: 1, primarySectionId };
     const variables = { input: { payload } };
     const { id: contactId } = await this.apollo.mutate({ mutation: contactCreate, variables }, 'createContentContact');
     await this.uploadContactImage(primaryImage, contactId);
