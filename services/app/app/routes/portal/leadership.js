@@ -15,7 +15,6 @@ export default Route.extend({
         sort: { field: 'name', order: 'asc' },
       },
       leaders: {
-        rootOnly: true,
         includeAliases: [leadershipSectionAlias],
         pagination: { limit: 0 },
         sort: { field: 'name', order: 'asc' },
