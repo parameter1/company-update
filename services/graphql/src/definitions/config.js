@@ -10,6 +10,7 @@ module.exports = gql`
     logoUrl: String
     contactUrl: String
     contactText: String
+    leadershipEnabled: Boolean!
     leadershipSectionAlias: String!
     leadershipSectionMax: Int!
   }
