@@ -12,10 +12,12 @@
       {{submission-icon type="company" class="mr-2"}}
       Modify company details
     {{/link-to}}
-    {{#link-to "portal.leadership" class="list-group-item list-group-item-action"}}
-      {{submission-icon type="leadership" class="mr-2"}}
-      Modify leadership categories
-    {{/link-to}}
+    {{#if config.leadershipEnabled}}
+      {{#link-to "portal.leadership" class="list-group-item list-group-item-action"}}
+        {{submission-icon type="leadership" class="mr-2"}}
+        Modify leadership categories
+      {{/link-to}}
+    {{/if}}
     {{#link-to "portal.contacts" class="list-group-item list-group-item-action"}}
       {{submission-icon type="contact" class="mr-2"}}
       Modify contacts

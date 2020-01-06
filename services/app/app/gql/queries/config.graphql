@@ -3,6 +3,7 @@ query CompanyUpdateConfig {
     contactUrl
     contactText
     logoUrl
+    leadershipEnabled
     leadershipSectionAlias
     leadershipSectionMax
   }

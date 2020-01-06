@@ -16,6 +16,7 @@ export default Route.extend(ApplicationRouteMixin, {
     contactUrl,
     contactText,
     logoUrl,
+    leadershipEnabled,
     leadershipSectionAlias,
     leadershipSectionMax,
   }) {
@@ -23,6 +24,7 @@ export default Route.extend(ApplicationRouteMixin, {
       contactUrl,
       contactText,
       logoUrl,
+      leadershipEnabled,
       leadershipSectionAlias,
       leadershipSectionMax,
     });

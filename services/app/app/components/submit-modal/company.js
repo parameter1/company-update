@@ -82,7 +82,7 @@ export default Component.extend(ActionMixin, {
         this.onComplete();
       } catch (e) {
         error(e);
-        this.notify.error('Something went wrong -- please review your information and try again!', { autoClear: false });
+        this.notify.error(`Something went wrong -- please review your information and try again!<br>${e.message}`, { autoClear: false, htmlContent: true });
       } finally {
         this.endAction();
       }

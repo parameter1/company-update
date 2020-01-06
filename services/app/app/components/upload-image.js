@@ -22,7 +22,7 @@ export default Component.extend(ActionMixin, {
       } catch (e) {
         this.set('image', image);
         error('upload error', e, file);
-        this.notify.error('Something went wrong -- please try again!', { autoClear: false });
+        this.notify.error(`Something went wrong -- please try again!<br>${e.message}`, { autoClear: false, htmlContent: true });
       } finally {
         file.queue.remove(file);
         this.endAction();
