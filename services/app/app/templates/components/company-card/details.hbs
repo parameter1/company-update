@@ -28,6 +28,7 @@
             toolbarButtons=toolbarButtons
             multiLine=false
             htmlAllowedTags=htmlAllowedTags
+            charCounterMax=255
           )
         }}
       </div>
@@ -41,7 +42,7 @@
         {{froala-editor
           content=body
           update=(action (mut model.body) value="string")
-          options=(hash attribution=false toolbarButtons=toolbarButtons)
+          options=(hash attribution=false toolbarButtons=toolbarButtons charCounterCount=false)
         }}
       </div>
       <small id="body-help" class="form-text text-muted">A description of your company that will be displayed on your landing page.</small>

@@ -18,7 +18,7 @@ module.exports = function(defaults) {
       keepGraphqlFileExtension: false,
     },
     'ember-froala-editor': {
-      plugins: false,
+      plugins: 'char_counter',
     },
     babel: {
       plugins: ['transform-object-rest-spread']
