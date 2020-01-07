@@ -35,8 +35,8 @@ module.exports = (template, args = {}) => {
     thankYou: `
       ${header({ logo })}
 
-      ${p('Thank you for updating your listing!')}
-      ${p('The requested changes have been recieved and will be reviewed by our editorial staff.')}
+      ${p('Thank you for your submission.')}
+      ${p('Please let us know if you need anything further.')}
 
       ${footer({ contactUrl, contactText })}
     `,
