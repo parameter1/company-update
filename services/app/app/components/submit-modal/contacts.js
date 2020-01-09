@@ -14,8 +14,8 @@ export default Component.extend(ActionMixin, {
   hash: null,
   payload: null,
 
-  name: computed.reads('session.data.authenticated.name'),
-  email: computed.reads('session.data.authenticated.email'),
+  name: null,
+  email: null,
 
   isOpen: false,
   isInvalid: computed('name', 'email', function() {
