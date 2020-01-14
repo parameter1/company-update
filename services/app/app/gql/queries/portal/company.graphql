@@ -6,6 +6,7 @@
 # import CompanyServicesFragment from "../../fragments/company/services"
 # import CompanyImagesFragment from "../../fragments/company/images"
 # import CompanyLogoFragment from "../../fragments/company/logo"
+# import CompanyYoutubeFragment from "../../fragments/company/youtube"
 
 query ContentUpdatePortalCompany($input: ContentHashQueryInput!) {
   contentHash(input: $input) {
@@ -16,5 +17,6 @@ query ContentUpdatePortalCompany($input: ContentHashQueryInput!) {
     ...CompanySocialFragment
     ...CompanyServicesFragment
     ...CompanyImagesFragment
+    ...CompanyYoutubeFragment
   }
 }

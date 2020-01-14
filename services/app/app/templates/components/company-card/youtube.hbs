@@ -1,0 +1,63 @@
+<h6 class="card-header">{{ title }}</h6>
+<form class="card-body">
+  <p class="small text-muted">The leadership program will automatically display the latest videos from the associated Youtube playlist, channel, or user account.</p>
+  <p class="small text-muted">To include videos on your profile, please fill out one of the fields below.</p>
+  <div class="row">
+    <div class="form-group col">
+      <label for="playlist-id-input">Playlist ID</label>
+      <div class="input-group">
+        {{input
+          type="text"
+          class="form-control"
+          id="playlist-id-input"
+          aria-describedby="playlist-id-help"
+          value=model.youtube.playlistId
+        }}
+      </div>
+      <small id="playlist-id-help" class="form-text text-muted">Display the latest videos from this playlist.</small>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col">
+      <label for="channel-id-input">Channel ID</label>
+      <div class="input-group">
+        {{input
+          type="text"
+          class="form-control"
+          id="channel-id-input"
+          aria-describedby="channel-id-help"
+          value=model.youtube.channelId
+        }}
+      </div>
+      <small id="channel-id-help" class="form-text text-muted">Display the latest videos from this channel.</small>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col">
+      <label for="username-input">Username</label>
+      <div class="input-group">
+        {{input
+          type="text"
+          class="form-control"
+          id="username-input"
+          aria-describedby="username-help"
+          value=model.youtube.username
+        }}
+      </div>
+      <small id="channel-id-help" class="form-text text-muted">Display the latest videos from this user.</small>
+    </div>
+  </div>
+  {{#if url}}
+    <div class="row">
+      <div class="form-group col">
+        <label for="url-input">Preview URL</label>
+        <div class="input-group">
+          <a href={{ url }} target="_blank" rel="noopener" class="form-control-plaintext">
+            {{ url }}
+          </a>
+        </div>
+      </div>
+    </div>
+  {{/if}}
+</form>
+<div class="card-footer"></div>

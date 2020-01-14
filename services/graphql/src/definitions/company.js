@@ -47,7 +47,7 @@ module.exports = gql`
     email: String
     body: String
     socialLinks: [SocialLinkInput!]
-
+    youtube: CompanyUpdatePayloadYoutubeInput = {}
     teaser: String
     numberOfEmployees: String
     trainingInformation: String
@@ -58,13 +58,18 @@ module.exports = gql`
     productSummary: String
     serviceInformation: String
     warrantyInformation: String
-
     logo: String
   }
 
   input SocialLinkInput {
     provider: String!
     url: String!
+  }
+
+  input CompanyUpdatePayloadYoutubeInput {
+    playlistId: String
+    channelId: String
+    username: String
   }
 
 `;

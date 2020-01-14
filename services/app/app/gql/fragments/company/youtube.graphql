@@ -1,0 +1,7 @@
+fragment CompanyYoutubeFragment on ContentCompany {
+  youtube {
+    channelId
+    playlistId
+    username
+  }
+}

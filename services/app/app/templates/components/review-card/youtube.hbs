@@ -1,0 +1,43 @@
+<h6 class="card-header">{{ title }}</h6>
+<form class="card-body">
+  <div class="row">
+    <div class="form-group col">
+      <label for="youtube-playlist-id-input">Playlist ID</label>
+      {{review-field
+        original=company.youtube.playlistId
+        updated=submission.payload.youtube.playlistId
+        toggleField=toggleField
+        fieldKey="youtube"
+        subField="playlistId"
+        enabled=payload.youtube
+      }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col">
+      <label for="youtube-channel-id-input">Channel ID</label>
+      {{review-field
+        original=company.youtube.channelId
+        updated=submission.payload.youtube.channelId
+        toggleField=toggleField
+        fieldKey="youtube"
+        subField="channelId"
+        enabled=payload.youtube
+      }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col">
+      <label for="youtube-username-input">Username</label>
+      {{review-field
+        original=company.youtube.username
+        updated=submission.payload.youtube.username
+        toggleField=toggleField
+        fieldKey="youtube"
+        subField="username"
+        enabled=payload.youtube
+      }}
+    </div>
+  </div>
+</form>
+<div class="card-footer"></div>
