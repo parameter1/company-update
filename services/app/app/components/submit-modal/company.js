@@ -4,6 +4,7 @@ import { inject } from '@ember/service';
 import { queryManager } from 'ember-apollo-client';
 import ActionMixin from '@base-cms/company-update-app/mixins/action';
 import mutation from '@base-cms/company-update-app/gql/mutations/portal/company';
+import getGraphqlError from '../../utils/get-graphql-error';
 
 const { error } = console;
 
@@ -58,6 +59,7 @@ export default Component.extend(ActionMixin, {
   model: null,
   name: null,
   email: null,
+  error: null,
 
   isOpen: false,
   isInvalid: computed('name', 'email', function() {
@@ -69,6 +71,7 @@ export default Component.extend(ActionMixin, {
   actions: {
     async submit() {
       this.startAction();
+      this.set('error', null);
       const { name, email } = this.getProperties('name', 'email');
       const { hash } = this.model;
       const payload = filterModel(this.model);
@@ -82,7 +85,9 @@ export default Component.extend(ActionMixin, {
         this.onComplete();
       } catch (e) {
         error(e);
-        this.notify.error(`Something went wrong -- please review your information and try again!<br>${e.message}`, { autoClear: false, htmlContent: true });
+        const err = getGraphqlError(e);
+        this.set('error', err);
+        this.notify.error(`Something went wrong -- please review your information and try again!`, { autoClear: false });
       } finally {
         this.endAction();
       }
