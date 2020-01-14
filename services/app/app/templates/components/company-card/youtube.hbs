@@ -4,32 +4,32 @@
   <p class="small text-muted">To include videos on your profile, please fill out one of the fields below.</p>
   <div class="row">
     <div class="form-group col">
-      <label for="playlistId-input">Playlist ID</label>
+      <label for="playlist-id-input">Playlist ID</label>
       <div class="input-group">
         {{input
           type="text"
           class="form-control"
-          id="playlistId-input"
-          aria-describedby="playlistId-help"
+          id="playlist-id-input"
+          aria-describedby="playlist-id-help"
           value=model.youtube.playlistId
         }}
       </div>
-      <small id="playlistId-help" class="form-text text-muted">Display the latest videos from this playlist.</small>
+      <small id="playlist-id-help" class="form-text text-muted">Display the latest videos from this playlist.</small>
     </div>
   </div>
   <div class="row">
     <div class="form-group col">
-      <label for="channelId-input">Channel ID</label>
+      <label for="channel-id-input">Channel ID</label>
       <div class="input-group">
         {{input
           type="text"
           class="form-control"
-          id="channelId-input"
-          aria-describedby="channelId-help"
+          id="channel-id-input"
+          aria-describedby="channel-id-help"
           value=model.youtube.channelId
         }}
       </div>
-      <small id="channelId-help" class="form-text text-muted">Display the latest videos from this channel.</small>
+      <small id="channel-id-help" class="form-text text-muted">Display the latest videos from this channel.</small>
     </div>
   </div>
   <div class="row">
@@ -44,7 +44,7 @@
           value=model.youtube.username
         }}
       </div>
-      <small id="channelId-help" class="form-text text-muted">Display the latest videos from this user.</small>
+      <small id="channel-id-help" class="form-text text-muted">Display the latest videos from this user.</small>
     </div>
   </div>
   {{#if url}}
