@@ -13,6 +13,10 @@ const getFiltered = (model, key) => {
   if (key == 'socialLinks') {
     return v.map(({ url, provider }) => ({ url, provider }));
   }
+  if (key == 'youtube') {
+    const { playlistId, channelId, username } = v;
+    return { playlistId, channelId, username };
+  }
   return v;
 };
 
@@ -43,6 +47,7 @@ const fields = [
   'serviceInformation',
   'warrantyInformation',
   'logo',
+  'youtube'
 ];
 
 const filterModel = (model = {}) => {
