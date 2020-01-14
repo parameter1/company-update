@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import { set, computed } from '@ember/object';
+import { computed } from '@ember/object';
 
 export default Component.extend({
   tagName: 'div',
@@ -13,9 +13,4 @@ export default Component.extend({
     if (username) return `https://www.youtube.com/user/${username}`;
     return '';
   }),
-
-  init() {
-    this._super();
-    if (!this.get('model.youtube')) set(this.get('model'), 'youtube', {});
-  },
 });

@@ -13,6 +13,7 @@ export default Route.extend({
     if (!model) throw new Error('Invalid URL');
     // @todo; this doesn't deep clone arrays correctly (social links)
     // return copy(model);
+    if (model.youtube) model.youtube = {};
     return model;
   },
 });
