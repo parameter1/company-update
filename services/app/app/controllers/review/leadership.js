@@ -2,6 +2,7 @@ import Controller from '@ember/controller';
 import { computed, get, set } from '@ember/object';
 import { inject } from '@ember/service';
 
+import getGraphQlError from '@base-cms/company-update-app/app/utils/get-graphql-error';
 import ActionMixin from '@base-cms/company-update-app/mixins/action';
 import discard from '@base-cms/company-update-app/gql/mutations/discard';
 import publish from '@base-cms/company-update-app/gql/mutations/review/leadership';
@@ -75,8 +76,7 @@ export default Controller.extend(ActionMixin, {
         this.notify.success('Changes have been published!');
         this.transitionToRoute('list');
       } catch (e) {
-        const msg = get(e, 'errors.0.message');
-        this.notify.error(msg || 'Unable to submit', { autoClear: false });
+        this.notify.error(getGraphQlError(e), { autoClear: false });
       } finally {
         set(this, 'isPublishing', false);
         this.endAction();
@@ -91,8 +91,7 @@ export default Controller.extend(ActionMixin, {
         this.transitionToRoute('list');
         set(this, 'model.submission.reviewed', true);
       } catch (e) {
-        const msg = get(e, 'errors.0.message');
-        this.notify.error(msg || 'Unable to discard', { autoClear: false });
+        this.notify.error(getGraphQlError(e), { autoClear: false });
       } finally {
         set(this, 'isDiscarding', false);
         this.endAction();
