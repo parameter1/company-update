@@ -26,6 +26,15 @@
           </div>
         </div>
       </div>
+      {{#if error}}
+        <hr>
+        <div class="row">
+          <div class="col">
+            <h5 class="card-title">An error was encountered with this request:</h5>
+            <code>{{ error.message }}</code>
+          </div>
+        </div>
+      {{/if}}
     {{/modal.body}}
 
     {{#modal.footer}}
