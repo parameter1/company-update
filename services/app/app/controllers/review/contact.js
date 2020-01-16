@@ -5,7 +5,7 @@ import { inject } from '@ember/service';
 import ActionMixin from '@base-cms/company-update-app/mixins/action';
 import discard from '@base-cms/company-update-app/gql/mutations/discard';
 import imageUpload from '@base-cms/company-update-app/gql/mutations/image-upload';
-import getGraphQlError from '@base-cms/company-update-app/app/utils/get-graphql-error';
+import getGraphQlError from '@base-cms/company-update-app/utils/get-graphql-error';
 import contactSection from '@base-cms/company-update-app/gql/queries/review/contact-section';
 import contactCreate from '@base-cms/company-update-app/gql/mutations/review/contact-create';
 import contactUpdate from '@base-cms/company-update-app/gql/mutations/review/contact-update';

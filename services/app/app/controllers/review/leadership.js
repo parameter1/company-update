@@ -2,7 +2,7 @@ import Controller from '@ember/controller';
 import { computed, get, set } from '@ember/object';
 import { inject } from '@ember/service';
 
-import getGraphQlError from '@base-cms/company-update-app/app/utils/get-graphql-error';
+import getGraphQlError from '@base-cms/company-update-app/utils/get-graphql-error';
 import ActionMixin from '@base-cms/company-update-app/mixins/action';
 import discard from '@base-cms/company-update-app/gql/mutations/discard';
 import publish from '@base-cms/company-update-app/gql/mutations/review/leadership';
