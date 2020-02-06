@@ -1,6 +1,6 @@
 import Route from '@ember/routing/route';
 import { queryManager } from 'ember-apollo-client';
-// import { copy } from '@ember/object/internals';
+import { set } from '@ember/object';
 import query from '@base-cms/company-update-app/gql/queries/portal/company';
 
 export default Route.extend({
@@ -18,9 +18,9 @@ export default Route.extend({
     if (!model.externalLinks.some(link => link.key === 'company-products')) {
       model.externalLinks.pushObject({ key: 'company-products' });
     }
-    model.productsUrl = model.externalLinks
+    set(model, 'productsUrl', model.externalLinks
       .filter(link => link.key === 'company-products')
-      .firstObject;
+      .firstObject);
     return model;
   },
 });
