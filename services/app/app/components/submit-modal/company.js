@@ -10,8 +10,15 @@ const { error } = console;
 
 const getFiltered = (model, key) => {
   const v = get(model, key);
+  if (key == 'externalLinks') {
+    return v
+      .map(link => ({ key: link.key, url: link.url }))
+      .filter(link => link.key && link.url);
+  }
   if (key == 'socialLinks') {
-    return v.map(({ url, provider }) => ({ url, provider }));
+    return v
+      .map(link => ({ url: link.url, provider: link.provider }))
+      .filter(link => link.url && link.provider);
   }
   if (key == 'youtube') {
     const { playlistId, channelId, username } = v;
@@ -36,6 +43,7 @@ const fields = [
   'email',
   'body',
   'socialLinks',
+  'externalLinks',
   'teaser',
   'numberOfEmployees',
   'trainingInformation',
