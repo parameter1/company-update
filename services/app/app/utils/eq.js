@@ -1,7 +1,10 @@
 const { isArray } = Array;
 const isObject = v => v != null && typeof v === 'object';
 
-const eqObj = (first, second) => Object.keys(first).filter(k => first[k] == second[k]);
+const eqObj = (first, second) => {
+  const keys = Object.keys(first).filter(k => first[k]).filter(k => k !== '__typename');
+  return keys.every(k => first[k] === second[k]);
+};
 
 const eqArr = (first, second) => {
   for (let i = 0; i < first.length; i++) {
@@ -16,7 +19,8 @@ const eqArr = (first, second) => {
   return true;
 };
 
-export default (first, second) => {
+export default (first, second = false) => {
+  if (isObject(first) && !isArray(first)) return eqObj(first, second);
   if (!isArray(first) || !isArray(second)) return first == second;
   if (first.length !== second.length) return false;
   return eqArr(first, second) || eqArr(second, first);
