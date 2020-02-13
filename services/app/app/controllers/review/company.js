@@ -14,11 +14,13 @@ const buildMutation = (payload = {}) => {
   return gql`
   mutation CompanyUpdatePublish(
     ${payload.logo ? '$images: UpdateContentCompanyImagesMutationInput!,' : ''}
+    ${payload.externalLinks ? '$externalLinks: UpdateContentCompanyExternalLinksMutationInput!,' : ''}
     ${payload.socialLinks ? '$social: UpdateContentCompanySocialLinksMutationInput!,' : ''}
     ${payload.youtube ? '$youtube: UpdateContentCompanyYoutubeMutationInput!,' : ''}
     $company: UpdateContentCompanyMutationInput!
   ) {
     ${payload.logo ? 'updateContentCompanyImages(input: $images) { id }' : ''}
+    ${payload.externalLinks ? 'updateContentCompanyExternalLinks(input: $externalLinks) { id }' : ''}
     ${payload.socialLinks ? 'updateContentCompanySocialLinks(input: $social) { id }' : ''}
     ${payload.youtube ? 'updateContentCompanyYoutube(input: $youtube) { id }' : ''}
     updateContentCompany(input: $company) { id }
@@ -81,6 +83,7 @@ export default Controller.extend(ActionMixin, {
 
         const {
           logo,
+          externalLinks,
           socialLinks,
           youtube,
           ...company
@@ -89,6 +92,7 @@ export default Controller.extend(ActionMixin, {
         const image = await this.handleImage(logo);
         const variables = {
           company: { id, payload: company },
+          ...(externalLinks && { externalLinks: { id, payload: { externalLinks } } }),
           ...(socialLinks && { social: { id, payload: { socialLinks } } }),
           ...(youtube && { youtube: { id, payload: { ...youtube } } }),
           ...(image && { images: { id, payload: { primaryImage: image.primaryImage, images: image.images } } }),

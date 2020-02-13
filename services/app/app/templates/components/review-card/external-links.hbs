@@ -1,0 +1,13 @@
+<h6 class="card-header">{{ title }}</h6>
+<form class="card-body">
+  {{#each links as |link|}}
+    {{review-card/external-link
+      link=link
+      enabled=payload.externalLinks
+      original=link.original
+      updated=link.updated
+      toggleField=toggleField
+    }}
+  {{/each}}
+</form>
+<div class="card-footer"></div>
