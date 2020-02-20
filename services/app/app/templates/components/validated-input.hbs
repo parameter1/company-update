@@ -1,0 +1,12 @@
+<Input
+  @id={{this.id}}
+  @class={{this.classes}}
+  @type={{this.type}}
+  @aria-describedby={{this.aria-describedby}}
+  @value={{this.value}}
+  @pattern={{this.pattern}}
+
+  @input={{action "validate"}}
+/>
+<div class="valid-feedback">{{validText}}</div>
+<div class="invalid-feedback">{{invalidText}}</div>
