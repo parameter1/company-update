@@ -5,45 +5,51 @@
   <div class="row">
     <div class="form-group col">
       <label for="playlist-id-input">Playlist ID</label>
-      <div class="input-group">
-        {{input
-          type="text"
-          class="form-control"
-          id="playlist-id-input"
-          aria-describedby="playlist-id-help"
-          value=model.youtube.playlistId
-        }}
-      </div>
+      {{validated-input
+        type="text"
+        class="form-control"
+        id="playlist-id-input"
+        aria-describedby="playlist-id-help"
+        value=model.youtube.playlistId
+        pattern="[\w\-]{12,}"
+        validText=""
+        invalidText="Enter a valid playlist id"
+        validateFn=validatePlaylistId
+      }}
       <small id="playlist-id-help" class="form-text text-muted">Display the latest videos from this playlist.</small>
     </div>
   </div>
   <div class="row">
     <div class="form-group col">
       <label for="channel-id-input">Channel ID</label>
-      <div class="input-group">
-        {{input
-          type="text"
-          class="form-control"
-          id="channel-id-input"
-          aria-describedby="channel-id-help"
-          value=model.youtube.channelId
-        }}
-      </div>
+      {{validated-input
+        type="text"
+        class="form-control"
+        id="channel-id-input"
+        aria-describedby="channel-id-help"
+        value=model.youtube.channelId
+        pattern="[\w\-]{12,}"
+        validText=""
+        invalidText="Enter a valid channel id"
+        validateFn=validateChannelId
+      }}
       <small id="channel-id-help" class="form-text text-muted">Display the latest videos from this channel.</small>
     </div>
   </div>
   <div class="row">
     <div class="form-group col">
       <label for="username-input">Username</label>
-      <div class="input-group">
-        {{input
-          type="text"
-          class="form-control"
-          id="username-input"
-          aria-describedby="username-help"
-          value=model.youtube.username
-        }}
-      </div>
+      {{validated-input
+        type="text"
+        class="form-control"
+        id="username-input"
+        aria-describedby="username-help"
+        value=model.youtube.username
+        pattern="[\w\-]{12,}"
+        validText=""
+        invalidText="Enter a valid username"
+        validateFn=validateUsername
+      }}
       <small id="channel-id-help" class="form-text text-muted">Display the latest videos from this user.</small>
     </div>
   </div>
@@ -51,11 +57,9 @@
     <div class="row">
       <div class="form-group col">
         <label for="url-input">Preview URL</label>
-        <div class="input-group">
-          <a href={{ url }} target="_blank" rel="noopener" class="form-control-plaintext">
-            {{ url }}
-          </a>
-        </div>
+        <a href={{ url }} target="_blank" rel="noopener" class="form-control-plaintext">
+          {{ url }}
+        </a>
       </div>
     </div>
   {{/if}}
