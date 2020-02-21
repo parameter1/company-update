@@ -6,5 +6,4 @@ export default Component.extend({
   payload: null,
   original: null,
   updated: null,
-  toggleField: () => { throw new Error('Pass toggleField!'); },
 });
