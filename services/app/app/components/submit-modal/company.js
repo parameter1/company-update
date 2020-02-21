@@ -8,22 +8,25 @@ import getGraphqlError from '../../utils/get-graphql-error';
 
 const { error } = console;
 
+const getExternalLinks = (v) => v
+  .map(link => ({ key: link.key, url: link.url }))
+  .filter(link => link.key && link.url);
+
+const getSocialLinks = (v) => v
+  .map(link => ({ url: link.url, provider: link.provider }))
+  .filter(link => link.url && link.provider);
+
+const getSocialFields = ({ playlistId, channelId, username }) => ({
+  playlistId,
+  channelId,
+  username,
+});
+
 const getFiltered = (model, key) => {
   const v = get(model, key);
-  if (key == 'externalLinks') {
-    return v
-      .map(link => ({ key: link.key, url: link.url }))
-      .filter(link => link.key && link.url);
-  }
-  if (key == 'socialLinks') {
-    return v
-      .map(link => ({ url: link.url, provider: link.provider }))
-      .filter(link => link.url && link.provider);
-  }
-  if (key == 'youtube') {
-    const { playlistId, channelId, username } = v;
-    return { playlistId, channelId, username };
-  }
+  if (key == 'externalLinks') return getExternalLinks(v);
+  if (key == 'socialLinks') return getSocialLinks(v);
+  if (key == 'youtube') return getSocialFields(v);
   return v;
 };
 
