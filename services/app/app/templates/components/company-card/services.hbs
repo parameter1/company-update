@@ -1,6 +1,24 @@
 <h6 class="card-header">{{ title }}</h6>
 <form class="card-body">
   <p class="small text-muted">This information may be displayed on your landing page.</p>
+
+  <div class="row">
+    <div class="form-group col">
+      <label for="products-url-input">Products URL</label>
+      <div class="input-group">
+        {{input
+          type="url"
+          class="form-control"
+          id="products-url-input"
+          aria-describedby="products-url-help"
+          placeholder="https://mywebsite.com/products"
+          value=model.productsUrl.url
+        }}
+      </div>
+      <small id="products-url-help" class="form-text text-muted">If present, where users will be sent when clicking on a link to view your products.</small>
+    </div>
+  </div>
+
   <div class="row">
     <div class="form-group col">
       <label for="product-summary-input">Product Summary</label>

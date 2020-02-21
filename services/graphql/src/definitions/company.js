@@ -46,6 +46,7 @@ module.exports = gql`
     type: String
     email: String
     body: String
+    externalLinks: [ExternalLinkInput!]
     socialLinks: [SocialLinkInput!]
     youtube: CompanyUpdatePayloadYoutubeInput = {}
     teaser: String
@@ -59,6 +60,11 @@ module.exports = gql`
     serviceInformation: String
     warrantyInformation: String
     logo: String
+  }
+
+  input ExternalLinkInput {
+    key: String!
+    url: String!
   }
 
   input SocialLinkInput {
