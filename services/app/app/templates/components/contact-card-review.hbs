@@ -27,7 +27,6 @@
             updated=updated.primaryImage.src
             fieldKey="logo"
             enabled=payload.fields.primaryImage
-            toggleField=(action "noop")
             _approvable=false
           }}
         {{else}}
@@ -49,7 +48,6 @@
               updated=updated.firstName
               fieldKey="firstName"
               enabled=payload.fields.firstName
-              toggleField=(action "noop")
               _approvable=false
             }}
           {{else}}
@@ -69,7 +67,6 @@
               original=original.lastName
               updated=updated.lastName
               fieldKey="lastName"
-              toggleField=(action "noop")
               enabled=payload.fields.lastName
               _approvable=false
             }}
@@ -91,7 +88,6 @@
               updated=updated.title
               fieldKey="title"
               enabled=payload.fields.title
-              toggleField=(action "noop")
               _approvable=false
             }}
           {{else}}
