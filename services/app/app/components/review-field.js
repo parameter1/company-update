@@ -24,13 +24,6 @@ export default Component.extend({
     return Boolean(v);
   }),
 
-  init() {
-    this._super(...arguments);
-    if (typeof this.toggleField !== 'function') {
-      throw new Error('You must pass a toggleField function to this component.');
-    }
-  },
-
   actions: {
     toggle() {
       this.toggleField(this.get('fieldKey'));
