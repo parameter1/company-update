@@ -19,6 +19,8 @@ export default Component.extend({
   }),
 
   actions: {
+    noop() {
+    },
     toggleCard() {
       this.set('payload.enabled', !this.get('payload.enabled'));
     },
