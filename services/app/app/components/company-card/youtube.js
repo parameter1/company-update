@@ -15,7 +15,6 @@ export default Component.extend({
     if (!playlistId) return true;
     const variables = { input: { playlistId } };
     const result = await this.apollo.query({ query: queryPlaylistId, variables });
-    console.log(result);
     return result.validateYoutubePlaylistId;
   },
 
@@ -23,7 +22,6 @@ export default Component.extend({
     if (!channelId) return true;
     const variables = { input: { channelId } };
     const result = await this.apollo.query({ query: queryChannelId, variables });
-    console.log(result);
     return result.validateYoutubeChannelId;
   },
 
@@ -31,7 +29,6 @@ export default Component.extend({
     if (!username) return true;
     const variables = { input: { username }};
     const result = await this.apollo.query({ query: queryUsername, variables });
-    console.log(result);
     return result.validateYoutubeUsername;
   },
 
