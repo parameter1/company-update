@@ -5,51 +5,51 @@
   <div class="row">
     <div class="form-group col">
       <label for="playlist-id-input">Playlist ID</label>
-      {{validated-input
-        type="text"
-        class="form-control"
-        id="playlist-id-input"
-        aria-describedby="playlist-id-help"
-        value=model.youtube.playlistId
-        pattern="[\w\-]{12,}"
-        validText=""
-        invalidText="Enter a valid playlist id"
-        validateFn=validatePlaylistId
-      }}
+      <ValidatedInput
+        @type="text"
+        @class="form-control"
+        @id="playlist-id-input"
+        @aria-describedby="playlist-id-help"
+        @value={{this.model.youtube.playlistId}}
+        @pattern="[\w\-]{12,}"
+        @validText=""
+        @invalidText="Enter a valid playlist id"
+        @validateFn={{action this.validatePlaylistId}}
+      />
       <small id="playlist-id-help" class="form-text text-muted">Display the latest videos from this playlist.</small>
     </div>
   </div>
   <div class="row">
     <div class="form-group col">
       <label for="channel-id-input">Channel ID</label>
-      {{validated-input
-        type="text"
-        class="form-control"
-        id="channel-id-input"
-        aria-describedby="channel-id-help"
-        value=model.youtube.channelId
-        pattern="[\w\-]{12,}"
-        validText=""
-        invalidText="Enter a valid channel id"
-        validateFn=validateChannelId
-      }}
+      <ValidatedInput
+        @type="text"
+        @class="form-control"
+        @id="channel-id-input"
+        @aria-describedby="channel-id-help"
+        @value={{this.model.youtube.channelId}}
+        @pattern="[\w\-]{12,}"
+        @validText=""
+        @invalidText="Enter a valid channel id"
+        @validateFn={{action this.validateChannelId}}
+      />
       <small id="channel-id-help" class="form-text text-muted">Display the latest videos from this channel.</small>
     </div>
   </div>
   <div class="row">
     <div class="form-group col">
       <label for="username-input">Username</label>
-      {{validated-input
-        type="text"
-        class="form-control"
-        id="username-input"
-        aria-describedby="username-help"
-        value=model.youtube.username
-        pattern="[\w\-]{12,}"
-        validText=""
-        invalidText="Enter a valid username"
-        validateFn=validateUsername
-      }}
+      <ValidatedInput
+        @type="text"
+        @class="form-control"
+        @id="username-input"
+        @aria-describedby="username-help"
+        @value={{this.model.youtube.username}}
+        @pattern="[\w\-]{12,}"
+        @validText=""
+        @invalidText="Enter a valid username"
+        @validateFn={{action this.validateUsername}}
+      />
       <small id="channel-id-help" class="form-text text-muted">Display the latest videos from this user.</small>
     </div>
   </div>

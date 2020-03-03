@@ -1,0 +1,4 @@
+
+query ValidateYoutubePlaylistId($input: ValidateYoutubePlaylistIdQueryInput!) {
+  validateYoutubePlaylistId(input: $input)
+}

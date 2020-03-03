@@ -1,0 +1,4 @@
+
+query ValidateYoutubeChannelId($input: ValidateYoutubeChannelIdQueryInput!) {
+  validateYoutubeChannelId(input: $input)
+}
