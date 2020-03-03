@@ -1,42 +1,38 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
-
-/**
- * Restricted API key providing access to the v3 Youtube Data API from pre-defined domains
- * Approved for limited public distribution
- */
-const youtubeApiKey = 'AIzaSyDbUy51sMbUsA678QAIaWd_1OQ2SejNa8g';
+import { queryManager } from 'ember-apollo-client';
+import queryPlaylistId from '@base-cms/company-update-app/gql/queries/youtube/playlist-id';
+import queryChannelId from '@base-cms/company-update-app/gql/queries/youtube/channel-id';
+import queryUsername from '@base-cms/company-update-app/gql/queries/youtube/username';
 
 export default Component.extend({
+  apollo: queryManager(),
   tagName: 'div',
   classNames: ['card mb-3'],
   title: 'Youtube Videos',
 
-  async validatePlaylistId(value) {
-    if (!value) return true;
-    const url = `https://www.googleapis.com/youtube/v3/playlists?part=id&id=${value}&key=${youtubeApiKey}`;
-    const r = await fetch(url);
-    if (!r.ok) return false;
-    const json = await r.json();
-    return json.items.length > 0;
+  async validatePlaylistId(playlistId) {
+    if (!playlistId) return true;
+    const variables = { input: { playlistId } };
+    const result = await this.apollo.query({ query: queryPlaylistId, variables });
+    console.log(result);
+    return result.validateYoutubePlaylistId;
   },
 
-  async validateChannelId(value) {
-    if (!value) return true;
-    const url = `https://www.googleapis.com/youtube/v3/channels?part=id&id=${value}&key=${youtubeApiKey}`;
-    const r = await fetch(url);
-    if (!r.ok) return false;
-    const json = await r.json();
-    return json.items.length > 0;
+  async validateChannelId(channelId) {
+    if (!channelId) return true;
+    const variables = { input: { channelId } };
+    const result = await this.apollo.query({ query: queryChannelId, variables });
+    console.log(result);
+    return result.validateYoutubeChannelId;
   },
 
-  async validateUsername(value) {
-    if (!value) return true;
-    const url = `https://www.googleapis.com/youtube/v3/channels?part=id&forUsername=${value}&key=${youtubeApiKey}`;
-    const r = await fetch(url);
-    if (!r.ok) return false;
-    const json = await r.json();
-    return json.items.length > 0;
+  async validateUsername(username) {
+    if (!username) return true;
+    const variables = { input: { username }};
+    const result = await this.apollo.query({ query: queryUsername, variables });
+    console.log(result);
+    return result.validateYoutubeUsername;
   },
 
   url: computed('model.youtube.{playlistId,channelId,username}', function() {

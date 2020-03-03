@@ -14,7 +14,7 @@
         pattern="[\w\-]{12,}"
         validText=""
         invalidText="Enter a valid playlist id"
-        validateFn=validatePlaylistId
+        validateFn=(bind validatePlaylistId this)
       }}
       <small id="playlist-id-help" class="form-text text-muted">Display the latest videos from this playlist.</small>
     </div>
@@ -31,7 +31,7 @@
         pattern="[\w\-]{12,}"
         validText=""
         invalidText="Enter a valid channel id"
-        validateFn=validateChannelId
+        validateFn=(bind validateChannelId this)
       }}
       <small id="channel-id-help" class="form-text text-muted">Display the latest videos from this channel.</small>
     </div>
@@ -48,7 +48,7 @@
         pattern="[\w\-]{12,}"
         validText=""
         invalidText="Enter a valid username"
-        validateFn=validateUsername
+        validateFn=(bind validateUsername this)
       }}
       <small id="channel-id-help" class="form-text text-muted">Display the latest videos from this user.</small>
     </div>

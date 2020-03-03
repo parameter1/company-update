@@ -1,0 +1,4 @@
+
+query ValidateYoutubeUsername($input: ValidateYoutubeUsernameQueryInput!) {
+  validateYoutubeUsername(input: $input)
+}
