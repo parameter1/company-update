@@ -4,6 +4,7 @@ query CompanyUpdateConfig {
     contactText
     logoUrl
     leadershipEnabled
+    leadershipCompanyLabel
     leadershipSectionAlias
     leadershipSectionMax
   }
