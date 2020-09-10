@@ -15,7 +15,7 @@ module.exports = {
       contactText: CONTACT_TEXT,
       logoUrl: LOGO_URL,
       leadershipEnabled: LEADERSHIP_ENABLED,
-      leadershipCompanyLabel: LEADERSHIP_COMPANY_LABEL,
+      leadershipCompanyLabel: LEADERSHIP_COMPANY_LABEL || null,
       leadershipSectionAlias: LEADERSHIP_SECTION_ALIAS,
       leadershipSectionMax: LEADERSHIP_SECTION_MAX,
     }),
