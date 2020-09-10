@@ -11,14 +11,6 @@ export default Route.extend({
     const variables = { input: { hash } };
     const model = await this.apollo.query({ query, variables, fetchPolicy: 'network-only' }, 'contentHash');
     if (!model) throw new Error('Invalid URL');
-    
-    // Check that leadershipEnable is true && if a leadershipCompay Label is set.  
-    // If so check if the label is in the list of company labels.
-    // If not set the LeadershipEnable to false.
-    if (this.config.leadershipEnabled && this.config.leadershipCompanyLabel) {
-      if(!model.labels.includes(this.config.leadershipCompanyLabel)) this.config.leadershipEnabled = false;
-    }
-
     return model;
   },
 
