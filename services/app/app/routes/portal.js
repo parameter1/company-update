@@ -1,8 +1,10 @@
 import Route from '@ember/routing/route';
 import { queryManager } from 'ember-apollo-client';
+import { inject } from '@ember/service';
 import query from '@base-cms/company-update-app/gql/queries/portal';
 
 export default Route.extend({
+  config: inject(),
   apollo: queryManager(),
 
   async model({ hash }) {
