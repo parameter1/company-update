@@ -16,5 +16,7 @@
 {{/file-upload}}
 
 {{#if image}}
-  <img src={{ image }} class="img-fluid mt-1" alt="Contact Image">
+  <img src={{ image }} class="img-fluid mt-1 uploaded-image" alt="Image">
+{{else}}
+  <img class="img-fluid mt-1 uploaded-image" alt="">
 {{/if}}

@@ -7,6 +7,7 @@ const config = require('./config');
 const contacts = require('./contacts');
 const leadership = require('./leadership');
 const list = require('./list');
+const promotions = require('./promotions');
 
 module.exports = deepAssign(
   company,
@@ -14,6 +15,7 @@ module.exports = deepAssign(
   contacts,
   leadership,
   list,
+  promotions,
   {
     Date: DateType,
     // JSON: GraphQLJSON, // @todo is this needed?

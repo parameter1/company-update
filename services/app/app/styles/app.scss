@@ -135,6 +135,12 @@ body {
   left: auto;
 }
 
+.fixed-left {
+  position: fixed;
+  left: 0;
+  right: auto;
+}
+
 #notification-wrapper div[class^=_c-notification__container] {
   top: 5.7rem;
 }
@@ -158,4 +164,8 @@ body {
 .fr-toolbar {
   border-width: 1px;
   border-color: #ccc;
+}
+
+.uploaded-image {
+  min-height: 180px
 }

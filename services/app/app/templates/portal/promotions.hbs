@@ -1,0 +1,40 @@
+<div class="card mb-4">
+  <div class="card-body">
+    <p class="lead">Review your company's product promotions</p>
+    <p>Make any needed changes on the fields below. You can submit up to a maximum of <b>four</b> product promotions.</p>
+    <p>When you are finished making changes, click the "Save Changes" button.</p>
+  </div>
+</div>
+
+<div class="row">
+  {{#each promotions as |promotion|}}
+    {{promotion-card
+      promotion=promotion
+      onRemove=(action "remove" promotion)
+      onUpdate=(action "update" promotion)
+      onReset=(action "reset" promotion)
+    }}
+  {{/each}}
+</div>
+
+<div class="fixed-bottom fixed-left card">
+  <div class="card-body">
+    <button disabled={{isAddDisabled}} class="btn btn-primary pull-left" {{ action "add" }}>
+      {{entypo-icon "circle-with-plus"}} Add a promotion
+    </button>
+  </div>
+</div>
+
+<div class="fixed-bottom fixed-right card">
+  <div class="card-body">
+    <button disabled={{isSubmitDisabled}} class="btn btn-success pull-right" {{ action "showModal" }}>
+      {{entypo-icon "save"}} Save Changes
+    </button>
+  </div>
+</div>
+{{submit-modal/promotions
+  isOpen=isModalOpen
+  hash=hash
+  payload=payload
+  onComplete=(action "transitionToPortal")
+}}

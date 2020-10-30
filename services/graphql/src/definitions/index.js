@@ -5,6 +5,7 @@ const contacts = require('./contacts');
 const leadership = require('./leadership');
 const list = require('./list');
 const review = require('./review');
+const promotions = require('./promotions');
 
 module.exports = gql`
 
@@ -32,6 +33,7 @@ module.exports = gql`
     product
     contact
     leadership
+    promotion
   }
 
   ${company}
@@ -40,5 +42,6 @@ module.exports = gql`
   ${leadership}
   ${list}
   ${review}
+  ${promotions}
 
 `;
