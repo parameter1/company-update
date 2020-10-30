@@ -7,6 +7,7 @@ export default Component.extend(ActionMixin, {
   tagName: '',
   valid: true,
   validated: false,
+  required: false,
   pattern: null,
 
   classes: computed('valid', 'validated', function() {
@@ -34,7 +35,7 @@ export default Component.extend(ActionMixin, {
     if (typeof this.validateFn === 'function') {
       const valid = await this.validateFn(value);
       this.set('valid', valid);
-      this.set('validated', value ? true : false);
+      this.set('validated', this.required ? true : !!value);
     }
     this.endAction();
   },
