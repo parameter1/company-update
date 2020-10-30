@@ -19,6 +19,7 @@ Router.map(function() {
     this.route('leadership');
     this.route('product');
     this.route('contact');
+    this.route('promotion');
   });
   this.route('login');
   this.route('list');
