@@ -43,32 +43,43 @@ export default Controller.extend(ActionMixin, {
   },
 
   /**
-   * Creates promotion, uploads/assigns primary image, and adds to company.
+   * Creates promotion and uploads/assigns primary image.
    *
-   * @param Number contentId The company ID
+   * @param Number companyId The company ID
    * @param Object { ... } The promotion payload
    */
-  async createPromotion (contentId, promotionIds, { linkUrl, linkText, name, primaryImage }) {
+  async createPromotion (companyId, contentName, { linkUrl, linkText, primaryImage }) {
     const getDefaultSection = async () => {
       const { edges } = await this.apollo.query({ query: promotionSection }, 'websiteSections');
       return get(edges, '0.node.id');
     };
-    const primarySectionId = await getDefaultSection();
-    const payload = { linkUrl, linkText, name, status: 1, primarySectionId, companyId: contentId };
+    const payload = {
+      linkUrl,
+      linkText,
+      name: `${contentName} Product Photo`,
+      status: 1,
+      primarySectionId: await getDefaultSection(),
+      companyId,
+    };
     const variables = { input: { payload } };
     const { id: promotionId } = await this.apollo.mutate({ mutation: promotionCreate, variables }, 'createContentPromotion');
-    await this.uploadPromotionImage(primaryImage, promotionId);
+    try {
+      await this.uploadPromotionImage(primaryImage, promotionId);
+    } catch (e) {
+      console.log('Failed to upload image, rolling back create!');
+      await this.deletePromotion(promotionId);
+      throw e;
+    }
   },
 
   /**
-   * Sets status:0 on promotion and removes from company.
+   * Sets status:0 on promotion
    *
-   * @param Number contentId The company ID
-   * @param Object { id } The promotion to remove
+   * @param Number promotionId
    */
-  async deletePromotion (contentId, promotionIds, { id }) {
-    const variables = { input: { id, payload: { status: 0 } } };
-    await this.apollo.mutate({ mutation: promotionUpdate, variables });
+  async deletePromotion (promotionId) {
+    const variables = { input: { id: promotionId, payload: { status: 0 } } };
+    return this.apollo.mutate({ mutation: promotionUpdate, variables });
   },
 
   /**
@@ -81,7 +92,11 @@ export default Controller.extend(ActionMixin, {
     const payload = { linkUrl, linkText, name };
     const variables = { input: { id, payload } };
     await this.apollo.mutate({ mutation: promotionUpdate, variables }, 'updateContentPromotion');
-    return this.uploadPromotionImage(primaryImage, id);
+    try {
+      await this.uploadPromotionImage(primaryImage, id);
+    } catch (e) {
+      console.log('Failed to upload image!');
+    }
   },
 
   actions: {
@@ -98,13 +113,13 @@ export default Controller.extend(ActionMixin, {
         const { id } = this.get('model.submission');
         const promotions = this.get('model.promotions');
         const contentId = this.get('model.company.id');
-        const promotionIds = this.get('model.company.promotions.edges').map(({ node }) => node.id);
+        const contentName = this.get('model.company.name');
 
         await Promise.all(promotions.reduce((arr, obj) => {
           const { original, updated, payload } = obj;
           if (!payload.enabled) return arr;
-          if (payload.added) return [...arr, this.createPromotion(contentId, promotionIds, updated)];
-          if (payload.removed) return [...arr, this.deletePromotion(contentId, promotionIds, original)];
+          if (payload.added) return [...arr, this.createPromotion(contentId, contentName, updated)];
+          if (payload.removed) return [...arr, this.deletePromotion(original.id)];
           const fields = Object.keys(obj.payload.fields).filter(k => obj.payload.fields[k] === true);
           const update = fields.reduce((o, f) => ({ ...o, [f]: obj.updated[f] }), { id: obj.original.id });
           return [...arr, this.updatePromotion(update)];
