@@ -1,0 +1,12 @@
+mutation ContentPortalReviewPromotionUpdate($input: UpdateContentPromotionMutationInput!) {
+	updateContentPromotion(input: $input) {
+    id
+    linkText
+    linkUrl
+    name
+    primaryImage {
+      id
+      src
+    }
+  }
+}

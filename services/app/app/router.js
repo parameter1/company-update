@@ -11,6 +11,7 @@ Router.map(function() {
     this.route('products');
     this.route('contacts');
     this.route('leadership');
+    this.route('promotions');
     this.route('company');
   });
   this.route('review', { path: '/review/:id' }, function () {
@@ -18,6 +19,7 @@ Router.map(function() {
     this.route('leadership');
     this.route('product');
     this.route('contact');
+    this.route('promotion');
   });
   this.route('login');
   this.route('list');

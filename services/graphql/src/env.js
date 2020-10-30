@@ -34,6 +34,7 @@ module.exports = cleanEnv(process.env, {
   // Optional settings
   LOGO_URL: str({ desc: 'If configured, will be replace the branding in the navigation.', default: '' }),
   LEADERSHIP_ENABLED: bool({ desc: 'If the leadership section should be displayed', default: true }),
+  PROMOTIONS_ENABLED: bool({ desc: 'If the promotions section should be displayed', default: false }),
   LEADERSHIP_COMPANY_LABEL: str({ desc: 'If set check that a company has this label to enable the Leaders section.', default: '' }),
   LEADERSHIP_SECTION_ALIAS: nonemptystr({ desc: 'The leadership section alias to be displayed', default: 'leaders' }),
   LEADERSHIP_SECTION_MAX: num({ desc: 'The maximum number of leadership sections that can be selected per site.', default: 3 }),

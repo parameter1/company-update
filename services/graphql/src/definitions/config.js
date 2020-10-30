@@ -11,6 +11,7 @@ module.exports = gql`
     contactUrl: String
     contactText: String
     leadershipEnabled: Boolean!
+    leadershipPromotionsEnabled: Boolean!
     leadershipCompanyLabel: String
     leadershipSectionAlias: String!
     leadershipSectionMax: Int!

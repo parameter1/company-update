@@ -1,0 +1,5 @@
+mutation ContentPortalReviewPromotionCreate($input: CreateContentPromotionMutationInput!) {
+	createContentPromotion(input: $input) {
+    id
+  }
+}

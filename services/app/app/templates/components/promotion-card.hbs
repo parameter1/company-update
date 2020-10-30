@@ -1,0 +1,50 @@
+<div class="card mb-3">
+  <h6 class="card-header">
+    {{confirm-button
+      icon="cross"
+      label=""
+      runningLabel="..."
+      class="btn-danger btn-sm pull-right"
+      iconClass=""
+      disabled=isDisabled
+      isRunning=isDiscarding
+      onConfirm=(action "remove")
+    }}
+  </h6>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-12 col-md-6">
+        {{ upload-image image=_promotion.primaryImage.src onUpload=(action "onUpload")}}
+      </div>
+      <div class="col-12 col-md-6">
+        <div class="form-group">
+          <label for={{ concat this.elementId "-link-text-input" }}>Link Text</label>
+          <div class="input-group">
+            {{input
+              type="text"
+              class="form-control"
+              id=(concat this.elementId "-link-text-input")
+              aria-describedby="link-text-help"
+              value=_promotion.linkText
+              focusOut=(action "onChange" "linkText")
+            }}
+          </div>
+        </div>
+        <div class="form-group">
+          <label for={{ concat this.elementId "-link-url-input" }}>Link URL</label>
+          <ValidatedInput
+            @type="url"
+            @class="form-control"
+            @value={{this._promotion.linkUrl}}
+            @validText=""
+            @invalidText="Enter a valid (https://...) url"
+            @validateFn={{action this.validateLinkUrl}}
+            @focusout={{action "onChange" "linkUrl"}}
+            @required={{true}}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer"></div>
+</div>
