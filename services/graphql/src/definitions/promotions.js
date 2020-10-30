@@ -22,6 +22,7 @@ module.exports = gql`
 
   input CompanyUpdatePromotionCreateInput {
     id: String
+    name: String!
     linkUrl: String!
     linkText: String!
     primaryImage: CompanyUpdatePromotionImageInput
@@ -29,6 +30,7 @@ module.exports = gql`
 
   input CompanyUpdatePromotionUpdateInput {
     id: Int!
+    name: String
     linkUrl: String
     linkText: String
     primaryImage: CompanyUpdatePromotionImageInput
