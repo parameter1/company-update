@@ -10,7 +10,7 @@ export default Component.extend({
     switch (type) {
       case 'leadership':
         return 'tag';
-      case 'promotions':
+      case 'promotion':
         return 'documents';
       case 'contact':
         return 'users';
