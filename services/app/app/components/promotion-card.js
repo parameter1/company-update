@@ -21,6 +21,11 @@ export default Component.extend({
     });
   },
 
+  validateLinkUrl(value) {
+    if (!value) return false;
+    return /https:\/\/.+/.test(value);
+  },
+
   actions: {
     remove() {
       this.onRemove();
