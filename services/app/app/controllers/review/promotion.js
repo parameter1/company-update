@@ -63,13 +63,7 @@ export default Controller.extend(ActionMixin, {
     };
     const variables = { input: { payload } };
     const { id: promotionId } = await this.apollo.mutate({ mutation: promotionCreate, variables }, 'createContentPromotion');
-    try {
-      await this.uploadPromotionImage(primaryImage, promotionId);
-    } catch (e) {
-      console.log('Failed to upload image, rolling back create!');
-      await this.deletePromotion(promotionId);
-      throw e;
-    }
+    await this.uploadPromotionImage(primaryImage, promotionId);
   },
 
   /**
