@@ -29,11 +29,11 @@ services:
     image: danlynn/ember-cli:3.14.0
     working_dir: /company-update/services/app
     entrypoint: ["ember"]
-    command: ["serve", "--port", "9905", "--proxy", "http://graphql"]
+    command: ["serve", "--port", "5555", "--proxy", "http://graphql"]
     tmpfs:
       - /company-update/services/app/tmp
     ports:
-      - "9905:9905"
+      - "5555:5555"
     depends_on:
       - graphql
 
@@ -44,7 +44,7 @@ services:
     depends_on:
       - mongo
     ports:
-      - "9900:80"
+      - "5550:80"
     environment:
       <<: *env
       # Core
@@ -76,7 +76,7 @@ services:
     volumes:
       - mongo:/data/db
     ports:
-      - "9901:27017"
+      - "5551:27017"
 
 volumes:
   mongo: {}
