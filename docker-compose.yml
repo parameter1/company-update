@@ -55,6 +55,7 @@ services:
       NOTIFICATION_TO: ${NOTIFICATION_TO-developer@endeavorb2b.com}
       SENDGRID_API_KEY: ${SENDGRID_API_KEY}
       SENDGRID_FROM: ${SENDGRID_FROM-no-reply@baseplatform.io}
+      FETCH_TIMEOUT: ${FETCH_TIMEOUT-30000}
       # Tenant-specific
       BASE4_API_URL: ${BASE4_API_URL}
       GRAPHQL_URI: ${GRAPHQL_URI}
