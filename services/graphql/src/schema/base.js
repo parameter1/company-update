@@ -3,7 +3,12 @@ const { setContext } = require('apollo-link-context');
 const { onError } = require('apollo-link-error');
 const fetch = require('node-fetch');
 const { makeRemoteExecutableSchema, introspectSchema } = require('graphql-tools');
-const { GRAPHQL_URI, TENANT_KEY, BASE4_API_URL } = require('../env');
+const {
+  GRAPHQL_URI,
+  TENANT_KEY,
+  BASE4_API_URL,
+  FETCH_TIMEOUT,
+} = require('../env');
 
 const headers = {
   'x-tenant-key': TENANT_KEY,
@@ -14,7 +19,7 @@ const httpLink = new HttpLink({
   uri: GRAPHQL_URI,
   fetch,
   headers,
-  fetchOptions: { timeout: 10000 },
+  fetchOptions: { timeout: FETCH_TIMEOUT },
 });
 
 const authLink = setContext((_, previousContext) => {

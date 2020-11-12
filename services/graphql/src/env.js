@@ -27,6 +27,7 @@ module.exports = cleanEnv(process.env, {
   NOTIFICATION_TO: email({ desc: 'The email address notifications are sent to.' }),
   SENDGRID_API_KEY: nonemptystr({ desc: 'The SendGrid API key for sending email.' }),
   SENDGRID_FROM: nonemptystr({ desc: 'The from name to use when sending email via SendGrid, e.g. Foo <foo@bar.com>', default: 'no-reply@baseplatform.io' }),
+  FETCH_TIMEOUT: num({ desc: 'The limit (in ms) for request processing', default: 10000 }),
   // Tenant-specific settings
   BASE4_API_URL: url({ desc: 'The management uri for the related platform tenant.' }),
   GRAPHQL_URI: url({ desc: 'The URI to access the BaseCMS GraphQL instance' }),
