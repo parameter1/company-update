@@ -3,7 +3,9 @@ const { existsSync } = require('fs');
 const { join } = require('path');
 const { spawnSync } = require('child_process');
 const https = require('https'); // eslint-disable-line import/newline-after-import
+
 const { DOCKER_USERNAME, DOCKER_PASSWORD, TRAVIS_TAG } = process.env;
+const DOCKER_ORG = process.env.DOCKER_ORG || 'basecms';
 const failed = () => spawnSync('npx', ['npx', '@base-cms/website-deployment-tool', 'notify-failed'], { stdio: 'inherit' });
 
 const useLerna = existsSync(join(process.cwd(), 'lerna.json'));
@@ -58,7 +60,7 @@ if (!existsSync(servicePath)) error(`Could not read ${servicePath}!`);
 // eslint-disable-next-line import/no-dynamic-require, global-require
 const pkg = require(`../${servicePath}/package.json`);
 const name = pkg.name.replace('@base-cms/', '').replace('/', '-');
-const image = `basecms/${name}`;
+const image = `${DOCKER_ORG}/${name}`;
 
 if (version !== `v${pkg.version}`) {
   log(`Service ${name} is at version ${pkg.version}. Skipping deployment.`);
@@ -89,6 +91,19 @@ const deploy = async ({ key, value, image: img }) => {
 };
 
 const main = async () => { // eslint-disable-line consistent-return
+  const keys = [
+    'DOCKER_USERNAME',
+    'DOCKER_PASSWORD',
+    'RANCHER_CLUSTERID',
+    'RANCHER_TOKEN',
+    'RANCHER_URL',
+    'TRAVIS_REPO_SLUG',
+    'TRAVIS_TAG',
+    'ENVIRONMENT',
+    'SLACK_WEBHOOK_URL',
+  ];
+  if (!keys.every((k) => process.env[k])) return error('Deployment aborted: a mandatory environment variable is missing.');
+
   if (await shouldBuild(image)) {
     log('Image was not found, building.');
     await build();
@@ -96,11 +111,6 @@ const main = async () => { // eslint-disable-line consistent-return
   } else {
     log('Image found, skipping build.');
   }
-
-  const { RANCHER_CLUSTERID, RANCHER_TOKEN, RANCHER_URL } = process.env;
-  if (!RANCHER_CLUSTERID) return error('Deployment aborted: Environment variable RANCHER_CLUSTERID is missing!');
-  if (!RANCHER_TOKEN) return error('Deployment aborted: Environment variable RANCHER_TOKEN is missing!');
-  if (!RANCHER_URL) return error('Deployment aborted: Environment variable RANCHER_URL is missing!');
 
   await deploy({
     key: 'basecms-service',
