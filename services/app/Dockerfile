@@ -4,7 +4,7 @@ WORKDIR /company-update
 ADD package.json yarn.lock /company-update/
 ADD packages /company-update/packages
 ADD services/app /company-update/services/app
-RUN yarn
+RUN yarn install --pure-lockfile
 WORKDIR /company-update/services/app
 RUN ember build --env=production
 
