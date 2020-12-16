@@ -26,6 +26,10 @@ export default Component.extend({
     return /https:\/\/.+/.test(value);
   },
 
+  validateLinkText(value) {
+    return /.+/.test(`${value}`.trim());
+  },
+
   actions: {
     remove() {
       this.onRemove();

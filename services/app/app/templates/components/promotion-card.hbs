@@ -19,16 +19,16 @@
       <div class="col-12 col-md-6">
         <div class="form-group">
           <label for={{ concat this.elementId "-link-text-input" }}>Link Text</label>
-          <div class="input-group">
-            {{input
-              type="text"
-              class="form-control"
-              id=(concat this.elementId "-link-text-input")
-              aria-describedby="link-text-help"
-              value=_promotion.linkText
-              focusOut=(action "onChange" "linkText")
-            }}
-          </div>
+          <ValidatedInput
+            @type="text"
+            @class="form-control"
+            @value={{this._promotion.linkText}}
+            @validText=""
+            @invalidText="Enter short title for your link"
+            @validateFn={{action this.validateLinkText}}
+            @focusout={{action "onChange" "linkText"}}
+            @required={{true}}
+          />
         </div>
         <div class="form-group">
           <label for={{ concat this.elementId "-link-url-input" }}>Link URL</label>
