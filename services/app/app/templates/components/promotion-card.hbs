@@ -31,8 +31,9 @@
           />
         </div>
         <div class="form-group">
-          <label for={{ concat this.elementId "-link-url-input" }}>Link URL</label>
+          <label for={{concat this.elementId "-link-url-input"}}>Link URL</label>
           <ValidatedInput
+            @id={{concat this.elementId "-link-url-input"}}
             @type="url"
             @class="form-control"
             @value={{this._promotion.linkUrl}}
