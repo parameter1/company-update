@@ -18,15 +18,13 @@
       </div>
       <div class="col-12 col-md-6">
         <div class="form-group">
-          <label for={{ concat this.elementId "-link-text-input" }}>Link Text</label>
-          <ValidatedInput
+          <label for={{concat this.elementId "-link-text-input"}}>Link Text</label>
+          <Input
+            @id={{concat this.elementId "-link-text-input"}}
             @type="text"
             @class="form-control"
             @value={{this._promotion.linkText}}
-            @validText=""
-            @invalidText="Enter short title for your link"
-            @validateFn={{action this.validateLinkText}}
-            @focusout={{action "onChange" "linkText"}}
+            @change={{action "onChange" "linkText"}}
             @required={{true}}
           />
         </div>
