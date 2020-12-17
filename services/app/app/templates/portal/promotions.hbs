@@ -6,32 +6,36 @@
   </div>
 </div>
 
-<div class="row">
-  {{#each promotions as |promotion|}}
-    {{promotion-card
-      promotion=promotion
-      onRemove=(action "remove" promotion)
-      onUpdate=(action "update" promotion)
-      onReset=(action "reset" promotion)
-    }}
-  {{/each}}
-</div>
+<form {{action "showModal" on="submit"}}>
 
-<div class="fixed-bottom fixed-left card">
-  <div class="card-body">
-    <button disabled={{isAddDisabled}} class="btn btn-primary pull-left" {{ action "add" }}>
-      {{entypo-icon "circle-with-plus"}} Add a promotion
-    </button>
+  <div class="row">
+    {{#each promotions as |promotion|}}
+      {{promotion-card
+        promotion=promotion
+        onRemove=(action "remove" promotion)
+        onUpdate=(action "update" promotion)
+        onReset=(action "reset" promotion)
+      }}
+    {{/each}}
   </div>
-</div>
 
-<div class="fixed-bottom fixed-right card">
-  <div class="card-body">
-    <button disabled={{isSubmitDisabled}} class="btn btn-success pull-right" {{ action "showModal" }}>
-      {{entypo-icon "save"}} Save Changes
-    </button>
+  <div class="fixed-bottom fixed-left card">
+    <div class="card-body">
+      <button disabled={{isAddDisabled}} class="btn btn-primary pull-left" {{ action "add" }}>
+        {{entypo-icon "circle-with-plus"}} Add a promotion
+      </button>
+    </div>
   </div>
-</div>
+
+  <div class="fixed-bottom fixed-right card">
+    <div class="card-body">
+      <button disabled={{isSubmitDisabled}} class="btn btn-success pull-right" type="submit">
+        {{entypo-icon "save"}} Save Changes
+      </button>
+    </div>
+  </div>
+</form>
+
 {{submit-modal/promotions
   isOpen=isModalOpen
   hash=hash

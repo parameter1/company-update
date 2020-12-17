@@ -6,28 +6,32 @@
   </div>
 </div>
 
-<div class="row">
-  {{#each contacts as |contact|}}
-    {{contact-card
-      contact=contact
-      onRemove=(action "remove" contact)
-      onUpdate=(action "update" contact)
-      onReset=(action "reset" contact)
-    }}
-  {{/each}}
-</div>
+<form {{action "showModal" on="submit"}}>
 
-<button type="button" class="btn btn-primary" {{action "add" }}>
-  {{entypo-icon "circle-with-plus"}} Add a contact
-</button>
-
-<div class="fixed-bottom fixed-right card">
-  <div class="card-body">
-    <button disabled={{isSubmitDisabled}} class="btn btn-success pull-right" {{ action "showModal" }}>
-      {{entypo-icon "save"}} Save Changes
-    </button>
+  <div class="row">
+    {{#each contacts as |contact|}}
+      {{contact-card
+        contact=contact
+        onRemove=(action "remove" contact)
+        onUpdate=(action "update" contact)
+        onReset=(action "reset" contact)
+      }}
+    {{/each}}
   </div>
-</div>
+
+  <button type="button" class="btn btn-primary" {{action "add" }}>
+    {{entypo-icon "circle-with-plus"}} Add a contact
+  </button>
+
+  <div class="fixed-bottom fixed-right card">
+    <div class="card-body">
+      <button disabled={{isSubmitDisabled}} class="btn btn-success pull-right" type="submit">
+        {{entypo-icon "save"}} Save Changes
+      </button>
+    </div>
+  </div>
+</form>
+
 {{submit-modal/contacts
   isOpen=isModalOpen
   hash=hash
