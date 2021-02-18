@@ -26,9 +26,10 @@ export default Component.extend({
       this.onRemove();
     },
     onChange(field) {
+      const id = this.get('contact.id');
       const original = this.get(`contact.${field}`);
       const updated = this.get(`_contact.${field}`);
-      if (original === updated) {
+      if (!`${id}`.includes('added') && original === updated) {
         this.onReset(field);
       } else {
         this.onUpdate(field, updated);
