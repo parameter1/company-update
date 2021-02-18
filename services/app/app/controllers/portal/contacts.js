@@ -53,7 +53,7 @@ export default Controller.extend({
     if (!Object.keys(entry).filter(k => k !== 'id').length) {
       if (entry.id && isNaN(entry.id)) {
         const added = this.get('payload.add').find(c => c.id === entry.id);
-        if (added) this.payload.added.removeObject(entry);
+        if (added) this.payload.add.removeObject(entry);
       } else {
         const update = this.get('payload.update').find(c => c.id === entry.id);
         if (update) this.payload.update.removeObject(entry);

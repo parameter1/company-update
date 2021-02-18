@@ -5,8 +5,8 @@ const { spawnSync } = require('child_process');
 const https = require('https'); // eslint-disable-line import/newline-after-import
 
 const { DOCKER_USERNAME, DOCKER_PASSWORD, TRAVIS_TAG } = process.env;
-const DOCKER_ORG = process.env.DOCKER_ORG || 'basecms';
-const failed = () => spawnSync('npx', ['npx', '@base-cms/website-deployment-tool', 'notify-failed'], { stdio: 'inherit' });
+const DOCKER_ORG = process.env.DOCKER_ORG || 'parameter1';
+const failed = () => spawnSync('npx', ['npx', '@parameter1/base-cms-website-deployment-tool', 'notify-failed'], { stdio: 'inherit' });
 
 const useLerna = existsSync(join(process.cwd(), 'lerna.json'));
 // eslint-disable-next-line import/no-dynamic-require
