@@ -103,20 +103,20 @@ export default Controller.extend(ActionMixin, {
 
         const addedIds = await Promise.all(contacts
           .filter((obj) => obj.payload.enabled && obj.payload.added)
-          .map(async ({ updated }) => this.createContact(updated))
+          .map(({ updated }) => this.createContact(updated))
         );
 
         const removedIds = await Promise.all(contacts
           .filter((obj) => obj.payload.enabled && obj.payload.removed)
-          .map(async ({ original }) => this.deleteContact(original.id))
+          .map(({ original }) => this.deleteContact(original.id))
         );
 
         await Promise.all(contacts
           .filter((obj) => obj.payload.enabled && (!obj.payload.added && !obj.payload.removed))
-          .map(async (obj) => {
+          .map((obj) => {
             const fields = Object.keys(obj.payload.fields).filter(k => obj.payload.fields[k] === true);
             const update = fields.reduce((o, f) => ({ ...o, [f]: obj.updated[f] }), { id: obj.original.id });
-            return await this.updateContact(update);
+            return this.updateContact(update);
           })
         );
 
