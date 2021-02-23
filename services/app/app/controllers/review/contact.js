@@ -67,9 +67,10 @@ export default Controller.extend(ActionMixin, {
    *
    * @param Number id The contact to delete
    */
-  async deleteContact (id) {
-    const variables = { input: { id, payload: { status: 0 } } };
-    return this.apollo.mutate({ mutation: contactUpdate, variables });
+  async deleteContact (contactId) {
+    const variables = { input: { id: contactId, payload: { status: 0 } } };
+    await this.apollo.mutate({ mutation: contactUpdate, variables });
+    return contactId;
   },
 
   /**
@@ -100,32 +101,27 @@ export default Controller.extend(ActionMixin, {
         const contentId = this.get('model.company.id');
         const contactIds = this.get('model.company.publicContacts.edges').map(({ node }) => node.id);
 
-        // Perform contact operations and build related contact ids
-        const relatedContactIds = await contacts.reduce(async (chain, obj) => {
-          const { original, updated, payload } = obj;
-          if (!payload.enabled) return chain;
-          const resolved = await chain;
+        const addedIds = await Promise.all(contacts
+          .filter((obj) => obj.payload.enabled && obj.payload.added)
+          .map(async ({ updated }) => this.createContact(updated))
+        );
 
-          // Contact was added
-          if (payload.added) {
-            const contactId = await this.createContact(updated);
-            return [...resolved, contactId];
-          }
-          // Contact was removed
-          if (payload.removed) {
-            const contactId = original.id;
-            await this.deleteContact(contactId);
-            return resolved.filter(v => v != contactId)
-          }
-          // Contact was modified
-          const fields = Object.keys(obj.payload.fields).filter(k => obj.payload.fields[k] === true);
-          const update = fields.reduce((o, f) => ({ ...o, [f]: obj.updated[f] }), { id: obj.original.id });
+        const removedIds = await Promise.all(contacts
+          .filter((obj) => obj.payload.enabled && obj.payload.removed)
+          .map(async ({ original }) => this.deleteContact(original.id))
+        );
 
-          await this.updateContact(update);
-          return resolved;
-        }, contactIds);
+        await Promise.all(contacts
+          .filter((obj) => obj.payload.enabled && (!obj.payload.added && !obj.payload.removed))
+          .map(async (obj) => {
+            const fields = Object.keys(obj.payload.fields).filter(k => obj.payload.fields[k] === true);
+            const update = fields.reduce((o, f) => ({ ...o, [f]: obj.updated[f] }), { id: obj.original.id });
+            return await this.updateContact(update);
+          })
+        );
 
         // Update the company with the contact ids
+        const relatedContactIds = [...contactIds, ...addedIds].filter(id => !removedIds.includes(id));
         const updateVars = { input: { id: contentId, payload: { contactIds: relatedContactIds } } };
         await this.apollo.mutate({ mutation: companyContacts, variables: updateVars });
 
