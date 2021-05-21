@@ -1,10 +1,10 @@
-<h6 class="card-header">{{ i18n lang 'spwLabel' }}</h6>
+<h6 class="card-header">{{ i18n lang "spwLabel" }}</h6>
 <form class="card-body">
-  <p class="small text-muted">{{ i18n lang 'spwLandingLabel' }}</p>
+  <p class="small text-muted">{{ i18n lang "spwLandingLabel" }}</p>
 
   <div class="row">
     <div class="form-group col">
-      <label for="products-url-input">{{ i18n lang 'productsURLLabel' }}</label>
+      <label for="products-url-input">{{ i18n lang "productsURLLabel" }}</label>
       <div class="input-group">
         {{input
           type="url"
@@ -15,13 +15,13 @@
           value=model.productsUrl.url
         }}
       </div>
-      <small id="products-url-help" class="form-text text-muted">{{ i18n lang 'productURLHelpLabel' }}</small>
+      <small id="products-url-help" class="form-text text-muted">{{ i18n lang "productURLHelpLabel" }}</small>
     </div>
   </div>
 
   <div class="row">
     <div class="form-group col">
-      <label for="product-summary-input">{{ i18n lang 'productSummaryLabel' }}</label>
+      <label for="product-summary-input">{{ i18n lang "productSummaryLabel" }}</label>
       <div class="input-group">
         {{froala-editor
           content=productSummary
@@ -29,12 +29,12 @@
           options=(hash attribution=false toolbarButtons=toolbarButtons charCounterCount=false)
         }}
       </div>
-      <small id="product-summary-help" class="form-text text-muted">{{ i18n lang 'productSummaryHelpLabel' }}</small>
+      <small id="product-summary-help" class="form-text text-muted">{{ i18n lang "productSummaryHelpLabel" }}</small>
     </div>
   </div>
   <div class="row">
     <div class="form-group col">
-      <label for="services-provided-input">{{ i18n lang 'servicesLabel' }}</label>
+      <label for="services-provided-input">{{ i18n lang "servicesLabel" }}</label>
       <div class="input-group">
         {{froala-editor
           content=servicesProvided
@@ -42,12 +42,12 @@
           options=(hash attribution=false toolbarButtons=toolbarButtons charCounterCount=false)
         }}
       </div>
-      <small id="services-provided-help" class="form-text text-muted">{{ i18n lang 'servicesHelpLabel' }}</small>
+      <small id="services-provided-help" class="form-text text-muted">{{ i18n lang "servicesHelpLabel" }}</small>
     </div>
   </div>
   <div class="row">
     <div class="form-group col">
-      <label for="warranty-information-input">{{ i18n lang 'warrantyInfoLabel' }}</label>
+      <label for="warranty-information-input">{{ i18n lang "warrantyInfoLabel" }}</label>
       <div class="input-group">
         {{froala-editor
           content=warrantyInformation
@@ -55,12 +55,12 @@
           options=(hash attribution=false toolbarButtons=toolbarButtons charCounterCount=false)
         }}
       </div>
-      <small id="warranty-information-help" class="form-text text-muted">{{ i18n lang 'warrantyInfoHelpLabel' }}</small>
+      <small id="warranty-information-help" class="form-text text-muted">{{ i18n lang "warrantyInfoHelpLabel" }}</small>
     </div>
   </div>
   <div class="row">
     <div class="form-group col">
-      <label for="training-information-input">{{ i18n lang 'trainingInfoLabel' }}</label>
+      <label for="training-information-input">{{ i18n lang "trainingInfoLabel" }}</label>
       <div class="input-group">
         {{froala-editor
           content=trainingInformation
@@ -68,12 +68,12 @@
           options=(hash attribution=false toolbarButtons=toolbarButtons charCounterCount=false)
         }}
       </div>
-      <small id="training-information-help" class="form-text text-muted">{{ i18n lang 'trainingInfoHelpLabel' }}</small>
+      <small id="training-information-help" class="form-text text-muted">{{ i18n lang "trainingInfoHelpLabel" }}</small>
     </div>
   </div>
   <div class="row">
     <div class="form-group col">
-      <label for="service-information-input">{{ i18n lang 'serviceInfoLabel' }}</label>
+      <label for="service-information-input">{{ i18n lang "serviceInfoLabel" }}</label>
       <div class="input-group">
         {{froala-editor
           content=serviceInformation
@@ -81,7 +81,7 @@
           options=(hash attribution=false toolbarButtons=toolbarButtons charCounterCount=false)
         }}
       </div>
-      <small id="service-information-help" class="form-text text-muted">{{ i18n lang 'serviceInfoHelpLabel' }}</small>
+      <small id="service-information-help" class="form-text text-muted">{{ i18n lang "serviceInfoHelpLabel" }}</small>
     </div>
   </div>
 </form>
