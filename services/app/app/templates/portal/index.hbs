@@ -1,8 +1,8 @@
 <div class="card mb-4">
   <div class="card-body">
-    <p class="lead">{{ model.name }} Content Portal</p>
-    <p>Welcome to the content update portal for {{ model.name }}.</p>
-    <p>To request modifications to your company data or related content, please choose from the actions below.</p>
+    <p class="lead">{{ model.name }} {{ i18n config.lang 'contentPortalLabel' }}</p>
+    <p>{{ i18n config.lang 'welcomePortalLabel' }} {{ model.name }}.</p>
+    <p>{{ i18n config.lang 'modificationsLabel' }}</p>
   </div>
 </div>
 
@@ -10,7 +10,7 @@
   <ul class="list-group list-group-flush">
     {{#link-to "portal.company" class="list-group-item list-group-item-action"}}
       {{submission-icon type="company" class="mr-2"}}
-      Modify company details
+      {{ i18n config.lang 'modifyCompanyLabel' }}
     {{/link-to}}
     {{#if leadershipEnabled}}
       {{#link-to "portal.leadership" class="list-group-item list-group-item-action"}}
@@ -21,12 +21,12 @@
     {{#if promotionsEnabled}}
       {{#link-to "portal.promotions" class="list-group-item list-group-item-action"}}
         {{submission-icon type="promotion" class="mr-2"}}
-        Modify product promotions
+        {{ i18n config.lang 'modifyProductLabel' }}
       {{/link-to}}
     {{/if}}
     {{#link-to "portal.contacts" class="list-group-item list-group-item-action"}}
       {{submission-icon type="contact" class="mr-2"}}
-      Modify contacts
+      {{ i18n config.lang 'modifyContactsLabel' }}
     {{/link-to}}
   </ul>
 </div>

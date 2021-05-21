@@ -2,7 +2,7 @@
   <div class="card-body">
     <p class="lead">Select your leadership categories.</p>
     <p>For each section below, select the leadership categories your company should be featured in. You may select up to <code>{{ config.leadershipSectionMax }}</code> categories per section.</p>
-    <p>When you are finished making changes, click the "Save Changes" button.</p>
+    <p>{{ i18n config.lang 'companyDetailsP3Label'}}</p>
   </div>
 </div>
 
@@ -17,7 +17,7 @@
 <div class="fixed-bottom fixed-right card">
   <div class="card-body">
     <button disabled={{submitDisabled}} class="btn btn-success pull-right" {{ action "showModal" }}>
-      {{entypo-icon "save"}} Save Changes
+      {{entypo-icon "save"}} {{ i18n config.lang 'saveChangesLabel'}}
     </button>
   </div>
 </div>

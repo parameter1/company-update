@@ -41,4 +41,5 @@ module.exports = cleanEnv(process.env, {
   LEADERSHIP_SECTION_MAX: num({ desc: 'The maximum number of leadership sections that can be selected per site.', default: 3 }),
   CONTACT_URL: str({ desc: 'If configured, the URL that will be added to the navigation for support requests.', default: '' }),
   CONTACT_TEXT: str({ desc: 'Link text for navigation element', default: 'Contact Us' }),
+  APPLICATION_LANG_CHANGE: str({ desc: 'If the language needs to be changed to something besides English', default: 'en' }),
 });

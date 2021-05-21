@@ -1,34 +1,34 @@
 <div class="card mb-4">
   <div class="card-body">
-    <p class="lead">Review your company details.</p>
-    <p>Make any needed changes on the fields below.</p>
-    <p>When you are finished making changes, click the "Save Changes" button.</p>
+    <p class="lead">{{ i18n config.lang 'companyDetailsP1Label' }} </p>
+    <p>{{ i18n config.lang 'companyDetailsP2Label' }}</p>
+    <p>{{ i18n config.lang 'companyDetailsP3Label' }}</p>
   </div>
 </div>
 
 <div class="row">
   <div class="col-12 col-lg-8 col-xl-9 my-3">
-    {{ company-card/details model=model }}
-    {{ company-card/address model=model }}
-    {{ company-card/contact model=model }}
-    {{ company-card/social links=model.socialLinks }}
-    {{ company-card/services model=model }}
+    {{ company-card/details model=model lang=config.lang}}
+    {{ company-card/address model=model lang=config.lang}}
+    {{ company-card/contact model=model lang=config.lang}}
+    {{ company-card/social links=model.socialLinks lang=config.lang}}
+    {{ company-card/services model=model lang=config.lang}}
   </div>
   <div class="col-12 col-lg-4 col-xl-3 my-3">
     <div class="card mb-3">
-      <h4 class="h6 card-header">Logo</h4>
+      <h4 class="h6 card-header">{{ i18n config.lang 'logoLabel' }}</h4>
       <div class="card-body">
-        {{ upload-image image=model.primaryImage.src onUpload=(action "onUpload")}}
+        {{ upload-image image=model.primaryImage.src onUpload=(action "onUpload") lang=config.lang}}
       </div>
     </div>
-    {{ company-card/youtube model=model }}
+    {{ company-card/youtube model=model lang=config.lang}}
   </div>
 </div>
 
 <div class="fixed-bottom fixed-right card">
   <div class="card-body">
     <button disabled={{submitDisabled}} class="btn btn-success pull-right" {{ action "showModal" }}>
-      {{entypo-icon "save"}} Save Changes
+      {{entypo-icon "save"}} {{ i18n config.lang 'saveChangesLabel' }}
     </button>
   </div>
 </div>
