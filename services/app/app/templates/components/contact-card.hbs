@@ -14,11 +14,11 @@
   <div class="card-body">
     <div class="row">
       <div class="col-12 col-md-6">
-        {{ upload-image image=_contact.primaryImage.src onUpload=(action "onUpload") lang=lang}}
+        {{ upload-image image=_contact.primaryImage.src onUpload=(action "onUpload") locale=locale}}
       </div>
       <div class="col-12 col-md-6">
         <div class="form-group">
-          <label for={{ concat this.elementId "-first-name-input" }}>{{ i18n lang "firstNameLabel"}}</label>
+          <label for={{ concat this.elementId "-first-name-input" }}>{{ i18n locale "firstNameLabel"}}</label>
           <div class="input-group">
             {{input
               type="text"
@@ -32,7 +32,7 @@
           </div>
         </div>
         <div class="form-group">
-          <label for={{ concat this.elementId "-last-name-input" }}>{{ i18n lang "lastNameLabel"}}</label>
+          <label for={{ concat this.elementId "-last-name-input" }}>{{ i18n locale "lastNameLabel"}}</label>
           <div class="input-group">
             {{input
               type="text"
@@ -46,7 +46,7 @@
           </div>
         </div>
         <div class="form-group">
-          <label for={{ concat this.elementId "-title-input" }}>{{ i18n lang "titleLabel"}}</label>
+          <label for={{ concat this.elementId "-title-input" }}>{{ i18n locale "titleLabel"}}</label>
           <div class="input-group">
             {{input
               type="text"

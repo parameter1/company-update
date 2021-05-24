@@ -1,8 +1,8 @@
 <div class="card mb-4">
   <div class="card-body">
-    <p class="lead">{{ model.name }} {{ i18n config.lang "contentPortalLabel" }}</p>
-    <p>{{ i18n config.lang "welcomePortalLabel" }} {{ model.name }}.</p>
-    <p>{{ i18n config.lang "modificationsLabel" }}</p>
+    <p class="lead">{{ model.name }} {{ i18n config.locale "contentPortalLabel" }}</p>
+    <p>{{ i18n config.locale "welcomePortalLabel" }} {{ model.name }}.</p>
+    <p>{{ i18n config.locale "modificationsLabel" }}</p>
   </div>
 </div>
 
@@ -10,7 +10,7 @@
   <ul class="list-group list-group-flush">
     {{#link-to "portal.company" class="list-group-item list-group-item-action"}}
       {{submission-icon type="company" class="mr-2"}}
-      {{ i18n config.lang "modifyCompanyLabel" }}
+      {{ i18n config.locale "modifyCompanyLabel" }}
     {{/link-to}}
     {{#if leadershipEnabled}}
       {{#link-to "portal.leadership" class="list-group-item list-group-item-action"}}
@@ -21,12 +21,12 @@
     {{#if promotionsEnabled}}
       {{#link-to "portal.promotions" class="list-group-item list-group-item-action"}}
         {{submission-icon type="promotion" class="mr-2"}}
-        {{ i18n config.lang "modifyProductLabel" }}
+        {{ i18n config.locale "modifyProductLabel" }}
       {{/link-to}}
     {{/if}}
     {{#link-to "portal.contacts" class="list-group-item list-group-item-action"}}
       {{submission-icon type="contact" class="mr-2"}}
-      {{ i18n config.lang "modifyContactsLabel" }}
+      {{ i18n config.locale "modifyContactsLabel" }}
     {{/link-to}}
   </ul>
 </div>

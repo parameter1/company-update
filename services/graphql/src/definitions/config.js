@@ -15,7 +15,7 @@ module.exports = gql`
     leadershipCompanyLabel: String
     leadershipSectionAlias: String!
     leadershipSectionMax: Int!
-    lang: String!
+    locale: String!
   }
 
 `;

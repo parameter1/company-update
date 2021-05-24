@@ -17,7 +17,7 @@
         original=object.original
         updated=object.updated
         payload=object.payload
-        lang=config.lang
+        locale=config.locale
         toggleField=(action "toggleField" object)
       }}
     {{else if object.original}}
@@ -25,7 +25,7 @@
       {{contact-card-review
         original=object.original
         payload=object.payload
-        lang=config.lang
+        locale=config.locale
         onUpdate=(action "toggleContact")
       }}
     {{else}}
@@ -33,7 +33,7 @@
       {{contact-card-review
         updated=object.updated
         payload=object.payload
-        lang=config.lang
+        locale=config.locale
         onUpdate=(action "toggleContact")
       }}
     {{/if}}

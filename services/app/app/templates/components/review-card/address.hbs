@@ -1,8 +1,8 @@
-<h6 class="card-header">{{ i18n lang "addressInfoLabel"}}</h6>
+<h6 class="card-header">{{ i18n locale "addressInfoLabel"}}</h6>
 <form class="card-body">
   <div class="row">
     <div class="form-group col-md-4">
-      <label for="address1-input">{{ i18n lang "address1Label"}}</label>
+      <label for="address1-input">{{ i18n locale "address1Label"}}</label>
       {{review-field
         original=company.address1
         updated=submission.payload.address1
@@ -12,7 +12,7 @@
       }}
     </div>
     <div class="form-group col-md-4">
-      <label for="address2-input">{{ i18n lang "address2Label"}}</label>
+      <label for="address2-input">{{ i18n locale "address2Label"}}</label>
       {{review-field
         original=company.address2
         updated=submission.payload.address2
@@ -22,7 +22,7 @@
       }}
     </div>
     <div class="form-group col-md-4">
-      <label for="city-input">{{ i18n lang "cityLabel"}}</label>
+      <label for="city-input">{{ i18n locale "cityLabel"}}</label>
       {{review-field
         original=company.city
         updated=submission.payload.city
@@ -34,7 +34,7 @@
   </div>
   <div class="row">
     <div class="form-group col-md-4">
-      <label for="state-input">{{ i18n lang "stateLabel"}}</label>
+      <label for="state-input">{{ i18n locale "stateLabel"}}</label>
       {{review-field
         original=company.state
         updated=submission.payload.state
@@ -44,7 +44,7 @@
       }}
     </div>
     <div class="form-group col-md-4">
-      <label for="zip-input">{{ i18n lang "zipLabel"}}</label>
+      <label for="zip-input">{{ i18n locale "zipLabel"}}</label>
       {{review-field
         original=company.zip
         updated=submission.payload.zip
@@ -54,7 +54,7 @@
       }}
     </div>
     <div class="form-group col-md-4">
-      <label for="country-input">{{ i18n lang "countryLabel"}}</label>
+      <label for="country-input">{{ i18n locale "countryLabel"}}</label>
       {{review-field
         original=company.country
         updated=submission.payload.country
