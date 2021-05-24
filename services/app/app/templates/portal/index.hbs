@@ -1,8 +1,8 @@
 <div class="card mb-4">
   <div class="card-body">
-    <p class="lead">{{ model.name }} {{ i18n  "contentPortalLabel" }}</p>
-    <p>{{ i18n  "welcomePortalLabel" }} {{ model.name }}.</p>
-    <p>{{ i18n  "modificationsLabel" }}</p>
+    <p class="lead">{{ model.name }} {{ i18n "contentPortalLabel" }}</p>
+    <p>{{ i18n "welcomePortalLabel" }} {{ model.name }}.</p>
+    <p>{{ i18n "modificationsLabel" }}</p>
   </div>
 </div>
 
@@ -10,7 +10,7 @@
   <ul class="list-group list-group-flush">
     {{#link-to "portal.company" class="list-group-item list-group-item-action"}}
       {{submission-icon type="company" class="mr-2"}}
-      {{ i18n  "modifyCompanyLabel" }}
+      {{ i18n "modifyCompanyLabel" }}
     {{/link-to}}
     {{#if leadershipEnabled}}
       {{#link-to "portal.leadership" class="list-group-item list-group-item-action"}}
@@ -21,12 +21,12 @@
     {{#if promotionsEnabled}}
       {{#link-to "portal.promotions" class="list-group-item list-group-item-action"}}
         {{submission-icon type="promotion" class="mr-2"}}
-        {{ i18n  "modifyProductLabel" }}
+        {{ i18n "modifyProductLabel" }}
       {{/link-to}}
     {{/if}}
     {{#link-to "portal.contacts" class="list-group-item list-group-item-action"}}
       {{submission-icon type="contact" class="mr-2"}}
-      {{ i18n  "modifyContactsLabel" }}
+      {{ i18n "modifyContactsLabel" }}
     {{/link-to}}
   </ul>
 </div>

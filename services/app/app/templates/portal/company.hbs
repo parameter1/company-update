@@ -1,8 +1,8 @@
 <div class="card mb-4">
   <div class="card-body">
-    <p class="lead">{{ i18n  "companyDetailsP1Label" }} </p>
-    <p>{{ i18n  "companyDetailsP2Label" }}</p>
-    <p>{{ i18n  "companyDetailsP3Label" }}</p>
+    <p class="lead">{{ i18n "companyDetailsP1Label" }} </p>
+    <p>{{ i18n "companyDetailsP2Label" }}</p>
+    <p>{{ i18n "companyDetailsP3Label" }}</p>
   </div>
 </div>
 
@@ -16,7 +16,7 @@
   </div>
   <div class="col-12 col-lg-4 col-xl-3 my-3">
     <div class="card mb-3">
-      <h4 class="h6 card-header">{{ i18n  "logoLabel" }}</h4>
+      <h4 class="h6 card-header">{{ i18n "logoLabel" }}</h4>
       <div class="card-body">
         {{ upload-image image=model.primaryImage.src onUpload=(action "onUpload") }}
       </div>
@@ -28,7 +28,7 @@
 <div class="fixed-bottom fixed-right card">
   <div class="card-body">
     <button disabled={{submitDisabled}} class="btn btn-success pull-right" {{ action "showModal" }}>
-      {{entypo-icon "save"}} {{ i18n  "saveChangesLabel" }}
+      {{entypo-icon "save"}} {{ i18n "saveChangesLabel" }}
     </button>
   </div>
 </div>
