@@ -1,8 +1,8 @@
-<h6 class="card-header">{{ i18n locale "companyDetailsLabel"}}</h6>
+<h6 class="card-header">{{ i18n  "companyDetailsLabel"}}</h6>
 <form class="card-body">
   <div class="row">
     <div class="form-group col">
-      <label for="name-input">{{ i18n locale "nameLabel"}}</label>
+      <label for="name-input">{{ i18n  "nameLabel"}}</label>
       {{review-field
         original=company.name
         updated=submission.payload.name
@@ -14,7 +14,7 @@
   </div>
   <div class="row">
     <div class="form-group col">
-      <label for="teaser-input">{{ i18n locale "teaserLabel"}}</label>
+      <label for="teaser-input">{{ i18n  "teaserLabel"}}</label>
       {{review-field
         original=company.teaser
         updated=submission.payload.teaser
@@ -26,7 +26,7 @@
   </div>
   <div class="row">
     <div class="form-group col">
-      <label for="body-input">{{ i18n locale "descriptionLabel"}}</label>
+      <label for="body-input">{{ i18n  "descriptionLabel"}}</label>
       {{review-field
         original=company.body
         updated=submission.payload.body
@@ -38,7 +38,7 @@
   </div>
   <div class="row">
     <div class="form-group col-md-6">
-      <label for="number-of-employees-input">{{ i18n locale "numberOfEmployeesLabel"}}</label>
+      <label for="number-of-employees-input">{{ i18n  "numberOfEmployeesLabel"}}</label>
       {{review-field
         original=company.numberOfEmployees
         updated=submission.payload.numberOfEmployees
@@ -48,7 +48,7 @@
       }}
     </div>
     <div class="form-group col-md-6">
-      <label for="years-in-operation-input">{{ i18n locale "yearsInOperationLabel"}}</label>
+      <label for="years-in-operation-input">{{ i18n  "yearsInOperationLabel"}}</label>
       {{review-field
         original=company.yearsInOperation
         updated=submission.payload.yearsInOperation
@@ -60,7 +60,7 @@
   </div>
   <div class="row">
     <div class="form-group col-md-6">
-      <label for="sales-region-input">{{ i18n locale "salesRegionLabel"}}</label>
+      <label for="sales-region-input">{{ i18n  "salesRegionLabel"}}</label>
       {{review-field
         original=company.salesRegion
         updated=submission.payload.salesRegion
@@ -70,7 +70,7 @@
       }}
     </div>
     <div class="form-group col-md-6">
-      <label for="sales-channels-input">{{ i18n locale "salesChannelsLabel"}}</label>
+      <label for="sales-channels-input">{{ i18n  "salesChannelsLabel"}}</label>
       {{review-field
         original=company.salesChannels
         updated=submission.payload.salesChannels

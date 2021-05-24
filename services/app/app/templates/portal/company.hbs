@@ -1,34 +1,34 @@
 <div class="card mb-4">
   <div class="card-body">
-    <p class="lead">{{ i18n config.locale "companyDetailsP1Label" }} </p>
-    <p>{{ i18n config.locale "companyDetailsP2Label" }}</p>
-    <p>{{ i18n config.locale "companyDetailsP3Label" }}</p>
+    <p class="lead">{{ i18n  "companyDetailsP1Label" }} </p>
+    <p>{{ i18n  "companyDetailsP2Label" }}</p>
+    <p>{{ i18n  "companyDetailsP3Label" }}</p>
   </div>
 </div>
 
 <div class="row">
   <div class="col-12 col-lg-8 col-xl-9 my-3">
-    {{ company-card/details model=model locale=config.locale}}
-    {{ company-card/address model=model locale=config.locale}}
-    {{ company-card/contact model=model locale=config.locale}}
-    {{ company-card/social links=model.socialLinks locale=config.locale}}
-    {{ company-card/services model=model locale=config.locale}}
+    {{ company-card/details model=model }}
+    {{ company-card/address model=model }}
+    {{ company-card/contact model=model }}
+    {{ company-card/social links=model.socialLinks }}
+    {{ company-card/services model=model }}
   </div>
   <div class="col-12 col-lg-4 col-xl-3 my-3">
     <div class="card mb-3">
-      <h4 class="h6 card-header">{{ i18n config.locale "logoLabel" }}</h4>
+      <h4 class="h6 card-header">{{ i18n  "logoLabel" }}</h4>
       <div class="card-body">
-        {{ upload-image image=model.primaryImage.src onUpload=(action "onUpload") locale=config.locale}}
+        {{ upload-image image=model.primaryImage.src onUpload=(action "onUpload") }}
       </div>
     </div>
-    {{ company-card/youtube model=model locale=config.locale}}
+    {{ company-card/youtube model=model }}
   </div>
 </div>
 
 <div class="fixed-bottom fixed-right card">
   <div class="card-body">
     <button disabled={{submitDisabled}} class="btn btn-success pull-right" {{ action "showModal" }}>
-      {{entypo-icon "save"}} {{ i18n config.locale "saveChangesLabel" }}
+      {{entypo-icon "save"}} {{ i18n  "saveChangesLabel" }}
     </button>
   </div>
 </div>
