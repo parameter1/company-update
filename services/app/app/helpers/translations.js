@@ -140,7 +140,7 @@ export default {
     saveChangesLabel: 'Grabar los cambios',
 
     // Contacts
-    contactsP1Label: 'Review your company contacts.',
+    contactsP1Label: 'Revise los contactos de su compañía.',
     //Use companyDetailsP2Label and companyDetailsP3Label for remaining paragraphs
     firstNameLabel: 'Primer nombre',
     lastNameLabel: 'Apellido',

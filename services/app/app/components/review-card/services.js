@@ -3,7 +3,6 @@ import { computed } from '@ember/object';
 import ReviewCard from '@base-cms/company-update-app/components/review-card';
 
 export default ReviewCard.extend({
-  title: 'Services, Products, and Warranty Information',
   productSummary: computed('model.productSummary', function () {
     return htmlSafe(this.get('model.productSummary'));
   }),
