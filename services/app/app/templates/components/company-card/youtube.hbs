@@ -1,10 +1,10 @@
-<h6 class="card-header">{{ title }}</h6>
+<h6 class="card-header">{{ i18n "youtubeLabel" }}</h6>
 <form class="card-body">
-  <p class="small text-muted">The leadership program will automatically display the latest videos from the associated Youtube playlist, channel, or user account.</p>
-  <p class="small text-muted">To include videos on your profile, please fill out one of the fields below.</p>
+  <p class="small text-muted">{{ i18n "youtubeP1Label" }}</p>
+  <p class="small text-muted">{{ i18n "youtubeP2Label" }}</p>
   <div class="row">
     <div class="form-group col">
-      <label for="playlist-id-input">Playlist ID</label>
+      <label for="playlist-id-input">{{ i18n "listIdLabel" }}</label>
       <ValidatedInput
         @type="text"
         @class="form-control"
@@ -16,12 +16,12 @@
         @invalidText="Enter a valid playlist id"
         @validateFn={{action this.validatePlaylistId}}
       />
-      <small id="playlist-id-help" class="form-text text-muted">Display the latest videos from this playlist.</small>
+      <small id="playlist-id-help" class="form-text text-muted">{{ i18n "listHelpLabel" }}</small>
     </div>
   </div>
   <div class="row">
     <div class="form-group col">
-      <label for="channel-id-input">Channel ID</label>
+      <label for="channel-id-input">{{ i18n "channelIdLabel" }}</label>
       <ValidatedInput
         @type="text"
         @class="form-control"
@@ -33,12 +33,12 @@
         @invalidText="Enter a valid channel id"
         @validateFn={{action this.validateChannelId}}
       />
-      <small id="channel-id-help" class="form-text text-muted">Display the latest videos from this channel.</small>
+      <small id="channel-id-help" class="form-text text-muted">{{ i18n "channelIdHelpLabel" }}</small>
     </div>
   </div>
   <div class="row">
     <div class="form-group col">
-      <label for="username-input">Username</label>
+      <label for="username-input">{{ i18n "userNameLabel" }}</label>
       <ValidatedInput
         @type="text"
         @class="form-control"
@@ -50,13 +50,13 @@
         @invalidText="Enter a valid username"
         @validateFn={{action this.validateUsername}}
       />
-      <small id="channel-id-help" class="form-text text-muted">Display the latest videos from this user.</small>
+      <small id="channel-id-help" class="form-text text-muted">{{ i18n "userNameHelpLabel" }}</small>
     </div>
   </div>
   {{#if url}}
     <div class="row">
       <div class="form-group col">
-        <label for="url-input">Preview URL</label>
+        <label for="url-input">{{ i18n "previewURLLabel" }}</label>
         <a href={{ url }} target="_blank" rel="noopener" class="form-control-plaintext">
           {{ url }}
         </a>

@@ -69,6 +69,7 @@ services:
       LEADERSHIP_SECTION_MAX: ${LEADERSHIP_SECTION_MAX-3}
       CONTACT_URL: ${CONTACT_URL}
       CONTACT_TEXT: ${CONTACT_TEXT-Contact Us}
+      APP_LOCALE: ${APP_LOCALE-en-us}
 
   mongo:
     tty: true

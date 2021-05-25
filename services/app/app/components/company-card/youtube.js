@@ -9,7 +9,6 @@ export default Component.extend({
   apollo: queryManager(),
   tagName: 'div',
   classNames: ['card mb-3'],
-  title: 'Youtube Videos',
 
   async validatePlaylistId(playlistId) {
     if (!playlistId) return true;

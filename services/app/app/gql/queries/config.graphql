@@ -8,5 +8,6 @@ query CompanyUpdateConfig {
     leadershipCompanyLabel
     leadershipSectionAlias
     leadershipSectionMax
+    locale
   }
 }

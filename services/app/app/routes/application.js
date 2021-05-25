@@ -21,6 +21,7 @@ export default Route.extend(ApplicationRouteMixin, {
     leadershipCompanyLabel,
     leadershipSectionAlias,
     leadershipSectionMax,
+    locale
   }) {
     this.config.load({
       contactUrl,
@@ -31,6 +32,7 @@ export default Route.extend(ApplicationRouteMixin, {
       leadershipCompanyLabel,
       leadershipSectionAlias,
       leadershipSectionMax,
+      locale
     });
   },
 });
