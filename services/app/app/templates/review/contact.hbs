@@ -17,7 +17,6 @@
         original=object.original
         updated=object.updated
         payload=object.payload
-
         toggleField=(action "toggleField" object)
       }}
     {{else if object.original}}
@@ -25,7 +24,6 @@
       {{contact-card-review
         original=object.original
         payload=object.payload
-
         onUpdate=(action "toggleContact")
       }}
     {{else}}
@@ -33,7 +31,6 @@
       {{contact-card-review
         updated=object.updated
         payload=object.payload
-
         onUpdate=(action "toggleContact")
       }}
     {{/if}}
