@@ -7,7 +7,6 @@ const toolbarButtons = ['bold', 'italic', 'underline', 'strikeThrough', 'subscri
 export default Component.extend({
   tagName: 'div',
   classNames: ['card mb-3'],
-  title: 'Services, Products, and Warranty Information',
   toolbarButtons,
   productSummary: computed('model.productSummary', function () {
     return htmlSafe(this.get('model.productSummary'));
