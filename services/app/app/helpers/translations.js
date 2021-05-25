@@ -1,6 +1,6 @@
 export default {
   'en-us': {
-    //Home
+    // Home
     contentPortalLabel: 'Content Portal',
     welcomePortalLabel: 'Welcome to the content update portal for',
     modificationsLabel: 'To request modifications to your company data or related content, please choose from the actions below.',
@@ -8,7 +8,7 @@ export default {
     modifyProductLabel: 'Modify product promotions',
     modifyContactsLabel: 'Modify contacts',
 
-    //Company
+    // Company
     companyDetailsLabel: 'Company Details',
     companyDetailsP1Label: 'Review your company details.',
     companyDetailsP2Label: 'Make any needed changes on the fields below.',
@@ -65,7 +65,7 @@ export default {
     uploadLabel: 'Upload new image',
     saveChangesLabel: 'Save Changes',
 
-    //Contacts
+    // Contacts
     contactsP1Label: 'Review your company contacts.',
     //Use companyDetailsP2Label and companyDetailsP3Label for remaining paragraphs
     firstNameLabel: 'First Name',
@@ -75,7 +75,7 @@ export default {
 
   },
   'es-mx': {
-    //Home
+    // Home
     contentPortalLabel: 'Portal de contenido ',
     welcomePortalLabel: 'Bienvenido al portal para actualizar el contenido para',
     modificationsLabel: 'Para solicitar modificaciones para los datos de su compañía o contenido relacionado, por favor seleccione las acciones de abajo.',
@@ -139,7 +139,7 @@ export default {
     uploadLabel: 'Cargar nueva imagen',
     saveChangesLabel: 'Grabar los cambios',
 
-    //Contacts
+    // Contacts
     contactsP1Label: 'Review your company contacts.',
     //Use companyDetailsP2Label and companyDetailsP3Label for remaining paragraphs
     firstNameLabel: 'Primer nombre',
