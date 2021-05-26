@@ -1,7 +1,7 @@
 <div class="card mb-4">
   <div class="card-body">
-    <p class="lead">Review your company"s product promotions</p>
-    <p>Make any needed changes on the fields below. You can submit up to a maximum of <b>four</b> product promotions.</p>
+    <p class="lead">{{ i18n "promotionsP1Label" }}</p>
+    <p>{{ i18n "promotionsP2Label" }}</p>
     <p>{{ i18n "companyDetailsP3Label"}}</p>
   </div>
 </div>
@@ -22,7 +22,7 @@
   <div class="fixed-bottom fixed-left card">
     <div class="card-body">
       <button disabled={{isAddDisabled}} class="btn btn-primary pull-left" {{ action "add" }}>
-        {{entypo-icon "circle-with-plus"}} Add a promotion
+        {{entypo-icon "circle-with-plus"}} {{ i18n "addPromotionLabel"}}
       </button>
     </div>
   </div>
