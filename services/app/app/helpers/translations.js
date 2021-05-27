@@ -64,7 +64,7 @@ export default {
     logoLabel: 'Logo',
     uploadLabel: 'Upload new image',
     saveChangesLabel: 'Save Changes',
-    textLinkLabel: "Text link",
+    textLinkLabel: 'Link Text',
 
     // Contacts
     contactsP1Label: 'Review your company contacts.',
@@ -75,7 +75,7 @@ export default {
     addContactLabel: 'Add a contact',
 
     // Promotions
-    promotionsP1Label: 'Review your companys product promotions',
+    promotionsP1Label: 'Review your company\'s product promotions',
     promotionsP2Label: 'Make any needed changes on the fields below. You can submit up to a maximum of four product promotions.',
     addPromotionLabel: 'Add a promotion',
 
