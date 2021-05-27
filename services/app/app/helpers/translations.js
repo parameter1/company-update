@@ -64,6 +64,7 @@ export default {
     logoLabel: 'Logo',
     uploadLabel: 'Upload new image',
     saveChangesLabel: 'Save Changes',
+    textLinkLabel: 'Link Text',
 
     // Contacts
     contactsP1Label: 'Review your company contacts.',
@@ -72,6 +73,11 @@ export default {
     lastNameLabel: 'Last Name',
     titleLabel: 'Title',
     addContactLabel: 'Add a contact',
+
+    // Promotions
+    promotionsP1Label: 'Review your company\'s product promotions',
+    promotionsP2Label: 'Make any needed changes on the fields below. You can submit up to a maximum of four product promotions.',
+    addPromotionLabel: 'Add a promotion',
 
   },
   'es-mx': {
@@ -138,6 +144,7 @@ export default {
     logoLabel: 'Logo',
     uploadLabel: 'Cargar nueva imagen',
     saveChangesLabel: 'Grabar los cambios',
+    textLinkLabel: 'Link de Texto',
 
     // Contacts
     contactsP1Label: 'Revise los contactos de su compañía.',
@@ -145,7 +152,12 @@ export default {
     firstNameLabel: 'Primer nombre',
     lastNameLabel: 'Apellido',
     titleLabel: 'Titulo',
-    addContactLabel: 'Añada un contacto'
+    addContactLabel: 'Añada un contacto',
+
+    // Promotions
+    promotionsP1Label: 'Revise las promociones de producto de su compañía',
+    promotionsP2Label: 'Haga cualquier cambio necesario en los campos de abajo. Usted puede suministrar hasta cuatro promociones de producto.',
+    addPromotionLabel: 'Añada una promoción',
 
   },
 };
