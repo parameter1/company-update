@@ -1,14 +1,14 @@
 {{#bs-modal show=isOpen as |modal|}}
   <form {{action "submit" on="submit"}}>
     {{#modal.header}}
-      <h5 class="modal-title">Update details</h5>
+      <h5 class="modal-title">{{ i18n "updateDetailsLabel"}}</h5>
       <button {{action modal.actions.hide}} type="button" class="close" aria-label="Close">
         {{entypo-icon "cross"}}
       </button>
     {{/modal.header}}
 
     {{#modal.body}}
-      <p class="lead">Please provide your name and email address.</p>
+      <p class="lead">{{ i18n "confirmHeadLabel" }}</p>
       <hr>
       <div class="row">
         <div class="col">

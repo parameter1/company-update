@@ -83,7 +83,8 @@ export default {
     confirmHeadLabel: 'Please provide your name and email address.',
     updatePromoLabel: 'Update product promotions',
     updateContactsLabel: 'Update contacts',
-    updateCategoriesLabel: 'Update Leadership Categories'
+    updateCategoriesLabel: 'Update Leadership Categories',
+    updateDetailsLabel: 'Update details'
 
   },
   'es-mx': {
@@ -169,5 +170,6 @@ export default {
     confirmHeadLabel: 'Por favor pone su nombre y correro electrónico.',
     updatePromoLabel: 'Actualice promociones de producto',
     updateContactsLabel: 'Actualice contactos',
+    updateDetailsLabel: 'Actualice detalles'
   },
 };
