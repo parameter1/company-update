@@ -22,7 +22,7 @@ module.exports = cleanEnv(process.env, {
   // Core mandatory configs
   AWS_ACCESS_KEY_ID: nonemptystr({ desc: 'The AWS access key value.' }),
   AWS_SECRET_ACCESS_KEY: nonemptystr({ desc: 'The AWS secret access key value.' }),
-  AWS_S3_BUCKET: nonemptystr({ desc: 'The AWS S3 Bucket name to use for file uploads.', default: 'cuf-uploads' }),
+  AWS_S3_BUCKET: nonemptystr({ desc: 'The AWS S3 Bucket name to use for file uploads.', default: 'p1-cms-cuf-uploads' }),
   MONGO_DSN: nonemptystr({ desc: 'The MongoDB DSN to connect to.', default: 'mongodb://mongo/cuf' }),
   NOTIFICATION_TO: email({ desc: 'The email address notifications are sent to.' }),
   SENDGRID_API_KEY: nonemptystr({ desc: 'The SendGrid API key for sending email.' }),

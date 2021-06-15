@@ -49,7 +49,7 @@ services:
       <<: *env
       # Core
       AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
-      AWS_S3_BUCKET: ${AWS_S3_BUCKET-cuf-uploads}
+      AWS_S3_BUCKET: ${AWS_S3_BUCKET-p1-cms-cuf-uploads}
       AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
       MONGO_DSN: ${MONGO_DSN-mongodb://mongo/cuf}
       NOTIFICATION_TO: ${NOTIFICATION_TO-developer@endeavorb2b.com}
