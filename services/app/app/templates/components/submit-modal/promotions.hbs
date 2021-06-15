@@ -1,19 +1,19 @@
 {{#bs-modal show=isOpen as |modal|}}
   <form {{action "submit" on="submit"}}>
     {{#modal.header}}
-      <h5 class="modal-title">Update product promotions</h5>
+      <h5 class="modal-title">{{ i18n "updatePromoLabel" }}</h5>
       <button {{action modal.actions.hide}} type="button" class="close" aria-label="Close">
         {{entypo-icon "cross"}}
       </button>
     {{/modal.header}}
 
     {{#modal.body}}
-      <p class="lead">Please provide your name and email address.</p>
+      <p class="lead">{{ i18n "confirmHeadLabel" }}</p>
       <hr>
       <div class="row">
         <div class="col">
           <div class="form-group">
-            <label for="name">Name</label>
+            <label for="name">{{ i18n "nameLabel" }}</label>
             {{input type="text" autocomplete="none full_name" class="form-control" value=name autofocus="autofocus"}}
           </div>
         </div>
@@ -21,7 +21,7 @@
       <div class="row">
         <div class="col">
           <div class="form-group">
-            <label for="email">Email Address</label>
+            <label for="email">{{ i18n "emailLabel" }}</label>
             {{input type="email" autocomplete="none email" class="form-control" value=email}}
           </div>
         </div>
@@ -39,7 +39,7 @@
 
     {{#modal.footer}}
       <button class="btn btn-success" type="submit" disabled={{isSubmitDisabled}}>
-        {{entypo-icon "save"}} Save Changes
+        {{entypo-icon "save"}} {{ i18n "saveChangesLabel" }}
       </button>
     {{/modal.footer}}
     {{progress-bar show=isActionRunning}}

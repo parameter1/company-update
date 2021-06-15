@@ -79,6 +79,13 @@ export default {
     promotionsP2Label: 'Make any needed changes on the fields below. You can submit up to a maximum of four product promotions.',
     addPromotionLabel: 'Add a promotion',
 
+    // Confirmation Header
+    confirmHeadLabel: 'Please provide your name and email address.',
+    updatePromoLabel: 'Update product promotions',
+    updateContactsLabel: 'Update contacts',
+    updateCategoriesLabel: 'Update Leadership Categories',
+    updateDetailsLabel: 'Update details'
+
   },
   'es-mx': {
     // Home
@@ -159,5 +166,10 @@ export default {
     promotionsP2Label: 'Haga cualquier cambio necesario en los campos de abajo. Usted puede suministrar hasta cuatro promociones de producto.',
     addPromotionLabel: 'Añada una promoción',
 
+    //Confirmation Head
+    confirmHeadLabel: 'Por favor pone su nombre y correro electrónico.',
+    updatePromoLabel: 'Actualice promociones de producto',
+    updateContactsLabel: 'Actualice contactos',
+    updateDetailsLabel: 'Actualice detalles'
   },
 };
