@@ -1,5 +1,5 @@
-query CompanyUpdateDefaultWebsiteSection {
-  websiteSections(input: { includeAliases: "home", rootOnly: true, pagination: { limit: 1 } }){
+query CompanyUpdateDefaultWebsiteSection($siteId: ObjectID!) {
+  websiteSections(input: { siteId: $siteId, includeAliases: "home", rootOnly: true, pagination: { limit: 1 } }){
     edges {
       node {
         id

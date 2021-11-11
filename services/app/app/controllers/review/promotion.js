@@ -48,9 +48,10 @@ export default Controller.extend(ActionMixin, {
    * @param Number companyId The company ID
    * @param Object { ... } The promotion payload
    */
-  async createPromotion (companyId, contentName, { linkUrl, linkText, primaryImage }) {
+  async createPromotion (companyId, contentName, { linkUrl, linkText, primaryImage }, primarySiteId) {
     const getDefaultSection = async () => {
-      const { edges } = await this.apollo.query({ query: promotionSection }, 'websiteSections');
+      const variables = { siteId: primarySiteId };
+      const { edges } = await this.apollo.query({ query: promotionSection, variables, fetchPolicy: 'network-only' }, 'websiteSections');
       return get(edges, '0.node.id');
     };
     const payload = {
@@ -108,11 +109,11 @@ export default Controller.extend(ActionMixin, {
         const promotions = this.get('model.promotions');
         const contentId = this.get('model.company.id');
         const contentName = this.get('model.company.name');
-
+        const primarySiteId = this.get('model.company.primarySite.id');
         await Promise.all(promotions.reduce((arr, obj) => {
           const { original, updated, payload } = obj;
           if (!payload.enabled) return arr;
-          if (payload.added) return [...arr, this.createPromotion(contentId, contentName, updated)];
+          if (payload.added) return [...arr, this.createPromotion(contentId, contentName, updated, primarySiteId)];
           if (payload.removed) return [...arr, this.deletePromotion(original.id)];
           const fields = Object.keys(obj.payload.fields).filter(k => obj.payload.fields[k] === true);
           const update = fields.reduce((o, f) => ({ ...o, [f]: obj.updated[f] }), { id: obj.original.id });
