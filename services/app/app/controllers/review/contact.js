@@ -49,9 +49,10 @@ export default Controller.extend(ActionMixin, {
    *
    * @param Object { ... } The contact payload
    */
-  async createContact ({ firstName, lastName, title, primaryImage }) {
+  async createContact ({ firstName, lastName, title, primaryImage }, primarySiteId) {
     const getDefaultSection = async () => {
-      const { edges } = await this.apollo.query({ query: contactSection }, 'websiteSections');
+      const variables = { siteId: primarySiteId };
+      const { edges } = await this.apollo.query({ query: contactSection, variables, fetchPolicy: 'network-only' }, 'websiteSections');
       return get(edges, '0.node.id');
     };
     const primarySectionId = await getDefaultSection();
@@ -100,10 +101,11 @@ export default Controller.extend(ActionMixin, {
         const contacts = this.get('model.contacts');
         const contentId = this.get('model.company.id');
         const contactIds = this.get('model.company.publicContacts.edges').map(({ node }) => node.id);
+        const primarySiteId = this.get('model.company.primarySite.id');
 
         const addedIds = await Promise.all(contacts
           .filter((obj) => obj.payload.enabled && obj.payload.added)
-          .map(({ updated }) => this.createContact(updated))
+          .map(({ updated }) => this.createContact(updated, primarySiteId))
         );
 
         const removedIds = await Promise.all(contacts
