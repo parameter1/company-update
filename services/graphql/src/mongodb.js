@@ -1,4 +1,5 @@
 const { MongoClient, ObjectId } = require('mongodb');
+const { filterDsn } = require('@parameter1/base-cms-db/utils');
 const { MONGO_DSN, TENANT_KEY } = require('./env');
 
 const client = new MongoClient(MONGO_DSN);
@@ -7,7 +8,10 @@ const tenant = TENANT_KEY;
 const type = { $exists: true };
 
 // eslint-disable-next-line no-console
-promise.then(() => process.stdout.write(`\n💾  MongoDB connected to ${MONGO_DSN}\n`));
+promise.then((connection) => {
+  const url = filterDsn(connection);
+  process.stdout.write(`\n💾  MongoDB connected to ${url}\n`);
+});
 promise.catch((e) => { throw e; });
 
 module.exports = {
