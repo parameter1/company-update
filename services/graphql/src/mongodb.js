@@ -2,7 +2,7 @@ const { MongoClient, ObjectId } = require('mongodb');
 const { filterDsn } = require('@parameter1/base-cms-db/utils');
 const { MONGO_DSN, TENANT_KEY } = require('./env');
 
-const client = new MongoClient(MONGO_DSN);
+const client = new MongoClient(MONGO_DSN, { useUnifiedTopology: true });
 const promise = client.connect();
 const tenant = TENANT_KEY;
 const type = { $exists: true };
