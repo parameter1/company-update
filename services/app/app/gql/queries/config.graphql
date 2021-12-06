@@ -2,6 +2,10 @@ query CompanyUpdateConfig {
   companyUpdateConfig {
     contactUrl
     contactText
+    companyCustomAttributes {
+      key
+      label
+    }
     logoUrl
     leadershipEnabled
     leadershipPromotionsEnabled
