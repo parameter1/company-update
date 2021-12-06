@@ -1,6 +1,7 @@
 const { ApolloServer } = require('apollo-server');
 const createSchema = require('./schema');
 const mongodb = require('./mongodb');
+const { PORT, EXPOSED_PORT } = require('./env');
 
 const { log } = console;
 
@@ -10,8 +11,8 @@ const init = async () => {
   const context = ({ req }) => ({ req, authorization: req.get('authorization') });
   const server = new ApolloServer({ schema, context });
 
-  server.listen({ port: 80, path: '/graph' }).then(({ url }) => {
-    log(`🚀  GraphQL available at ${url}\n\n`);
+  server.listen({ port: PORT, path: '/graph' }).then(() => {
+    log(`🚀  GraphQL available at http://localhost:${EXPOSED_PORT}/graphql\n\n`);
   });
 };
 

@@ -6,6 +6,7 @@ const {
   str,
   bool,
   num,
+  port,
 } = require('envalid');
 
 const nonemptystr = makeValidator((v) => {
@@ -42,4 +43,6 @@ module.exports = cleanEnv(process.env, {
   CONTACT_URL: str({ desc: 'If configured, the URL that will be added to the navigation for support requests.', default: '' }),
   CONTACT_TEXT: str({ desc: 'Link text for navigation element', default: 'Contact Us' }),
   APP_LOCALE: str({ desc: 'The application locale', choices: ['en-us', 'es-mx'], default: 'en-us' }),
+  PORT: port({ desc: 'The port to listen on', default: 80 }),
+  EXPOSED_PORT: port({ desc: 'The exposed port to listen on', default: 5550 }),
 });
