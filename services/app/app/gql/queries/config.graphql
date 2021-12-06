@@ -4,7 +4,9 @@ query CompanyUpdateConfig {
     contactText
     companyCustomAttributes {
       key
+      category
       label
+      description
     }
     logoUrl
     leadershipEnabled

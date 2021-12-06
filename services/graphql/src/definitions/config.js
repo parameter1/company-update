@@ -23,6 +23,7 @@ module.exports = gql`
     key: String!
     label: String!
     description: String
+    category: String
   }
 
 `;
