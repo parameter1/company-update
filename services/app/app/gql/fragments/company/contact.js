@@ -1,3 +1,6 @@
+import gql from 'graphql-tag';
+
+export default gql`
 fragment CompanyContactFragment on ContentCompany {
   phone
   tollfree
@@ -6,3 +9,4 @@ fragment CompanyContactFragment on ContentCompany {
   website
   email
 }
+`;

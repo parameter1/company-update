@@ -1,3 +1,6 @@
+import gql from 'graphql-tag';
+
+export default gql`
 fragment CompanySchedulesFragment on ContentCompany {
   published
   websiteSchedules {
@@ -8,3 +11,4 @@ fragment CompanySchedulesFragment on ContentCompany {
     }
   }
 }
+`;

@@ -1,3 +1,6 @@
+import gql from 'graphql-tag';
+
+export default gql`
 fragment CompanyServicesFragment on ContentCompany {
   externalLinks {
     key
@@ -10,3 +13,4 @@ fragment CompanyServicesFragment on ContentCompany {
   trainingInformation
   serviceInformation
 }
+`;
