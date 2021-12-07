@@ -1,0 +1,11 @@
+<h6 class="card-header">
+  {{#if this.categoryName}}
+    {{ this.categoryName }}
+  {{/if}}
+</h6>
+<form class="card-body">
+  {{#each this.attributes as |attribute|}}
+    {{company-card/custom-attribute label=attribute.label description=attribute.description key=attribute.key model=model}}
+  {{/each}}
+</form>
+<div class="card-footer"></div>
