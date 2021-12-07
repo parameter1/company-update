@@ -37,11 +37,13 @@ const fields = [
   'warrantyInformation',
   'logo',
   'youtube',
+  'customAttributes',
 ];
 
 export default Component.extend(ActionMixin, {
   apollo: queryManager(),
   notify: inject(),
+  config: inject(),
   session: inject(),
 
   model: null,
@@ -55,6 +57,11 @@ export default Component.extend(ActionMixin, {
     return false;
   }),
   isSubmitDisabled: computed.or('isActionRunning', 'isInvalid'),
+  attrKeys: computed('config.companyCustomAttributes', function() {
+    const attrs = this.config.companyCustomAttributes || [];
+    return attrs.map((attr) => attr.key);
+  }),
+
   filterPayload(key) {
     const v = this.get(`model.${key}`);
     console.log(key, v);
@@ -70,6 +77,10 @@ export default Component.extend(ActionMixin, {
         channelId: v.channelId,
         username: v.username,
       };
+    }
+    if (key == 'customAttributes') {
+      const attrs = this.attrKeys.reduce((obj, key) => ({ ...obj, [key]: this.get(`model.${key}`) }), {});
+      return attrs;
     }
     return v;
   },
