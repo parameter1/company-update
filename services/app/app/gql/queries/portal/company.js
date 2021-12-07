@@ -9,7 +9,7 @@ import CompanyImagesFragment from "../../fragments/company/images";
 import CompanyLogoFragment from "../../fragments/company/logo";
 import CompanyYoutubeFragment from "../../fragments/company/youtube";
 
-export default gql`
+export default () => gql`
 query ContentUpdatePortalCompany($input: ContentHashQueryInput!) {
   contentHash(input: $input) {
     ...CompanyListFragment
