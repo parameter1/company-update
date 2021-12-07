@@ -1,3 +1,5 @@
+import gql from 'graphql-tag';
+export default gql`
 query ContentUpdateLeadershipData($sites: WebsiteSitesQueryInput!, $leaders: WebsiteSiteSectionsInput!, $children: WebsiteSectionChildrenInput!) {
   websiteSites(input: $sites) {
     edges {
@@ -36,3 +38,4 @@ query ContentUpdateLeadershipData($sites: WebsiteSitesQueryInput!, $leaders: Web
     }
   }
 }
+`;
