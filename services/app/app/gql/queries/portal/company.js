@@ -9,7 +9,7 @@ import CompanyImagesFragment from "../../fragments/company/images";
 import CompanyLogoFragment from "../../fragments/company/logo";
 import CompanyYoutubeFragment from "../../fragments/company/youtube";
 
-export default () => gql`
+export default (customAttributes = []) => gql`
 query ContentUpdatePortalCompany($input: ContentHashQueryInput!) {
   contentHash(input: $input) {
     ...CompanyListFragment
@@ -20,6 +20,8 @@ query ContentUpdatePortalCompany($input: ContentHashQueryInput!) {
     ...CompanyServicesFragment
     ...CompanyImagesFragment
     ...CompanyYoutubeFragment
+    ${customAttributes.map((key) => `
+    ${key}: customAttribute(input: { path: "${key}" })`).join('')}
   }
 }
 ${CompanyListFragment}
