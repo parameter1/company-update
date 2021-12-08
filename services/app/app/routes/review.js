@@ -1,12 +1,18 @@
 import Route from '@ember/routing/route';
+import { inject } from '@ember/service';
 import { queryManager } from 'ember-apollo-client';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
-import { get, set } from '@ember/object';
+import { get, set, computed } from '@ember/object';
 import submissionQuery from '@base-cms/company-update-app/gql/queries/review/submission';
-import companyQuery from '@base-cms/company-update-app/gql/queries/review/company';
+import companyQueryBuilder from '@base-cms/company-update-app/gql/queries/review/company';
 
 export default Route.extend(AuthenticatedRouteMixin, {
+  config: inject(),
   apollo: queryManager(),
+  attrKeys: computed('config.companyCustomAttributes', function() {
+    const attrs = this.config.companyCustomAttributes || [];
+    return attrs.map((attr) => attr.key);
+  }),
 
   async model() {
     const { id } = this.paramsFor('review');
@@ -17,6 +23,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
       submission.parsed = true;
     }
     const { hash } = submission;
+    const companyQuery = companyQueryBuilder(this.attrKeys);
     const company = await this.apollo.query({
       query: companyQuery,
       variables: { input: { hash } },
