@@ -11,12 +11,10 @@ export default ReviewCard.extend({
     return `customAttributes.${this.key}Label`;
   }),
   oldValue: computed('key', 'company', function() {
-    console.log('oldValue', this.key, this.get(`company.${this.key}`));
     return this.get(`company.${this.key}`);
   }),
 
   newValue: computed('key', 'submission', function() {
-    console.log('newValue', this.key, this.get(`submission.payload.customAttributes.${this.key}`));
     return this.get(`submission.payload.customAttributes.${this.key}`);
   }),
 
