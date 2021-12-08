@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import { computed } from '@ember/object';
+import { get, set, computed } from '@ember/object';
 
 export default Component.extend({
   tagName: 'div',
@@ -16,7 +16,13 @@ export default Component.extend({
   i18nDescription: computed('key', function() {
     return `customAttributes.${this.key}Description`;
   }),
-  value: computed('key', 'model', function() {
-    return this.get(`model.${this.key}`);
+  value: computed('key', 'model', {
+    get() {
+      return get(this, `model.${this.key}`);
+    },
+    set(_, value) {
+      set(this.model, this.key, value);
+      return value;
+    }
   }),
 });
