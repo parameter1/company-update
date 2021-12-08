@@ -27,7 +27,7 @@ module.exports = cleanEnv(process.env, {
   MONGO_DSN: nonemptystr({ desc: 'The MongoDB DSN to connect to.', default: 'mongodb://mongo/cuf' }),
   NOTIFICATION_TO: email({ desc: 'The email address notifications are sent to.' }),
   SENDGRID_API_KEY: nonemptystr({ desc: 'The SendGrid API key for sending email.' }),
-  SENDGRID_FROM: nonemptystr({ desc: 'The from name to use when sending email via SendGrid, e.g. Foo <foo@bar.com>', default: 'no-reply@baseplatform.io' }),
+  SENDGRID_FROM: nonemptystr({ desc: 'The from name to use when sending email via SendGrid, e.g. Foo <foo@bar.com>', default: 'no-reply@parameter1.com' }),
   FETCH_TIMEOUT: num({ desc: 'The limit (in ms) for request processing', default: 10000 }),
   // Tenant-specific settings
   BASE4_API_URL: url({ desc: 'The management uri for the related platform tenant.' }),
