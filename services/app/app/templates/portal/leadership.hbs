@@ -7,11 +7,15 @@
 </div>
 
 <div class="row">
-  {{#each (get-edge-nodes this "model") as |site|}}
-    {{#if site.sections.edges.length}}
-      {{leadership/site site=site onUpdate=(action "update")}}
-    {{/if}}
-  {{/each}}
+  {{#if config.leadershipPrimarySiteOnly}}
+    {{leadership/site site=model onUpdate=(action "update")}}
+  {{else}}
+    {{#each (get-edge-nodes this "model") as |site|}}
+      {{#if site.sections.edges.length}}
+        {{leadership/site site=site onUpdate=(action "update")}}
+      {{/if}}
+    {{/each}}
+  {{/if}}
 </div>
 
 <div class="fixed-bottom fixed-right card">
