@@ -7,6 +7,7 @@ const {
   LEADERSHIP_COMPANY_LABEL,
   LEADERSHIP_SECTION_ALIAS,
   LEADERSHIP_SECTION_MAX,
+  LEADERSHIP_PRIMARY_SITE_ONLY,
   COMPANY_CUSTOM_ATTRIBUTES,
   APP_LOCALE,
 } = require('../env');
@@ -31,6 +32,7 @@ module.exports = {
       leadershipCompanyLabel: LEADERSHIP_COMPANY_LABEL || null,
       leadershipSectionAlias: LEADERSHIP_SECTION_ALIAS,
       leadershipSectionMax: LEADERSHIP_SECTION_MAX,
+      leadershipPrimarySiteOnly: LEADERSHIP_PRIMARY_SITE_ONLY,
       locale: APP_LOCALE || 'en-us',
     }),
   },

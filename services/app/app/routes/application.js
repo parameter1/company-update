@@ -22,6 +22,7 @@ export default Route.extend(ApplicationRouteMixin, {
     leadershipCompanyLabel,
     leadershipSectionAlias,
     leadershipSectionMax,
+    leadershipPrimarySiteOnly,
     locale
   }) {
     this.config.load({
@@ -34,6 +35,7 @@ export default Route.extend(ApplicationRouteMixin, {
       leadershipCompanyLabel,
       leadershipSectionAlias,
       leadershipSectionMax,
+      leadershipPrimarySiteOnly,
       locale
     });
   },
