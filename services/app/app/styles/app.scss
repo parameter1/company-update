@@ -169,3 +169,15 @@ body {
 .uploaded-image {
   min-height: 180px
 }
+
+.row.leadership-row:first-of-type {
+  margin-top: 0 !important;
+}
+
+fieldset.leadership-category {
+  min-width: 100%;
+}
+
+legend.leadership-category {
+  width: auto;
+}

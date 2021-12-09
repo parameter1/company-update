@@ -34,9 +34,16 @@ query ContentUpdateLeadershipData(
                       edges {
                         node {
                           # Quaternary
-                          id
-                          name
-                          alias
+                          ...LeadershipSectionFragment
+                            children(input: $children) {
+                              totalCount
+                              edges {
+                                node {
+                                # Quaternary
+                                ...LeadershipSectionFragment
+                                }
+                              }
+                            }
                         }
                       }
                     }

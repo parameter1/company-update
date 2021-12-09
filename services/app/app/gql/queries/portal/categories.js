@@ -12,19 +12,51 @@ query ContentUpdateLeadershipData(
       node {
         id
         name
+        # Root sections
         sections(input: $leaders) {
+          totalCount
           edges {
             node {
               ...LeadershipSectionFragment,
+              # Primary
               children(input: $children) {
+                totalCount
                 edges {
                   node {
                     ...LeadershipSectionFragment,
+                    # Secondary
                     children(input: $children) {
                       totalCount
                       edges {
                         node {
                           ...LeadershipSectionFragment,
+                          # Tertiary
+                          children(input: $children) {
+                            totalCount
+                            edges {
+                              node {
+                                ...LeadershipSectionFragment,
+                                # Quaternary
+                                children(input: $children) {
+                                  totalCount
+                                  edges {
+                                    node {
+                                      ...LeadershipSectionFragment,
+                                      # Quinary???
+                                      children(input: $children) {
+                                        totalCount
+                                        edges {
+                                          node {
+                                            ...LeadershipSectionFragment,
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
                         }
                       }
                     }
