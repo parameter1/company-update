@@ -1,6 +1,12 @@
 import gql from 'graphql-tag';
+import LeadershipSectionFragment from '../../fragments/leadership/section';
+
 export default gql`
-query ContentUpdateLeadershipData($sites: WebsiteSitesQueryInput!, $leaders: WebsiteSiteSectionsInput!, $children: WebsiteSectionChildrenInput!) {
+query ContentUpdateLeadershipData(
+  $sites: WebsiteSitesQueryInput!,
+  $leaders: WebsiteSiteSectionsInput!,
+  $children: WebsiteSectionChildrenInput!
+) {
   websiteSites(input: $sites) {
     edges {
       node {
@@ -9,22 +15,16 @@ query ContentUpdateLeadershipData($sites: WebsiteSitesQueryInput!, $leaders: Web
         sections(input: $leaders) {
           edges {
             node {
-              id
-              name
-              alias
+              ...LeadershipSectionFragment,
               children(input: $children) {
                 edges {
                   node {
-                    id
-                    name
-                    alias
+                    ...LeadershipSectionFragment,
                     children(input: $children) {
                       totalCount
                       edges {
                         node {
-                          id
-                          name
-                          alias
+                          ...LeadershipSectionFragment,
                         }
                       }
                     }
@@ -38,4 +38,5 @@ query ContentUpdateLeadershipData($sites: WebsiteSitesQueryInput!, $leaders: Web
     }
   }
 }
+${LeadershipSectionFragment}
 `;
