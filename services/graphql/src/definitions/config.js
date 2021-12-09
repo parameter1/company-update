@@ -10,12 +10,20 @@ module.exports = gql`
     logoUrl: String
     contactUrl: String
     contactText: String
+    companyCustomAttributes: [CompanyCustomAttribute!]!
     leadershipEnabled: Boolean!
     leadershipPromotionsEnabled: Boolean!
     leadershipCompanyLabel: String
     leadershipSectionAlias: String!
     leadershipSectionMax: Int!
     locale: String!
+  }
+
+  type CompanyCustomAttribute {
+    key: String!
+    label: String!
+    description: String
+    category: String
   }
 
 `;

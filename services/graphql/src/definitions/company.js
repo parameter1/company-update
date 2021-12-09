@@ -60,6 +60,7 @@ module.exports = gql`
     serviceInformation: String
     warrantyInformation: String
     logo: String
+    customAttributes: JSON
   }
 
   input ExternalLinkInput {

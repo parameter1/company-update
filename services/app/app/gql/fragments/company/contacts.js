@@ -1,3 +1,6 @@
+import gql from 'graphql-tag';
+
+export default gql`
 fragment CompanyContactsFragment on ContentCompany {
   publicContacts(input: { pagination: { limit: 0 } }) {
     edges {
@@ -14,3 +17,4 @@ fragment CompanyContactsFragment on ContentCompany {
     }
   }
 }
+`;

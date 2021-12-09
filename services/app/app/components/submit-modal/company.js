@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import { computed, get } from '@ember/object';
+import { computed } from '@ember/object';
 import { inject } from '@ember/service';
 import { queryManager } from 'ember-apollo-client';
 import ActionMixin from '@base-cms/company-update-app/mixins/action';
@@ -7,28 +7,6 @@ import mutation from '@base-cms/company-update-app/gql/mutations/portal/company'
 import getGraphqlError from '../../utils/get-graphql-error';
 
 const { error } = console;
-
-const getExternalLinks = (v) => v
-  .map(link => ({ key: link.key, url: link.url }))
-  .filter(link => link.key && link.url);
-
-const getSocialLinks = (v) => v
-  .map(link => ({ url: link.url, provider: link.provider }))
-  .filter(link => link.url && link.provider);
-
-const getSocialFields = ({ playlistId, channelId, username }) => ({
-  playlistId,
-  channelId,
-  username,
-});
-
-const getFiltered = (model, key) => {
-  const v = get(model, key);
-  if (key == 'externalLinks') return getExternalLinks(v);
-  if (key == 'socialLinks') return getSocialLinks(v);
-  if (key == 'youtube') return getSocialFields(v);
-  return v;
-};
 
 const fields = [
   'name',
@@ -58,18 +36,14 @@ const fields = [
   'serviceInformation',
   'warrantyInformation',
   'logo',
-  'youtube'
+  'youtube',
+  'customAttributes',
 ];
-
-const filterModel = (model = {}) => {
-  const payload = {};
-  fields.forEach(key => payload[key] = getFiltered(model, key));
-  return payload;
-};
 
 export default Component.extend(ActionMixin, {
   apollo: queryManager(),
   notify: inject(),
+  config: inject(),
   session: inject(),
 
   model: null,
@@ -83,6 +57,33 @@ export default Component.extend(ActionMixin, {
     return false;
   }),
   isSubmitDisabled: computed.or('isActionRunning', 'isInvalid'),
+  attrKeys: computed('config.companyCustomAttributes', function() {
+    const attrs = this.config.companyCustomAttributes || [];
+    return attrs.map((attr) => attr.key);
+  }),
+
+  filterPayload(key) {
+    const v = this.get(`model.${key}`);
+    console.log(key, v);
+    if (key == 'externalLinks') {
+      return v.map(({ key, url }) => ({ key, url })).filter(link => link.key && link.url);
+    }
+    if (key == 'socialLinks') {
+      return v.map(({ url, provider }) => ({ url, provider })).filter(link => link.url && link.provider);
+    }
+    if (key == 'youtube') {
+      return {
+        playlistId: v.playlistId,
+        channelId: v.channelId,
+        username: v.username,
+      };
+    }
+    if (key == 'customAttributes') {
+      const attrs = this.attrKeys.reduce((obj, key) => ({ ...obj, [key]: this.get(`model.${key}`) }), {});
+      return attrs;
+    }
+    return v;
+  },
 
   actions: {
     async submit() {
@@ -90,7 +91,7 @@ export default Component.extend(ActionMixin, {
       this.set('error', null);
       const { name, email } = this.getProperties('name', 'email');
       const { hash } = this.model;
-      const payload = filterModel(this.model);
+      const payload = fields.reduce((obj, key) => ({ ...obj, [key]: this.filterPayload(key) }), {});
       const type = 'company';
       const variables = { input: { name, email, hash, type, payload } };
 

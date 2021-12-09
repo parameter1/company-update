@@ -1,5 +1,7 @@
-# import CompanyLogoFragment from "./logo"
+import gql from 'graphql-tag';
+import CompanyLogoFragment from "./logo"
 
+export default gql`
 fragment CompanyImagesFragment on ContentCompany {
   ...CompanyLogoFragment
   images {
@@ -10,3 +12,5 @@ fragment CompanyImagesFragment on ContentCompany {
     }
   }
 }
+${CompanyLogoFragment}
+`;

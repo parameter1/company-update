@@ -1,7 +1,7 @@
 const { mergeSchemas } = require('graphql-tools');
-
 const createBaseSchema = require('./base');
 const createLocalSchema = require('./local');
+const { GRAPHQL_URI } = require('../env');
 
 module.exports = async () => {
   const localSchema = await createLocalSchema();
@@ -11,7 +11,7 @@ module.exports = async () => {
       company: ContentCompany!
     }
   `;
-  process.stdout.write('🌐  Remote schema retrieved.\n');
+  process.stdout.write(`🌐  Remote schema retrieved from ${GRAPHQL_URI}.\n`);
 
   return mergeSchemas({
     schemas: [

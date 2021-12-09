@@ -17,12 +17,14 @@ const buildMutation = (payload = {}) => {
     ${payload.externalLinks ? '$externalLinks: UpdateContentCompanyExternalLinksMutationInput!,' : ''}
     ${payload.socialLinks ? '$social: UpdateContentCompanySocialLinksMutationInput!,' : ''}
     ${payload.youtube ? '$youtube: UpdateContentCompanyYoutubeMutationInput!,' : ''}
+    ${payload.customAttributes ? '$customAttributes: UpdateContentCompanyCustomAttributesMutationInput!,' : ''}
     $company: UpdateContentCompanyMutationInput!
   ) {
     ${payload.logo ? 'updateContentCompanyImages(input: $images) { id }' : ''}
     ${payload.externalLinks ? 'updateContentCompanyExternalLinks(input: $externalLinks) { id }' : ''}
     ${payload.socialLinks ? 'updateContentCompanySocialLinks(input: $social) { id }' : ''}
     ${payload.youtube ? 'updateContentCompanyYoutube(input: $youtube) { id }' : ''}
+    ${payload.customAttributes ? 'updateContentCompanyCustomAttributes(input: $customAttributes) { id }' : ''}
     updateContentCompany(input: $company) { id }
   }
   `;
@@ -86,8 +88,14 @@ export default Controller.extend(ActionMixin, {
           externalLinks,
           socialLinks,
           youtube,
+          customAttributes: attrs,
           ...company
         } = input;
+
+        const customAttributes = Object.keys(attrs || {}).reduce((arr, k) => ([
+          ...arr,
+          { key: k, value: get(attrs, k) }
+        ]), []);
 
         const image = await this.handleImage(logo);
         const variables = {
@@ -96,6 +104,7 @@ export default Controller.extend(ActionMixin, {
           ...(socialLinks && { social: { id, payload: { socialLinks } } }),
           ...(youtube && { youtube: { id, payload: { ...youtube } } }),
           ...(image && { images: { id, payload: { primaryImage: image.primaryImage, images: image.images } } }),
+          ...(customAttributes && { customAttributes: { id, payload: customAttributes } })
         };
 
         await this.apollo.mutate({ mutation: buildMutation(input), variables });

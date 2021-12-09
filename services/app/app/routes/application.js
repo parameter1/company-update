@@ -15,6 +15,7 @@ export default Route.extend(ApplicationRouteMixin, {
   afterModel({
     contactUrl,
     contactText,
+    companyCustomAttributes,
     logoUrl,
     leadershipEnabled,
     leadershipPromotionsEnabled,
@@ -26,6 +27,7 @@ export default Route.extend(ApplicationRouteMixin, {
     this.config.load({
       contactUrl,
       contactText,
+      companyCustomAttributes,
       logoUrl,
       leadershipEnabled,
       leadershipPromotionsEnabled,

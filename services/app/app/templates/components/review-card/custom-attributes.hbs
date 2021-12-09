@@ -1,0 +1,11 @@
+{{#each this.groups as |group|}}
+  {{review-card/custom-attribute-group
+    company=this.company
+    submission=this.submission
+    payload=this.payload
+    toggleField=this.toggleField
+    title=group.title
+    attributes=group.attrs
+    model=this.model
+  }}
+{{/each}}

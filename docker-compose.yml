@@ -48,6 +48,8 @@ services:
     environment:
       <<: *env
       # Core
+      PORT: 80
+      EXPOSED_PORT: ${EXPOSED_PORT-5550}
       AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
       AWS_S3_BUCKET: ${AWS_S3_BUCKET-p1-cms-cuf-uploads}
       AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}

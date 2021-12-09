@@ -1,3 +1,6 @@
+import gql from 'graphql-tag';
+
+export default gql`
 fragment CompanyPromotionsFragment on ContentCompany {
   promotions: relatedContent(input: {
     queryTypes: [company],
@@ -29,3 +32,4 @@ fragment CompanyPromotionsFragment on ContentCompany {
     }
   }
 }
+`;

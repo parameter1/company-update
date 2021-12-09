@@ -1,3 +1,6 @@
+import gql from 'graphql-tag';
+
+export default gql`
 fragment CompanyYoutubeFragment on ContentCompany {
   youtube {
     channelId
@@ -5,3 +8,4 @@ fragment CompanyYoutubeFragment on ContentCompany {
     username
   }
 }
+`;

@@ -1,0 +1,13 @@
+<div class="form-group col">
+  <label for={{ this.targetId }}>{{ i18n this.i18nLabel this.label }}</label>
+  <div class="input-group">
+    {{!-- @todo support deep object access for attrs, youtube, etc. --}}
+    {{review-field
+      original=this.oldValue
+      updated=this.newValue
+      toggleField=this.toggleField
+      fieldKey="customAttributes"
+      enabled=this.isInPayload
+    }}
+  </div>
+</div>

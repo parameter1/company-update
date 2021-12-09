@@ -1,0 +1,15 @@
+<div class="form-group col">
+  <label for={{ this.targetId }}>{{ i18n this.i18nLabel this.label }}</label>
+  <div class="input-group">
+    {{input
+      type="text"
+      class="form-control"
+      id=this.targetId
+      aria-describedby=this.targetHelp
+      value=this.value
+    }}
+  </div>
+  <small id={{ this.targetHelp }} class="form-text text-muted">
+    {{ i18n this.i18nDescription this.description }}
+  </small>
+</div>
