@@ -3,28 +3,40 @@ import LeadershipSectionFragment from '../../fragments/leadership/section';
 
 export default gql`
 query ContentUpdateLeadershipData(
-  $sites: WebsiteSitesQueryInput!,
-  $leaders: WebsiteSiteSectionsInput!,
+  $site: WebsiteSiteQueryInput!,
+  $leaders: WebsiteSectionsQueryInput!,
   $children: WebsiteSectionChildrenInput!
 ) {
-  websiteSites(input: $sites) {
+  websiteSite(input: $site) {
+    id
+    name
+  }
+  websiteSections(input: $leaders) {
+    totalCount
     edges {
       node {
-        id
-        name
-        sections(input: $leaders) {
+        # Primary
+        ...LeadershipSectionFragment
+        children(input: $children) {
+          totalCount
           edges {
             node {
-              ...LeadershipSectionFragment,
+              # Secondary
+              ...LeadershipSectionFragment
               children(input: $children) {
+                totalCount
                 edges {
                   node {
-                    ...LeadershipSectionFragment,
+                    # Tertiary
+                    ...LeadershipSectionFragment
                     children(input: $children) {
                       totalCount
                       edges {
                         node {
-                          ...LeadershipSectionFragment,
+                          # Quaternary
+                          id
+                          name
+                          alias
                         }
                       }
                     }

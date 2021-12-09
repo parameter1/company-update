@@ -13,6 +13,7 @@ module.exports = gql`
     companyCustomAttributes: [CompanyCustomAttribute!]!
     leadershipEnabled: Boolean!
     leadershipPromotionsEnabled: Boolean!
+    leadershipPrimarySiteOnly: Boolean!
     leadershipCompanyLabel: String
     leadershipSectionAlias: String!
     leadershipSectionMax: Int!
