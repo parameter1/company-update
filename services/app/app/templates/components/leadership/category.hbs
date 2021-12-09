@@ -1,6 +1,35 @@
-<div class="col-12">
-  <h6 class="text-muted">{{ category.name }}</h6>
-</div>
-{{#each sections as |section|}}
-  {{leadership/section section=section selected=selected canSelect=canSelect onToggle=onToggle}}
-{{/each}}
+<legend class="leadership-category h6 text-muted">{{ category.name }}</legend>
+
+{{#if sections.length}}
+  {{#if isMaxDepth}}
+    <div class="row m-1">
+      {{#each sections as |section|}}
+        {{leadership/section
+          section=section
+          selected=selected
+          canSelect=canSelect
+          onToggle=onToggle
+        }}
+      {{/each}}
+    </div>
+  {{else}}
+    {{#each sections as |section|}}
+      {{leadership/category
+        category=section
+        selected=selected
+        canSelect=canSelect
+        onToggle=onToggle
+        depth=nextDepth
+      }}
+    {{/each}}
+  {{/if}}
+{{else}}
+  <div class="row m-1">
+    {{leadership/section
+      section=category
+      selected=selected
+      canSelect=canSelect
+      onToggle=onToggle
+    }}
+  </div>
+{{/if}}

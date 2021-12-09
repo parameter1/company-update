@@ -5,25 +5,29 @@
       Selected: <span class="badge">{{ selected }} / {{ maximum }}</span>
     </small>
   </h6>
-  {{#if hasChildren}}
-    {{#each sections as |section|}}
-      {{leadership/category
-        category=section
-        selected=_selected
-        canSelect=canSelect
-        onToggle=(action "toggle")
-      }}
-    {{/each}}
-  {{else}}
-    <div class="card-body row">
+  <div class="card-body">
+    {{#if hasChildren}}
       {{#each sections as |section|}}
-        {{leadership/section
-          section=section
-          selected=_selected
-          canSelect=canSelect
-          onToggle=(action "toggle")
-        }}
+        <div class="leadership-row row mt-3">
+          {{leadership/category
+            category=section
+            selected=_selected
+            canSelect=canSelect
+            onToggle=(action "toggle")
+          }}
+        </div>
       {{/each}}
-    </div>
-  {{/if}}
+    {{else}}
+      <div class="row">
+        {{#each sections as |section|}}
+          {{leadership/section
+            section=section
+            selected=_selected
+            canSelect=canSelect
+            onToggle=(action "toggle")
+          }}
+        {{/each}}
+      </div>
+    {{/if}}
+  </div>
 </div>
