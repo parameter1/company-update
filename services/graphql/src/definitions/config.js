@@ -15,6 +15,7 @@ module.exports = gql`
     leadershipPromotionsEnabled: Boolean!
     leadershipPrimarySiteOnly: Boolean!
     leadershipCompanyLabel: String
+    leadershipCategoryPrefix: String!
     leadershipSectionAlias: String!
     leadershipSectionMax: Int!
     locale: String!
