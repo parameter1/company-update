@@ -2,8 +2,13 @@ import Route from '@ember/routing/route';
 import { inject } from '@ember/service';
 import { queryManager } from 'ember-apollo-client';
 import { get } from '@ember/object';
-import multi from '@base-cms/company-update-app/gql/queries/portal/categories';
 import single from '@base-cms/company-update-app/gql/queries/portal/leadership-single';
+import multi from '@base-cms/company-update-app/gql/queries/portal/leadership-multi';
+
+const pagination = {
+  pagination: { limit: 0 },
+  sort: { field: 'name', order: 'asc' },
+};
 
 export default Route.extend({
   config: inject(),
@@ -11,52 +16,66 @@ export default Route.extend({
 
   async model() {
     const { leadershipSectionAlias, leadershipPrimarySiteOnly } = this.config;
-    if (leadershipPrimarySiteOnly) {
-      const siteId = get(this.modelFor('portal'), 'primarySite.id');
-      const variables = {
-        site: {
-          id: siteId,
-        },
-        leaders: {
-          siteId,
-          includeAliases: [leadershipSectionAlias],
-          pagination: { limit: 0 },
-          sort: { field: 'name', order: 'asc' },
-        },
-        children: {
-          pagination: { limit: 0 },
-          sort: { field: 'name', order: 'asc' },
-        }
-      };
-      const { websiteSite, websiteSections } = await this.apollo.query({
-        query: single,
-        variables,
-        fetchPolicy: 'network-only',
-      });
+    const siteId = get(this.modelFor('portal'), 'primarySite.id');
+    const { hash } = this.paramsFor('portal');
 
-      return { ...websiteSite, sections: websiteSections };
+    if (leadershipPrimarySiteOnly) {
+      const variables = {
+        site: { id: siteId },
+        leaders: { includeAliases: [leadershipSectionAlias], ...pagination, siteId },
+        children: pagination,
+        content: { hash },
+      };
+      const {
+        contentHash,
+        websiteSite,
+        websiteSections,
+      } = await this.apollo.query({ query: single, variables, fetchPolicy: 'network-only' });
+      return {
+        contentHash,
+        websiteSites: {
+          edges: [{ node: { ...websiteSite, sections: websiteSections } }],
+          totalCount: 1,
+        },
+      };
     }
+
     const variables = {
-      sites: {
-        pagination: { limit: 0 },
-        sort: { field: 'name', order: 'asc' },
-      },
-      leaders: {
-        includeAliases: [leadershipSectionAlias],
-        pagination: { limit: 0 },
-        sort: { field: 'name', order: 'asc' },
-      },
-      children: {
-        pagination: { limit: 0 },
-        sort: { field: 'name', order: 'asc' },
+      sites: pagination,
+      leaders: { includeAliases: [leadershipSectionAlias], ...pagination },
+      children: pagination,
+      content: { hash },
+    };
+    const {
+      contentHash,
+      websiteSites,
+      websiteSections,
+    } = await this.apollo.query({ query: multi, variables, fetchPolicy: 'network-only' });
+
+    return {
+      contentHash,
+      websiteSites: {
+        ...websiteSites,
+        edges: [
+          ...websiteSites.edges.map(({ node }) => ({
+            node: {
+              ...node,
+              sections: {
+                edges: websiteSections.edges.filter((edge) => get(edge, 'node.site.id') === node.id),
+              },
+            },
+          })),
+        ],
       },
     };
-    return this.apollo.query({ query: multi, variables, fetchPolicy: 'network-only' }, 'websiteSites');
   },
 
-  afterModel() {
+  afterModel(model) {
     const { hash } = this.modelFor('portal');
     this.controllerFor('portal.leadership').set('hash', hash);
+    const schedules = get(model, 'contentHash.websiteSchedules') || [];
+    const ids = schedules.map((s) => get(s, 'section.id'));
+    this.controllerFor('portal.leadership').set('categories', ids);
   },
 
 });
