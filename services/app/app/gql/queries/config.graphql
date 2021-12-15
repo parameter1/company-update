@@ -12,6 +12,7 @@ query CompanyUpdateConfig {
     leadershipEnabled
     leadershipPromotionsEnabled
     leadershipCompanyLabel
+    leadershipCategoryPrefix
     leadershipSectionAlias
     leadershipSectionMax
     leadershipPrimarySiteOnly
