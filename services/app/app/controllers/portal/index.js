@@ -13,4 +13,5 @@ export default Controller.extend({
   }),
 
   promotionsEnabled: computed.reads('config.leadershipPromotionsEnabled'),
+  categoryPrefix: computed.reads('config.leadershipCategoryPrefix'),
 });
