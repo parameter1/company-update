@@ -12,6 +12,7 @@ export default Component.extend(ActionMixin, {
   apollo: queryManager(),
   notify: inject(),
   session: inject(),
+  config: inject(),
   categories: null,
   hash: null,
 
@@ -25,6 +26,8 @@ export default Component.extend(ActionMixin, {
     return false;
   }),
   isSubmitDisabled: computed.or('isActionRunning', 'isInvalid'),
+
+  categoryPrefix: computed.reads('config.leadershipCategoryPrefix'),
 
   actions: {
     async submit() {

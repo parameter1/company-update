@@ -10,10 +10,12 @@ import publish from '@base-cms/company-update-app/gql/mutations/review/leadershi
 export default Controller.extend(ActionMixin, {
   apollo: inject(),
   notify: inject(),
+  config: inject(),
   disabled: computed.reads('isActionRunning'),
   isPublishing: false,
   isDiscarding: false,
 
+  categoryPrefix: computed.reads('config.leadershipCategoryPrefix'),
   isPublishDisabled: computed('isDisabled', 'isConflicting', 'selected.length', function() {
     if (this.get('isConflicting')) return true;
     if (!this.get('selected.length')) return true;

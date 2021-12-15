@@ -1,13 +1,18 @@
 import Controller from '@ember/controller';
 import { computed } from '@ember/object';
+import { inject } from '@ember/service';
 
 export default Controller.extend({
+  config: inject(),
+
   isModalOpen: false,
   hash: null,
 
   submitDisabled: computed('categories.[]', function() {
     return this.get('categories.length') === 0;
   }),
+
+  categoryPrefix: computed.reads('config.leadershipCategoryPrefix'),
 
   init() {
     this._super(...arguments);
