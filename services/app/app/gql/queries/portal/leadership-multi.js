@@ -4,7 +4,7 @@ import CompanyListFragment from '../../fragments/company/list';
 
 export default gql`
 query ContentUpdateLeadershipData(
-  $site: WebsiteSiteQueryInput!,
+  $sites: WebsiteSitesQueryInput!,
   $leaders: WebsiteSectionsQueryInput!,
   $children: WebsiteSectionChildrenInput!,
   $content: ContentHashQueryInput!,
@@ -22,9 +22,14 @@ query ContentUpdateLeadershipData(
       }
     }
   }
-  websiteSite(input: $site) {
-    id
-    name
+  websiteSites(input: $sites) {
+    edges {
+      node {
+        id
+        name
+      }
+    }
+    totalCount
   }
   websiteSections(input: $leaders) {
     totalCount
@@ -32,6 +37,9 @@ query ContentUpdateLeadershipData(
       node {
         # Primary
         ...LeadershipSectionFragment
+        site {
+          id
+        }
         children(input: $children) {
           totalCount
           edges {
