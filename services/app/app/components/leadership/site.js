@@ -3,6 +3,15 @@ import { computed, get } from '@ember/object';
 import { inject } from '@ember/service';
 import ActionMixin from '@base-cms/company-update-app/mixins/action';
 
+const getOwnedIds = (obj, ids = []) => {
+  const edges = get(obj, 'edges') || [];
+  return edges.reduce((arr, { node }) => [
+    ...arr,
+    node.id,
+    ...(node.children ? getOwnedIds(node.children) : []),
+  ], ids);
+};
+
 export default Component.extend(ActionMixin, {
   config: inject(),
   notify: inject(),
@@ -11,8 +20,14 @@ export default Component.extend(ActionMixin, {
 
   init() {
     this._super(...arguments);
-    this.set('_selected', []);
   },
+
+  _selected: computed('selectedIds.[]', 'site.{id,sections.[]}', function() {
+    const ids = this.selectedIds || [];
+    const sections = get(this, 'site.sections') || [];
+    const ownedIds = getOwnedIds(sections);
+    return ids.filter(id => ownedIds.includes(id));
+  }),
 
   section: computed('site.sections.edges.[]', function() {
     const section = (get(this, 'site.sections.edges') || []).firstObject;
