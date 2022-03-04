@@ -35,7 +35,7 @@ export default Controller.extend(ActionMixin, {
 
   sectionIds: computed('model.{company.published,websiteSchedules.[]}', function() {
     const published = this.get('model.company.published');
-    const schedules = this.get('model.company.websiteSchedules') || [];
+    const schedules = this.get('model.websiteSchedules') || [];
     return schedules.filter(({ start }) => start === published).map(({ section: { id } }) => id);
   }),
 
