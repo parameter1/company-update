@@ -33,9 +33,9 @@ export default Controller.extend(ActionMixin, {
     return sectionIds.some(id => selected.includes(id));
   }),
 
-  sectionIds: computed('model.{company.published,websiteSchedules.[]}', function() {
+  sectionIds: computed('model.company.{published,websiteSchedules.[]}', function() {
     const published = this.get('model.company.published');
-    const schedules = this.get('model.websiteSchedules') || [];
+    const schedules = this.get('model.company.websiteSchedules') || [];
     return schedules.filter(({ start }) => start === published).map(({ section: { id } }) => id);
   }),
 
