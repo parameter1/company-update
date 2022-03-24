@@ -8,7 +8,7 @@ module.exports = async () => {
   const baseSchema = await createBaseSchema();
   const linkTypeDefs = `
     extend type CompanyUpdateSubmission {
-      company: ContentCompany!
+      company: ContentCompany(input: { status: any })!
     }
   `;
   process.stdout.write(`🌐  Remote schema retrieved from ${GRAPHQL_URI}.\n`);
