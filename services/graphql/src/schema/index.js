@@ -27,7 +27,7 @@ module.exports = async () => {
             schema: baseSchema,
             operation: 'query',
             fieldName: 'contentHash',
-            args: { input: { hash } },
+            args: { input: { hash, status: 'any' } },
             context,
             info,
           }),
