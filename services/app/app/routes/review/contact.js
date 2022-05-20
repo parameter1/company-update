@@ -8,7 +8,7 @@ export default Route.extend({
 
   async model() {
     const { submission, company: { hash } } = this.modelFor('review');
-    const company = await this.apollo.query({ query: companyQuery, variables: { input: { hash } } }, 'contentHash');
+    const company = await this.apollo.query({ query: companyQuery, variables: { input: { hash, status: 'any' } } }, 'contentHash');
     const { payload: { add, remove, update } } = submission;
 
     const original = get(company, 'publicContacts.edges').map(({ node }) => {

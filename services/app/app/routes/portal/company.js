@@ -14,7 +14,7 @@ export default Route.extend({
 
   async model() {
     const { hash } = this.paramsFor('portal');
-    const variables = { input: { hash } };
+    const variables = { input: { hash, status: 'any'  } };
     const query = queryBuilder(this.attrKeys);
     const model = await this.apollo.query({ query, variables, fetchPolicy: 'network-only' }, 'contentHash');
     if (!model) throw new Error('Invalid URL');

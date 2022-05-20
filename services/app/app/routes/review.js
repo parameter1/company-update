@@ -26,7 +26,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
     const companyQuery = companyQueryBuilder(this.attrKeys);
     const company = await this.apollo.query({
       query: companyQuery,
-      variables: { input: { hash } },
+      variables: { input: { hash, status: 'any' } },
       fetchPolicy: 'network-only'
     }, 'contentHash');
 
