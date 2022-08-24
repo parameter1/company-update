@@ -3,6 +3,7 @@ import CompanyListFragment from "../../fragments/company/list";
 import CompanyDetailsFragment from "../../fragments/company/details";
 import CompanyAddressFragment from "../../fragments/company/address";
 import CompanyContactFragment from "../../fragments/company/contact";
+import CompanySchedulesFragment from "../../fragments/company/schedules";
 import CompanySocialFragment from "../../fragments/company/social";
 import CompanyServicesFragment from "../../fragments/company/services";
 import CompanyImagesFragment from "../../fragments/company/images";
@@ -16,6 +17,7 @@ query ContentUpdatePortalCompany($input: ContentHashQueryInput!) {
     ...CompanyDetailsFragment
     ...CompanyAddressFragment
     ...CompanyContactFragment
+    ...CompanySchedulesFragment
     ...CompanySocialFragment
     ...CompanyServicesFragment
     ...CompanyImagesFragment
@@ -28,6 +30,7 @@ ${CompanyListFragment}
 ${CompanyDetailsFragment}
 ${CompanyAddressFragment}
 ${CompanyContactFragment}
+${CompanySchedulesFragment}
 ${CompanySocialFragment}
 ${CompanyServicesFragment}
 ${CompanyImagesFragment}
