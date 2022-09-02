@@ -15,6 +15,9 @@ query ContentUpdateLeadershipData(
       section {
         id
         name
+        site {
+          id
+        }
       }
       option {
         id
