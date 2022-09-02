@@ -57,7 +57,7 @@ export default Route.extend({
     } = await this.apollo.query({ query: multi, variables, fetchPolicy: 'network-only' });
 
     // If enabled, limit sites to those the content has been scheduled to.
-    const siteIds = [...(new Set(leadershipScheduledSitesOnly
+    const siteIds = [...(new Set(leadershipScheduledSitesOnly && contentHash.websiteSchedules.length
       ? contentHash.websiteSchedules.map((s => get(s, 'section.site.id')))
       : websiteSites.edges.map(({ node }) => node.id)))];
 
