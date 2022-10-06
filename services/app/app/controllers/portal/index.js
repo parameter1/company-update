@@ -11,7 +11,9 @@ export default Controller.extend({
     // check that the company label is in the array of labels for this company
     return(this.model.labels.includes(this.config.leadershipCompanyLabel));
   }),
-
+  directoryEnabled: computed('config.{directoryEnabled,directoryCategoryIds}', function () {
+    return this.config.directoryEnabled && this.config.directoryCategoryIds.length;
+  }),
   promotionsEnabled: computed.reads('config.leadershipPromotionsEnabled'),
   categoryPrefix: computed.reads('config.leadershipCategoryPrefix'),
 });
