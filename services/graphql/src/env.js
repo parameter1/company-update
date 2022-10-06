@@ -34,6 +34,9 @@ module.exports = cleanEnv(process.env, {
   GRAPHQL_URI: url({ desc: 'The URI to access the BaseCMS GraphQL instance' }),
   TENANT_KEY: nonemptystr({ desc: 'The tenant key to use with the BaseCMS GraphQL instance' }),
   // Optional settings
+  DIRECTORY_ENABLED: bool({ desc: 'If the directory section should be displayed', default: false }),
+  DIRECTORY_CATEGORY_IDS: str({ desc: 'CSV list of category taxonomy ids to display', default: '' }),
+  DIRECTORY_SELECTION_MAX: num({ desc: 'The maximum number of chilren that can be selected per category. Set 0 to disable', default: 0 }),
   LOGO_URL: str({ desc: 'If configured, will be replace the branding in the navigation.', default: '' }),
   LEADERSHIP_ENABLED: bool({ desc: 'If the leadership section should be displayed', default: true }),
   PROMOTIONS_ENABLED: bool({ desc: 'If the promotions section should be displayed', default: false }),

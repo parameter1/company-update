@@ -2,6 +2,9 @@ const {
   LOGO_URL,
   CONTACT_URL,
   CONTACT_TEXT,
+  DIRECTORY_ENABLED,
+  DIRECTORY_CATEGORY_IDS,
+  DIRECTORY_SELECTION_MAX,
   LEADERSHIP_ENABLED,
   PROMOTIONS_ENABLED,
   LEADERSHIP_COMPANY_LABEL,
@@ -21,6 +24,7 @@ const parseCustomAttributes = () => {
     return [];
   }
 };
+const directoryCategoryIds = `${DIRECTORY_CATEGORY_IDS}`.split(',').map(id => parseInt(id, 10)).filter(v => v);
 
 module.exports = {
   Query: {
@@ -29,6 +33,9 @@ module.exports = {
       contactText: CONTACT_TEXT,
       logoUrl: LOGO_URL,
       companyCustomAttributes: parseCustomAttributes(),
+      directoryEnabled: DIRECTORY_ENABLED,
+      directoryCategoryIds,
+      directorySelectionMax: DIRECTORY_SELECTION_MAX === 0 ? null : DIRECTORY_SELECTION_MAX,
       leadershipEnabled: LEADERSHIP_ENABLED,
       leadershipPromotionsEnabled: PROMOTIONS_ENABLED,
       leadershipCompanyLabel: LEADERSHIP_COMPANY_LABEL || null,
