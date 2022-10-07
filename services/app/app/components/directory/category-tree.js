@@ -15,9 +15,10 @@ const getOwnedIds = (obj, ids = []) => {
 export default Component.extend(ActionMixin, {
   config: inject(),
   notify: inject(),
-  classNames: [],
+  classNameBindings: ['root:tree-wrapper', 'root:border', 'root:p-2'],
   node: null,
   collapsed: true,
+  root: false,
 
   init() {
     this._super(...arguments);
@@ -37,6 +38,10 @@ export default Component.extend(ActionMixin, {
 
   selected: computed.reads('_selected.length'),
   maximum: computed.reads('config.directorySelectionMax'),
+
+  rootClass: computed('root', function() {
+    return this.root ? 'tree-inner' : '';
+  }),
 
   actions: {
     collapse() {

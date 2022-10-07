@@ -13,56 +13,20 @@
   </h6>
   {{#if collapsed}}
   {{else}}
-  <div class="card-body">
-    <div class="">
-      {{#each children as |secondary|}}
-        <div class="mb-3">
-          <div class="tree-wrapper border p-2">
-            <div class="tree-inner">
-              <label class="d-flex align-items-center">
-                {{#if secondary.children.length }}
-                  {{entypo-icon "chevron-down" class="mr-2"}}
-                {{else}}
-                  <input type="checkbox" class="mr-2" />
-                {{/if}}
-                {{ secondary.name }}
-              </label>
-              {{#if secondary.children.length }}
-                <div class="ml-3">
-                  {{#each secondary.children as |tertiary|}}
-                    <div>
-                      <label class="d-flex align-items-baseline">
-                        {{#if tertiary.children.length }}
-                          {{entypo-icon "chevron-down" class="mr-2"}}
-                        {{else}}
-                          <input type="checkbox" class="mr-2" />
-                        {{/if}}
-                        {{ tertiary.name }}
-                      </label>
-                      <div class="ml-3">
-                        {{#each tertiary.children as |quaternary|}}
-                          <div>
-                            <label class="d-flex align-items-baseline">
-                              {{#if quaternary.children.length }}
-                                {{entypo-icon "chevron-down" class="mr-2"}}
-                              {{else}}
-                                <input type="checkbox" class="mr-2" />
-                              {{/if}}
-                              {{ quaternary.name }}
-                            </label>
-                          </div>
-                        {{/each}}
-                      </div>
-                    </div>
-                  {{/each}}
-                </div>
-              {{/if}}
-            </div>
+    <div class="card-body">
+      <div class="">
+        {{#each children as |child|}}
+          <div class="mb-3">
+            {{directory/category-tree
+              root=true
+              node=child
+              selectedIds=selectedIds
+              onUpdate=onUpdate
+            }}
           </div>
-        </div>
-      {{/each}}
+        {{/each}}
+      </div>
     </div>
-  </div>
   {{/if}}
 
   <div class="card-footer text-center cursor-pointer" {{action "collapse"}}>

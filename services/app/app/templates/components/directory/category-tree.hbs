@@ -1,24 +1,21 @@
-{{!-- @todo animate! --}}
-<div class="category m-3 border-black">
-  {{#if canSelect}}
-    <label>
-      <input type="checkbox" class="mr-2"> {{ node.name }}
-    </label>
-  {{else}}
-    <label {{action "collapse"}}>
-      {{#if collapsed}}
-        {{entypo-icon "chevron-right" class="mr-2"}}
-      {{else}}
-        {{entypo-icon "chevron-down" class="mr-2"}}
-      {{/if}}
-      {{ node.name }}
-    </label>
-  {{/if}}
-  {{#unless collapsed}}
-    <div class="border">
-      {{#each node.children as |secondary|}}
-        {{directory/category-tree node=secondary}}
+<div class={{ rootClass }}>
+  <label class="d-flex align-items-center">
+    {{#if node.children.length }}
+      {{entypo-icon "chevron-down" class="mr-2"}}
+    {{else}}
+      <input type="checkbox" class="mr-2" />
+    {{/if}}
+    {{ node.name }}
+  </label>
+  {{#if node.children.length }}
+    <div class="ml-3">
+      {{#each node.children as |child|}}
+        {{directory/category-tree
+          node=child
+          selectedIds=selectedIds
+          onUpdate=onUpdate
+        }}
       {{/each}}
     </div>
-  {{/unless}}
+  {{/if}}
 </div>
