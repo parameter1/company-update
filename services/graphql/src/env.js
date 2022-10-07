@@ -36,7 +36,7 @@ module.exports = cleanEnv(process.env, {
   // Optional settings
   DIRECTORY_ENABLED: bool({ desc: 'If the directory section should be displayed', default: false }),
   DIRECTORY_CATEGORY_IDS: str({ desc: 'CSV list of category taxonomy ids to display', default: '' }),
-  DIRECTORY_SELECTION_MAX: num({ desc: 'The maximum number of chilren that can be selected per category. Set 0 to disable', default: 0 }),
+  DIRECTORY_SELECTION_MAX: num({ desc: 'The maximum number of children that can be selected per category. Set 0 to disable', default: 0 }),
   LOGO_URL: str({ desc: 'If configured, will be replace the branding in the navigation.', default: '' }),
   LEADERSHIP_ENABLED: bool({ desc: 'If the leadership section should be displayed', default: true }),
   PROMOTIONS_ENABLED: bool({ desc: 'If the promotions section should be displayed', default: false }),

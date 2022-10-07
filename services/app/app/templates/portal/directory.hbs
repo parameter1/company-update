@@ -1,0 +1,31 @@
+<div class="card mb-4">
+  <div class="card-body">
+    <p class="lead">Select your directory categories.</p>
+    <p>For each section below, select the directory categories that describe your company.
+      {{#if directorySelectionMax}}You may select up to <code>{{ config.directorySelectionMax }}</code> categories per section.{{/if}}
+    </p>
+    <p>{{ i18n "companyDetailsP3Label"}}</p>
+  </div>
+</div>
+
+<div class="row">
+  {{#each (get-edge-nodes this "model.categories") as |category|}}
+    {{directory/category category=category selectedIds=selected onUpdate=(action "update")}}
+  {{else}}
+    <p class="muted">No directory categories are available!</p>
+  {{/each}}
+</div>
+
+<div class="fixed-bottom fixed-right card">
+  <div class="card-body">
+    <button disabled={{submitDisabled}} class="btn btn-success pull-right" {{ action "showModal" }}>
+      {{entypo-icon "save"}} {{ i18n "saveChangesLabel"}}
+    </button>
+  </div>
+</div>
+{{submit-modal/categories
+  hash=hash
+  isOpen=isModalOpen
+  categories=categories
+  onComplete=(action "transitionToPortal")
+}}

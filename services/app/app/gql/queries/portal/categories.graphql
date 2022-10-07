@@ -1,0 +1,52 @@
+# import CompanyListFragment from "../../fragments/company/list"
+
+query TaxonomyCategories(
+  $categories: TaxonomiesQueryInput!,
+  $children: TaxonomyChildrenInput!,
+  $content: ContentHashQueryInput!,
+) {
+  contentHash(input: $content) {
+    ...CompanyListFragment
+    taxonomyIds
+  }
+  categories: taxonomies(input: $categories) {
+    # Primary
+    totalCount
+    edges {
+      node {
+        id
+        name
+        children(input: $children) {
+          # Secondary
+          totalCount
+          edges {
+            node {
+              id
+              name
+              children(input: $children) {
+                # Tertiary
+                totalCount
+                edges {
+                  node {
+                    id
+                    name
+                    children(input: $children) {
+                      # Quaternary
+                      totalCount
+                      edges {
+                        node {
+                          id
+                          name
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

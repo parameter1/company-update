@@ -16,6 +16,8 @@ export default Component.extend({
         return 'users';
       case 'product':
         return 'cog';
+      case 'directory':
+        return 'list';
     }
     return 'briefcase';
   }),
