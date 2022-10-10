@@ -3,7 +3,7 @@ import { computed } from '@ember/object';
 import { inject } from '@ember/service';
 import { queryManager } from 'ember-apollo-client';
 import ActionMixin from '@base-cms/company-update-app/mixins/action';
-import mutation from '@base-cms/company-update-app/gql/mutations/portal/leadership';
+import mutation from '@base-cms/company-update-app/gql/mutations/portal/directory-categories';
 import getGraphqlError from '../../utils/get-graphql-error';
 
 const { error } = console;
@@ -32,7 +32,7 @@ export default Component.extend(ActionMixin, {
       this.startAction();
       this.set('error', null);
       const { name, email, hash, payload } = this.getProperties('name', 'email', 'hash', 'payload');
-      const type = 'categories';
+      const type = 'directoryCategories';
       const variables = { input: { name, email, hash, type, payload } };
 
       try {
