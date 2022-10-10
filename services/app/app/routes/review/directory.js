@@ -25,11 +25,7 @@ export default Route.extend({
       },
       children: pagination,
     };
-    const categories = await this.apollo.query({
-      query,
-      variables,
-      fetchPolicy: 'network-only',
-    }, 'categories');
+    const categories = await this.apollo.query({ query, variables }, 'categories');
 
     return {
       submission,

@@ -26,7 +26,7 @@ export default Route.extend({
       children: pagination,
       content: { hash, status: 'any' },
     };
-    return this.apollo.query({ query, variables, fetchPolicy: 'network-only' });
+    return this.apollo.query({ query, variables });
   },
 
   afterModel(model) {

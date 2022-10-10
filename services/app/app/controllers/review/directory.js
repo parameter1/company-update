@@ -5,7 +5,7 @@ import { inject } from '@ember/service';
 import getGraphQlError from '@base-cms/company-update-app/utils/get-graphql-error';
 import ActionMixin from '@base-cms/company-update-app/mixins/action';
 import discard from '@base-cms/company-update-app/gql/mutations/discard';
-// import publish from '@base-cms/company-update-app/gql/mutations/review/leadership';
+import publish from '@base-cms/company-update-app/gql/mutations/review/directory-categories';
 
 export default Controller.extend(ActionMixin, {
   apollo: inject(),
@@ -38,7 +38,6 @@ export default Controller.extend(ActionMixin, {
   payload: computed('addedIds', 'removedIds', 'selectedIds', 'selectedIds.[]', function() {
     const { addedIds, removedIds } = this.getProperties('addedIds', 'removedIds');
     const selectedIds = this.get('selectedIds');
-    console.log('compute payload', addedIds, removedIds, selectedIds);
     return {
       added: addedIds.filter((id) => selectedIds.includes(id)),
       removed: removedIds.filter((id) => selectedIds.includes(id)),
@@ -57,18 +56,15 @@ export default Controller.extend(ActionMixin, {
     async publish() {
       this.startAction();
       try {
-        // const { id } = this.get('model.submission');
+        const { id } = this.get('model.submission');
         const contentId = this.get('model.company.id');
         const { added, removed } = this.get('payload');
-        // const variables = { input: { contentId } };
-        // One update to add, one to remove
-        console.log('publish', { contentId, added, removed });
-        throw new Error('NYI');
-        // await this.apollo.mutate({ mutation: publish, variables }, 'quickCreateWebsiteSchedules');
-        // set(this, 'model.submission.reviewed', true);
-        // await this.apollo.mutate({ mutation: discard, variables: { id }, refetchQueries: ['ContentUpdateListSubmissions'] });
-        // this.notify.success('Changes have been published!');
-        // this.transitionToRoute('list');
+        const input = { id: contentId, addIds: added, removeIds: removed };
+        await this.apollo.mutate({ mutation: publish, variables: { input } });
+        set(this, 'model.submission.reviewed', true);
+        await this.apollo.mutate({ mutation: discard, variables: { id }, refetchQueries: ['ContentUpdateListSubmissions'] });
+        this.notify.success('Changes have been published!');
+        this.transitionToRoute('list');
       } catch (e) {
         this.notify.error(getGraphQlError(e), { autoClear: false });
       } finally {

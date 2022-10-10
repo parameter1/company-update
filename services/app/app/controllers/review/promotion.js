@@ -11,6 +11,8 @@ import promotionCreate from '@base-cms/company-update-app/gql/mutations/review/p
 import promotionUpdate from '@base-cms/company-update-app/gql/mutations/review/promotion-update';
 import promotionImages from '@base-cms/company-update-app/gql/mutations/review/promotion-images';
 
+const { error } = console;
+
 export default Controller.extend(ActionMixin, {
   apollo: inject(),
   notify: inject(),
@@ -90,7 +92,7 @@ export default Controller.extend(ActionMixin, {
     try {
       await this.uploadPromotionImage(primaryImage, id);
     } catch (e) {
-      console.log('Failed to upload image!');
+      error('Failed to upload image!', e.message);
     }
   },
 

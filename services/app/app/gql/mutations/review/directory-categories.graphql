@@ -1,0 +1,6 @@
+mutation ContentPortalReviewDirectoryCategories($input: ContentTaxonomyMutationInput!) {
+	contentTaxonomy(input: $input) {
+    id
+    taxonomyIds
+  }
+}
