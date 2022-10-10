@@ -3,7 +3,12 @@
     {{#if node.children.length }}
       {{entypo-icon "chevron-down" class="mr-2"}}
     {{else}}
-      <input type="checkbox" class="mr-2" />
+      <Input
+        @type="checkbox"
+        class="mr-2"
+        @checked={{this.checked}}
+        {{action "update"}}
+      />
     {{/if}}
     {{ node.name }}
   </label>

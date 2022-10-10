@@ -33,7 +33,8 @@ export default Route.extend({
     const { hash } = this.modelFor('portal');
     this.controllerFor('portal.directory').set('hash', hash);
     const selected = get(model, 'contentHash.taxonomyIds') || [];
-    this.controllerFor('portal.directory').set('selected', selected);
+    this.controllerFor('portal.directory').set('initial', [...selected]);
+    this.controllerFor('portal.directory').set('selected', [...selected]);
   },
 
 });

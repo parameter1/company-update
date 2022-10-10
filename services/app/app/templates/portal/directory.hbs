@@ -1,7 +1,8 @@
 <div class="card mb-4">
   <div class="card-body">
     <p class="lead">Select your directory categories.</p>
-    <p>For each section below, select the directory categories that describe your company.
+    <p>
+      For each section below, select the directory categories that describe your company.
       {{#if directorySelectionMax}}You may select up to <code>{{ config.directorySelectionMax }}</code> categories per section.{{/if}}
     </p>
     <p>{{ i18n "companyDetailsP3Label"}}</p>
@@ -9,8 +10,13 @@
 </div>
 
 <div class="row">
-  {{#each (get-edge-nodes this "model.categories") as |category|}}
-    {{directory/category category=category selectedIds=selected onUpdate=(action "update")}}
+  {{#each (get-edge-nodes this "model.categories") as |category index|}}
+    {{directory/category
+      category=category
+      selectedIds=selected
+      canSelect=canSelect
+      onUpdate=(action "update")
+    }}
   {{else}}
     <p class="muted">No directory categories are available!</p>
   {{/each}}
@@ -23,9 +29,9 @@
     </button>
   </div>
 </div>
-{{submit-modal/categories
+{{submit-modal/directory-categories
   hash=hash
   isOpen=isModalOpen
-  categories=categories
+  payload=payload
   onComplete=(action "transitionToPortal")
 }}
