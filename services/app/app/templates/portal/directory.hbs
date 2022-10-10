@@ -10,7 +10,7 @@
 </div>
 
 <div class="row">
-  {{#each (get-edge-nodes this "model.categories") as |category index|}}
+  {{#each (get-edge-nodes this "model.categories") as |category|}}
     {{directory/category
       category=category
       selectedIds=selected

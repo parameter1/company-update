@@ -1,6 +1,6 @@
 {{!-- @todo animate! --}}
 <div class="card card-expandable">
-  <h6 class="card-header cursor-pointer" {{action "collapse"}}>
+  <h6 role="button" class="card-header interactable" {{action "collapse"}}>
     {{#if collapsed}}
       {{entypo-icon "chevron-right" class="mr-2"}}
     {{else}}
@@ -29,7 +29,7 @@
     </div>
   {{/if}}
 
-  <div class="card-footer text-center cursor-pointer" {{action "collapse"}}>
+  <div role="button" class="card-footer text-center interactable" {{action "collapse"}}>
     <small class="text-muted">
       Click to {{#if collapsed}}expand{{else}}collapse{{/if}}.
     </small>
