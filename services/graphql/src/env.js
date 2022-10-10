@@ -20,6 +20,10 @@ const nonemptystr = makeValidator((v) => {
 });
 
 module.exports = cleanEnv(process.env, {
+  // Infrastructure configs
+  EXPOSED_PORT: port({ desc: 'The exposed port to listen on', default: 5550 }),
+  FETCH_TIMEOUT: num({ desc: 'The limit (in ms) for request processing', default: 10000 }),
+  PORT: port({ desc: 'The port to listen on', default: 80 }),
   // Core mandatory configs
   AWS_ACCESS_KEY_ID: nonemptystr({ desc: 'The AWS access key value.' }),
   AWS_SECRET_ACCESS_KEY: nonemptystr({ desc: 'The AWS secret access key value.' }),
@@ -28,7 +32,6 @@ module.exports = cleanEnv(process.env, {
   NOTIFICATION_TO: email({ desc: 'The email address notifications are sent to.' }),
   SENDGRID_API_KEY: nonemptystr({ desc: 'The SendGrid API key for sending email.' }),
   SENDGRID_FROM: nonemptystr({ desc: 'The from name to use when sending email via SendGrid, e.g. Foo <foo@bar.com>', default: 'no-reply@parameter1.com' }),
-  FETCH_TIMEOUT: num({ desc: 'The limit (in ms) for request processing', default: 10000 }),
   // Tenant-specific settings
   BASE4_API_URL: url({ desc: 'The management uri for the related platform tenant.' }),
   GRAPHQL_URI: url({ desc: 'The URI to access the BaseCMS GraphQL instance' }),
@@ -50,6 +53,4 @@ module.exports = cleanEnv(process.env, {
   CONTACT_URL: str({ desc: 'If configured, the URL that will be added to the navigation for support requests.', default: '' }),
   CONTACT_TEXT: str({ desc: 'Link text for navigation element', default: 'Contact Us' }),
   APP_LOCALE: str({ desc: 'The application locale', choices: ['en-us', 'es-mx'], default: 'en-us' }),
-  PORT: port({ desc: 'The port to listen on', default: 80 }),
-  EXPOSED_PORT: port({ desc: 'The exposed port to listen on', default: 5550 }),
 });
