@@ -35,7 +35,7 @@ module.exports = gql`
     contact
     leadership
     promotion
-    directoryCategories
+    directory
   }
 
   ${company}

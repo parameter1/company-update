@@ -10,7 +10,7 @@ module.exports = gql`
     name: String!
     email: String!
     hash: String!
-    type: CompanyUpdateSubmissionType = directoryCategories
+    type: CompanyUpdateSubmissionType = directory
     payload: CompanyUpdateDirectoryPayloadInput!
   }
 
