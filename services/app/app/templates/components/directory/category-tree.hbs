@@ -7,7 +7,7 @@
         @type="checkbox"
         class="mr-2"
         @checked={{this.checked}}
-        {{action "update"}}
+        @change={{action "update"}}
       />
     {{/if}}
     {{ node.name }}
