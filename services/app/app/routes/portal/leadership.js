@@ -15,7 +15,11 @@ export default Route.extend({
   apollo: queryManager(),
 
   async model() {
-    const { leadershipSectionAlias, leadershipPrimarySiteOnly } = this.config;
+    const {
+      leadershipSectionAlias,
+      leadershipPrimarySiteOnly,
+      leadershipScheduledSitesOnly,
+    } = this.config;
     const siteId = get(this.modelFor('portal'), 'primarySite.id');
     const { hash } = this.paramsFor('portal');
 
@@ -52,12 +56,17 @@ export default Route.extend({
       websiteSections,
     } = await this.apollo.query({ query: multi, variables, fetchPolicy: 'network-only' });
 
+    // If enabled, limit sites to those the content has been scheduled to.
+    const siteIds = [...(new Set(leadershipScheduledSitesOnly && contentHash.websiteSchedules.length
+      ? contentHash.websiteSchedules.map((s => get(s, 'section.site.id')))
+      : websiteSites.edges.map(({ node }) => node.id)))];
+
     return {
       contentHash,
       websiteSites: {
         ...websiteSites,
         edges: [
-          ...websiteSites.edges.map(({ node }) => ({
+          ...websiteSites.edges.filter(({ node }) => siteIds.includes(node.id)).map(({ node }) => ({
             node: {
               ...node,
               sections: {
