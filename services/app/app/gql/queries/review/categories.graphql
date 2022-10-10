@@ -1,15 +1,9 @@
-# import CompanyListFragment from "../../fragments/company/list"
 # import TaxonomyDetailFragment from "../../fragments/taxonomy"
 
 query TaxonomyCategories(
   $categories: TaxonomiesQueryInput!,
   $children: TaxonomyChildrenInput!,
-  $content: ContentHashQueryInput!,
 ) {
-  contentHash(input: $content) {
-    ...CompanyListFragment
-    taxonomyIds
-  }
   categories: taxonomies(input: $categories) {
     totalCount
     edges {
