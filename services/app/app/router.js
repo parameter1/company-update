@@ -11,11 +11,13 @@ Router.map(function() {
     this.route('products');
     this.route('contacts');
     this.route('leadership');
+    this.route('directory');
     this.route('promotions');
     this.route('company');
   });
   this.route('review', { path: '/review/:id' }, function () {
     this.route('company');
+    this.route('directory');
     this.route('leadership');
     this.route('product');
     this.route('contact');

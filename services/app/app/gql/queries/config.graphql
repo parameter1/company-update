@@ -8,6 +8,9 @@ query CompanyUpdateConfig {
       label
       description
     }
+    directoryEnabled
+    directoryCategoryIds
+    directorySelectionMax
     logoUrl
     leadershipEnabled
     leadershipPromotionsEnabled

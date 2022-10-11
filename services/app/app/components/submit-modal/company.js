@@ -64,7 +64,6 @@ export default Component.extend(ActionMixin, {
 
   filterPayload(key) {
     const v = this.get(`model.${key}`);
-    console.log(key, v);
     if (key == 'externalLinks') {
       return v.map(({ key, url }) => ({ key, url })).filter(link => link.key && link.url);
     }

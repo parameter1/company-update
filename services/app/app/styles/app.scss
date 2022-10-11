@@ -181,3 +181,36 @@ fieldset.leadership-category {
 legend.leadership-category {
   width: auto;
 }
+
+.card-expandable {
+  .card-body {
+    color: #000;
+  }
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.tree-wrapper {
+  // overflow: hidden;
+  // max-height: 150px;
+  background-color: #fcfcfc;
+}
+
+// .tree-inner {
+//   overflow-y: scroll;
+//   max-height: 132px;
+// }
+
+.tree-inner > label:last-child {
+  margin-bottom: 0;
+}
+
+.tree-inner .ml-3 > div:last-child > label {
+  margin-bottom: 0;
+}
+
+.card-expandable .card-body > div .mb-3:last-child {
+  margin-bottom: 0;
+}

@@ -1,0 +1,55 @@
+<div class="card mb-4">
+  <div class="card-body">
+    <p class="lead">{{ model.company.name }}</p>
+    <hr>
+    <p class="lead">Review the requested directory categories below.</p>
+    <p>For each section, review the selected directory categories. Each section and will have a toggle icon ({{entypo-icon "check" class="border m-1 p-1 text-success"}} / {{entypo-icon "cross" class="border m-1 p-1 text-danger"}}) next to the field. For each field, verify that the submitted value is acceptable, or use the toggle to ignore the field.</p>
+    <p>
+      Categories to be added will be displayed <span class="text-success">in green</span>, and categories to be removed will be displayed <span class="text-danger">in red</span>. Categories that are unchanged will be displayed <span class="text-muted">in grey</span>.
+    </p>
+    <p>When all categories have been reviewed, click the "<span class="text-primary">Publish</span>" button at the bottom of the screen to publish to Base. If no fields are acceptable, click on the "<span class="text-danger">Discard</span>" button to remove this submission and return to the list.</p>
+  </div>
+</div>
+
+<div class="row">
+  {{#each categories as |category|}}
+    {{directory-review/category
+      category=category
+      selectedIds=selectedIds
+      addedIds=addedIds
+      removedIds=removedIds
+      contentIds=contentIds
+      onUpdate=(action "toggleSection")
+    }}
+  {{/each}}
+</div>
+
+<div class="fixed-bottom fixed-right card">
+  <div class="card">
+    <div class="card-body text-center">
+      {{#if model.submission.reviewed}}
+        <p class="mb-2 text-muted small">This submission has already been reviewed.</p>
+      {{/if}}
+      {{confirm-button
+        icon="check"
+        label="Publish"
+        runningLabel="Publishing..."
+        class="btn-primary mr-1"
+        iconClass="mr-1"
+        disabled=isPublishDisabled
+        isRunning=isPublishing
+        onConfirm=(action "publish")
+      }}
+      {{confirm-button
+        icon="cross"
+        label="Discard"
+        runningLabel="Discarding..."
+        class="btn-danger mr-1"
+        iconClass="mr-1"
+        disabled=isDisabled
+        isRunning=isDiscarding
+        onConfirm=(action "discard")
+      }}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+# import TaxonomyDetailFragment from "../../fragments/taxonomy"
+
+query TaxonomyCategories(
+  $categories: TaxonomiesQueryInput!,
+  $children: TaxonomyChildrenInput!,
+) {
+  categories: taxonomies(input: $categories) {
+    totalCount
+    edges {
+      node {
+        ...TaxonomyDetailFragment
+        children(input: $children) {
+          totalCount
+          edges {
+            node {
+              ...TaxonomyDetailFragment
+              children(input: $children) {
+                totalCount
+                edges {
+                  node {
+                    ...TaxonomyDetailFragment
+                    children(input: $children) {
+                      totalCount
+                      edges { node { ...TaxonomyDetailFragment } }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

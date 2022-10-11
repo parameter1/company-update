@@ -24,6 +24,7 @@ query ContentUpdatePortalCompany($input: ContentHashQueryInput!) {
     ...CompanyYoutubeFragment
     ${customAttributes.map((key) => `
     ${key}: customAttribute(input: { path: "${key}" })`).join('')}
+    taxonomyIds
   }
 }
 ${CompanyListFragment}

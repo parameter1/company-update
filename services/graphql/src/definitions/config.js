@@ -11,6 +11,9 @@ module.exports = gql`
     contactUrl: String
     contactText: String
     companyCustomAttributes: [CompanyCustomAttribute!]!
+    directoryEnabled: Boolean!
+    directoryCategoryIds: [Int!]
+    directorySelectionMax: Int
     leadershipEnabled: Boolean!
     leadershipPromotionsEnabled: Boolean!
     leadershipPrimarySiteOnly: Boolean!

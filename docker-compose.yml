@@ -26,7 +26,7 @@ services:
 
   app:
     <<: *node
-    image: danlynn/ember-cli:3.14.0
+    image: danlynn/ember-cli:3.13.0
     working_dir: /company-update/services/app
     entrypoint: ["ember"]
     command: ["serve", "--port", "5555", "--proxy", "http://graphql"]
@@ -64,6 +64,7 @@ services:
       TENANT_KEY: ${TENANT_KEY}
       # Optional configs
       LOGO_URL: ${LOGO_URL}
+      DIRECTORY_ENABLED: ${DIRECTORY_ENABLED-false}
       LEADERSHIP_ENABLED: ${LEADERSHIP_ENABLED-true}
       PROMOTIONS_ENABLED: ${PROMOTIONS_ENABLED-false}
       LEADERSHIP_COMPANY_LABEL: ${LEADERSHIP_COMPANY_LABEL}
@@ -72,6 +73,8 @@ services:
       LEADERSHIP_SECTION_ALIAS: ${LEADERSHIP_SECTION_ALIAS-leaders}
       LEADERSHIP_SECTION_MAX: ${LEADERSHIP_SECTION_MAX-3}
       COMPANY_CUSTOM_ATTRIBUTES: ${COMPANY_CUSTOM_ATTRIBUTES-[]}
+      DIRECTORY_CATEGORY_IDS: ${DIRECTORY_CATEGORY_IDS-false}
+      DIRECTORY_SELECTION_MAX: ${DIRECTORY_SELECTION_MAX-0}
       CONTACT_URL: ${CONTACT_URL}
       CONTACT_TEXT: ${CONTACT_TEXT-Contact Us}
       APP_LOCALE: ${APP_LOCALE-en-us}

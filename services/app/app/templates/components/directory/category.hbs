@@ -1,0 +1,37 @@
+{{!-- @todo animate! --}}
+<div class="card card-expandable">
+  <h6 role="button" class="card-header interactable" {{action "collapse"}}>
+    {{#if collapsed}}
+      {{entypo-icon "chevron-right" class="mr-2"}}
+    {{else}}
+      {{entypo-icon "chevron-down" class="mr-2"}}
+    {{/if}}
+    {{ category.name }}
+    <small class="pull-right text-primary">
+      Selected: <span class="badge">{{ selected }}{{#if maximum}} / {{ maximum }}{{/if}}</span>
+    </small>
+  </h6>
+  {{#if collapsed}}
+  {{else}}
+    <div class="card-body">
+      <div class="">
+        {{#each children as |child|}}
+          <div class="mb-3">
+            {{directory/category-tree
+              root=true
+              node=child
+              selectedIds=selectedIds
+              onUpdate=onUpdate
+            }}
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  {{/if}}
+
+  <div role="button" class="card-footer text-center interactable" {{action "collapse"}}>
+    <small class="text-muted">
+      Click to {{#if collapsed}}expand{{else}}collapse{{/if}}.
+    </small>
+  </div>
+</div>
