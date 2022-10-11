@@ -32,7 +32,7 @@ export default Component.extend(ActionMixin, {
       this.startAction();
       this.set('error', null);
       const { name, email, hash, payload } = this.getProperties('name', 'email', 'hash', 'payload');
-      const type = 'directoryCategories';
+      const type = 'directory';
       const variables = { input: { name, email, hash, type, payload } };
 
       try {
