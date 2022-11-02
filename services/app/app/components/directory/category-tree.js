@@ -21,6 +21,12 @@ export default Component.extend(ActionMixin, {
     return ids.includes(id);
   }),
 
+  expandedState: computed('node.children', 'collapsed', function() {
+    const children = this.node ? this.node.children : [];
+    // If there are children and collapsed is false, expandedState is true
+    return children.length && !this.collapsed;
+  }),
+
   actions: {
     collapse() {
       this.set('collapsed', !this.collapsed);
