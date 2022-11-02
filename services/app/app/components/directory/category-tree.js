@@ -27,6 +27,10 @@ export default Component.extend(ActionMixin, {
     return children.length && !this.collapsed;
   }),
 
+  collapsedState: computed('expandedState', function() {
+    return !this.expandedState;
+  }),
+
   actions: {
     collapse() {
       this.set('collapsed', !this.collapsed);
