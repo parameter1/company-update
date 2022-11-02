@@ -1,8 +1,8 @@
 <div class={{ rootClass }}>
   <label role="button" class="d-flex align-items-center" {{action "collapse"}}>
-    {{#if node.children.length !collapsed }}
+    {{#if (node.children.length && !collapsed) }}
       {{entypo-icon "chevron-down" class="mr-2"}}
-    {{else if node.children.length collapsed }}
+    {{else if (node.children.length && collapsed) }}
       {{entypo-icon "chevron-right" class="mr-2"}}
     {{else}}
       <Input
