@@ -8,7 +8,6 @@ export default Component.extend(ActionMixin, {
   classNameBindings: ['root:tree-wrapper', 'root:border', 'root:p-2'],
   node: null,
   root: false,
-  collapsed: true,
   onUpdate: () => error('onUpdate missing!'),
 
   rootClass: computed('root', function() {
@@ -21,14 +20,22 @@ export default Component.extend(ActionMixin, {
     return ids.includes(id);
   }),
 
-  expandedState: computed('node.children', 'collapsed', function() {
-    const children = this.node ? this.node.children : [];
-    // If there are children and collapsed is false, expandedState is true
-    return children.length && !this.collapsed;
+  collapsed: computed('node.children', function() {
+    if (this.node.children.length) return true
+    return false
   }),
 
-  collapsedState: computed('expandedState', function() {
-    return !this.expandedState;
+  expandedState: computed('collapsed', function() {
+    return !this.collapsed;
+  }),
+
+  collapsedState: computed('collapsed', function() {
+    return this.collapsed;
+  }),
+
+  noChildren: computed('node.children', function() {
+    if (this.node.children.length) return false;
+    return true;
   }),
 
   actions: {
