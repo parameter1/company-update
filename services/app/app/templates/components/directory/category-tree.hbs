@@ -1,20 +1,19 @@
 <div class={{ rootClass }}>
   <label role="button" class="d-flex align-items-center" {{action "collapse"}}>
-    {{#if noChildren}}
+    {{#unless node.children.length}}
       <Input
         @type="checkbox"
         class="mr-2"
         @checked={{this.checked}}
         @change={{action "update"}}
       />
-    {{else if expandedState }}
-      {{entypo-icon "chevron-down" class="mr-2"}}
-    {{else if collapsedState }}
-      {{entypo-icon "chevron-right" class="mr-2"}}
+    {{/unless}}
+    {{#if node.children.length}}
+      {{entypo-icon (if collapsed "chevron-right" "chevron-down") class="mr-2"}}
     {{/if}}
     {{ node.name }}
   </label>
-  {{#if expandedState }}
+  {{#unless collapsed }}
     <div class="ml-3">
       {{#each node.children as |child|}}
         {{directory/category-tree
@@ -24,5 +23,5 @@
         }}
       {{/each}}
     </div>
-  {{/if}}
+  {{/unless}}
 </div>
