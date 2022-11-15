@@ -1,15 +1,15 @@
 <div class={{ rootClass }}>
   <label role="button" class="d-flex align-items-center" {{action "collapse"}}>
-    {{#unless node.children.length}}
+    {{#if node.children.length}}
+      {{entypo-icon (if collapsed "chevron-right" "chevron-down") class="mr-2"}}
+    {{else}}
       <Input
         @type="checkbox"
         class="mr-2"
         @checked={{this.checked}}
         @change={{action "update"}}
       />
-    {{else}}
-      {{entypo-icon (if collapsed "chevron-right" "chevron-down") class="mr-2"}}
-    {{/unless}}
+    {{/if}}
     {{ node.name }}
   </label>
   {{#unless collapsed }}
