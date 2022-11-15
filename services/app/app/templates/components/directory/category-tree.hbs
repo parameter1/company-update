@@ -7,8 +7,8 @@
         @checked={{this.checked}}
         @change={{action "update"}}
       />
-      {{else}}
-        {{entypo-icon (if collapsed "chevron-right" "chevron-down") class="mr-2"}}
+    {{else}}
+      {{entypo-icon (if collapsed "chevron-right" "chevron-down") class="mr-2"}}
     {{/unless}}
     {{ node.name }}
   </label>
