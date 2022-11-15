@@ -13,14 +13,16 @@
     {{ node.name }}
   </label>
   {{#unless collapsed }}
-    <div class="ml-3">
-      {{#each node.children as |child|}}
-        {{directory/category-tree
-          node=child
-          selectedIds=selectedIds
-          onUpdate=onUpdate
-        }}
-      {{/each}}
-    </div>
+    {{#if node.children.length}}
+      <div class="ml-3">
+        {{#each node.children as |child|}}
+          {{directory/category-tree
+            node=child
+            selectedIds=selectedIds
+            onUpdate=onUpdate
+          }}
+        {{/each}}
+      </div>
+    {{/if}}
   {{/unless}}
 </div>
