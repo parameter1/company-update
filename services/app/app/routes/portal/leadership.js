@@ -29,6 +29,7 @@ export default Route.extend({
         leaders: { includeAliases: [leadershipSectionAlias], ...pagination, siteId },
         children: pagination,
         content: { hash, status: 'any' },
+        leadersAlias: leadershipSectionAlias
       };
       const {
         contentHash,
@@ -49,6 +50,7 @@ export default Route.extend({
       leaders: { includeAliases: [leadershipSectionAlias], ...pagination },
       children: pagination,
       content: { hash, status: 'any' },
+      leadersAlias: leadershipSectionAlias
     };
     const {
       contentHash,
