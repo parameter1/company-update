@@ -1,12 +1,8 @@
+# import CompanyListFragment from "../fragments/company/list"
+
 query CompanyUpdatePortal($input: ContentHashQueryInput!, $leadersAlias: String) {
   contentHash(input: $input) {
-    id
-    name
-    hash
-    labels
-    primarySite {
-      id
-    }
+    ...CompanyListFragment
     isLeader: hasWebsiteSchedule(input: { sectionAlias: $leadersAlias })
   }
 }
