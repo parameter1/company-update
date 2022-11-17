@@ -6,9 +6,9 @@ export default Controller.extend({
   leadershipEnabled: computed('config.{leadershipEnabled,leadershipCompanyLabel}', 'model.labels.[]', function() {
     // disable leadership Categories if not enabled
     if(!this.config.leadershipEnabled) return false;
-    // if the company is denoted as a leader
-    if (this.model.isLeader) {
-      return true;
+    // if the isLeader field is present and is a boolean
+    if (typeof this.model.isLeader === 'boolean') {
+      return this.model.isLeader;
     }
     // if company label is configured return the leadershipEnabled setting from the config
     if(this.config.leadershipCompanyLabel) {
