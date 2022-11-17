@@ -6,12 +6,16 @@ export default Controller.extend({
   leadershipEnabled: computed('config.{leadershipEnabled,leadershipCompanyLabel}', 'model.labels.[]', function() {
     // disable leadership Categories if not enabled
     if(!this.config.leadershipEnabled) return false;
-    // if no company label configured return the leadershipEnabled setting from the config
-    if(!this.config.leadershipCompanyLabel) {
-      return this.config.leadershipEnabled && this.model.isLeader;
+    // if the company is denoted as a leader
+    if (this.model.isLeader) {
+      return true;
     }
-    // check that the company label is in the array of labels for this company
-    return(this.model.labels.includes(this.config.leadershipCompanyLabel));
+    // if company label is configured return the leadershipEnabled setting from the config
+    if(this.config.leadershipCompanyLabel) {
+      // check that the company label is in the array of labels for this company
+      return this.model.labels.includes(this.config.leadershipCompanyLabel);
+    }
+    return true;
   }),
   directoryEnabled: computed('config.{directoryEnabled,directoryCategoryIds}', function () {
     return this.config.directoryEnabled && this.config.directoryCategoryIds.length;
