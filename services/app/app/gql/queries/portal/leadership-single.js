@@ -8,6 +8,7 @@ query ContentUpdateLeadershipData(
   $leaders: WebsiteSectionsQueryInput!,
   $children: WebsiteSectionChildrenInput!,
   $content: ContentHashQueryInput!,
+  $leadersAlias: String,
 ) {
   contentHash(input: $content) {
     ...CompanyListFragment
@@ -21,6 +22,7 @@ query ContentUpdateLeadershipData(
         name
       }
     }
+    isLeader: hasWebsiteSchedule(input: { sectionAlias: $leadersAlias })
   }
   websiteSite(input: $site) {
     id
