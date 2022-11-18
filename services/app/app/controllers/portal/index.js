@@ -3,7 +3,7 @@ import { computed } from '@ember/object';
 
 export default Controller.extend({
 
-  leadershipEnabled: computed('config.{leadershipEnabled,leadershipCompanyLabel}', 'model.labels.[]', function() {
+  leadershipEnabled: computed('config.{leadershipEnabled,leadershipCompanyLabel}', 'model.{labels.[],isLeader}', function() {
     // disable leadership Categories if not enabled
     if(!this.config.leadershipEnabled) return false;
     // if the isLeader field is present and is a boolean
