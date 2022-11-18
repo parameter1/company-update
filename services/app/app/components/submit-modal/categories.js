@@ -47,7 +47,10 @@ export default Component.extend(ActionMixin, {
         }
         else {
           if (!this.isDestroyed) this.set('isOpen', false);
-          this.notify.error('You are unable to submit leaders updates for your company due to not having met the necessary requirements, if you believe this is an error contact the respective publication contact', { autoClear: false });
+          const errorString = this.config.contactUrl ?
+          `<p>Sorry, leadership updates are unavailable for this company. <a href=${this.config.contactUrl} target="_blank" rel="noopener">Click here</a> to contact us if you need help!</p>`
+          : 'Sorry, leadership updates are unavailable for this company.';
+          this.notify.error(errorString, { autoClear: false, htmlContent: true });
         }
         this.onComplete();
       } catch (e) {
