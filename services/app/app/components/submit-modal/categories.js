@@ -20,6 +20,7 @@ export default Component.extend(ActionMixin, {
   email: null,
   error: null,
 
+  leadershipEnabled: false,
   isOpen: false,
   isInvalid: computed('name', 'email', function() {
     if (!this.name || !this.email) return true;
@@ -39,9 +40,15 @@ export default Component.extend(ActionMixin, {
       const variables = { input: { name, email, hash, type, payload } };
 
       try {
-        await this.apollo.mutate({ mutation, variables });
-        if (!this.isDestroyed) this.set('isOpen', false);
-        this.notify.info('Changes requested. You will recieve an email shortly confirming your request.', { clearDuration: 30000 });
+        if(this.leadershipEnabled) {
+          await this.apollo.mutate({ mutation, variables });
+          if (!this.isDestroyed) this.set('isOpen', false);
+          this.notify.info('Changes requested. You will recieve an email shortly confirming your request.', { clearDuration: 30000 });
+        }
+        else {
+          if (!this.isDestroyed) this.set('isOpen', false);
+          this.notify.error('You are unable to submit leaders updates for your company due to not having met the necessary requirements, if you believe this is an error contact the respective publication contact', { autoClear: false });
+        }
         this.onComplete();
       } catch (e) {
         error(e);
