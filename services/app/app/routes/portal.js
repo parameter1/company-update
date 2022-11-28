@@ -8,7 +8,7 @@ export default Route.extend({
   apollo: queryManager(),
 
   async model({ hash }) {
-    const variables = { input: { hash, status: 'any' }, leadersAlias: this.config.leadershipSectionAlias };
+    const variables = { input: { hash, status: 'any' } };
     const model = await this.apollo.query({ query, variables, fetchPolicy: 'network-only' }, 'contentHash');
     if (!model) throw new Error('Invalid URL');
     return model;

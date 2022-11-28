@@ -12,13 +12,9 @@ export default Controller.extend({
     return this.get('categories.length') === 0;
   }),
 
-  leadershipEnabled: computed('config.{leadershipEnabled,leadershipCompanyLabel}', 'model.contentHash.{labels.[],isLeader}', function() {
+  leadershipEnabled: computed('config.{leadershipEnabled,leadershipCompanyLabel}', 'model.contentHash.{labels.[]}', function() {
     // disable leadership Categories if not enabled
     if(!this.config.leadershipEnabled) return false;
-    // if the isLeader field is present and is a boolean
-    if (typeof this.model.contentHash.isLeader === 'boolean') {
-      return this.model.contentHash.isLeader;
-    }
     // if company label is configured return the leadershipEnabled setting from the config
     if(this.config.leadershipCompanyLabel) {
       // check that the company label is in the array of labels for this company
