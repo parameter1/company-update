@@ -1,17 +1,20 @@
 <div class={{ rootClass }}>
-  <label role="button" class="d-flex align-items-center" {{action "collapse"}}>
-    {{#if node.children.length}}
+  {{#if node.children.length}}
+    <label role="button" class="d-flex align-items-center" {{action "collapse"}}>
       {{entypo-icon (if collapsed "chevron-right" "chevron-down") class="mr-2"}}
-    {{else}}
+      {{ node.name }}
+    </label>
+  {{else}}
+    <label class="d-flex align-items-center">
       <Input
         @type="checkbox"
         class="mr-2"
         @checked={{this.checked}}
         @change={{action "update"}}
       />
-    {{/if}}
-    {{ node.name }}
-  </label>
+      {{ node.name }}
+    </label>
+  {{/if}}
   {{#unless collapsed }}
     {{#if node.children.length}}
       <div class="ml-3">
