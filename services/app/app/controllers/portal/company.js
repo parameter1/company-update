@@ -6,6 +6,7 @@ export default Controller.extend({
   isModalOpen: false,
 
   logo: computed.reads('model.primaryImage.src'),
+  companyDetailsVerbiage: computed.reads('config.companyDetailsVerbiage'),
 
   actions: {
     showModal() {

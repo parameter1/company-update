@@ -1,8 +1,12 @@
 <div class="card mb-4">
   <div class="card-body">
-    <p class="lead">{{ i18n "companyDetailsP1Label" }} </p>
-    <p>{{ i18n "companyDetailsP2Label" }}</p>
-    <p>{{ i18n "companyDetailsP3Label" }}</p>
+    {{#if companyDetailsVerbiage}}
+      {{{ companyDetailsVerbiage }}}
+    {{else}}
+      <p class="lead">{{ i18n "companyDetailsP1Label" }} </p>
+      <p>{{ i18n "companyDetailsP2Label" }}</p>
+      <p>{{ i18n "companyDetailsP3Label" }}</p>
+    {{/if}}
   </div>
 </div>
 
