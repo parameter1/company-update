@@ -13,6 +13,7 @@ export default Route.extend(ApplicationRouteMixin, {
     return this.apollo.query({ query }, 'companyUpdateConfig');
   },
   afterModel({
+    contactsEnabled,
     contactUrl,
     contactText,
     companyCustomAttributes,
@@ -28,9 +29,13 @@ export default Route.extend(ApplicationRouteMixin, {
     leadershipSectionAlias,
     leadershipSectionMax,
     leadershipPrimarySiteOnly,
+    portalPageVerbiage,
+    companyDetailsVerbiage,
+    promotionsVerbiage,
     locale
   }) {
     this.config.load({
+      contactsEnabled,
       contactUrl,
       contactText,
       companyCustomAttributes,
@@ -46,6 +51,9 @@ export default Route.extend(ApplicationRouteMixin, {
       leadershipSectionAlias,
       leadershipSectionMax,
       leadershipPrimarySiteOnly,
+      portalPageVerbiage,
+      companyDetailsVerbiage,
+      promotionsVerbiage,
       locale
     });
   },
