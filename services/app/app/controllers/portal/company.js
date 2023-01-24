@@ -1,12 +1,15 @@
 import Controller from '@ember/controller';
 import { computed } from '@ember/object';
+import { htmlSafe } from '@ember/template';
 
 export default Controller.extend({
 
   isModalOpen: false,
 
   logo: computed.reads('model.primaryImage.src'),
-  companyDetailsVerbiage: computed.reads('config.companyDetailsVerbiage'),
+  companyDetailsVerbiage: computed('config.companyDetailsVerbiage', function() {
+    return htmlSafe(this.config.companyDetailsVerbiage)
+  }),
 
   actions: {
     showModal() {
