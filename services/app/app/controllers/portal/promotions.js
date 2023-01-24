@@ -11,6 +11,7 @@ export default Controller.extend({
       return { id, name, linkUrl, linkText, ...(primaryImage && { primaryImage } || { primaryImage: { src: null } }) };
     });
   }),
+  promotionsVerbiage: computed.reads('config.promotionsVerbiage'),
 
   isAddDisabled: computed.gte('promotions.length', 4),
 
