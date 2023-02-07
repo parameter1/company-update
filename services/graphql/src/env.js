@@ -41,6 +41,7 @@ module.exports = cleanEnv(process.env, {
   DIRECTORY_CATEGORY_IDS: str({ desc: 'CSV list of category taxonomy ids to display', default: '' }),
   DIRECTORY_SELECTION_MAX: num({ desc: 'The maximum number of children that can be selected per category. Set 0 to disable', default: 0 }),
   LOGO_URL: str({ desc: 'If configured, will be replace the branding in the navigation.', default: '' }),
+  CONTACTS_ENABLED: bool({ desc: 'If the contacts section should be displayed', default: true }),
   LEADERSHIP_ENABLED: bool({ desc: 'If the leadership section should be displayed', default: true }),
   PROMOTIONS_ENABLED: bool({ desc: 'If the promotions section should be displayed', default: false }),
   LEADERSHIP_CATEGORY_PREFIX: str({ desc: 'The prefix to use with categories for leadership sections.', default: 'leadership' }),
@@ -52,5 +53,8 @@ module.exports = cleanEnv(process.env, {
   COMPANY_CUSTOM_ATTRIBUTES: str({ desc: 'Custom attribute definitions (key, category, label, description', default: '[]' }),
   CONTACT_URL: str({ desc: 'If configured, the URL that will be added to the navigation for support requests.', default: '' }),
   CONTACT_TEXT: str({ desc: 'Link text for navigation element', default: 'Contact Us' }),
+  PORTAL_PAGE_VERBIAGE: str({ desc: 'Alternative verbiage to display on the portal landing page' }),
+  COMPANY_DETAILS_VERBIAGE: str({ desc: 'Alternative verbiage to display on the company details modification page' }),
+  PROMOTIONS_VERBIAGE: str({ desc: 'Alternative verbiage to display on the company promotion modification page' }),
   APP_LOCALE: str({ desc: 'The application locale', choices: ['en-us', 'es-mx'], default: 'en-us' }),
 });

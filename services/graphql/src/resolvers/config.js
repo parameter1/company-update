@@ -1,5 +1,6 @@
 const {
   LOGO_URL,
+  CONTACTS_ENABLED,
   CONTACT_URL,
   CONTACT_TEXT,
   DIRECTORY_ENABLED,
@@ -14,6 +15,9 @@ const {
   LEADERSHIP_PRIMARY_SITE_ONLY,
   LEADERSHIP_SCHEDULED_SITES_ONLY,
   COMPANY_CUSTOM_ATTRIBUTES,
+  PORTAL_PAGE_VERBIAGE,
+  COMPANY_DETAILS_VERBIAGE,
+  PROMOTIONS_VERBIAGE,
   APP_LOCALE,
 } = require('../env');
 
@@ -29,6 +33,7 @@ const directoryCategoryIds = `${DIRECTORY_CATEGORY_IDS}`.split(',').map(id => pa
 module.exports = {
   Query: {
     companyUpdateConfig: () => ({
+      contactsEnabled: CONTACTS_ENABLED,
       contactUrl: CONTACT_URL,
       contactText: CONTACT_TEXT,
       logoUrl: LOGO_URL,
@@ -44,6 +49,9 @@ module.exports = {
       leadershipSectionMax: LEADERSHIP_SECTION_MAX,
       leadershipPrimarySiteOnly: LEADERSHIP_PRIMARY_SITE_ONLY,
       leadershipScheduledSitesOnly: LEADERSHIP_SCHEDULED_SITES_ONLY,
+      portalPageVerbiage: PORTAL_PAGE_VERBIAGE,
+      companyDetailsVerbiage: COMPANY_DETAILS_VERBIAGE,
+      promotionsVerbiage: PROMOTIONS_VERBIAGE,
       locale: APP_LOCALE || 'en-us',
     }),
   },

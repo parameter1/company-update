@@ -2,6 +2,9 @@
   <div class="card-body">
     <p class="lead">{{ model.name }} {{ i18n "contentPortalLabel" }}</p>
     <p>{{ i18n "welcomePortalLabel" }} {{ model.name }}.</p>
+    {{#if portalPageVerbiage}}
+      {{ portalPageVerbiage }}
+    {{/if}}
     <p>{{ i18n "modificationsLabel" }}</p>
   </div>
 </div>
@@ -30,9 +33,11 @@
         {{ i18n "modifyProductLabel" }}
       {{/link-to}}
     {{/if}}
-    {{#link-to "portal.contacts" class="list-group-item list-group-item-action"}}
-      {{submission-icon type="contact" class="mr-2"}}
-      {{ i18n "modifyContactsLabel" }}
-    {{/link-to}}
+    {{#if contactsEnabled}}
+      {{#link-to "portal.contacts" class="list-group-item list-group-item-action"}}
+        {{submission-icon type="contact" class="mr-2"}}
+        {{ i18n "modifyContactsLabel" }}
+      {{/link-to}}
+    {{/if}}
   </ul>
 </div>

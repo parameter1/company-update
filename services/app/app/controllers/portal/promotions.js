@@ -1,5 +1,6 @@
 import Controller from '@ember/controller';
 import { computed, set } from '@ember/object';
+import { htmlSafe } from '@ember/template';
 
 export default Controller.extend({
   isModalOpen: false,
@@ -10,6 +11,9 @@ export default Controller.extend({
       const { id, name, linkUrl, linkText, primaryImage } = node;
       return { id, name, linkUrl, linkText, ...(primaryImage && { primaryImage } || { primaryImage: { src: null } }) };
     });
+  }),
+  promotionsVerbiage: computed('config.promotionsVerbiage', function() {
+    return htmlSafe(this.config.promotionsVerbiage);
   }),
 
   isAddDisabled: computed.gte('promotions.length', 4),

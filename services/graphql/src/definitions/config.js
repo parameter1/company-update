@@ -8,6 +8,7 @@ module.exports = gql`
 
   type CompanyUpdateConfiguration {
     logoUrl: String
+    contactsEnabled: Boolean!
     contactUrl: String
     contactText: String
     companyCustomAttributes: [CompanyCustomAttribute!]!
@@ -23,6 +24,9 @@ module.exports = gql`
     leadershipSectionAlias: String!
     leadershipSectionMax: Int!
     locale: String!
+    portalPageVerbiage: String
+    companyDetailsVerbiage: String
+    promotionsVerbiage: String
   }
 
   type CompanyCustomAttribute {
