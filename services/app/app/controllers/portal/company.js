@@ -8,7 +8,10 @@ export default Controller.extend({
 
   logo: computed.reads('model.primaryImage.src'),
   companyDetailsVerbiage: computed('config.companyDetailsVerbiage', function() {
-    return htmlSafe(this.config.companyDetailsVerbiage)
+    if (this.config.companyDetailsVerbiage) {
+      return htmlSafe(this.config.companyDetailsVerbiage)
+    }
+    return null;
   }),
 
   actions: {

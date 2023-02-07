@@ -13,7 +13,10 @@ export default Controller.extend({
     });
   }),
   promotionsVerbiage: computed('config.promotionsVerbiage', function() {
-    return htmlSafe(this.config.promotionsVerbiage);
+    if (this.config.promotionsVerbiage) {
+      return htmlSafe(this.config.promotionsVerbiage);
+    }
+    return null;
   }),
 
   isAddDisabled: computed.gte('promotions.length', 4),

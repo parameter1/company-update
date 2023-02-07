@@ -23,6 +23,9 @@ export default Controller.extend({
   }),
   categoryPrefix: computed.reads('config.leadershipCategoryPrefix'),
   portalPageVerbiage: computed('config.portalPageVerbiage', function() {
-    return htmlSafe(this.config.portalPageVerbiage);
+    if (this.config.portalPageVerbiage) {
+      return htmlSafe(this.config.portalPageVerbiage);
+    }
+    return null;
   }),
 });
