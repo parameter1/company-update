@@ -1,9 +1,12 @@
 <div class={{ rootClass }}>
   {{#if node.children.length}}
-    <label role="button" class="d-flex align-items-center" {{action "collapse"}}>
+    <div role="button" class="mb-1 align-items-center" {{action "collapse"}}>
       {{entypo-icon (if collapsed "chevron-right" "chevron-down") class="mr-2"}}
       {{ node.name }}
-    </label>
+      <small class="pull-right text-primary">
+        Selected: <span class="badge">{{ selected }}{{#if maximum}} / {{ maximum }}{{/if}}</span>
+      </small>
+    </div>
   {{else}}
     <label class="d-flex align-items-center">
       <Input
