@@ -36,7 +36,7 @@ module.exports = (template, args = {}) => {
       ${header({ logo })}
 
       ${p('Thank you for your submission.')}
-      ${p('Please let us know if you need anything further.')}
+      ${p('Your updates and/or changes have been submitted for review and approval.')}
 
       ${footer({ contactUrl, contactText })}
     `,
