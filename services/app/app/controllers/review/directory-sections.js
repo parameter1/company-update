@@ -6,6 +6,8 @@ import getGraphQlError from '@base-cms/company-update-app/utils/get-graphql-erro
 import ActionMixin from '@base-cms/company-update-app/mixins/action';
 import discard from '@base-cms/company-update-app/gql/mutations/discard';
 import publish from '@base-cms/company-update-app/gql/mutations/review/directory-sections';
+import companySchedules from '@base-cms/company-update-app/gql/queries/company-schedules';
+import deleteWebsiteSchedule from '@base-cms/company-update-app/gql/mutations/delete-website-schedule';
 
 export default Controller.extend(ActionMixin, {
   apollo: inject(),
@@ -83,6 +85,16 @@ export default Controller.extend(ActionMixin, {
         const contentId = this.get('model.company.id');
         const sectionIds = this.get('selected');
         const variables = { input: { contentId, sectionIds } };
+        const existingSchedules = await this.apollo.query({ query: companySchedules, variables: { input: { contentId } } });
+        if (existingSchedules && existingSchedules.contentWebsiteSchedules) {
+          const nodes = existingSchedules.contentWebsiteSchedules.edges.map((edge) => edge.node);
+          const removedIds = this.get('removed');
+          const removedIdsSet = new Set(removedIds);
+          const scheduleIdsToDelete = nodes.filter((node) => removedIdsSet.has(node.section.id)).map((node) => node.id);
+          await Promise.all(scheduleIdsToDelete.map(
+            (id) => this.apollo.mutate({ mutation: deleteWebsiteSchedule, variables: { input: { id } } }),
+          ));
+        }
         await this.apollo.mutate({ mutation: publish, variables }, 'quickCreateWebsiteSchedules');
         set(this, 'model.submission.reviewed', true);
         await this.apollo.mutate({ mutation: discard, variables: { id }, refetchQueries: ['ContentUpdateListSubmissions'] });

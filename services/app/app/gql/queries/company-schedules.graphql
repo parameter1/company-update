@@ -1,0 +1,12 @@
+query CompanySchedules($input: ContentWebsiteSchedulesQueryInput!) {
+  contentWebsiteSchedules(input: $input) {
+    edges {
+      node {
+        id
+        section {
+          id
+        }
+      }
+    }
+  }
+}
