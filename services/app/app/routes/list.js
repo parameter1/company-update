@@ -22,7 +22,18 @@ export default Route.extend(AuthenticatedRouteMixin, ActionMixin, {
       fetchPolicy: 'network-only',
     }, 'companyUpdateSubmissions');
     this.endAction();
-    return model;
+    return model.map((item) => {
+      const { label, type, ...rest } = item;
+      const finalLabel = label.match('_') ? label.split('_').map((word) => {
+        const [firstLetter] = word;
+        return word.replace(firstLetter, firstLetter.toUpperCase());
+      }).join(' ') : label;
+      return {
+        ...rest,
+        type: type.replace(/_/g, '-'),
+        label: finalLabel,
+      };
+    });
   },
   actions: {
     loading(transition) {

@@ -8,6 +8,7 @@ fragment CompanySchedulesFragment on ContentCompany {
     section {
       id
       name
+      alias
     }
   }
 }

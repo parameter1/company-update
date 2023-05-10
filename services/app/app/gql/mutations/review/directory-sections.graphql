@@ -1,0 +1,5 @@
+mutation ContentPortalReviewPublishDirectorySchedules($input: QuickCreateWebsiteSchedulesMutationInput!) {
+	quickCreateWebsiteSchedules(input: $input) {
+    id
+  }
+}
