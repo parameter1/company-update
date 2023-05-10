@@ -55,20 +55,23 @@ export default Controller.extend(ActionMixin, {
     return Object.keys(reduced).map(id => reduced[id]).sort((a, b) => a.name.localeCompare(b.name));
   }),
 
-  selected: computed('model.categories', 'sites', function() {
-    const sectionIds = this.get('model.categories');
+  selected: computed('model.selected', 'sites', function() {
+    const sectionIds = this.get('model.selected');
     const sites = this.get('sites');
     // Ensure selected sections are narrowed to the ones actually related to directories
     const applicableSectionIds = new Set(sites.map((site) => site.sections.map((section) => section.id)).flat());
     return sectionIds.filter((sectionId) => applicableSectionIds.has(sectionId));
   }),
 
+  removed: computed.reads('model.removed'),
+
   actions: {
     toggleSection(id) {
       const selected = this.get('selected') || [];
+      const removed = this.get('removed') || [];
       if (selected.includes(id)) {
         selected.removeObject(id);
-      } else {
+      } else if (!removed.includes(id)) {
         selected.pushObject(id);
       }
     },
