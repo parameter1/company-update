@@ -84,7 +84,7 @@ export default Route.extend({
     this.controllerFor('portal.directory-sections').set('hash', hash);
     const schedules = get(model, 'contentHash.websiteSchedules') || [];
     const ids = schedules.map((s) => get(s, 'section.id'));
-    this.controllerFor('portal.directory-sections').set('categories', ids);
+    this.controllerFor('portal.directory-sections').set('sections', ids);
   },
 
 });
