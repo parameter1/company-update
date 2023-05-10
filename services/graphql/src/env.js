@@ -42,7 +42,6 @@ module.exports = cleanEnv(process.env, {
   DIRECTORY_SELECTION_MAX: num({ desc: 'The maximum number of children that can be selected per category. Set 0 to disable', default: 0 }),
   DIRECTORY_SECTIONS_ENABLED: bool({ desc: 'If the online directory section should be displayed', default: false }),
   DIRECTORY_SECTIONS_ALIAS: nonemptystr({ desc: 'The online directory section alias to be displayed', default: 'directory' }),
-  DIRECTORY_SECTIONS_MAX: num({ desc: 'The maximum number of online directory sections that can be selected per site.', default: 3 }),
   DIRECTORY_SECTIONS_PRIMARY_SITE_ONLY: bool({ desc: 'If online directory sections should be limited to content primary site.', default: false }),
   DIRECTORY_SECTIONS_SCHEDULED_SITE_ONLY: bool({ desc: 'If online directory sections should be limited sites that have schedules.', default: false }),
   LOGO_URL: str({ desc: 'If configured, will be replace the branding in the navigation.', default: '' }),
