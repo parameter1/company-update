@@ -182,6 +182,18 @@ legend.leadership-category {
   width: auto;
 }
 
+.row.directory-sections-row:first-of-type {
+  margin-top: 0 !important;
+}
+
+fieldset.directory-sections {
+  min-width: 100%;
+}
+
+legend.directory-sections {
+  width: auto;
+}
+
 .card-expandable {
   .card-body {
     color: #000;

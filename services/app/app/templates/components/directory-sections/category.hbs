@@ -1,0 +1,35 @@
+<legend class="directory-sections h6 text-muted">{{ category.name }}</legend>
+
+{{#if sections.length}}
+  {{#if isMaxDepth}}
+    <div class="row m-1">
+      {{#each sections as |section|}}
+        {{directory-sections/section
+          section=section
+          selected=selected
+          canSelect=canSelect
+          onToggle=onToggle
+        }}
+      {{/each}}
+    </div>
+  {{else}}
+    {{#each sections as |section|}}
+      {{directory-sections/category
+        category=section
+        selected=selected
+        canSelect=canSelect
+        onToggle=onToggle
+        depth=nextDepth
+      }}
+    {{/each}}
+  {{/if}}
+{{else}}
+  <div class="row m-1">
+    {{directory-sections/section
+      section=category
+      selected=selected
+      canSelect=canSelect
+      onToggle=onToggle
+    }}
+  </div>
+{{/if}}
