@@ -17,7 +17,6 @@ module.exports = gql`
     directorySelectionMax: Int
     directorySectionsEnabled: Boolean!
     directorySectionsAlias: String!
-    directorySectionsSectionMax: Int!
     directorySectionsPrimarySiteOnly: Boolean!
     directorySectionsScheduledSitesOnly: Boolean!
     leadershipEnabled: Boolean!

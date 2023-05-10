@@ -40,13 +40,10 @@ export default Component.extend(ActionMixin, {
   }),
 
   selected: computed.reads('_selected.length'),
-  maximum: computed.reads('config.leadershipSectionMax'),
   hasChildren: computed('sections.[]', function() {
     return this.get('sections').some(s => get(s, 'children.totalCount') > 0);
   }),
-  canSelect: computed('selected', 'maximum', function() {
-    return this.get('selected') < this.get('maximum');
-  }),
+  canSelect: true,
 
   actions: {
     toggle(id) {

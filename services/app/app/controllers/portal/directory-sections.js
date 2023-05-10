@@ -8,22 +8,22 @@ export default Controller.extend({
   isModalOpen: false,
   hash: null,
 
-  submitDisabled: computed('categories.[]', function() {
-    return this.get('categories.length') === 0;
+  submitDisabled: computed('sections.[]', function() {
+    return this.get('sections.length') === 0;
   }),
 
   init() {
     this._super(...arguments);
-    this.set('categories', []);
+    this.set('sections', []);
   },
 
   actions: {
     update(id) {
-      const categories = this.get('categories');
-      if (categories.includes(id)) {
-        categories.removeObject(id);
+      const sections = this.get('sections');
+      if (sections.includes(id)) {
+        sections.removeObject(id);
       } else {
-        categories.pushObject(id);
+        sections.pushObject(id);
       }
     },
     showModal() {

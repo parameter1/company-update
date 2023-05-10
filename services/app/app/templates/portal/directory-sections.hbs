@@ -1,7 +1,7 @@
 <div class="card mb-4">
   <div class="card-body">
-    <p class="lead">Select your directory categories.</p>
-    <p>For each section below, select the directory categories your company should be featured in. You may select up to <code>{{ config.directorySectionsSectionMax }}</code> categories per section.</p>
+    <p class="lead">Select your directory sections.</p>
+    <p>For each section below, select the directory sections your company should be featured in.</p>
     <p>{{ i18n "companyDetailsP3Label"}}</p>
   </div>
 </div>
@@ -9,7 +9,7 @@
 <div class="row">
   {{#each (get-edge-nodes this "model.websiteSites") as |site|}}
     {{#if site.sections.edges.length}}
-      {{directory-sections/site site=site selectedIds=categories onUpdate=(action "update")}}
+      {{directory-sections/site site=site selectedIds=sections onUpdate=(action "update")}}
     {{/if}}
   {{/each}}
 </div>
