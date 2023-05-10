@@ -11,10 +11,10 @@ module.exports = gql`
     email: String!
     hash: String!
     type: CompanyUpdateSubmissionType = directorysections
-    payload: CompanyUpdateLeadershipPayloadInput!
+    payload: CompanyUpdateDirectorySectionsPayloadInput!
   }
 
-  input CompanyUpdateLeadershipPayloadInput {
+  input CompanyUpdateDirectorySectionsPayloadInput {
     sections: [Int!]!
   }
 
