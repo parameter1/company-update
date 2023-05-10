@@ -11,9 +11,6 @@ export default Component.extend({
     return this.get('sectionIds').includes(id);
   }),
 
-  disabled: computed('canSelect', function() {
-    return !this.get('canSelect');
-  }),
   checked: computed('selected.[]', 'section.id', function() {
     const id = this.get('section.id');
     return this.get('selected').includes(id);

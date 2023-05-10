@@ -9,8 +9,6 @@ export default Component.extend(ActionMixin, {
   classNames: ['col-12 mb-3'],
   site: null,
 
-  canSelect: true,
-
   init() {
     this._super(...arguments);
     this.set('_selected', []);

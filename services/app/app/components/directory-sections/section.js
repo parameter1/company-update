@@ -5,9 +5,6 @@ export default Component.extend({
   classNames: ['col-md-4 col-sm-6 col-12'],
   section: null,
 
-  disabled: computed('canSelect', function() {
-    return !this.get('canSelect');
-  }),
   checked: computed('selected.[]', 'section.id', function() {
     const id = this.get('section.id');
     return this.get('selected').includes(id);

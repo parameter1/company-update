@@ -43,7 +43,6 @@ export default Component.extend(ActionMixin, {
   hasChildren: computed('sections.[]', function() {
     return this.get('sections').some(s => get(s, 'children.totalCount') > 0);
   }),
-  canSelect: true,
 
   actions: {
     toggle(id) {
