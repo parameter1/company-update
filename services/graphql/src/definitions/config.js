@@ -15,11 +15,11 @@ module.exports = gql`
     directoryEnabled: Boolean!
     directoryCategoryIds: [Int!]
     directorySelectionMax: Int
-    onlineDirectoryEnabled: Boolean!
-    onlineDirectoryAlias: String!
-    onlineDirectorySectionMax: Int!
-    onlineDirectoryPrimarySiteOnly: Boolean!
-    onlineDirectoryScheduledSitesOnly: Boolean!
+    directorySectionsEnabled: Boolean!
+    directorySectionsAlias: String!
+    directorySectionsSectionMax: Int!
+    directorySectionsPrimarySiteOnly: Boolean!
+    directorySectionsScheduledSitesOnly: Boolean!
     leadershipEnabled: Boolean!
     leadershipPromotionsEnabled: Boolean!
     leadershipPrimarySiteOnly: Boolean!

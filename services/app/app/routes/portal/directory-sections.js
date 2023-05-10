@@ -16,17 +16,17 @@ export default Route.extend({
 
   async model() {
     const {
-      onlineDirectoryAlias,
-      onlineDirectoryPrimarySiteOnly,
-      onlineDirectoryScheduledSitesOnly,
+      directorySectionsAlias,
+      directorySectionsPrimarySiteOnly,
+      directorySectionsScheduledSitesOnly,
     } = this.config;
     const siteId = get(this.modelFor('portal'), 'primarySite.id');
     const { hash } = this.paramsFor('portal');
 
-    if (onlineDirectoryPrimarySiteOnly) {
+    if (directorySectionsPrimarySiteOnly) {
       const variables = {
         site: { id: siteId },
-        leaders: { includeAliases: [onlineDirectoryAlias], ...pagination, siteId },
+        leaders: { includeAliases: [directorySectionsAlias], ...pagination, siteId },
         children: pagination,
         content: { hash, status: 'any' },
       };
@@ -46,7 +46,7 @@ export default Route.extend({
 
     const variables = {
       sites: pagination,
-      leaders: { includeAliases: [onlineDirectoryAlias], ...pagination },
+      leaders: { includeAliases: [directorySectionsAlias], ...pagination },
       children: pagination,
       content: { hash, status: 'any' },
     };
@@ -57,7 +57,7 @@ export default Route.extend({
     } = await this.apollo.query({ query: multi, variables, fetchPolicy: 'network-only' });
 
     // If enabled, limit sites to those the content has been scheduled to.
-    const siteIds = [...(new Set(onlineDirectoryScheduledSitesOnly && contentHash.websiteSchedules.length
+    const siteIds = [...(new Set(directorySectionsScheduledSitesOnly && contentHash.websiteSchedules.length
       ? contentHash.websiteSchedules.map((s => get(s, 'section.site.id')))
       : websiteSites.edges.map(({ node }) => node.id)))];
 

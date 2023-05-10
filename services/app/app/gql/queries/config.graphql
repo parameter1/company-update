@@ -12,11 +12,11 @@ query CompanyUpdateConfig {
     directoryEnabled
     directoryCategoryIds
     directorySelectionMax
-    onlineDirectoryEnabled
-    onlineDirectoryAlias
-    onlineDirectorySectionMax
-    onlineDirectoryPrimarySiteOnly
-    onlineDirectoryScheduledSitesOnly
+    directorySectionsEnabled
+    directorySectionsAlias
+    directorySectionsSectionMax
+    directorySectionsPrimarySiteOnly
+    directorySectionsScheduledSitesOnly
     logoUrl
     leadershipEnabled
     leadershipPromotionsEnabled
