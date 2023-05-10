@@ -1,0 +1,47 @@
+{{#bs-modal show=isOpen as |modal|}}
+  <form {{action "submit" on="submit"}}>
+    {{#modal.header}}
+      <h5 class="modal-title">Update directory sections</h5>
+      <button {{action modal.actions.hide}} type="button" class="close" aria-label="Close">
+        {{entypo-icon "cross"}}
+      </button>
+    {{/modal.header}}
+
+    {{#modal.body}}
+      <p class="lead">{{ i18n "confirmHeadLabel" }}</p>
+      <hr>
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label for="name">{{ i18n "nameLabel" }}</label>
+            {{input type="text" autocomplete="none full_name" class="form-control" value=name autofocus="autofocus"}}
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label for="email">{{ i18n "emailLabel"}}</label>
+            {{input type="email" autocomplete="none email" class="form-control" value=email}}
+          </div>
+        </div>
+      </div>
+      {{#if error}}
+        <hr>
+        <div class="row">
+          <div class="col">
+            <h5 class="card-title">An error was encountered with this request:</h5>
+            <code>{{ error.message }}</code>
+          </div>
+        </div>
+      {{/if}}
+    {{/modal.body}}
+
+    {{#modal.footer}}
+      <button class="btn btn-success" type="submit" disabled={{isSubmitDisabled}}>
+        {{entypo-icon "save"}} {{ i18n "saveChangesLabel" }}
+      </button>
+    {{/modal.footer}}
+    {{progress-bar show=isActionRunning}}
+  </form>
+{{/bs-modal}}

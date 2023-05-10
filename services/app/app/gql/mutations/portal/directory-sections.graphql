@@ -1,0 +1,9 @@
+mutation DirectorySectionsSubmission($input: CompanyUpdateDirectorySectionsMutationInput!) {
+	companyUpdateDirectorySectionsSubmit(input: $input) {
+		id
+		submitted
+		name
+		email
+		payload
+	}
+}
