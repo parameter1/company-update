@@ -15,7 +15,8 @@ module.exports = gql`
   }
 
   input CompanyUpdateDirectorySectionsPayloadInput {
-    sections: [Int!]!
+    added: [Int!]!
+    removed: [Int!]!
   }
 
 `;

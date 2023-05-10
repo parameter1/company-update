@@ -13,7 +13,7 @@ export default Component.extend(ActionMixin, {
   notify: inject(),
   session: inject(),
   config: inject(),
-  sections: null,
+  payload: null,
   hash: null,
 
   name: null,
@@ -31,8 +31,12 @@ export default Component.extend(ActionMixin, {
     async submit() {
       this.startAction();
       this.set('error', null);
-      const { name, email, hash, sections } = this.getProperties('name', 'email', 'hash', 'sections');
-      const payload = { sections };
+      const {
+        name,
+        email,
+        hash,
+        payload
+      } = this.getProperties('name', 'email', 'hash', 'payload');
       const type = 'directory_sections';
       const variables = { input: { name, email, hash, type, payload } };
 

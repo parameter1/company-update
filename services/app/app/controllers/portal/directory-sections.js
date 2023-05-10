@@ -8,22 +8,36 @@ export default Controller.extend({
   isModalOpen: false,
   hash: null,
 
-  submitDisabled: computed('sections.[]', function() {
-    return this.get('sections.length') === 0;
+  submitDisabled: computed('payload.{added,removed}', function() {
+    const { added, removed } = this.get('payload');
+    return added.length === 0 && removed.length === 0;
+  }),
+
+  payload: computed('selected.[]', 'initial.[]', function() {
+    const { selected, initial } = this.getProperties('selected', 'initial');
+    const payload = { removed: [], added: [] };
+    selected.forEach((id) => {
+      if (!initial.includes(id)) payload.added.push(id);
+    });
+    initial.forEach((id) => {
+      if (!selected.includes(id)) payload.removed.push(id);
+    });
+    return payload;
   }),
 
   init() {
     this._super(...arguments);
-    this.set('sections', []);
+    this.set('selected', []);
+    this.set('initial', []);
   },
 
   actions: {
     update(id) {
-      const sections = this.get('sections');
-      if (sections.includes(id)) {
-        sections.removeObject(id);
+      const selected = this.get('selected');
+      if (selected.includes(id)) {
+        selected.removeObject(id);
       } else {
-        sections.pushObject(id);
+        selected.pushObject(id);
       }
     },
     showModal() {
