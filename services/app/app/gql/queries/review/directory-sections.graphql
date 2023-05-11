@@ -1,0 +1,19 @@
+query ContentUpdateReviewDirectorySections($input: WebsiteSectionsQueryInput!) {
+  websiteSections(input: $input) {
+    edges {
+      node {
+        id
+        name
+        alias
+        site {
+          id
+          name
+        }
+        parent {
+          id
+          name
+        }
+      }
+    }
+  }
+}

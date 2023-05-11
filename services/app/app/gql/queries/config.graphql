@@ -12,6 +12,10 @@ query CompanyUpdateConfig {
     directoryEnabled
     directoryCategoryIds
     directorySelectionMax
+    directorySectionsEnabled
+    directorySectionsAlias
+    directorySectionsPrimarySiteOnly
+    directorySectionsScheduledSitesOnly
     logoUrl
     leadershipEnabled
     leadershipPromotionsEnabled

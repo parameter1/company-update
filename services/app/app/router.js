@@ -12,12 +12,14 @@ Router.map(function() {
     this.route('contacts');
     this.route('leadership');
     this.route('directory');
+    this.route('directory-sections');
     this.route('promotions');
     this.route('company');
   });
   this.route('review', { path: '/review/:id' }, function () {
     this.route('company');
     this.route('directory');
+    this.route('directory-sections');
     this.route('leadership');
     this.route('product');
     this.route('contact');

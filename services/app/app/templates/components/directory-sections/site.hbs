@@ -1,0 +1,31 @@
+<div class="card">
+  <h6 class="card-header">
+    {{ site.name }}
+    <small class="pull-right text-primary">
+      Selected: <span class="badge">{{ selected }}</span>
+    </small>
+  </h6>
+  <div class="card-body">
+    {{#if hasChildren}}
+      {{#each sections as |section|}}
+        <div class="directory-sections-row row mt-3">
+          {{directory-sections/category
+            category=section
+            selected=_selected
+            onToggle=(action "toggle")
+          }}
+        </div>
+      {{/each}}
+    {{else}}
+      <div class="row">
+        {{#each sections as |section|}}
+          {{directory-sections/section
+            section=section
+            selected=_selected
+            onToggle=(action "toggle")
+          }}
+        {{/each}}
+      </div>
+    {{/if}}
+  </div>
+</div>
