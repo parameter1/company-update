@@ -54,9 +54,9 @@ services:
       AWS_S3_BUCKET: ${AWS_S3_BUCKET-p1-cms-cuf-uploads}
       AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
       MONGO_DSN: ${MONGO_DSN-mongodb://mongo/cuf}
-      NOTIFICATION_TO: ${NOTIFICATION_TO-developer@endeavorb2b.com}
+      NOTIFICATION_TO: ${NOTIFICATION_TO-support@parameter1.com}
       SENDGRID_API_KEY: ${SENDGRID_API_KEY}
-      SENDGRID_FROM: ${SENDGRID_FROM-no-reply@baseplatform.io}
+      SENDGRID_FROM: ${SENDGRID_FROM-no-reply@parameter1.com}
       FETCH_TIMEOUT: ${FETCH_TIMEOUT-30000}
       # Tenant-specific
       BASE4_API_URL: ${BASE4_API_URL}
