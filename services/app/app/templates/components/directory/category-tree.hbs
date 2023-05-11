@@ -1,11 +1,13 @@
 <div class={{ rootClass }}>
   {{#if node.children.length}}
-    <div role="button" class="mb-1 align-items-center" {{action "collapse"}}>
+    <div role="button" class="align-items-center" {{action "collapse"}}>
       {{entypo-icon (if collapsed "chevron-right" "chevron-down") class="mr-2"}}
       {{ node.name }}
-      <small class="pull-right text-primary">
-        Selected: <span class="badge">{{ selected }}{{#if maximum}} / {{ maximum }}{{/if}}</span>
-      </small>
+      {{#if selected}}
+        <small class="pull-right text-muted child-category-selected-count-label">
+          Selected: <strong>{{ selected }}</strong>
+        </small>
+      {{/if}}
     </div>
   {{else}}
     <label class="d-flex align-items-center">
@@ -20,7 +22,7 @@
   {{/if}}
   {{#unless collapsed }}
     {{#if node.children.length}}
-      <div class="ml-3">
+      <div class="mt-2 ml-3">
         {{#each node.children as |child|}}
           {{directory/category-tree
             node=child
