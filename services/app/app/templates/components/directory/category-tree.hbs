@@ -1,9 +1,14 @@
 <div class={{ rootClass }}>
   {{#if node.children.length}}
-    <label role="button" class="d-flex align-items-center" {{action "collapse"}}>
+    <div role="button" class="align-items-center" {{action "collapse"}}>
       {{entypo-icon (if collapsed "chevron-right" "chevron-down") class="mr-2"}}
       {{ node.name }}
-    </label>
+      {{#if selected}}
+        <small class="pull-right text-muted">
+          Selected: <strong>{{ selected }}</strong>
+        </small>
+      {{/if}}
+    </div>
   {{else}}
     <label class="d-flex align-items-center">
       <Input
@@ -17,7 +22,7 @@
   {{/if}}
   {{#unless collapsed }}
     {{#if node.children.length}}
-      <div class="ml-3">
+      <div class="mt-2 ml-3">
         {{#each node.children as |child|}}
           {{directory/category-tree
             node=child
