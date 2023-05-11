@@ -47,8 +47,6 @@ export default Component.extend({
 
   selected: computed.reads('_selected.length'),
 
-  maximum: computed.reads('config.directorySelectionMax'),
-
   actions: {
     collapse() {
       this.set('collapsed', !this.collapsed);
