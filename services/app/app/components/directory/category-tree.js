@@ -1,6 +1,5 @@
 import Component from '@ember/component';
 import { computed, get } from '@ember/object';
-import { inject } from '@ember/service';
 
 const { error } = console;
 
@@ -18,7 +17,6 @@ const getOwnedIds = (obj, ids = []) => {
 
 export default Component.extend({
   classNameBindings: ['root:tree-wrapper', 'root:border', 'root:p-2'],
-  config: inject(),
   node: null,
   collapsed: false,
   root: false,
