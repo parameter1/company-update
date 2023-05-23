@@ -17,6 +17,7 @@ export default Component.extend(ActionMixin, {
   notify: inject(),
   classNames: ['col-12 mb-3'],
   site: null,
+  collapsed: true,
 
   init() {
     this._super(...arguments);
@@ -49,6 +50,9 @@ export default Component.extend(ActionMixin, {
   }),
 
   actions: {
+    collapse() {
+      this.set('collapsed', !this.collapsed);
+    },
     toggle(id) {
       const selected = this.get('_selected');
       if (selected.includes(id)) {
