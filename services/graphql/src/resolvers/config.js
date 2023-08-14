@@ -22,6 +22,7 @@ const {
   PORTAL_PAGE_VERBIAGE,
   COMPANY_DETAILS_VERBIAGE,
   PROMOTIONS_VERBIAGE,
+  REQUIRED_COMPANY_FIELDS,
   APP_LOCALE,
 } = require('../env');
 
@@ -33,6 +34,7 @@ const parseCustomAttributes = () => {
   }
 };
 const directoryCategoryIds = `${DIRECTORY_CATEGORY_IDS}`.split(',').map(id => parseInt(id, 10)).filter(v => v);
+const requiredCompanyFields = `${REQUIRED_COMPANY_FIELDS}`.split(',').filter(v => v);
 
 module.exports = {
   Query: {
@@ -60,6 +62,7 @@ module.exports = {
       portalPageVerbiage: PORTAL_PAGE_VERBIAGE,
       companyDetailsVerbiage: COMPANY_DETAILS_VERBIAGE,
       promotionsVerbiage: PROMOTIONS_VERBIAGE,
+      requiredCompanyFields,
       locale: APP_LOCALE || 'en-us',
     }),
   },
