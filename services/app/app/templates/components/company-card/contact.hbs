@@ -76,25 +76,25 @@
       </div>
     </div>
   </div>
-    <div class="row">
-      <div class="form-group col-md-4">
-        {{#if (is-required "email") }}
-          <label class="required-company-field" for="email-input">{{ i18n "contactEmailLabel" }}*</label>
-        {{else}}
-          <label for="email-input">{{ i18n "contactEmailLabel" }}</label>
-        {{/if}}
+  <div class="row">
+    <div class="form-group col-md-4">
+      {{#if (is-required "email") }}
+        <label class="required-company-field" for="email-input">{{ i18n "contactEmailLabel" }}*</label>
+      {{else}}
+        <label for="email-input">{{ i18n "contactEmailLabel" }}</label>
+      {{/if}}
 
-        <div class="input-group">
-          {{input
-            type="email"
-            class="form-control"
-            id="email-input"
-            aria-describedby="email-help"
-            value=model.email
-            change=(action onChange)
-          }}
-        </div>
-    </div>
+      <div class="input-group">
+        {{input
+          type="email"
+          class="form-control"
+          id="email-input"
+          aria-describedby="email-help"
+          value=model.email
+          change=(action onChange)
+        }}
+      </div>
   </div>
+</div>
 </form>
 <div class="card-footer"></div>
