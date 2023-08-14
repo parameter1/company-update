@@ -36,6 +36,7 @@ export default Route.extend(ApplicationRouteMixin, {
     portalPageVerbiage,
     companyDetailsVerbiage,
     promotionsVerbiage,
+    requiredCompanyFields,
     locale
   }) {
     this.config.load({
@@ -62,6 +63,7 @@ export default Route.extend(ApplicationRouteMixin, {
       portalPageVerbiage,
       companyDetailsVerbiage,
       promotionsVerbiage,
+      requiredCompanyFields,
       locale
     });
   },
