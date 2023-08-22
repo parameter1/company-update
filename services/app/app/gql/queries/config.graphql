@@ -28,6 +28,7 @@ query CompanyUpdateConfig {
     portalPageVerbiage
     companyDetailsVerbiage
     promotionsVerbiage
+    requiredCompanyFields
     locale
   }
 }

@@ -45,6 +45,7 @@ module.exports = gql`
     website: String
     type: String
     email: String
+    publicEmail: String
     body: String
     externalLinks: [ExternalLinkInput!]
     socialLinks: [SocialLinkInput!]

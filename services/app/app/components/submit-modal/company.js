@@ -22,6 +22,7 @@ const fields = [
   'website',
   'type',
   'email',
+  'publicEmail',
   'body',
   'socialLinks',
   'externalLinks',

@@ -31,6 +31,7 @@ module.exports = gql`
     portalPageVerbiage: String
     companyDetailsVerbiage: String
     promotionsVerbiage: String
+    requiredCompanyFields: [String!]!
   }
 
   type CompanyCustomAttribute {

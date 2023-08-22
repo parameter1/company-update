@@ -8,5 +8,6 @@ fragment CompanyContactFragment on ContentCompany {
   mobile
   website
   email
+  publicEmail
 }
 `;

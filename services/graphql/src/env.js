@@ -60,5 +60,6 @@ module.exports = cleanEnv(process.env, {
   PORTAL_PAGE_VERBIAGE: str({ desc: 'Alternative verbiage to display on the portal landing page', default: '' }),
   COMPANY_DETAILS_VERBIAGE: str({ desc: 'Alternative verbiage to display on the company details modification page', default: '' }),
   PROMOTIONS_VERBIAGE: str({ desc: 'Alternative verbiage to display on the company promotion modification page', default: '' }),
+  REQUIRED_COMPANY_FIELDS: str({ desc: 'Fields that are required to be filled in on the company details modification page', default: '' }),
   APP_LOCALE: str({ desc: 'The application locale', choices: ['en-us', 'es-mx'], default: 'en-us' }),
 });
