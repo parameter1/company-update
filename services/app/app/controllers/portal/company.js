@@ -11,7 +11,6 @@ export default Controller.extend({
   submitDisabled: computed('config.requiredCompanyFields', 'model', function() {
     const requiredFields = this.config.requiredCompanyFields || [];
     const requiredValuesSet = requiredFields.map((fieldName) => this.get(`model.${fieldName}`)).filter((v) => v);
-    console.log(requiredFields, requiredValuesSet);
     return requiredFields.length !== requiredValuesSet.length;
   }),
 
