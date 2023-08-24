@@ -12,6 +12,17 @@ export default Controller.extend({
     return this.get('categories.length') === 0;
   }),
 
+  leadershipEnabled: computed('config.{leadershipEnabled,leadershipCompanyLabel}', 'model.contentHash.{labels.[]}', function() {
+    // disable leadership Categories if not enabled
+    if(!this.config.leadershipEnabled) return false;
+    // if company label is configured return the leadershipEnabled setting from the config
+    if(this.config.leadershipCompanyLabel) {
+      // check that the company label is in the array of labels for this company
+      return this.model.contentHash.labels.includes(this.config.leadershipCompanyLabel);
+    }
+    return true;
+  }),
+
   categoryPrefix: computed.reads('config.leadershipCategoryPrefix'),
 
   init() {
