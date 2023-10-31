@@ -13,17 +13,18 @@ export default Controller.extend({
     return added.length === 0 && removed.length === 0;
   }),
 
-  payload: computed('selected.[]', 'initial.[]', function() {
+  payload: computed('selected.[]', 'initial.[]', 'config.leadershipAllowCategoryRemoval', function() {
+    const sectionRemovalAllowed = this.get('config.leadershipAllowCategoryRemoval');
     const { selected, initial } = this.getProperties('selected', 'initial');
     const payload = { removed: [], added: [] };
     selected.forEach((id) => {
       if (!initial.includes(id)) payload.added.push(id);
     });
-    // @todo Update this behavior to be opted into via configuration
-    // added preserves the previous behavior in being additive only
-    initial.forEach((id) => {
-      if (!selected.includes(id)) payload.removed.push(id);
-    });
+    if (sectionRemovalAllowed) {
+      initial.forEach((id) => {
+        if (!selected.includes(id)) payload.removed.push(id);
+      });
+    }
     return payload;
   }),
 
