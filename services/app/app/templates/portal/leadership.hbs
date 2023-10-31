@@ -9,7 +9,7 @@
 <div class="row">
   {{#each (get-edge-nodes this "model.websiteSites") as |site|}}
     {{#if site.sections.edges.length}}
-      {{leadership/site site=site selectedIds=categories onUpdate=(action "update")}}
+      {{leadership/site site=site selectedIds=selected onUpdate=(action "update")}}
     {{/if}}
   {{/each}}
 </div>
@@ -24,6 +24,6 @@
 {{submit-modal/categories
   hash=hash
   isOpen=isModalOpen
-  categories=categories
+  payload=payload
   onComplete=(action "transitionToPortal")
 }}
