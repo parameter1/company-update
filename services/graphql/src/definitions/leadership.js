@@ -15,7 +15,8 @@ module.exports = gql`
   }
 
   input CompanyUpdateLeadershipPayloadInput {
-    categories: [Int!]!
+    added: [Int!]!
+    removed: [Int!]!
   }
 
 `;
