@@ -39,9 +39,13 @@ export default Controller.extend({
   actions: {
     update(id) {
       const selected = this.get('selected');
-      if (selected.includes(id)) {
+      const initial = this.get('initial');
+      const sectionRemovalAllowed = this.get('config.leadershipAllowCategoryRemoval');
+      if (selected.includes(id) && !initial.includes(id)) {
         selected.removeObject(id);
-      } else {
+      } else if (selected.includes(id) && initial.includes(id) && sectionRemovalAllowed) {
+        selected.removeObject(id);
+      } else if (!selected.includes(id)) {
         selected.pushObject(id);
       }
     },
