@@ -9,7 +9,7 @@
 <div class="row">
   {{#each (get-edge-nodes this "model.websiteSites") as |site|}}
     {{#if site.sections.edges.length}}
-      {{leadership/site site=site selectedIds=selected onUpdate=(action "update")}}
+      {{leadership/site site=site selectedIds=selected initialIds=initial onUpdate=(action "update")}}
     {{/if}}
   {{/each}}
 </div>
