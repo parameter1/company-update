@@ -25,6 +25,7 @@ query CompanyUpdateConfig {
     leadershipSectionMax
     leadershipPrimarySiteOnly
     leadershipScheduledSitesOnly
+    leadershipAllowCategoryRemoval
     portalPageVerbiage
     companyDetailsVerbiage
     promotionsVerbiage

@@ -55,9 +55,13 @@ export default Component.extend(ActionMixin, {
     },
     toggle(id) {
       const selected = this.get('_selected');
-      if (selected.includes(id)) {
+      const initial = this.get('initialIds');
+      const sectionRemovalAllowed = this.get('config.leadershipAllowCategoryRemoval');
+      if (selected.includes(id) && !initial.includes(id)) {
         selected.removeObject(id);
-      } else {
+      } else if (selected.includes(id) && initial.includes(id) && sectionRemovalAllowed) {
+        selected.removeObject(id);
+      } else if (!selected.includes(id)) {
         selected.pushObject(id);
       }
       this.onUpdate(id);

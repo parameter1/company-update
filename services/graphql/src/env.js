@@ -54,6 +54,7 @@ module.exports = cleanEnv(process.env, {
   LEADERSHIP_SECTION_MAX: num({ desc: 'The maximum number of leadership sections that can be selected per site.', default: 3 }),
   LEADERSHIP_PRIMARY_SITE_ONLY: bool({ desc: 'If leadership sections should be limited to content primary site.', default: false }),
   LEADERSHIP_SCHEDULED_SITES_ONLY: bool({ desc: 'If leadership sections should be limited sites that have schedules.', default: false }),
+  LEADERSHIP_ALLOW_CATEGORY_REMOVAL: bool({ desc: 'If leadership sections are allowed to be removed', default: true }),
   COMPANY_CUSTOM_ATTRIBUTES: str({ desc: 'Custom attribute definitions (key, category, label, description', default: '[]' }),
   CONTACT_URL: str({ desc: 'If configured, the URL that will be added to the navigation for support requests.', default: '' }),
   CONTACT_TEXT: str({ desc: 'Link text for navigation element', default: 'Contact Us' }),
