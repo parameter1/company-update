@@ -6,12 +6,6 @@ export default Controller.extend({
   isModalOpen: false,
   count: 0,
 
-  promotions: computed('model.[]', function() {
-    return this.get('model.promotions.edges').map(({ node }) => {
-      const { id, name, linkUrl, linkText, primaryImage } = node;
-      return { id, name, linkUrl, linkText, ...(primaryImage && { primaryImage } || { primaryImage: { src: null } }) };
-    });
-  }),
   promotionsVerbiage: computed('config.promotionsVerbiage', function() {
     if (this.config.promotionsVerbiage) {
       return htmlSafe(this.config.promotionsVerbiage);
