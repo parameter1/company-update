@@ -108,7 +108,7 @@ export default Controller.extend(ActionMixin, {
       set(this, 'isPublishing', true);
       try {
         const { id } = this.get('model.submission');
-        const promotions = this.get('model.promotions');
+        const promotions = this.get('promotions');
         const contentId = this.get('model.company.id');
         const contentName = this.get('model.company.name');
         const primarySiteId = this.get('model.company.primarySite.id');

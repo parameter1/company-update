@@ -10,7 +10,7 @@
 </div>
 
 <div class="row">
-  {{#each model.promotions as |object|}}
+  {{#each promotions as |object|}}
     {{#if (and object.original object.updated)}}
       {{!-- Modified --}}
       {{promotion-card-review
