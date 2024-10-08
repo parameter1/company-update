@@ -26,7 +26,7 @@ export default Route.extend({
     if (directorySectionsPrimarySiteOnly) {
       const variables = {
         site: { id: siteId },
-        leaders: { includeAliases: [directorySectionsAlias], ...pagination, siteId },
+        leaders: { includeAliases: [...directorySectionsAlias.split('|')], ...pagination, siteId },
         children: pagination,
         content: { hash, status: 'any' },
       };
@@ -46,7 +46,7 @@ export default Route.extend({
 
     const variables = {
       sites: pagination,
-      leaders: { includeAliases: [directorySectionsAlias], ...pagination },
+      leaders: { includeAliases: [...directorySectionsAlias.split('|')], ...pagination },
       children: pagination,
       content: { hash, status: 'any' },
     };
