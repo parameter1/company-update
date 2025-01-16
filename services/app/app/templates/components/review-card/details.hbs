@@ -36,49 +36,51 @@
       }}
     </div>
   </div>
-  <div class="row">
-    <div class="form-group col-md-6">
-      <label for="number-of-employees-input">{{ i18n "numberOfEmployeesLabel"}}</label>
-      {{review-field
-        original=company.numberOfEmployees
-        updated=submission.payload.numberOfEmployees
-        toggleField=toggleField
-        fieldKey="numberOfEmployees"
-        enabled=payload.numberOfEmployees
-      }}
+  {{#if companyDetailsExtraFieldsEnabled}}
+    <div class="row">
+      <div class="form-group col-md-6">
+        <label for="number-of-employees-input">{{ i18n "numberOfEmployeesLabel"}}</label>
+        {{review-field
+          original=company.numberOfEmployees
+          updated=submission.payload.numberOfEmployees
+          toggleField=toggleField
+          fieldKey="numberOfEmployees"
+          enabled=payload.numberOfEmployees
+        }}
+      </div>
+      <div class="form-group col-md-6">
+        <label for="years-in-operation-input">{{ i18n "yearsInOperationLabel"}}</label>
+        {{review-field
+          original=company.yearsInOperation
+          updated=submission.payload.yearsInOperation
+          toggleField=toggleField
+          fieldKey="yearsInOperation"
+          enabled=payload.yearsInOperation
+        }}
+      </div>
     </div>
-    <div class="form-group col-md-6">
-      <label for="years-in-operation-input">{{ i18n "yearsInOperationLabel"}}</label>
-      {{review-field
-        original=company.yearsInOperation
-        updated=submission.payload.yearsInOperation
-        toggleField=toggleField
-        fieldKey="yearsInOperation"
-        enabled=payload.yearsInOperation
-      }}
+    <div class="row">
+      <div class="form-group col-md-6">
+        <label for="sales-region-input">{{ i18n "salesRegionLabel"}}</label>
+        {{review-field
+          original=company.salesRegion
+          updated=submission.payload.salesRegion
+          toggleField=toggleField
+          fieldKey="salesRegion"
+          enabled=payload.salesRegion
+        }}
+      </div>
+      <div class="form-group col-md-6">
+        <label for="sales-channels-input">{{ i18n "salesChannelsLabel"}}</label>
+        {{review-field
+          original=company.salesChannels
+          updated=submission.payload.salesChannels
+          toggleField=toggleField
+          fieldKey="salesChannels"
+          enabled=payload.salesChannels
+        }}
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="form-group col-md-6">
-      <label for="sales-region-input">{{ i18n "salesRegionLabel"}}</label>
-      {{review-field
-        original=company.salesRegion
-        updated=submission.payload.salesRegion
-        toggleField=toggleField
-        fieldKey="salesRegion"
-        enabled=payload.salesRegion
-      }}
-    </div>
-    <div class="form-group col-md-6">
-      <label for="sales-channels-input">{{ i18n "salesChannelsLabel"}}</label>
-      {{review-field
-        original=company.salesChannels
-        updated=submission.payload.salesChannels
-        toggleField=toggleField
-        fieldKey="salesChannels"
-        enabled=payload.salesChannels
-      }}
-    </div>
-  </div>
+  {{/if}}
 </form>
 <div class="card-footer"></div>

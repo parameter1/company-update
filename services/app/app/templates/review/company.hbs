@@ -40,12 +40,14 @@
       toggleField=(action "toggleField")
       payload=payload
     }}
-    {{review-card/services
-      company=model.company
-      submission=model.submission
-      toggleField=(action "toggleField")
-      payload=payload
-    }}
+    {{#if companyServicesFieldsEnabled}}
+      {{review-card/services
+        company=model.company
+        submission=model.submission
+        toggleField=(action "toggleField")
+        payload=payload
+      }}
+    {{/if}}
   </div>
   <div class="col-12 col-lg-4 col-xl-3 my-3">
     {{review-card/logo

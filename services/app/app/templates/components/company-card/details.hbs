@@ -48,65 +48,67 @@
       <small id="body-help" class="form-text text-muted">{{ i18n "descriptionHelpLabel" }}</small>
     </div>
   </div>
-  <div class="row">
-    <div class="form-group col-md-6">
-      <label for="number-of-employees-input">{{ i18n "numberOfEmployeesLabel" }}</label>
-      <div class="input-group">
-        {{input
-          type="text"
-          class="form-control"
-          id="number-of-employees-input"
-          aria-describedby="number-of-employees-help"
-          placeholder=field.placeholder
-          value=model.numberOfEmployees
-          required=true
-        }}
+  {{#if companyDetailsExtraFieldsEnabled}}
+    <div class="row">
+      <div class="form-group col-md-6">
+        <label for="number-of-employees-input">{{ i18n "numberOfEmployeesLabel" }}</label>
+        <div class="input-group">
+          {{input
+            type="text"
+            class="form-control"
+            id="number-of-employees-input"
+            aria-describedby="number-of-employees-help"
+            placeholder=field.placeholder
+            value=model.numberOfEmployees
+            required=true
+          }}
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="years-in-operation-input">{{ i18n "yearsInOperationLabel" }}</label>
+        <div class="input-group">
+          {{input
+            type="text"
+            class="form-control"
+            id="years-in-operation-input"
+            aria-describedby="years-in-operation-help"
+            placeholder=field.placeholder
+            value=model.yearsInOperation
+            required=true
+          }}
+        </div>
       </div>
     </div>
-    <div class="form-group col-md-6">
-      <label for="years-in-operation-input">{{ i18n "yearsInOperationLabel" }}</label>
-      <div class="input-group">
-        {{input
-          type="text"
-          class="form-control"
-          id="years-in-operation-input"
-          aria-describedby="years-in-operation-help"
-          placeholder=field.placeholder
-          value=model.yearsInOperation
-          required=true
-        }}
+    <div class="row">
+      <div class="form-group col-md-6">
+        <label for="sales-region-input">{{ i18n "salesRegionLabel" }}</label>
+        <div class="input-group">
+          {{input
+            type="text"
+            class="form-control"
+            id="sales-region-input"
+            aria-describedby="sales-region-help"
+            placeholder=field.placeholder
+            value=model.salesRegion
+            required=true
+          }}
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="sales-channels-input">{{ i18n "salesChannelsLabel" }}</label>
+        <div class="input-group">
+          {{input
+            type="text"
+            class="form-control"
+            id="sales-channels-input"
+            aria-describedby="sales-channels-help"
+            placeholder=field.placeholder
+            value=model.salesChannels
+            required=true
+          }}
+        </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="form-group col-md-6">
-      <label for="sales-region-input">{{ i18n "salesRegionLabel" }}</label>
-      <div class="input-group">
-        {{input
-          type="text"
-          class="form-control"
-          id="sales-region-input"
-          aria-describedby="sales-region-help"
-          placeholder=field.placeholder
-          value=model.salesRegion
-          required=true
-        }}
-      </div>
-    </div>
-    <div class="form-group col-md-6">
-      <label for="sales-channels-input">{{ i18n "salesChannelsLabel" }}</label>
-      <div class="input-group">
-        {{input
-          type="text"
-          class="form-control"
-          id="sales-channels-input"
-          aria-describedby="sales-channels-help"
-          placeholder=field.placeholder
-          value=model.salesChannels
-          required=true
-        }}
-      </div>
-    </div>
-  </div>
+  {{/if}}
 </form>
 <div class="card-footer"></div>
