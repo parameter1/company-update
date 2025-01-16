@@ -21,6 +21,7 @@ export default Controller.extend({
     }
     return null;
   }),
+  companyServicesFieldsEnabled: computed.reads('config.companyServicesFieldsEnabled'),
 
   actions: {
     showModal() {

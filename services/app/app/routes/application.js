@@ -37,6 +37,8 @@ export default Route.extend(ApplicationRouteMixin, {
     portalPageVerbiage,
     companyDetailsVerbiage,
     promotionsVerbiage,
+    companyServicesFieldsEnabled,
+    companyDetailsExtraFieldsEnabled,
     requiredCompanyFields,
     locale
   }) {
@@ -65,6 +67,8 @@ export default Route.extend(ApplicationRouteMixin, {
       portalPageVerbiage,
       companyDetailsVerbiage,
       promotionsVerbiage,
+      companyServicesFieldsEnabled,
+      companyDetailsExtraFieldsEnabled,
       requiredCompanyFields,
       locale
     });
