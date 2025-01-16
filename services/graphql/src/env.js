@@ -46,6 +46,8 @@ module.exports = cleanEnv(process.env, {
   DIRECTORY_SECTIONS_SCHEDULED_SITE_ONLY: bool({ desc: 'If online directory sections should be limited sites that have schedules.', default: false }),
   LOGO_URL: str({ desc: 'If configured, will be replace the branding in the navigation.', default: '' }),
   CONTACTS_ENABLED: bool({ desc: 'If the contacts section should be displayed', default: true }),
+  COMPANY_SERVICES_FIELDS_ENABLED: bool({ desc: 'If the Services, Products and Warranty section of the company panel should be shown', default: true }),
+  COMPANY_DETAILS_EXTRA_FIELDS_ENABLED: bool({ desc: 'If the fields: number of employees, years in operations, sales regions and sales channels should be shown on the companyt panel', default: true }),
   LEADERSHIP_ENABLED: bool({ desc: 'If the leadership section should be displayed', default: true }),
   PROMOTIONS_ENABLED: bool({ desc: 'If the promotions section should be displayed', default: false }),
   LEADERSHIP_CATEGORY_PREFIX: str({ desc: 'The prefix to use with categories for leadership sections.', default: 'leadership' }),

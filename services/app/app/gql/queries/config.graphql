@@ -29,6 +29,8 @@ query CompanyUpdateConfig {
     portalPageVerbiage
     companyDetailsVerbiage
     promotionsVerbiage
+    companyServicesFieldsEnabled
+    companyDetailsExtraFieldsEnabled
     requiredCompanyFields
     locale
   }
