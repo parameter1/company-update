@@ -16,7 +16,9 @@
     {{ company-card/address model=model }}
     {{ company-card/contact model=model onChange=(action "onChange") }}
     {{ company-card/social links=model.socialLinks }}
-    {{ company-card/services model=model }}
+    {{#if companyServicesFieldsEnabled }}
+      {{ company-card/services model=model }}
+    {{/if}}
   </div>
   <div class="col-12 col-lg-4 col-xl-3 my-3">
     <div class="card mb-3">

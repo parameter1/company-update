@@ -32,10 +32,13 @@ const buildMutation = (payload = {}) => {
 
 export default Controller.extend(ActionMixin, {
   apollo: inject(),
+  config: inject(),
   notify: inject(),
   disabled: computed.reads('isActionRunning'),
   isPublishing: false,
   isDiscarding: false,
+
+  companyServicesFieldsEnabled: computed.reads('config.companyServicesFieldsEnabled'),
 
   isDisabled: computed('isActionRunning', 'model.submission.reviewed', function() {
     if (this.get('model.submission.reviewed')) return true;
