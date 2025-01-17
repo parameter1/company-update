@@ -1,0 +1,9 @@
+mutation DocumentsSubmission($input: CompanyUpdateDocumentsMutationInput!) {
+	companyUpdateDocumentsSubmit(input: $input) {
+		id
+		submitted
+		name
+		email
+		payload
+	}
+}
