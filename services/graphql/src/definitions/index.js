@@ -8,6 +8,7 @@ const leadership = require('./leadership');
 const list = require('./list');
 const review = require('./review');
 const promotions = require('./promotions');
+const documents = require('./documents');
 
 module.exports = gql`
 
@@ -38,6 +39,7 @@ module.exports = gql`
     promotion
     directory
     directory_sections
+    document
   }
 
   ${company}
@@ -49,5 +51,6 @@ module.exports = gql`
   ${list}
   ${review}
   ${promotions}
+  ${documents}
 
 `;
