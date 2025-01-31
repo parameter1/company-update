@@ -18,12 +18,10 @@ export default Component.extend(ActionMixin, {
 
       try {
         const location = await this.apollo.mutate({ mutation, variables }, 'companyUpdateSingleUpload');
-        console.log(location, 'HEYO');
         this.onUpload(location);
       } catch (e) {
         this.set('document', document);
         error('upload error', e, file);
-        console.log(e);
         this.notify.error(`Something went wrong -- please try again!<br>${e.message}`, { autoClear: false, htmlContent: true });
       } finally {
         file.queue.remove(file);
