@@ -1,0 +1,9 @@
+# import CompanyListFragment from "../../fragments/company/list"
+# import CompanyDocumentsFragment from "../../fragments/company/documents"
+
+query ContentUpdateReviewCompany($input: ContentHashQueryInput!) {
+  contentHash(input: $input) {
+    ...CompanyListFragment
+    ...CompanyDocumentsFragment
+  }
+}
