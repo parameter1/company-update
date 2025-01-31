@@ -11,7 +11,7 @@ fragment CompanyDocumentsFragment on ContentCompany {
       node {
         id
         name
-        teaser
+        teaser(input: { minLength: 0 })
         labels
         ... on ContentDocument {
           fileSrc
