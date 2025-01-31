@@ -43,7 +43,6 @@ export default Controller.extend(ActionMixin, {
    * @param Object { ... } The document payload
    */
   async createDocument (companyId, { name, fileSrc, teaser }, primarySiteId) {
-    console.log(companyId, name, fileSrc, teaser, primarySiteId);
     const getDefaultSection = async () => {
       const variables = { siteId: primarySiteId };
       const { edges } = await this.apollo.query({ query: documentSection, variables, fetchPolicy: 'network-only' }, 'websiteSections');
@@ -116,7 +115,6 @@ export default Controller.extend(ActionMixin, {
         const primarySiteId = this.get('model.company.primarySite.id');
         await Promise.all(documents.reduce((arr, obj) => {
           const { original, updated, payload } = obj;
-          console.log(updated, payload, 'HEYO');
           if (!payload.enabled) return arr;
           if (payload.added) return [...arr, this.createDocument(contentId, updated, primarySiteId)];
           if (payload.removed) return [...arr, this.deleteDocument(original.id)];

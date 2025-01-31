@@ -35,7 +35,6 @@ export default Component.extend({
       }
     },
     onUpload(fileSrc) {
-      console.log(fileSrc, 'BOI');
       this.set('_document.fileSrc', fileSrc);
       this.onUpdate('fileSrc', fileSrc);
     }

@@ -15,7 +15,6 @@ export default Component.extend({
   }),
 
   isNew: computed('updated', 'original', function() {
-    console.log(this.get('original'), this.get('updated'), this.get('payload'));
     return this.get('updated') && !this.get('original');
   }),
 
