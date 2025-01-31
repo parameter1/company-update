@@ -71,6 +71,7 @@ export default Controller.extend({
     add() {
       const document = {
         id: this.generateId(),
+        labels: [],
       };
       this.documents.pushObject(document);
       this.payload.add.pushObject(document);
