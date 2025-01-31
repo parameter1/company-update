@@ -7,9 +7,17 @@ module.exports = gql`
   }
 
   input CompanyUpdateDocumentsPayloadInput {
-    add: [CompanyUpdateDocumentPayloadInput!]
+    add: [CompanyUpdateDocumentCreateInput!]
     remove: [Int!]
-    update: [CompanyUpdateDocumentPayloadInput!]
+    update: [CompanyUpdateDocumentUpdateInput!]
+  }
+
+  input CompanyUpdateDocumentCreateInput {
+    id: String!
+    name: String!
+    teaser: String
+    fileSrc: String
+    labels: [String]!
   }
 
   input CompanyUpdateDocumentsMutationInput {
@@ -20,7 +28,7 @@ module.exports = gql`
     payload: CompanyUpdateDocumentsPayloadInput!
   }
 
-  input CompanyUpdateDocumentPayloadInput {
+  input CompanyUpdateDocumentUpdateInput {
     id: Int!
     name: String!
     teaser: String
