@@ -18,6 +18,9 @@ export default Controller.extend({
   directorySectionsEnabled: computed('config.{directorySectionsEnabled,directorySectionsAlias}', function() {
     return this.config.directorySectionsEnabled && this.config.directorySectionsAlias;
   }),
+  documentsEnabled: computed('config.documentsEnabled', function() {
+    return this.config.documentsEnabled;
+  }),
   promotionsEnabled: computed('config.leadershipPromotionsEnabled', function() {
     return this.config.leadershipPromotionsEnabled;
   }),

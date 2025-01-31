@@ -11,9 +11,6 @@
 
 <div class="card">
   <ul class="list-group list-group-flush">
-    {{#link-to "portal.documents" class="list-group-item list-group-item-action"}}
-      Modify documents
-    {{/link-to}}
     {{#link-to "portal.company" class="list-group-item list-group-item-action"}}
       {{submission-icon type="company" class="mr-2"}}
       {{ i18n "modifyCompanyLabel" }}
@@ -34,6 +31,12 @@
       {{#link-to "portal.promotions" class="list-group-item list-group-item-action"}}
         {{submission-icon type="promotion" class="mr-2"}}
         {{ i18n "modifyProductLabel" }}
+      {{/link-to}}
+    {{/if}}
+    {{#if documentsEnabled}}
+      {{#link-to "portal.documents" class="list-group-item list-group-item-action"}}
+        {{submission-icon type="promotion" class="mr-2"}}
+        Modify documents
       {{/link-to}}
     {{/if}}
     {{#if contactsEnabled}}
