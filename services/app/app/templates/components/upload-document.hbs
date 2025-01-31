@@ -16,7 +16,5 @@
 {{/file-upload}}
 
 {{#if document}}
-  <img src={{ document }} class="img-fluid mt-1 uploaded-image" alt="Image">
-{{else}}
-  <img class="img-fluid mt-1 uploaded-image" alt="">
+  <a href={{ document }} target="_blank">View Document</a>
 {{/if}}
