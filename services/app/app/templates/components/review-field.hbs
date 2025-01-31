@@ -17,6 +17,25 @@
       {{/if}}
     </div>
   {{/if}}
+{{else if (eq fieldKey "file")}}
+  {{#if (not approvable)}}
+    {{#if value}}
+        <a href={{ value }} target="_blank">View Document</a>
+    {{/if}}
+  {{else}}
+    <div class="form-control">
+      {{#if isChecked}}
+        {{#if original }}
+          <a href={{ original }} target="_blank">View Original Document</a>
+        {{/if}}
+        {{#if updated}}
+          <a href={{ updated }} target="_blank">View Updated Document</a>
+        {{/if}}
+      {{else}}
+        {{#if original}}<a href={{ original }} target="_blank">View Document</a>{{/if}}
+      {{/if}}
+    </div>
+  {{/if}}
 {{else if (eq fieldKey "socialLinks")}}
   {{#if (eq subField "provider")}}
     <div class="form-control">
