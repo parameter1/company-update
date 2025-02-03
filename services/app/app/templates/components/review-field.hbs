@@ -55,6 +55,23 @@
   {{else}}
     {{js-diff original=original updated=updated showDiff=isChecked}}
   {{/if}}
+{{else if (eq fieldKey "labels")}}
+  <div class="form-control">
+    <label for={{concat this.elementId "-label-original-input"}}>Mark as {{ this.config.documentLabelOption }}? ORIGINAL</label>
+    <Input
+      @id={{concat this.elementId "-label-original-input"}}
+      @type="checkbox"
+      @checked={{original}}
+      @disabled={{true}}
+    />
+    <label for={{concat this.elementId "-label-updated-input"}}>Mark as {{ this.config.documentLabelOption }}? UPDATED</label>
+    <Input
+      @id={{concat this.elementId "-label-updated-input"}}
+      @type="checkbox"
+      @checked={{updated}}
+      @disabled={{true}}
+    />
+  </div>
 {{else}}
   {{js-diff original=original updated=updated showDiff=isChecked}}
 {{/if}}
