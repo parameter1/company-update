@@ -22,6 +22,10 @@ export default Component.extend({
       ...(fileSrc && { fileSrc } || { fileSrc: null }),
       ...((Array.isArray(labels) && labels.length) && { labels } || { labels: [] })
     });
+    if (labels.includes(this.config.documentLabelOption)) {
+      this.set('includeLabel', 'true');
+      this.onUpdate('labels', [...labels.filter((v) => v !== this.config.documentLabelOption), this.config.documentLabelOption])
+    }
   },
 
   actions: {
