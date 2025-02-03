@@ -1,19 +1,9 @@
 import Controller from '@ember/controller';
 import { computed, set } from '@ember/object';
-import { htmlSafe } from '@ember/template';
 
 export default Controller.extend({
   isModalOpen: false,
   count: 0,
-
-  promotionsVerbiage: computed('config.promotionsVerbiage', function() {
-    if (this.config.promotionsVerbiage) {
-      return htmlSafe(this.config.promotionsVerbiage);
-    }
-    return null;
-  }),
-
-  isAddDisabled: computed.gte('promotions.length', 4),
 
   isSubmitDisabled: computed.not('isModified'),
   isModified: computed('payload.{add.length,remove.length,update.length}', function() {
