@@ -1,0 +1,8 @@
+mutation ContentPortalReviewDocumentUpdate($input: UpdateContentDocumentMutationInput!) {
+	updateContentDocument(input: $input) {
+    id
+    name
+    teaser(input: { minLength: 0 })
+    fileSrc
+  }
+}

@@ -16,6 +16,8 @@ query CompanyUpdateConfig {
     directorySectionsAlias
     directorySectionsPrimarySiteOnly
     directorySectionsScheduledSitesOnly
+    documentsEnabled
+    documentLabelOption
     logoUrl
     leadershipEnabled
     leadershipPromotionsEnabled

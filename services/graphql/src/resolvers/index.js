@@ -10,6 +10,7 @@ const directorySections = require('./directory-sections');
 const leadership = require('./leadership');
 const list = require('./list');
 const promotions = require('./promotions');
+const documents = require('./documents');
 
 module.exports = deepAssign(
   company,
@@ -20,6 +21,7 @@ module.exports = deepAssign(
   leadership,
   list,
   promotions,
+  documents,
   {
     Date: DateType,
     // JSON: GraphQLJSON, // @todo is this needed?

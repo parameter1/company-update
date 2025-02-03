@@ -1,0 +1,44 @@
+<div class="card mb-4">
+  <div class="card-body">
+    <p class="lead">Review your company's documents</p>
+    <p>Make any needed changes on the fields below. </p>
+    <p>When you are finished making changes, click the "Save Changes" button.</p>
+  </div>
+</div>
+
+<form {{action "showModal" on="submit"}}>
+
+  <div class="row">
+    {{#each documents as |document|}}
+      {{document-card
+        document=document
+        onRemove=(action "remove" document)
+        onUpdate=(action "update" document)
+        onReset=(action "reset" document)
+      }}
+    {{/each}}
+  </div>
+
+  <div class="fixed-bottom fixed-left card">
+    <div class="card-body">
+      <button class="btn btn-primary pull-left" {{ action "add" }}>
+        {{entypo-icon "circle-with-plus"}} Add a document
+      </button>
+    </div>
+  </div>
+
+  <div class="fixed-bottom fixed-right card">
+    <div class="card-body">
+      <button disabled={{isSubmitDisabled}} class="btn btn-success pull-right" type="submit">
+        {{entypo-icon "save"}} {{ i18n "saveChangesLabel"}}
+      </button>
+    </div>
+  </div>
+</form>
+
+{{submit-modal/documents
+  isOpen=isModalOpen
+  hash=hash
+  payload=payload
+  onComplete=(action "transitionToPortal")
+}}

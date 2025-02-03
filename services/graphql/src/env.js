@@ -44,6 +44,8 @@ module.exports = cleanEnv(process.env, {
   DIRECTORY_SECTIONS_ALIAS: nonemptystr({ desc: 'The online directory section alias to be displayed, can include multiple by separating each with |', default: 'directory' }),
   DIRECTORY_SECTIONS_PRIMARY_SITE_ONLY: bool({ desc: 'If online directory sections should be limited to content primary site.', default: false }),
   DIRECTORY_SECTIONS_SCHEDULED_SITE_ONLY: bool({ desc: 'If online directory sections should be limited sites that have schedules.', default: false }),
+  DOCUMENTS_ENABLED: bool({ desc: 'Whether or not document submissions are enabled/allowed', default: false }),
+  DOCUMENT_LABEL_OPTION: str({ desc: 'The label to allow application of as applicable (Ex: Brochure/Presentation)', default: '' }),
   LOGO_URL: str({ desc: 'If configured, will be replace the branding in the navigation.', default: '' }),
   CONTACTS_ENABLED: bool({ desc: 'If the contacts section should be displayed', default: true }),
   COMPANY_SERVICES_FIELDS_ENABLED: bool({ desc: 'If the Services, Products and Warranty section of the company panel should be shown', default: true }),

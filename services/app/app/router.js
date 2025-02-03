@@ -15,6 +15,7 @@ Router.map(function() {
     this.route('directory-sections');
     this.route('promotions');
     this.route('company');
+    this.route('documents');
   });
   this.route('review', { path: '/review/:id' }, function () {
     this.route('company');
@@ -24,6 +25,7 @@ Router.map(function() {
     this.route('product');
     this.route('contact');
     this.route('promotion');
+    this.route('document');
   });
   this.route('login');
   this.route('list');

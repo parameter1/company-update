@@ -1,0 +1,110 @@
+<div class="card mb-3 h-100">
+  <h6 class="card-header card-header--flexed">
+    {{entypo-icon "user"}}
+    {{#if isNew}}
+      <span class="text-{{if isCardEnabled "success" "danger"}}">Added document</span>
+    {{else if isDeleted}}
+      <span class="text-{{if isCardEnabled "success" "danger"}}">Removed document</span>
+    {{else}}
+      <span class="text-muted">Existing document</span>
+    {{/if}}
+    {{#if canToggleCard}}
+      <button disabled={{disabled}} class="btn btn-sm {{if isCardEnabled "border-success" "border-danger"}}" {{action "toggleCard"}}>
+        {{entypo-icon (if isCardEnabled "check" "cross") class=(if isCardEnabled "text-success" "text-danger")}}
+      </button>
+    {{else}}
+      <button disabled="disabled" class="btn btn-sm btn-disabled">
+        {{entypo-icon (if isCardEnabled "check" "cross") }}
+      </button>
+    {{/if}}
+  </h6>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-12 col-md-6">
+        {{#if canToggleCard}}
+          {{review-field
+            original=original.fileSrc
+            updated=updated.fileSrc
+            fieldKey="file"
+            enabled=payload.fields.fileSrc
+            _approvable=false
+          }}
+        {{else}}
+          {{review-field
+            original=original.fileSrc
+            updated=updated.fileSrc
+            toggleField=(action "toggleField" "fileSrc")
+            fieldKey="file"
+            enabled=payload.fields.fileSrc
+          }}
+        {{/if}}
+      </div>
+      <div class="col-12 col-md-6">
+        <div class="form-group">
+          <label for={{ concat this.elementId "-name-input" }}>Name</label>
+          {{#if canToggleCard}}
+            {{review-field
+              original=original.name
+              updated=updated.name
+              fieldKey="name"
+              enabled=payload.fields.name
+              _approvable=false
+            }}
+          {{else}}
+            {{review-field
+              original=original.name
+              updated=updated.name
+              toggleField=(action "toggleField" "name")
+              fieldKey="name"
+              enabled=payload.fields.name
+            }}
+          {{/if}}
+        </div>
+        <div class="form-group">
+          <label for={{ concat this.elementId "-teaser-input" }}>Teaser</label>
+          {{#if canToggleCard}}
+            {{review-field
+              original=original.teaser
+              updated=updated.teaser
+              fieldKey="teaser"
+              enabled=payload.fields.teaser
+              _approvable=false
+            }}
+          {{else}}
+            {{review-field
+              original=original.teaser
+              updated=updated.teaser
+              toggleField=(action "toggleField" "teaser")
+              fieldKey="teaser"
+              enabled=payload.fields.teaser
+            }}
+          {{/if}}
+        </div>
+        {{#if this.config.documentLabelOption}}
+          <div class="form-group">
+            <label for={{concat this.elementId "-label-input"}}>Mark as {{ this.config.documentLabelOption }}?</label>
+            {{#if canToggleCard}}
+              {{
+                review-field
+                original=originalIncludedLabel
+                updated=updatedIncludedLabel
+                fieldKey="labels"
+                enabled=payload.fields.labels
+                _approvable=false
+              }}
+            {{else}}
+              {{
+                review-field
+                original=originalIncludedLabel
+                updated=updatedIncludedLabel
+                fieldKey="labels"
+                enabled=payload.fields.labels
+              }}
+            {{/if}}
+          </div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+  <div class="card-footer"></div>
+</div>

@@ -1,0 +1,20 @@
+{{#file-upload
+  class="d-block"
+  name=this.elementId
+  accept=".pdf"
+  multiple=false
+  onfileadd=(action "upload")
+  as |queue|
+}}
+  <a class="btn btn-block btn-sm btn-primary text-white upload-button">
+    {{#if queue.files.firstObject}}
+      {{entypo-icon "hour-glass"}} Uploading...
+    {{else}}
+      {{entypo-icon "upload"}} Upload a document
+    {{/if}}
+  </a>
+{{/file-upload}}
+
+{{#if document}}
+  <a href={{ document }} target="_blank" rel="noopener">View Document</a>
+{{/if}}

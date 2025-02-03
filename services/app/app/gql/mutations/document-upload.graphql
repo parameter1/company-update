@@ -1,0 +1,7 @@
+mutation CreateAssetDocumentFromUrl($input: CreateAssetDocumentFromUrlMutationInput!) {
+  createAssetDocumentFromUrl(input: $input) {
+    id
+    fileName
+    filePath
+  }
+}

@@ -15,6 +15,8 @@ module.exports = gql`
     companyDetailsExtraFieldsEnabled: Boolean!,
     companyServicesFieldsEnabled: Boolean!,
     directoryEnabled: Boolean!
+    documentsEnabled: Boolean!
+    documentLabelOption: String
     directoryCategoryIds: [Int!]
     directorySelectionMax: Int
     directorySectionsEnabled: Boolean!

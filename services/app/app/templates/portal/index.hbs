@@ -33,6 +33,12 @@
         {{ i18n "modifyProductLabel" }}
       {{/link-to}}
     {{/if}}
+    {{#if documentsEnabled}}
+      {{#link-to "portal.documents" class="list-group-item list-group-item-action"}}
+        {{submission-icon type="promotion" class="mr-2"}}
+        Modify documents
+      {{/link-to}}
+    {{/if}}
     {{#if contactsEnabled}}
       {{#link-to "portal.contacts" class="list-group-item list-group-item-action"}}
         {{submission-icon type="contact" class="mr-2"}}
