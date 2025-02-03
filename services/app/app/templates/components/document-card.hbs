@@ -39,6 +39,17 @@
             @required={{false}}
           />
         </div>
+        {{#if this.config.documentLabelOption}}
+          <div class="form-group">
+            <label for={{concat this.elementId "-label-input"}}>Mark as {{ this.config.documentLabelOption }}?</label>
+            <Input
+              @id={{concat this.elementId "-label-input"}}
+              @type="checkbox"
+              @checked={{this.includeLabel}}
+              @change={{action "labelToggle"}}
+            />
+          </div>
+        {{/if}}
       </div>
     </div>
   </div>
