@@ -30,10 +30,10 @@ module.exports = gql`
 
   input CompanyUpdateDocumentUpdateInput {
     id: Int!
-    name: String!
+    name: String
     teaser: String
     fileSrc: String
-    labels: [String]!
+    labels: [String]
   }
 
 `;
