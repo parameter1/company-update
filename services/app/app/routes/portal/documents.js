@@ -31,7 +31,7 @@ export default Route.extend({
         name,
         teaser,
         ...(fileSrc && { fileSrc } || { fileSrc: null }),
-        ...((Array.isArray(labels) && labels.length) && { labels } || { labels: {} })
+        ...((Array.isArray(labels) && labels.length) && { labels } || { labels: [] })
       };
     });
     this.controllerFor('portal.documents').set('hash', hash);
