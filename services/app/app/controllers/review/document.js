@@ -82,13 +82,14 @@ export default Controller.extend(ActionMixin, {
    * @param Number contentId The company ID
    * @param Object { ... } The document payload
    */
-  async updateDocument ({ id, teaser, fileSrc, name }) {
+  async updateDocument ({ id, teaser, fileSrc, labels, name }) {
     try {
       const { fileName, filePath } = await this.uploadDocumentFile(fileSrc);
       const payload = {
         teaser,
         ...(fileName && { fileName }),
         ...(filePath && { filePath }),
+        ...(Array.isArray(labels) && { labels }),
         name,
       };
       const variables = { input: { id, payload } };
