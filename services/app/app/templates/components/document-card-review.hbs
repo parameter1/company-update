@@ -80,6 +80,29 @@
             }}
           {{/if}}
         </div>
+        {{#if this.config.documentLabelOption}}
+          <div class="form-group">
+            <label for={{concat this.elementId "-label-input"}}>Mark as {{ this.config.documentLabelOption }}?</label>
+            {{#if canToggleCard}}
+              {{
+                review-field
+                original=originalIncludedLabel
+                updated=updatedIncludedLabel
+                fieldKey="labels"
+                enabled=payload.fields.labels
+                _approvable=false
+              }}
+            {{else}}
+              {{
+                review-field
+                original=originalIncludedLabel
+                updated=updatedIncludedLabel
+                fieldKey="labels"
+                enabled=payload.fields.labels
+              }}
+            {{/if}}
+          </div>
+        {{/if}}
       </div>
     </div>
   </div>
