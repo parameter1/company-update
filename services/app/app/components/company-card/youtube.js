@@ -14,6 +14,9 @@ export default Component.extend({
     if (!playlistId) return true;
     const variables = { input: { playlistId } };
     const result = await this.apollo.query({ query: queryPlaylistId, variables });
+    if (!result.validateYoutubePlaylistId) {
+      this.set('model.youtube.playlistId', null);
+    }
     return result.validateYoutubePlaylistId;
   },
 
@@ -21,13 +24,20 @@ export default Component.extend({
     if (!channelId) return true;
     const variables = { input: { channelId } };
     const result = await this.apollo.query({ query: queryChannelId, variables });
+    if (!result.validateYoutubeChannelId) {
+      this.set('model.youtube.channelId', null);
+    }
     return result.validateYoutubeChannelId;
   },
 
   async validateUsername(username) {
     if (!username) return true;
+    
     const variables = { input: { username }};
     const result = await this.apollo.query({ query: queryUsername, variables });
+    if (!result.validateYoutubeUsername) {
+      this.set('model.youtube.username', null);
+    }
     return result.validateYoutubeUsername;
   },
 
