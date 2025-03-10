@@ -18,7 +18,6 @@ export default Controller.extend(ActionMixin, {
   isDiscarding: false,
 
   isPublishDisabled: computed('isDisabled', 'isConflicting', 'selected.length', 'removed.length', function() {
-    console.log('first: ', this.get('removed'), this.get('isConflicting'), this.get('selected'));
     if (this.get('isConflicting')) return true;
     if (!this.get('selected.length') && !this.get('removed.length')) return true;
     return this.get('isDisabled');
