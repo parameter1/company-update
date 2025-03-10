@@ -42,7 +42,7 @@ export default Controller.extend(ActionMixin, {
    * @param Number companyId The company ID
    * @param Object { ... } The document payload
    */
-  async createDocument (companyId, { name, fileSrc, teaser }, primarySiteId) {
+  async createDocument (companyId, { name, fileSrc, teaser, labels }, primarySiteId) {
     const getDefaultSection = async () => {
       const variables = { siteId: primarySiteId };
       const { edges } = await this.apollo.query({ query: documentSection, variables, fetchPolicy: 'network-only' }, 'websiteSections');
@@ -53,6 +53,7 @@ export default Controller.extend(ActionMixin, {
       const payload = {
         ...(fileName && { fileName }),
         ...(filePath && { filePath }),
+        ...(Array.isArray(labels) && { labels }),
         teaser,
         name,
         status: 1,
