@@ -10,8 +10,8 @@ fragment CompanyDocumentsFragment on ContentCompany {
     edges {
       node {
         id
-        name
-        teaser(input: { minLength: 0 })
+        name(input: { mutation: Website })
+        teaser(input: { mutation: Website, minLength: 0 })
         labels
         ... on ContentDocument {
           fileSrc
