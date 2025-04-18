@@ -95,6 +95,11 @@ export default Controller.extend(ActionMixin, {
           ...company
         } = input;
 
+        // Include website mutation of value
+        ['body', 'name', 'teaser'].forEach((key) => {
+          if (company[key]) company[`${key}Website`] = company[key];
+        });
+
         const customAttributes = Object.keys(attrs || {}).reduce((arr, k) => ([
           ...arr,
           { key: k, value: get(attrs, k) }
