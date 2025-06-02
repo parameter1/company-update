@@ -7,7 +7,7 @@ export default Controller.extend({
   leadershipEnabled: computed('config.{leadershipEnabled,leadershipCompanyLabel}', 'model.labels.[]', function() {
     // disable leadership Categories if not enabled
     if(!this.config.leadershipEnabled) return false;
-    // if no company lable configured return the leadershipEnabled setting from the config
+    // if no company label configured return the leadershipEnabled setting from the config
     if(!this.config.leadershipCompanyLabel) return this.config.leadershipEnabled;
     // check that the company label is in the array of labels for this company
     return(this.model.labels.includes(this.config.leadershipCompanyLabel));
@@ -22,7 +22,12 @@ export default Controller.extend({
     return this.config.documentsEnabled;
   }),
   promotionsEnabled: computed('config.leadershipPromotionsEnabled', function() {
-    return this.config.leadershipPromotionsEnabled;
+    // disable promotions if not enabled
+    if(!this.config.leadershipPromotionsEnabled) return false;
+    // if no company label configured return the leadershipPromotionsEnabled setting from the config
+    if(!this.config.leadershipCompanyLabel) return this.config.leadershipPromotionsEnabled;
+    // check that the company label is in the array of labels for this company
+    return(this.model.labels.includes(this.config.leadershipCompanyLabel));
   }),
   contactsEnabled: computed('config.contactsEnabled', function () {
     return this.config.contactsEnabled
