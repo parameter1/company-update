@@ -13,7 +13,6 @@ export default Component.extend(ActionMixin, {
   notify: inject(),
   session: inject(),
   config: inject(),
-  categories: null,
   hash: null,
 
   name: null,
@@ -34,8 +33,12 @@ export default Component.extend(ActionMixin, {
     async submit() {
       this.startAction();
       this.set('error', null);
-      const { name, email, hash, categories } = this.getProperties('name', 'email', 'hash', 'categories');
-      const payload = { categories };
+      const {
+        name,
+        email,
+        hash,
+        payload
+      } = this.getProperties('name', 'email', 'hash', 'payload');
       const type = 'leadership';
       const variables = { input: { name, email, hash, type, payload } };
 

@@ -1,0 +1,9 @@
+{{#if checked}}
+  <button class="btn btn-secondary text-left mb-2 btn-block active" {{action "toggle" section.id}}>
+    {{entypo-icon "check" class="mr-2 text-primary"}} {{ section.name }}
+  </button>
+{{else}}
+  <button class="btn btn-secondary text-left mb-2 btn-block" {{action "toggle" section.id}}>
+    {{entypo-icon "circle" class="mr-2"}} {{ section.name }}
+  </button>
+{{/if}}

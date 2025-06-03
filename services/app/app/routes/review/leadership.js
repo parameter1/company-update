@@ -7,11 +7,11 @@ export default Route.extend({
 
   async model() {
     const { submission, company } = this.modelFor('review');
-    const { payload: { categories } } = submission;
+    const { added, removed } = submission.payload;
     const pagination = { limit: 0 };
-    const variables = { input: { includeIds: categories, pagination } };
+    const variables = { input: { includeIds: [...added, ...removed], pagination } };
     const sections = await this.apollo.query({ query, variables, fetchPolicy: 'network-only' }, 'websiteSections');
-    return { submission, company, sections, categories };
+    return { submission, company, sections, selected: added, removed };
   },
 
 });

@@ -4,6 +4,7 @@ query ContentUpdateReviewLeadership($input: WebsiteSectionsQueryInput!) {
       node {
         id
         name
+        alias
         site {
           id
           name

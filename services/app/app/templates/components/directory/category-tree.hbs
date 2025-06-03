@@ -1,20 +1,28 @@
 <div class={{ rootClass }}>
-  <label role="button" class="d-flex align-items-center" {{action "collapse"}}>
-    {{#if node.children.length}}
+  {{#if node.children.length}}
+    <div role="button" class="align-items-center" {{action "collapse"}}>
       {{entypo-icon (if collapsed "chevron-right" "chevron-down") class="mr-2"}}
-    {{else}}
+      {{ node.name }}
+      {{#if selected}}
+        <small class="pull-right text-muted">
+          Selected: <strong>{{ selected }}</strong>
+        </small>
+      {{/if}}
+    </div>
+  {{else}}
+    <label class="d-flex align-items-center">
       <Input
         @type="checkbox"
         class="mr-2"
         @checked={{this.checked}}
         @change={{action "update"}}
       />
-    {{/if}}
-    {{ node.name }}
-  </label>
+      {{ node.name }}
+    </label>
+  {{/if}}
   {{#unless collapsed }}
     {{#if node.children.length}}
-      <div class="ml-3">
+      <div class="mt-2 ml-3">
         {{#each node.children as |child|}}
           {{directory/category-tree
             node=child

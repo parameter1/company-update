@@ -9,16 +9,18 @@ export default Route.extend({
   async model() {
     const { submission, company: { hash } } = this.modelFor('review');
     const company = await this.apollo.query({ query: companyQuery, variables: { input: { hash, status: 'any' } } }, 'contentHash');
-    const { payload: { add, remove, update } } = submission;
+    return { submission, company };
+  },
 
-    const original = get(company, 'promotions.edges').map(({ node }) => {
+  afterModel(model) {
+    const original = get(model, 'company.promotions.edges').map(({ node }) => {
       const { id, linkText, linkUrl, name, primaryImage } = node;
       return { id, linkText, linkUrl, name, primaryImage };
     });
 
     const promotions = original.reduce((arr, promotion) => {
       const { id } = promotion;
-      const updated = update.find((u) => u.id === id);
+      const updated = get(model, 'submission.payload.update').find((u) => u.id === id);
       if (updated) {
         return [
           ...arr,
@@ -36,7 +38,7 @@ export default Route.extend({
           },
         ];
       }
-      if (remove.includes(id)) {
+      if (get(model, 'submission.payload.remove').includes(id)) {
         return [
           ...arr,
           {
@@ -47,7 +49,7 @@ export default Route.extend({
       }
       return [ ...arr, { original: promotion, updated: promotion, payload: { enabled: false } } ];
     }, []);
-    add.forEach((promotion) => promotions.push({
+    get(model, 'submission.payload.add').forEach((promotion) => promotions.push({
       updated: promotion,
       payload: {
         enabled: true,
@@ -58,7 +60,7 @@ export default Route.extend({
         }, {})
       },
     }));
-    return { submission, company, promotions };
-  },
+    this.controllerFor('review.promotion').set('promotions', promotions)
+  }
 
 });

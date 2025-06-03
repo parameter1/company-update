@@ -2,6 +2,9 @@
   <div class="card-body">
     <p class="lead">{{ model.name }} {{ i18n "contentPortalLabel" }}</p>
     <p>{{ i18n "welcomePortalLabel" }} {{ model.name }}.</p>
+    {{#if portalPageVerbiage}}
+      {{ portalPageVerbiage }}
+    {{/if}}
     <p>{{ i18n "modificationsLabel" }}</p>
   </div>
 </div>
@@ -12,16 +15,16 @@
       {{submission-icon type="company" class="mr-2"}}
       {{ i18n "modifyCompanyLabel" }}
     {{/link-to}}
-    {{#if leadershipEnabled}}
-      {{#link-to "portal.leadership" class="list-group-item list-group-item-action"}}
-        {{submission-icon type="leadership" class="mr-2"}}
-        Modify {{categoryPrefix}} categories
-      {{/link-to}}
-    {{/if}}
     {{#if directoryEnabled}}
       {{#link-to "portal.directory" class="list-group-item list-group-item-action"}}
         {{submission-icon type="directory" class="mr-2"}}
         Modify directory categories
+      {{/link-to}}
+    {{/if}}
+    {{#if directorySectionsEnabled}}
+      {{#link-to "portal.directory-sections" class="list-group-item list-group-item-action"}}
+        {{submission-icon type="directory" class="mr-2"}}
+        Modify directory sections
       {{/link-to}}
     {{/if}}
     {{#if promotionsEnabled}}
@@ -30,9 +33,23 @@
         {{ i18n "modifyProductLabel" }}
       {{/link-to}}
     {{/if}}
-    {{#link-to "portal.contacts" class="list-group-item list-group-item-action"}}
-      {{submission-icon type="contact" class="mr-2"}}
-      {{ i18n "modifyContactsLabel" }}
-    {{/link-to}}
+    {{#if documentsEnabled}}
+      {{#link-to "portal.documents" class="list-group-item list-group-item-action"}}
+        {{submission-icon type="promotion" class="mr-2"}}
+        Modify documents
+      {{/link-to}}
+    {{/if}}
+    {{#if contactsEnabled}}
+      {{#link-to "portal.contacts" class="list-group-item list-group-item-action"}}
+        {{submission-icon type="contact" class="mr-2"}}
+        {{ i18n "modifyContactsLabel" }}
+      {{/link-to}}
+    {{/if}}
+    {{#if leadershipEnabled}}
+      {{#link-to "portal.leadership" class="list-group-item list-group-item-action"}}
+        {{submission-icon type="leadership" class="mr-2"}}
+        Modify {{categoryPrefix}} categories
+      {{/link-to}}
+    {{/if}}
   </ul>
 </div>

@@ -54,7 +54,19 @@
       }}
     </div>
     <div class="form-group col-md-4">
-      <label for="email-input">{{ i18n "emailLabel"}}</label>
+      <label for="email-input">{{ i18n "publicEmailLabel"}}</label>
+      {{review-field
+        original=company.publicEmail
+        updated=submission.payload.publicEmail
+        toggleField=toggleField
+        fieldKey="publicEmail"
+        enabled=payload.publicEmail
+      }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-4">
+      <label for="email-input">{{ i18n "contactEmailLabel"}}</label>
       {{review-field
         original=company.email
         updated=submission.payload.email

@@ -17,6 +17,25 @@
       {{/if}}
     </div>
   {{/if}}
+{{else if (eq fieldKey "file")}}
+  {{#if (not approvable)}}
+    {{#if value}}
+      <a href={{ value }} target="_blank" rel="noopener">View Document</a>
+    {{/if}}
+  {{else}}
+    <div class="form-control">
+      {{#if isChecked}}
+        {{#if original }}
+          <a href={{ original }} target="_blank" rel="noopener">View Original Document</a>
+        {{/if}}
+        {{#if updated}}
+          <a href={{ updated }} target="_blank" rel="noopener">View Updated Document</a>
+        {{/if}}
+      {{else}}
+        {{#if original}}<a href={{ original }} target="_blank" rel="noopener">View Document</a>{{/if}}
+      {{/if}}
+    </div>
+  {{/if}}
 {{else if (eq fieldKey "socialLinks")}}
   {{#if (eq subField "provider")}}
     <div class="form-control">
@@ -36,6 +55,23 @@
   {{else}}
     {{js-diff original=original updated=updated showDiff=isChecked}}
   {{/if}}
+{{else if (eq fieldKey "labels")}}
+  <div class="form-control">
+    <label for={{concat this.elementId "-label-original-input"}}>Mark as {{ this.config.documentLabelOption }}? ORIGINAL</label>
+    <Input
+      @id={{concat this.elementId "-label-original-input"}}
+      @type="checkbox"
+      @checked={{original}}
+      @disabled={{true}}
+    />
+    <label for={{concat this.elementId "-label-updated-input"}}>Mark as {{ this.config.documentLabelOption }}? UPDATED</label>
+    <Input
+      @id={{concat this.elementId "-label-updated-input"}}
+      @type="checkbox"
+      @checked={{updated}}
+      @disabled={{true}}
+    />
+  </div>
 {{else}}
   {{js-diff original=original updated=updated showDiff=isChecked}}
 {{/if}}

@@ -17,6 +17,7 @@ export default Component.extend(ActionMixin, {
   notify: inject(),
   classNames: ['col-12 mb-3'],
   site: null,
+  collapsed: true,
 
   init() {
     this._super(...arguments);
@@ -49,11 +50,18 @@ export default Component.extend(ActionMixin, {
   }),
 
   actions: {
+    collapse() {
+      this.set('collapsed', !this.collapsed);
+    },
     toggle(id) {
       const selected = this.get('_selected');
-      if (selected.includes(id)) {
+      const initial = this.get('initialIds');
+      const sectionRemovalAllowed = this.get('config.leadershipAllowCategoryRemoval');
+      if (selected.includes(id) && !initial.includes(id)) {
         selected.removeObject(id);
-      } else {
+      } else if (selected.includes(id) && initial.includes(id) && sectionRemovalAllowed) {
+        selected.removeObject(id);
+      } else if (!selected.includes(id)) {
         selected.pushObject(id);
       }
       this.onUpdate(id);

@@ -1,0 +1,3 @@
+mutation DeleteWebsiteSchedule($input: DeleteWebsiteScheduleMutationInput!) {
+	deleteWebsiteSchedule(input: $input)
+}

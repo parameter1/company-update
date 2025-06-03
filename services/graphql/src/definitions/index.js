@@ -3,10 +3,12 @@ const company = require('./company');
 const config = require('./config');
 const contacts = require('./contacts');
 const directory = require('./directory');
+const directorySections = require('./directory-sections');
 const leadership = require('./leadership');
 const list = require('./list');
 const review = require('./review');
 const promotions = require('./promotions');
+const documents = require('./documents');
 
 module.exports = gql`
 
@@ -36,15 +38,19 @@ module.exports = gql`
     leadership
     promotion
     directory
+    directory_sections
+    document
   }
 
   ${company}
   ${config}
   ${contacts}
   ${directory}
+  ${directorySections}
   ${leadership}
   ${list}
   ${review}
   ${promotions}
+  ${documents}
 
 `;

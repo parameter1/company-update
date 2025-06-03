@@ -1,0 +1,5 @@
+mutation ContentPortalReviewDocumentCreate($input: CreateContentDocumentMutationInput!) {
+	createContentDocument(input: $input) {
+    id
+  }
+}

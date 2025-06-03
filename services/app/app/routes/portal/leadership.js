@@ -84,7 +84,8 @@ export default Route.extend({
     this.controllerFor('portal.leadership').set('hash', hash);
     const schedules = get(model, 'contentHash.websiteSchedules') || [];
     const ids = schedules.map((s) => get(s, 'section.id'));
-    this.controllerFor('portal.leadership').set('categories', ids);
+    this.controllerFor('portal.leadership').set('initial', [...ids]);
+    this.controllerFor('portal.leadership').set('selected', [...ids]);
   },
 
 });

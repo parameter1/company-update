@@ -1,8 +1,12 @@
 <div class="card mb-4">
   <div class="card-body">
-    <p class="lead">{{ i18n "companyDetailsP1Label" }} </p>
-    <p>{{ i18n "companyDetailsP2Label" }}</p>
-    <p>{{ i18n "companyDetailsP3Label" }}</p>
+    {{#if companyDetailsVerbiage}}
+      {{ companyDetailsVerbiage }}
+    {{else}}
+      <p class="lead">{{ i18n "companyDetailsP1Label" }} </p>
+      <p>{{ i18n "companyDetailsP2Label" }}</p>
+      <p>{{ i18n "companyDetailsP3Label" }}</p>
+    {{/if}}
   </div>
 </div>
 
@@ -10,9 +14,11 @@
   <div class="col-12 col-lg-8 col-xl-9 my-3">
     {{ company-card/details model=model }}
     {{ company-card/address model=model }}
-    {{ company-card/contact model=model }}
+    {{ company-card/contact model=model onChange=(action "onChange") }}
     {{ company-card/social links=model.socialLinks }}
-    {{ company-card/services model=model }}
+    {{#if companyServicesFieldsEnabled }}
+      {{ company-card/services model=model }}
+    {{/if}}
   </div>
   <div class="col-12 col-lg-4 col-xl-3 my-3">
     <div class="card mb-3">

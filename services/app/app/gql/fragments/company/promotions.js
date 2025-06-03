@@ -10,7 +10,7 @@ fragment CompanyPromotionsFragment on ContentCompany {
     edges {
       node {
         id
-        name
+        name(input: { mutation: Website })
         primaryImage{
           id
           src(input: {

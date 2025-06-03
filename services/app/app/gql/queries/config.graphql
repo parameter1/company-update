@@ -1,5 +1,6 @@
 query CompanyUpdateConfig {
   companyUpdateConfig {
+    contactsEnabled
     contactUrl
     contactText
     companyCustomAttributes {
@@ -11,6 +12,12 @@ query CompanyUpdateConfig {
     directoryEnabled
     directoryCategoryIds
     directorySelectionMax
+    directorySectionsEnabled
+    directorySectionsAlias
+    directorySectionsPrimarySiteOnly
+    directorySectionsScheduledSitesOnly
+    documentsEnabled
+    documentLabelOption
     logoUrl
     leadershipEnabled
     leadershipPromotionsEnabled
@@ -20,6 +27,13 @@ query CompanyUpdateConfig {
     leadershipSectionMax
     leadershipPrimarySiteOnly
     leadershipScheduledSitesOnly
+    leadershipAllowCategoryRemoval
+    portalPageVerbiage
+    companyDetailsVerbiage
+    promotionsVerbiage
+    companyServicesFieldsEnabled
+    companyDetailsExtraFieldsEnabled
+    requiredCompanyFields
     locale
   }
 }
