@@ -21,7 +21,6 @@ query CompanyUpdateConfig {
     logoUrl
     leadershipEnabled
     leadershipPromotionsEnabled
-    leadershipCompanyLabel
     leadershipCategoryPrefix
     leadershipSectionAlias
     leadershipSectionMax

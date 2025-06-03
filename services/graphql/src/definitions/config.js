@@ -28,7 +28,6 @@ module.exports = gql`
     leadershipPrimarySiteOnly: Boolean!
     leadershipScheduledSitesOnly: Boolean!
     leadershipAllowCategoryRemoval: Boolean!
-    leadershipCompanyLabel: String
     leadershipCategoryPrefix: String!
     leadershipSectionAlias: String!
     leadershipSectionMax: Int!

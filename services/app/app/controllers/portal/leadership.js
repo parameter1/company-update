@@ -28,15 +28,12 @@ export default Controller.extend({
     return payload;
   }),
 
-  leadershipEnabled: computed('config.{leadershipEnabled,leadershipCompanyLabel}', 'model.contentHash.{labels.[]}', function() {
-    // disable leadership Categories if not enabled
-    if(!this.config.leadershipEnabled) return false;
-    // if company label is configured return the leadershipEnabled setting from the config
-    if(this.config.leadershipCompanyLabel) {
-      // check that the company label is in the array of labels for this company
-      return this.model.contentHash.labels.includes(this.config.leadershipCompanyLabel);
-    }
-    return true;
+  leadershipEnabled: computed('config.{leadershipEnabled}', 'model.contentHash.{websiteSchedules.[]}', function() {
+    const hasSchedules = this.model.contentHash.websiteSchedules && this.model.contentHash.websiteSchedules.length;
+    const schedules = hasSchedules ? this.model.contentHash.websiteSchedules
+      .filter((schedule) => schedule.section.alias === this.config.leadershipSectionAlias) : [];
+    console.log(schedules);
+    return this.config.leadershipEnabled || schedules.length;
   }),
 
   categoryPrefix: computed.reads('config.leadershipCategoryPrefix'),

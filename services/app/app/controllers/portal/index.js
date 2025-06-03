@@ -4,15 +4,11 @@ import { htmlSafe } from '@ember/template';
 
 export default Controller.extend({
 
-  leadershipEnabled: computed('config.{leadershipEnabled,leadershipCompanyLabel}', 'model.{labels.[]}', function() {
-    // disable leadership Categories if not enabled
-    if(!this.config.leadershipEnabled) return false;
-    // if company label is configured return the leadershipEnabled setting from the config
-    if(this.config.leadershipCompanyLabel) {
-      // check that the company label is in the array of labels for this company
-      return this.model.labels.includes(this.config.leadershipCompanyLabel);
-    }
-    return true;
+  leadershipEnabled: computed('config.{leadershipEnabled}', 'model.{websiteSchedules.[]}', function() {
+    const hasSchedules = this.model.websiteSchedules && this.model.websiteSchedules.length;
+    const schedules = hasSchedules ? this.model.websiteSchedules
+      .filter((schedule) => schedule.section.alias === this.config.leadershipSectionAlias) : [];
+    return this.config.leadershipEnabled || schedules.length;
   }),
   directoryEnabled: computed('config.{directoryEnabled,directoryCategoryIds}', function () {
     return this.config.directoryEnabled && this.config.directoryCategoryIds.length;
@@ -24,7 +20,10 @@ export default Controller.extend({
     return this.config.documentsEnabled;
   }),
   promotionsEnabled: computed('config.leadershipPromotionsEnabled', function() {
-    return this.config.leadershipPromotionsEnabled;
+    const hasSchedules = this.model.websiteSchedules && this.model.websiteSchedules.length;
+    const schedules = hasSchedules ? this.model.websiteSchedules
+      .filter((schedule) => schedule.section.alias === this.config.leadershipSectionAlias) : [];
+    return this.config.leadershipPromotionsEnabled || schedules.length;
   }),
   contactsEnabled: computed('config.contactsEnabled', function () {
     return this.config.contactsEnabled
