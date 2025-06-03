@@ -32,7 +32,6 @@ export default Controller.extend({
     const hasSchedules = this.model.contentHash.websiteSchedules && this.model.contentHash.websiteSchedules.length;
     const schedules = hasSchedules ? this.model.contentHash.websiteSchedules
       .filter((schedule) => schedule.section.alias === this.config.leadershipSectionAlias) : [];
-    console.log(schedules);
     return this.config.leadershipEnabled || schedules.length;
   }),
 
