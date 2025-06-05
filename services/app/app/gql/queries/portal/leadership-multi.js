@@ -15,6 +15,7 @@ query ContentUpdateLeadershipData(
       section {
         id
         name
+        alias
         site {
           id
         }

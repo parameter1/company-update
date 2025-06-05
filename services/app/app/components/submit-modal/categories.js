@@ -19,6 +19,7 @@ export default Component.extend(ActionMixin, {
   email: null,
   error: null,
 
+  leadershipEnabled: false,
   isOpen: false,
   isInvalid: computed('name', 'email', function() {
     if (!this.name || !this.email) return true;
@@ -42,9 +43,18 @@ export default Component.extend(ActionMixin, {
       const variables = { input: { name, email, hash, type, payload } };
 
       try {
-        await this.apollo.mutate({ mutation, variables });
-        if (!this.isDestroyed) this.set('isOpen', false);
-        this.notify.info('Changes requested. You will recieve an email shortly confirming your request.', { clearDuration: 30000 });
+        if(this.leadershipEnabled) {
+          await this.apollo.mutate({ mutation, variables });
+          if (!this.isDestroyed) this.set('isOpen', false);
+          this.notify.info('Changes requested. You will recieve an email shortly confirming your request.', { clearDuration: 30000 });
+        }
+        else {
+          if (!this.isDestroyed) this.set('isOpen', false);
+          const errorString = this.config.contactUrl ?
+          `<p>Sorry, leadership updates are unavailable for this company. <a href=${this.config.contactUrl} target="_blank" rel="noopener">Click here</a> to contact us if you need help!</p>`
+          : 'Sorry, leadership updates are unavailable for this company.';
+          this.notify.error(errorString, { autoClear: false, htmlContent: true });
+        }
         this.onComplete();
       } catch (e) {
         error(e);

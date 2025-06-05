@@ -53,7 +53,6 @@ module.exports = cleanEnv(process.env, {
   LEADERSHIP_ENABLED: bool({ desc: 'If the leadership section should be displayed', default: true }),
   PROMOTIONS_ENABLED: bool({ desc: 'If the promotions section should be displayed', default: false }),
   LEADERSHIP_CATEGORY_PREFIX: str({ desc: 'The prefix to use with categories for leadership sections.', default: 'leadership' }),
-  LEADERSHIP_COMPANY_LABEL: str({ desc: 'If set check that a company has this label to enable the Leaders section.', default: '' }),
   LEADERSHIP_SECTION_ALIAS: nonemptystr({ desc: 'The leadership section alias to be displayed', default: 'leaders' }),
   LEADERSHIP_SECTION_MAX: num({ desc: 'The maximum number of leadership sections that can be selected per site.', default: 3 }),
   LEADERSHIP_PRIMARY_SITE_ONLY: bool({ desc: 'If leadership sections should be limited to content primary site.', default: false }),

@@ -28,6 +28,13 @@ export default Controller.extend({
     return payload;
   }),
 
+  leadershipEnabled: computed('config.{leadershipEnabled}', 'model.contentHash.{websiteSchedules.[]}', function() {
+    const hasSchedules = this.model.contentHash.websiteSchedules && this.model.contentHash.websiteSchedules.length;
+    const schedules = hasSchedules ? this.model.contentHash.websiteSchedules
+      .filter((schedule) => schedule.section.alias === this.config.leadershipSectionAlias) : [];
+    return this.config.leadershipEnabled || schedules.length;
+  }),
+
   categoryPrefix: computed.reads('config.leadershipCategoryPrefix'),
 
   init() {
