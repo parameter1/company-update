@@ -80,10 +80,11 @@ export default Route.extend({
   },
 
   afterModel(model) {
+    const { leadershipSectionAlias } = this.config;
     const { hash } = this.modelFor('portal');
     this.controllerFor('portal.leadership').set('hash', hash);
     const schedules = get(model, 'contentHash.websiteSchedules') || [];
-    const ids = schedules.map((s) => get(s, 'section.id'));
+    const ids = schedules.filter((v) => v.section.alias !== leadershipSectionAlias).map((s) => get(s, 'section.id'));
     this.controllerFor('portal.leadership').set('initial', [...ids]);
     this.controllerFor('portal.leadership').set('selected', [...ids]);
   },
