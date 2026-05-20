@@ -37,8 +37,8 @@ PLATFORM_URI=https://some.domain
 PLATFORM_LOGO=https://cdn.some.domain/some/path/to/some.img
 NOTIFICATION_TO=developer@southcomm.com
 
-SENDGRID_FROM=root@localhost
-SENDGRID_API_KEY=some-api-key
+EMAIL_FROM=root@localhost
+MINDFUL_EMAIL_API_KEY=some-api-key
 
 DEBUG=express:*
 MONGOOSE_DEBUG=1
@@ -57,5 +57,6 @@ TENANT_KEY=
 PLATFORM_URI=
 PLATFORM_LOGO=
 NOTIFICATION_TO=
-SENDGRID_API_KEY=
+EMAIL_FROM=
+MINDFUL_EMAIL_API_KEY=
 ```
