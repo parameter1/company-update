@@ -3,12 +3,12 @@ import { computed, get } from '@ember/object';
 import { inject } from '@ember/service';
 import ActionMixin from '@base-cms/company-update-app/mixins/action';
 
-const getOwnedIds = (obj, ids = []) => {
+// Only sections without children are drawn as selectable buttons; parents are headings.
+const getSelectableIds = (obj, ids = []) => {
   const edges = get(obj, 'edges') || [];
   return edges.reduce((arr, { node }) => [
     ...arr,
-    node.id,
-    ...(node.children ? getOwnedIds(node.children) : []),
+    ...(get(node, 'children.edges.length') ? getSelectableIds(node.children) : [node.id]),
   ], ids);
 };
 
@@ -26,8 +26,8 @@ export default Component.extend(ActionMixin, {
   _selected: computed('selectedIds.[]', 'site.{id,sections.[]}', function() {
     const ids = this.selectedIds || [];
     const sections = get(this, 'site.sections') || [];
-    const ownedIds = getOwnedIds(sections);
-    return ids.filter(id => ownedIds.includes(id));
+    const selectableIds = getSelectableIds(sections);
+    return ids.filter(id => selectableIds.includes(id));
   }),
 
   section: computed('site.sections.edges.[]', function() {
